@@ -42,7 +42,7 @@ $this->breadcrumbs=array(
             <?php foreach($kelompok->anggota as $i => $mahasiswa):?>
             <tr class="<?php echo $i%2==0?'odd':'even'?>">
                 <td width="50px"><?php echo $i + 1 ?></td>
-                <td><?php echo CHtml::link($mahasiswa->namaLengkap,array('mahasiswa/view','id' => $mahasiswa->id))?></td>
+                <td><?php echo CHtml::link($mahasiswa->namaLengkap,array('/dashboard/mahasiswa/view','id' => $mahasiswa->id))?></td>
                 <td><?php echo $mahasiswa->nim?></td>
                 <td><?php echo $mahasiswa->jurusan?></td>
                 <td width="100px"><?php echo $mahasiswa->displayJenisKelamin?></td>

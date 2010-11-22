@@ -109,7 +109,7 @@ class MahasiswaController extends Controller
             $mahasiswa->attributes=$_POST['Mahasiswa'];
             
             if ($mahasiswa->save()) {
-                $this->redirect(array('mahasiswa/view'));
+                $this->redirect(array('/dashboard/mahasiswa/view'));
             }
         }
         $this->render('update',array(

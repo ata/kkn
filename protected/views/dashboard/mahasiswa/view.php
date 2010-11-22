@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>'List User', 'url'=>array('index')),
+    array('label'=>'Daftar Mahasiswa', 'url'=>array('index')),
 );
 ?>
 
@@ -27,5 +27,5 @@ $this->menu=array(
     ));
 ?>
 <?php if($editable):?>
-    <?php echo CHtml::link(Yii::t('app','perbaharui'),array('mahasiswa/update','id'=>$mahasiswa->id));?>
+    <?php echo CHtml::link(Yii::t('app','perbaharui'),array('/dashboard/mahasiswa/update','id'=>$mahasiswa->id));?>
 <?php endif?>

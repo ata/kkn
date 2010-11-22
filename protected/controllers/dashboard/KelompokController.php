@@ -77,9 +77,10 @@ class KelompokController extends Controller
                 throw new CHttpException(404,'The requested page does not exist.');
             }
             $this->loadModel()->pilih($currentMahasiswa->id);
-            $this->redirect('view');
+            $this->redirect(array('view'));
         } else {
-            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+            //throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+            $this->redirect(array('view'));
         }
         
         

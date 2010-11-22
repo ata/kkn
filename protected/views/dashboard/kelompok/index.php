@@ -47,7 +47,7 @@ $this->breadcrumbs=array(
         ),
         array(
             'header' => '',
-            'value' => 'CHtml::link("pilih",array("kelompok/view","id" => $data->id))',
+            'value' => 'CHtml::link("pilih",array("/dashboard/kelompok/view","id" => $data->id))',
             'type' => 'raw',
             'htmlOptions' => array('width' => '70px'),
         )
