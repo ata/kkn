@@ -521,14 +521,18 @@ ul.yiiPager .hidden a
 
 /* Detail View */
 table.detail-view th{
-  color: white;
-  background:#7F0603;
+  color: #000;
+  background:#eee;
   text-align: left;
   padding-left:1em;
   line-height:25px;
   border-bottom:1px solid #C87C21;
 }
 
-table.detail-view tr.odd{
+table.detail-view td{
+  background:#eee;
+  border-bottom:1px solid #C87C21;
+}
+table.detail-view tr.event td{
   background-color:#fff;
 }

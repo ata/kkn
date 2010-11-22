@@ -24,7 +24,7 @@
         <div class="span-12 last ar" id="top-navigation">
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items' => array(
-                    array('label'=>Yii::t('app','Daftar'), 'url'=>array('/mahasiswa/register'),
+                    array('label'=>Yii::t('app','Daftar'), 'url'=>array('/dashboard/mahasiswa/register'),
                         'visible' => Yii::app()->user->isGuest),
                     array('label'=>Yii::t('app','Login'), 'url'=>array('/site/login'),
                         'visible' => Yii::app()->user->isGuest),
