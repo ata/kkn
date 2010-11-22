@@ -21,7 +21,7 @@ class MahasiswaController extends Controller
     {
         return array(
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('captcha','register','registerSuccess','token'),
+                'actions' => array('captcha','register','registerSuccess','token','dependentSelectJurusan'),
                 'users' => array('*'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions

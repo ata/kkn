@@ -119,8 +119,8 @@ $this->breadcrumbs=array(
                 <?php echo $form->passwordField($mahasiswa,'confirmPassword',array('size'=>60,'maxlength'=>255)); ?>
                 <?php echo $form->error($mahasiswa,'confirmPassword'); ?>
             </div>
-            
-             <div class="type-text">
+            <?php if(extension_loaded('gd')): ?>
+            <div class="type-text">
                 <label>&nbsp;</label>
                 <?php $this->widget('CCaptcha'); ?>
             </div>
@@ -129,6 +129,7 @@ $this->breadcrumbs=array(
                 <?php echo $form->textField($mahasiswa,'verifyCode'); ?>
                 <?php echo $form->error($mahasiswa,'verifyCode',array('class'=>'error')); ?>
             </div>
+            <?php endif; ?>
         </fieldset>
         
     <?php endif?>
