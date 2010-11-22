@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
     <?php $form=$this->beginWidget('CActiveForm',array(
         'enableAjaxValidation'=>true,
     )); ?>
-	<p align=justify>Apabila anda memiliki kritik, saran dan masukkan silahkan isi form di bawah ini. Kritik, saran dan masukkan dari anda dapat berarti bagi kemajuan website ini. Terimakasih</p>
+
         <p class="note">Fields with <span class="required">*</span> are required.</p>
 
         <?php /* echo $form->errorSummary($model); */?>

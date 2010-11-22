@@ -1,4 +1,4 @@
-
+<?php echo "Admin"?>
 <h1><?php echo "Halaman Admin" ?></h1>
 
 <p>
