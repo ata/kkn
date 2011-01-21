@@ -8,7 +8,7 @@
             <?php $this->widget('zii.widgets.CMenu', array(
                  'items'=>array(
                     array('label' => Yii::t('app','Profile'),'url' => array('/dashboard/mahasiswa/view')),
-                    array('label' => Yii::t('app','Download'),'url' => array('/dashboard/kelompok/download')),
+                    //array('label' => Yii::t('app','Download'),'url' => array('/dashboard/kelompok/download')),
                     array('label' => Yii::t('app','Kelompok/Lokasi'),'url' => array('/dashboard/kelompok/index')),
                 ),
             ));?>
