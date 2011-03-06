@@ -5,14 +5,14 @@
  * @link http://www.yiiframework.com/
  * @copyright Copyright &copy; 2008-2010 Yii Software LLC
  * @license http://www.yiiframework.com/license/
- * @version $Id: jquery.yiiactiveform.js 2394 2010-08-31 11:41:23Z qiang.xue $
+ * @version $Id: jquery.yiiactiveform.js 2779 2010-12-28 13:10:09Z qiang.xue $
  * @since 1.1.1
  */
 
 ;(function($) {
 	/**
 	 * yiiactiveform set function.
-	 * @param map settings for the active form plugin. Please see {@link CActiveForm::options} for availablel options.
+	 * @param options map settings for the active form plugin. Please see {@link CActiveForm::options} for availablel options.
 	 */
 	$.fn.yiiactiveform = function(options) {
 		return this.each(function() {
@@ -34,7 +34,7 @@
 					afterValidateAttribute : settings.afterValidateAttribute,
 					validatingCssClass : settings.validatingCssClass
 				}, attribute);
-				settings.attributes[i].value = $('#'+attribute.inputID).val();
+				settings.attributes[i].value = $('#'+attribute.inputID, $form).val();
 			});
 			$(this).data('settings', settings);
 
@@ -43,7 +43,7 @@
 				if (forceValidate)
 					attribute.status = 2;
 				$.each(settings.attributes, function(){
-					if (this.value != $('#'+this.inputID).val()) {
+					if (this.value != $('#'+this.inputID, $form).val()) {
 						this.status = 2;
 						forceValidate = true;
 					}
@@ -62,27 +62,27 @@
 						$.each(settings.attributes, function(){
 							if (this.status == 2) {
 								this.status = 3;
-								$.fn.yiiactiveform.getInputContainer(this).addClass(this.validatingCssClass);
+								$.fn.yiiactiveform.getInputContainer(this, $form).addClass(this.validatingCssClass);
 							}
 						});
 						$.fn.yiiactiveform.validate($form, function(data) {
 							var hasError=false;
 							$.each(settings.attributes, function(){
 								if (this.status > 0) {
-									hasError = $.fn.yiiactiveform.updateInput(this, data) || hasError;
+									hasError = $.fn.yiiactiveform.updateInput(this, data, $form) || hasError;
 								}
 							});
 							if(attribute.afterValidateAttribute!=undefined) {
 								attribute.afterValidateAttribute($form,attribute,data,hasError);
 							}
 						});
-					};
+					}
 				}, attribute.validationDelay);
 			};
 
 			$.each(settings.attributes, function(i, attribute) {
 				if (attribute.validateOnChange) {
-					$('#'+attribute.inputID).change(function(){
+					$('#'+attribute.inputID, $form).change(function(){
 						validate(attribute,false);
 					}).blur(function(){
 						if(attribute.status!=2 && attribute.status!=3)
@@ -90,8 +90,8 @@
 					});
 				}
 				if (attribute.validateOnType) {
-					$('#'+attribute.inputID).keyup(function(){
-						if (attribute.value != $('#'+attribute.inputID).val())
+					$('#'+attribute.inputID, $form).keyup(function(){
+						if (attribute.value != $('#'+attribute.inputID, $form).val())
 							validate(attribute, false);
 					});
 				}
@@ -113,7 +113,7 @@
 						$.fn.yiiactiveform.validate($form, function(data){
 							var hasError = false;
 							$.each(settings.attributes, function(i, attribute){
-								hasError = $.fn.yiiactiveform.updateInput(attribute, data) || hasError;
+								hasError = $.fn.yiiactiveform.updateInput(attribute, data, $form) || hasError;
 							});
 							$.fn.yiiactiveform.updateSummary($form, data);
 							if(settings.afterValidate==undefined || settings.afterValidate($form, data, hasError)) {
@@ -137,6 +137,54 @@
 					return false;
 				});
 			}
+
+			/*
+			 * In case of reseting the form we need to reset error messages
+			 * NOTE1: $form.reset - does not exist
+			 * NOTE2: $form.live('reset',...) does not work
+			 */
+			$form.bind('reset',function(){
+				/*
+				 * because we bind directly to a form reset event, not to a reset button (that could or could not exist),
+				 * when this function is executed form elements values have not been reset yet,
+				 * because of that we use the setTimeout
+				 */
+				setTimeout(function(){
+					$.each(settings.attributes, function(i, attribute){
+						attribute.status = 0;
+						var $error = $('#'+attribute.errorID, $form);
+						var $container = $.fn.yiiactiveform.getInputContainer(attribute, $form);
+
+						$container
+							.removeClass(attribute.validatingCssClass)
+							.removeClass(attribute.errorCssClass)
+							.removeClass(attribute.successCssClass);
+
+						$error.html('').hide();
+
+						/*
+						 * without the setTimeout() call val() would return the entered value instead of the reseted value
+						 */
+						attribute.value = $('#'+attribute.inputID, $form).val();
+
+						/*
+						 * If the form is submited (non ajax) with errors, labels and input gets the class 'error'
+						 */
+						$('label,input',$form).each(function(){
+							$(this).removeClass('error');
+						});
+					});
+					$('#'+settings.summaryID+' ul').html('');
+					$('#'+settings.summaryID).hide();
+					//.. set to initial focus on reset
+					if(settings.focus != undefined && !window.location.hash)
+						$(settings.focus).focus();
+				},1);
+			});
+
+			/*
+			 * set to initial focus
+			 */
 			if(settings.focus != undefined && !window.location.hash)
 				$(settings.focus).focus();
 		});
@@ -144,27 +192,29 @@
 
 	/**
 	 * Returns the container element of the specified attribute.
-	 * @param object the configuration for a particular attribute.
+	 * @param attribute object the configuration for a particular attribute.
+	 * @param form the form jQuery object
 	 * @return jquery the jquery representation of the container
 	 */
-	$.fn.yiiactiveform.getInputContainer = function(attribute) {
+	$.fn.yiiactiveform.getInputContainer = function(attribute, form) {
 		if(attribute.inputContainer == undefined)
-			return $('#'+attribute.inputID).closest('div');
+			return $('#'+attribute.inputID, form).closest('div');
 		else
 			return $(attribute.inputContainer).filter(':has("#'+attribute.inputID+'")');
 	};
 
 	/**
 	 * updates the error message and the input container for a particular attribute.
-	 * @param object the configuration for a particular attribute.
-	 * @param array the json data obtained from the ajax validation request
+	 * @param attribute object the configuration for a particular attribute.
+	 * @param messages array the json data obtained from the ajax validation request
+	 * @param form the form jQuery object
 	 * @return boolean whether there is a validation error for the specified attribute
 	 */
-	$.fn.yiiactiveform.updateInput = function(attribute, messages) {
+	$.fn.yiiactiveform.updateInput = function(attribute, messages, form) {
 		attribute.status = 1;
 		var hasError = messages!=null && $.isArray(messages[attribute.inputID]) && messages[attribute.inputID].length>0;
-		var $error = $('#'+attribute.errorID);
-		var $container = $.fn.yiiactiveform.getInputContainer(attribute);
+		var $error = $('#'+attribute.errorID, form);
+		var $container = $.fn.yiiactiveform.getInputContainer(attribute, form);
 		$container.removeClass(attribute.validatingCssClass)
 			.removeClass(attribute.errorCssClass)
 			.removeClass(attribute.successCssClass);
@@ -179,15 +229,15 @@
 		if(!attribute.hideErrorMessage)
 			$error.toggle(hasError);
 
-		attribute.value = $('#'+attribute.inputID).val();
+		attribute.value = $('#'+attribute.inputID, form).val();
 
 		return hasError;
 	};
 
 	/**
 	 * updates the error summary, if any.
-	 * @param jquery the jquery representation of the form
-	 * @param array the json data obtained from the ajax validation request
+	 * @param form jquery the jquery representation of the form
+	 * @param messages array the json data obtained from the ajax validation request
 	 */
 	$.fn.yiiactiveform.updateSummary = function(form, messages) {
 		var settings = $(form).data('settings');
@@ -208,9 +258,9 @@
 	/**
 	 * Performs the ajax validation request.
 	 * This method is invoked internally to trigger the ajax validation.
-	 * @param jquery the jquery representation of the form
-	 * @param function the function to be invoked if the ajax request succeeds
-	 * @param function the function to be invoked if the ajax request fails
+	 * @param form jquery the jquery representation of the form
+	 * @param successCallback function the function to be invoked if the ajax request succeeds
+	 * @param errorCallback function the function to be invoked if the ajax request fails
 	 */
 	$.fn.yiiactiveform.validate = function(form, successCallback, errorCallback) {
 		var $form = $(form);
@@ -236,7 +286,7 @@
 	/**
 	 * Returns the configuration for the specified form.
 	 * The configuration contains all needed information to perform ajax-based validation.
-	 * @param jquery the jquery representation of the form
+	 * @param form jquery the jquery representation of the form
 	 * @return object the configuration for the specified form.
 	 */
 	$.fn.yiiactiveform.getSettings = function(form) {
@@ -264,6 +314,8 @@
 		/**
 		 * list of attributes to be validated. Each array element is of the following structure:
 		 * {
+		 *     model : 'ModelClass', // the model class name
+		 *     name : 'name', // attribute name
 		 *     inputID : 'input-tag-id',
 		 *     errorID : 'error-tag-id',
 		 *     value : undefined,

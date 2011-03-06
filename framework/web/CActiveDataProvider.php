@@ -23,7 +23,7 @@
  * </pre>
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @version $Id: CActiveDataProvider.php 2178 2010-06-10 03:49:18Z qiang.xue $
+ * @version $Id: CActiveDataProvider.php 2733 2010-12-09 12:38:10Z mdomba $
  * @package system.web
  * @since 1.1
  */
@@ -35,7 +35,7 @@ class CActiveDataProvider extends CDataProvider
 	 */
 	public $modelClass;
 	/**
-	 * @var CActiveRecord the AR finder instance (e.g. <code>Post::model()</code>).
+	 * @var CActiveRecord the AR finder instance (eg <code>Post::model()</code>).
 	 * This property can be set by passing the finder instance as the first parameter
 	 * to the constructor.
 	 * @since 1.1.3
@@ -51,9 +51,9 @@ class CActiveDataProvider extends CDataProvider
 
 	/**
 	 * Constructor.
-	 * @param mixed the model class (e.g. 'Post') or the model finder instance
+	 * @param mixed $modelClass the model class (e.g. 'Post') or the model finder instance
 	 * (e.g. <code>Post::model()</code>, <code>Post::model()->published()</code>).
-	 * @param array configuration (name=>value) to be applied as the initial property values of this class.
+	 * @param array $config configuration (name=>value) to be applied as the initial property values of this class.
 	 */
 	public function __construct($modelClass,$config=array())
 	{
@@ -73,6 +73,7 @@ class CActiveDataProvider extends CDataProvider
 	}
 
 	/**
+	 * Returns the query criteria.
 	 * @return CDbCriteria the query criteria
 	 */
 	public function getCriteria()
@@ -83,7 +84,8 @@ class CActiveDataProvider extends CDataProvider
 	}
 
 	/**
-	 * @param mixed the query criteria. This can be either a CDbCriteria object or an array
+	 * Sets the query criteria.
+	 * @param mixed $value the query criteria. This can be either a CDbCriteria object or an array
 	 * representing the query criteria.
 	 */
 	public function setCriteria($value)
@@ -92,6 +94,7 @@ class CActiveDataProvider extends CDataProvider
 	}
 
 	/**
+	 * Returns the sorting object.
 	 * @return CSort the sorting object. If this is false, it means the sorting is disabled.
 	 */
 	public function getSort()
@@ -109,6 +112,7 @@ class CActiveDataProvider extends CDataProvider
 	{
 		$criteria=clone $this->getCriteria();
 		$baseCriteria=$this->model->getDbCriteria(false);
+
 		if(($pagination=$this->getPagination())!==false)
 		{
 			if($baseCriteria!==null)
@@ -116,8 +120,19 @@ class CActiveDataProvider extends CDataProvider
 			$pagination->setItemCount($this->getTotalItemCount());
 			$pagination->applyLimit($criteria);
 		}
+
 		if(($sort=$this->getSort())!==false)
+		{
+			if($baseCriteria!==null)
+			{
+				$c=clone $baseCriteria;
+				$c->mergeWith($criteria);
+				$this->model->setDbCriteria($c);
+			}
+			else
+				$this->model->setDbCriteria($criteria);
 			$sort->applyOrder($criteria);
+		}
 
 		$this->model->setDbCriteria($baseCriteria);
 		return $this->model->findAll($criteria);
@@ -130,15 +145,10 @@ class CActiveDataProvider extends CDataProvider
 	protected function fetchKeys()
 	{
 		$keys=array();
-		if($this->keyAttribute===null)
+		foreach($this->getData() as $i=>$data)
 		{
-			foreach($this->getData() as $i=>$data)
-				$keys[$i]=$data->getPrimaryKey();
-		}
-		else
-		{
-			foreach($this->getData() as $i=>$data)
-				$keys[$i]=$data->{$this->keyAttribute};
+			$key=$this->keyAttribute===null ? $data->getPrimaryKey() : $data->{$this->keyAttribute};
+			$keys[$i]=is_array($key) ? implode(',',$key) : $key;
 		}
 		return $keys;
 	}

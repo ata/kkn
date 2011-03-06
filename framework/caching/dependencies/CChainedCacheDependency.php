@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2010 Yii Software LLC
+ * @copyright Copyright &copy; 2008-2011 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -19,7 +19,7 @@
  * (see {@link CList} for more details}).
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @version $Id: CChainedCacheDependency.php 2282 2010-07-22 02:05:03Z qiang.xue $
+ * @version $Id: CChainedCacheDependency.php 2799 2011-01-01 19:31:13Z qiang.xue $
  * @package system.caching.dependencies
  * @since 1.0
  */
@@ -29,7 +29,7 @@ class CChainedCacheDependency extends CComponent implements ICacheDependency
 
 	/**
 	 * Constructor.
-	 * @param array the dependencies to be added to this chain.
+	 * @param array $dependencies the dependencies to be added to this chain.
 	 * @since 1.1.4
 	 */
 	public function __construct($dependencies=array())
@@ -49,7 +49,7 @@ class CChainedCacheDependency extends CComponent implements ICacheDependency
 	}
 
 	/**
-	 * @param array list of dependency objects or configurations to be added to this chain.
+	 * @param array $values list of dependency objects or configurations to be added to this chain.
 	 * If a depedency is specified as a configuration, it must be an array that can be recognized
 	 * by {@link YiiBase::createComponent}.
 	 * @since 1.0.10

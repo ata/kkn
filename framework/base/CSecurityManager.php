@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2010 Yii Software LLC
+ * @copyright Copyright &copy; 2008-2011 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -34,7 +34,7 @@
  * {@link CApplication::getSecurityManager()}.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @version $Id: CSecurityManager.php 2278 2010-07-21 14:08:46Z qiang.xue $
+ * @version $Id: CSecurityManager.php 2799 2011-01-01 19:31:13Z qiang.xue $
  * @package system.base
  * @since 1.0
  */
@@ -72,7 +72,7 @@ class CSecurityManager extends CApplicationComponent
 	 */
 	protected function generateRandomKey()
 	{
-		return rand().rand().rand().rand();
+		return sprintf('%08x%08x%08x%08x',mt_rand(),mt_rand(),mt_rand(),mt_rand());
 	}
 
 	/**
@@ -98,7 +98,7 @@ class CSecurityManager extends CApplicationComponent
 	}
 
 	/**
-	 * @param string the key used to generate HMAC
+	 * @param string $value the key used to generate HMAC
 	 * @throws CException if the key is empty
 	 */
 	public function setValidationKey($value)
@@ -132,7 +132,7 @@ class CSecurityManager extends CApplicationComponent
 	}
 
 	/**
-	 * @param string the key used to encrypt/decrypt data.
+	 * @param string $value the key used to encrypt/decrypt data.
 	 * @throws CException if the key is empty
 	 */
 	public function setEncryptionKey($value)
@@ -155,6 +155,7 @@ class CSecurityManager extends CApplicationComponent
 	/**
 	 * This method has been deprecated since version 1.1.3.
 	 * Please use {@link hashAlgorithm} instead.
+	 * @param string $value -
 	 */
 	public function setValidation($value)
 	{
@@ -163,8 +164,8 @@ class CSecurityManager extends CApplicationComponent
 
 	/**
 	 * Encrypts data.
-	 * @param string data to be encrypted.
-	 * @param string the decryption key. This defaults to null, meaning using {@link getEncryptionKey EncryptionKey}.
+	 * @param string $data data to be encrypted.
+	 * @param string $key the decryption key. This defaults to null, meaning using {@link getEncryptionKey EncryptionKey}.
 	 * @return string the encrypted data
 	 * @throws CException if PHP Mcrypt extension is not loaded
 	 */
@@ -183,8 +184,8 @@ class CSecurityManager extends CApplicationComponent
 
 	/**
 	 * Decrypts data
-	 * @param string data to be decrypted.
-	 * @param string the decryption key. This defaults to null, meaning using {@link getEncryptionKey EncryptionKey}.
+	 * @param string $data data to be decrypted.
+	 * @param string $key the decryption key. This defaults to null, meaning using {@link getEncryptionKey EncryptionKey}.
 	 * @return string the decrypted data
 	 * @throws CException if PHP Mcrypt extension is not loaded
 	 */
@@ -226,8 +227,8 @@ class CSecurityManager extends CApplicationComponent
 
 	/**
 	 * Prefixes data with an HMAC.
-	 * @param string data to be hashed.
-	 * @param string the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
+	 * @param string $data data to be hashed.
+	 * @param string $key the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
 	 * @return string data prefixed with HMAC
 	 */
 	public function hashData($data,$key=null)
@@ -237,9 +238,9 @@ class CSecurityManager extends CApplicationComponent
 
 	/**
 	 * Validates if data is tampered.
-	 * @param string data to be validated. The data must be previously
+	 * @param string $data data to be validated. The data must be previously
 	 * generated using {@link hashData()}.
-	 * @param string the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
+	 * @param string $key the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
 	 * @return string the real data with HMAC stripped off. False if the data
 	 * is tampered.
 	 */
@@ -258,8 +259,8 @@ class CSecurityManager extends CApplicationComponent
 
 	/**
 	 * Computes the HMAC for the data with {@link getValidationKey ValidationKey}.
-	 * @param string data to be generated HMAC
-	 * @param string the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
+	 * @param string $data data to be generated HMAC
+	 * @param string $key the private key to be used for generating HMAC. Defaults to null, meaning using {@link validationKey}.
 	 * @return string the HMAC for the data
 	 */
 	protected function computeHMAC($data,$key=null)
@@ -280,7 +281,11 @@ class CSecurityManager extends CApplicationComponent
 			$pack='H32';
 			$func='md5';
 		}
-		$key=str_pad($func($key), 64, chr(0));
-		return $func((str_repeat(chr(0x5C), 64) ^ substr($key, 0, 64)) . pack($pack, $func((str_repeat(chr(0x36), 64) ^ substr($key, 0, 64)) . $data)));
+		if(strlen($key) > 64)
+			$key=pack($pack, $func($key));
+		if(strlen($key) < 64)
+			$key=str_pad($key, 64, chr(0));
+	    $key=substr($key,0,64);
+		return $func((str_repeat(chr(0x5C), 64) ^ $key) . pack($pack, $func((str_repeat(chr(0x36), 64) ^ $key) . $data)));
 	}
 }

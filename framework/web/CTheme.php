@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2010 Yii Software LLC
+ * @copyright Copyright &copy; 2008-2011 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -12,7 +12,7 @@
  * CTheme represents an application theme.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @version $Id: CTheme.php 2218 2010-06-23 01:50:19Z qiang.xue $
+ * @version $Id: CTheme.php 2799 2011-01-01 19:31:13Z qiang.xue $
  * @package system.web
  * @since 1.0
  */
@@ -24,9 +24,9 @@ class CTheme extends CComponent
 
 	/**
 	 * Constructor.
-	 * @param string name of the theme
-	 * @param string base theme path
-	 * @param string base theme URL
+	 * @param string $name name of the theme
+	 * @param string $basePath base theme path
+	 * @param string $baseUrl base theme URL
 	 */
 	public function __construct($name,$basePath,$baseUrl)
 	{
@@ -86,8 +86,8 @@ class CTheme extends CComponent
 
 	/**
 	 * Finds the view file for the specified controller's view.
-	 * @param CController the controller
-	 * @param string the view name
+	 * @param CController $controller the controller
+	 * @param string $viewName the view name
 	 * @return string the view file path. False if the file does not exist.
 	 */
 	public function getViewFile($controller,$viewName)
@@ -100,8 +100,8 @@ class CTheme extends CComponent
 
 	/**
 	 * Finds the layout file for the specified controller's layout.
-	 * @param CController the controller
-	 * @param string the layout name
+	 * @param CController $controller the controller
+	 * @param string $layoutName the layout name
 	 * @return string the layout file path. False if the file does not exist.
 	 */
 	public function getLayoutFile($controller,$layoutName)

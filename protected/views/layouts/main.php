@@ -35,9 +35,7 @@
                     array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
                         'visible' => !Yii::app()->user->isGuest),
                  ))); ?>
-            
         </div>
-        
     </div>
 </div>
 
