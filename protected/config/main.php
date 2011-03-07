@@ -35,7 +35,9 @@ return array(
                 'admin/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
                 'admin/<controller:\w+>/<id:\d+>/<action:\w+>'=>'admin/<controller>/<action>',
                 'admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
-                /*
+                
+                
+		/*
                 'dashboard/profile' => 'dashboard/mahasiswa/view',
                 'dashboard/kelompok' => 'dashboard/kelompok/index',
                 'dashboard/kelompok/<id:\d+>' => 'dashboard/kelompok/view',
@@ -43,7 +45,8 @@ return array(
                 'dashboard/index' => 'dashboard/kelompok/view',
                 'dashboard/kelompok/map' => 'kelompok/map',
                 */
-                'register' => 'dashboard/mahasiswa/register',
+		'register' => 'dashboard/mahasiswa/register',
+                
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<id:\d+>/<action:\w+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
@@ -51,10 +54,10 @@ return array(
         ),
         
         'db'=> array(
-            'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
+            'connectionString' => 'mysql:host=localhost;dbname=kkn',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => 'root',
+            'password' => '',
             'charset' => 'utf8',
         ),
         

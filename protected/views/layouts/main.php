@@ -35,21 +35,24 @@
                     array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
                         'visible' => !Yii::app()->user->isGuest),
                  ))); ?>
+            
         </div>
+        
     </div>
 </div>
 
 <div id="header">
     <div class="container">
         <div class="header span-24">
-            <div class="span-2">
-                <img id="logo" src="<?php echo Yii::app()->request->baseUrl?>/images/logo-small.gif">
+            <div class="span-3">
+                <img id="logo" src="<?php echo Yii::app()->request->baseUrl?>/images/logoupi.png">
             </div>
 
-            <div class="span-10">
+            <div class="span-9">
                 <div id="web-name">
-                    <h5><?php echo Yii::t('app','LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT')?></h5>
-                    <h3><?php echo Yii::t('app','UNIVERSITAS PENDIDIKAN INDONESIA')?></h3>
+                    <h2><?php echo Yii::t('app','KKN TEMATIK ONLINE')?></h2>
+                    <h5><?php echo Yii::t('app','PUSAT PEMBERDAYAAN MASYARAKAT, KEWIRAUSAHAAN DAN 
+                    PENGEMBANGAN KULIAH KERJA NYATA')?></h5>
                 </div>
             </div>
             <div class="span-12 ar last" id="head-navigation">
@@ -57,6 +60,12 @@
             </div><!--end.top-navigation-->
         </div><!-- end.header -->
     </div>
+</div>
+
+<div id="slideshow">	
+	<div class="container">
+		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+	</div>
 </div>
 
 <?php echo $content?>

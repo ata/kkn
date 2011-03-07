@@ -10,13 +10,21 @@ a{
   font-weight:bold;
 }
 
+h2{
+	margin:5px 0;
+}
+
+p{
+	padding:5px 0;
+}
+
 h2 a:link, h2 a:visited{
   color:#000;
   text-decoration:none;
 }
 
 h2 a:hover{
-  text-decoration:underline;
+	text-decoration:none;
 }
 
 
@@ -86,41 +94,46 @@ textarea, input{
 
 
 #header{
-  height:65px;
-  background:url(images/bg_header.gif) #E4AB41;
+  height:95px;
+  background:url(images/bg_header.png) #6D0401;
+  border-top:1px solid #A50404;
 }
 
 #logo{
-  margin-top:5px;
+  margin-top:7px;
 }
-#web-name h5,#web-name h3{
-  color:#fff;
-  padding:0;
-  margin:0;
-}
+
 #web-name{
-  margin-top:15px;
+  margin-top:10px;
+}
+
+#web-name h2{
+	margin:0;
+	padding:0;
+	color:#FFF;
+	font-weight:bold;
+	font-family: Trajan Pro, Trebuchet MS, Verdana, sans-serif;
 }
 
 #web-name h5{
-  font-size:11px;
+	font-size:12px;
+	font-family: Trebuchet MS, Verdana, Tahoma, sans-serif;
+	font-weight:normal;
+	color:#D27B00;
 }
 
-#web-name h3{
-  font-size:19px;
-}
 
 /**************************************/
 /*             NAVIGATION             */
 /**************************************/
 #head-navigation {
   position:relative;
-  height:65px;
+  height:95px;
 }
 #head-navigation ul{
   position:absolute;
   right:0;
-  bottom:-1px;
+  bottom:0;
   list-style:none;
   margin:0;
   padding:0;
@@ -135,8 +148,8 @@ textarea, input{
 #head-navigation a:link,#head-navigation a:visited{
   display:block;
   padding: 5px 1.5em;
-  color: #000;
-  background-color:#BD6914;
+  color:#FFF;
+  text-shadow:1px 1px 0 #A50404;
   text-decoration: none;
   font-weight:bold;
   margin:0;
@@ -144,44 +157,72 @@ textarea, input{
 }
 #head-navigation a:hover {
   color: #000;
-  background-color: #711515;
+  text-shadow:1px 1px 0 #A50404;
 }
+
 #head-navigation li.active a{
-  background-color: #fff;
-  border-left:1px solid #A52A2A;
-  border-right:1px solid #A52A2A;
-  border-bottom:2px solid #fff;
+	color:#000;
+	background-color: #BA7800;
+	text-shadow:1px 1px 0 #CE851B;
+	-moz-box-shadow:1px -1px 0 #440202;
+	-webkit-box-shadow:1px -1px 0 #440202;
+	box-shadow:1px -1px 0 #440202;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
 }
+
 .breadcrumbs{
   padding:10px 0;
 }
+
+
+/**************************************/
+/*              SLIDESHOW             */
+/**************************************/
+#slideshow{
+	background:#BA7800;
+	-moz-box-shadow:1px -1px 0 #440202;
+	-webkit-box-shadow:1px -1px 0 #440202;
+	box-shadow:1px -1px 0 #440202;
+}
+
+#slideshow img{
+	margin:10px 0;
+}
+
 
 /**************************************/
 /*            MAIN CONTENT            */
 /**************************************/
 
 #main{
-  background:url(images/bg_main.gif) repeat-x #E4AB41;
+	background:url(images/main_bg.jpg) repeat-x #FFEB87;
+	margin:0;
+	padding:10px 0;
 }
 
 #content{
-  
+	background:#FFF;
+	padding-bottom:10px;
 }
 
 #main .container{
-  background:#fff;
+  
 }
 
-#content h2, #content h2 a{
-  margin-top:5px;
-  color:#000;
-  font-weight:bold;
-  padding-left:0.5em;
+#content h2{
+	color:#000;
+	font-weight:bold;
+	margin-left:10px;
 }
 
+#content p{
+	margin:0 10px;
+}
 
 #main #admin-container{
-  background:#994E04;
+  background:#8F0704;
   
 }
 
@@ -197,16 +238,47 @@ textarea, input{
 /**************************************/
 
 
+#fsidebar{
+	background:#8F0704;
+}
+
+#login-form{
+	margin:10px 10px 0 10px;
+	padding:10px 0;
+	border-bottom:1px solid #750303;
+	background:url(images/login-bg.png) bottom left no-repeat;
+}
+
+#login-form form{
+	float:right;
+	margin:0 10px;
+}
+
+#register-form{
+	border-top:1px solid #A50404;
+	margin:0 10px;
+	padding:10px 0;
+	border-bottom:1px solid #750303;
+	background:url(images/register-bg.png) bottom right no-repeat;
+}
+
+#register-form form{
+	margin:0 10px;
+}
+
 #sidebar{
   margin-top:2em;
+  background:#8F0704;
 }
 
 #sidebar h3{
   padding:0;
-  margin:0 0 10px 10px;
+  margin-left:10px;
   padding-left:5px;
   color:#fff;
-  border-bottom:1px solid #fff;
+  text-align:center;
+  text-shadow:1px 1px 0 #750303;
+  font-weight:bold;
 }
 
 
@@ -214,17 +286,34 @@ textarea, input{
   padding:0;
   margin:0 0 20px 10px;
 }
+
 #sidebar li{
-  list-style:none;
+	list-style:none;
+	border-top:1px solid #A50404;
+	border-bottom:1px solid #750303;
 }
+
+#sidebar li.active{
+	background:#FFF;
+}
+
+#sidebar li.active a{
+	color:#000;
+	text-shadow:1px 1px 0 #FFF;
+}
+
 #sidebar a{
   display:block;
   font-weight:bold;
-  color:#FFC356;
+  color:#D27B00;
   text-decoration:none;
+  text-shadow:1px 1px 0 #750303;
   line-height:30px;
-  border-bottom:1px solid #FFC356;
   padding-left:5px;
+}
+
+#sidebar a:hover{
+	color:#FFF;
 }
 
 
@@ -233,9 +322,8 @@ textarea, input{
 /*               FOOTER               */
 /**************************************/
 #footer {
-  height:100px;
   background-color:#000;
-  padding-top:10px;
+  padding:10px 0;
   color:#fff;
 }
 #footer a{
@@ -258,6 +346,7 @@ textarea, input{
   position:relative;
   padding-bottom:20px;
 }
+
 .list-view .summary{
   position:absolute;
   bottom:0;
@@ -265,15 +354,17 @@ textarea, input{
   background:#fff;
   width:100%;
 }
+
 .list-view .view{
-  margin:10px 0;
   padding:10px;
   background:#fff;
+  border-bottom:2px solid #FFEB87;
 }
 
 .list-view .view h2{
-  border-bottom:1px solid #DADADA;
+
 }
+
 .list-view .view h2 a{
   text-decoration:none;
   color:#000;
@@ -303,16 +394,18 @@ textarea, input{
   float:left;
   width:175px;
   padding:5px 0;
+  margin-top:7px;
 }
+
 .form .row input, .form .row textarea, .form .row select{
-  margin-top:0px;
+  margin-top:7px;
   width:250px;
   padding:5px 0;
 }
 .form .row .errorMessage{
   position:absolute;
   left:450px;
-  top:15px;
+  top:12px;
 }
 
 .form .checkbox label{
@@ -331,7 +424,12 @@ textarea, input{
   margin-top:1em;
   border:none;
   width:auto;
-  background:#7E0603;
+  background:#BA6410;
+  background:-moz-linear-gradient(#E7B045, #BA6410);
+  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#E7B045), to(#BA6410));
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
   padding:10px 15px;
   color:#fff;
   font-weight:bold;
@@ -357,12 +455,12 @@ textarea, input{
   padding: 0.3em;
 }
 
-.grid-view table.items th
-{
+.grid-view table.items th{
   color: white;
-  background:#7F0603;
+  background:#000 url(images/tabel_bg.jpg);
   text-align: center;
   line-height:30px;
+  height:35px;
 }
 
 .grid-view table.items th a
