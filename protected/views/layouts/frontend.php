@@ -13,17 +13,17 @@
 						<label></label>
 						<input type="text"><br>
 						<input type="password"><br>
-						<input type="submit">
+						<input type="submit" value="LOGIN">
 					</form>
 					<div class="clear"></div>
 				</div>
 				<div id="register-form">
-					<h2 class="floatRight">REGISTER</h2>
+					<h2 class="floatRight">REGISTRASI</h2>
 					<form>
 						<label></label>
 						<input type="text"><br>
 						<input type="password"><br>
-						<input type="submit">
+						<input type="submit" value="DAFTAR">
 					</form>
 					<div class="clear"></div>
 				</div>

@@ -208,17 +208,23 @@ textarea, input{
 }
 
 #main .container{
-  
+
 }
 
 #content h2{
 	color:#000;
 	font-weight:bold;
-	margin-left:10px;
+	margin:20px 10px 0 20px;
+	text-shadow:1px 1px 0 #FFF;
+	background:#EAEAEA;
+	padding:0 10px;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
 }
 
 #content p{
-	margin:0 10px;
+	margin:0 20px;
 }
 
 #main #admin-container{
@@ -227,10 +233,15 @@ textarea, input{
 }
 
 #admin-container #content{
-  padding:10px;
-  background:#fff;
+  padding:20px;
+  background:#EAEAEA;
   min-height:550px;
   border-bottom:1px solid #fff;
+}
+
+#admin-container #content h2{
+	padding:0;
+	margin:0 0 10px 0;
 }
 
 /**************************************/
@@ -243,8 +254,8 @@ textarea, input{
 }
 
 #login-form{
-	margin:10px 10px 0 10px;
-	padding:10px 0;
+	margin:0 10px;
+	padding-bottom:20px;
 	border-bottom:1px solid #750303;
 	background:url(images/login-bg.png) bottom left no-repeat;
 }
@@ -254,10 +265,17 @@ textarea, input{
 	margin:0 10px;
 }
 
+#login-form h2,
+#register-form h2{
+	text-shadow:1px 1px 0 #A50404;
+	background:none;
+	padding:0;
+}
+
 #register-form{
 	border-top:1px solid #A50404;
 	margin:0 10px;
-	padding:10px 0;
+	padding-bottom:20px;
 	border-bottom:1px solid #750303;
 	background:url(images/register-bg.png) bottom right no-repeat;
 }
@@ -294,12 +312,20 @@ textarea, input{
 }
 
 #sidebar li.active{
-	background:#FFF;
+	background:#EAEAEA;
+	-moz-border-radius:7px 0 0 7px;
+	-webkit-border-radius:5px 0 0 5px;
+	border-radius:5px 0 0 5px;
+	margin-right:-10px;
+	border-bottom:1px solid #B2B2B2;
+	border-left:1px solid #B2B2B2;
+	border-top:1px solid #FFF;
 }
 
 #sidebar li.active a{
 	color:#000;
 	text-shadow:1px 1px 0 #FFF;
+	margin-left:10px;
 }
 
 #sidebar a{
@@ -336,8 +362,7 @@ textarea, input{
 /**************************************/
 
 .form, .view {
-  background:#fff;
-  padding:1em;
+  padding:0;
 }
 
 
@@ -351,13 +376,10 @@ textarea, input{
   position:absolute;
   bottom:0;
   text-align:right;
-  background:#fff;
   width:100%;
 }
 
 .list-view .view{
-  padding:10px;
-  background:#fff;
   border-bottom:2px solid #FFEB87;
 }
 
@@ -380,6 +402,10 @@ textarea, input{
 .form{
   background:#fff;
   padding:1em;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  -moz-box-shadow:0 0 5px #CCCCCC;
 }
 
 .form .note{
@@ -397,11 +423,18 @@ textarea, input{
   margin-top:7px;
 }
 
-.form .row input, .form .row textarea, .form .row select{
+.form .row input, .form .row select{
   margin-top:7px;
   width:250px;
   padding:5px 0;
 }
+
+.form .row textarea{
+	margin-top:7px;
+	width:500px;
+	padding:5px 0;
+}
+
 .form .row .errorMessage{
   position:absolute;
   left:450px;
@@ -467,9 +500,8 @@ textarea, input{
 {
   color: #EEE;
   font-weight: bold;
-  
+	text-decoration:none;
 }
-
 
 .grid-view table.items th a:hover
 {
@@ -488,21 +520,22 @@ textarea, input{
   padding-right: 10px;
 }
 
-
 .grid-view table.items td
 {
-  line-height:25px;
+  line-height:18px;
 }
-
 
 .grid-view table.items tr.even td
 {
   background-color:#fff;
+	padding-left:10px;
+	padding-top:5px;
 }
 
 .grid-view table.items tr.odd td
 {
-  background-color:#E5E5E5;
+  background-color:#CCCCCC;
+	padding-left:10px;
 }
 
 .grid-view table.items tr.selected
@@ -533,6 +566,8 @@ textarea, input{
 .grid-view .button-column img
 {
   border: 0;
+	margin:0;
+	padding:0;
 }
 
 .grid-view .checkbox-column
@@ -561,7 +596,7 @@ textarea, input{
 .grid-view .filters select
 {
   width: 95%;
-  padding:5px 0;
+  padding:3px 0;
   margin:0;
   border:1px solid #E6E6FA;
 }
@@ -620,17 +655,26 @@ ul.yiiPager .hidden a
 /* Detail View */
 table.detail-view th{
   color: #000;
-  background:#eee;
-  text-align: left;
-  padding-left:1em;
+  background:#CCC;
+  text-align:right;
+  padding-right:1em;
   line-height:25px;
   border-bottom:1px solid #C87C21;
+  text-shadow:1px 1px 0 #EAEAEA;
+  width:150px;
 }
 
 table.detail-view td{
-  background:#eee;
+  background:#FFF;
   border-bottom:1px solid #C87C21;
+  padding-left:1em;
 }
+
 table.detail-view tr.event td{
   background-color:#fff;
+}
+
+.error,
+.alert{
+	margin:10px 10px 0 20px;
 }
