@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 ?>
 <h2>Tentang KKN online dan LPPM</h2>
 
-<p align="justify" style="padding-left:10px;padding-right:10px">Selamat Datang di website KKN online Universitas Pendidikan Indonesia.
+<p>Selamat Datang di website KKN online Universitas Pendidikan Indonesia.
 	Website ini merupakan aplikasi yang membantu civitas Universitas Pendidikan Indonesia tertutama LPPM dalam pengelolaan KKN.
 	Dengan website ini diharapkan dapat memudahkan para mahasiswa dalam pendaftaran serta informasi yang dibutuhkan untuk kegiatan KKN tersebut.<br><br>
 	

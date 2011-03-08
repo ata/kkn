@@ -13,7 +13,7 @@
 						<label></label>
 						<input type="text"><br>
 						<input type="password"><br>
-						<input type="submit" value="LOGIN">
+						<input type="submit" value="LOGIN" class="button">
 					</form>
 					<div class="clear"></div>
 				</div>
@@ -23,7 +23,7 @@
 						<label></label>
 						<input type="text"><br>
 						<input type="password"><br>
-						<input type="submit" value="DAFTAR">
+						<input type="submit" value="DAFTAR" class="button">
 					</form>
 					<div class="clear"></div>
 				</div>

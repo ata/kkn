@@ -70,6 +70,13 @@
 
 <?php echo $content?>
 
+<div id="footbar">
+	<div class="container">
+		<h4>LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</h4>
+		<h3>UNIVERSITAS PENDIDIKAN INDONESIA</h3>
+	</div>
+</div>
+
 <div id="footer">
     <div class="container">
         <span class="span-12 al">

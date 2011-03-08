@@ -3,7 +3,7 @@
 /*           COLOR SCHEME             */
 /***************************************/
 body{
-  background-color:#000;
+  background:#BA7800;
 }
 a{
   color:#F20008;
@@ -16,6 +16,8 @@ h2{
 
 p{
 	padding:5px 0;
+	line-height:1.7em;
+	font-size:13px;
 }
 
 h2 a:link, h2 a:visited{
@@ -53,9 +55,13 @@ textarea, input{
 /**************************************/
 
 #top{
-  background:#000;
-  color:#fff;
+	background:#333;
+	color:#fff;
+	border-bottom:1px solid #000;
+    border-top:1px solid #666;
+    padding:5px 0;
 }
+
 #top .breadcrumbs a:link, #top .breadcrumbs a:visited{
   font-weight:bold;
   text-decoration:none;
@@ -67,7 +73,7 @@ textarea, input{
 }
 
 #top-navigation{
-  margin-top:0.7em;
+
 }
 
 #top-navigation ul{
@@ -100,7 +106,15 @@ textarea, input{
 }
 
 #logo{
-  margin-top:7px;
+	margin-top:5px;
+	-moz-border-radius:41px;
+	-webkit-border-radius:41px;
+	border-radius:41px;
+	-moz-box-shadow:0 0 20px #CE2121;
+	-webkit-box-shadow:0 0 20px #CE2121;
+	box-shadow:0 0 20px #CE2121;
+	height:82px;
+	width:82px;
 }
 
 #web-name{
@@ -113,6 +127,7 @@ textarea, input{
 	color:#FFF;
 	font-weight:bold;
 	font-family: Trajan Pro, Trebuchet MS, Verdana, sans-serif;
+	text-shadow:2px 2px 2px #560202;
 }
 
 #web-name h5{
@@ -133,7 +148,7 @@ textarea, input{
 #head-navigation ul{
   position:absolute;
   right:0;
-  bottom:0;
+  bottom:-1px;
   list-style:none;
   margin:0;
   padding:0;
@@ -147,33 +162,35 @@ textarea, input{
 }
 #head-navigation a:link,#head-navigation a:visited{
   display:block;
-  padding: 5px 1.5em;
-  color:#FFF;
-  text-shadow:1px 1px 0 #A50404;
+  padding: 5px 15px;
+  color:#CCC;
+  text-shadow:1px 1px 0 #560202;
   text-decoration: none;
   font-weight:bold;
   margin:0;
 
 }
 #head-navigation a:hover {
-  color: #000;
-  text-shadow:1px 1px 0 #A50404;
+  color: #FFF;
 }
 
 #head-navigation li.active a{
 	color:#000;
 	background-color: #BA7800;
 	text-shadow:1px 1px 0 #CE851B;
-	-moz-box-shadow:1px -1px 0 #440202;
-	-webkit-box-shadow:1px -1px 0 #440202;
-	box-shadow:1px -1px 0 #440202;
+	-moz-box-shadow:0 -2px 2px #560202;
+	-webkit-box-shadow:0 -2px 2px #560202;
+	box-shadow:0 -2px 2px #560202;
+	border:1px solid #D19743;
+	border-bottom:none;
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
+	padding-top:4px;
 }
 
 .breadcrumbs{
-  padding:10px 0;
+
 }
 
 
@@ -181,14 +198,17 @@ textarea, input{
 /*              SLIDESHOW             */
 /**************************************/
 #slideshow{
-	background:#BA7800;
-	-moz-box-shadow:1px -1px 0 #440202;
-	-webkit-box-shadow:1px -1px 0 #440202;
-	box-shadow:1px -1px 0 #440202;
+	-moz-box-shadow:0 -2px 2px #560202;
+	-webkit-box-shadow:0 -2px 2px #560202;
+	box-shadow:0 -2px 2px #560202;
+	border-top:1px solid #D19743;
 }
 
 #slideshow img{
 	margin:10px 0;
+	-moz-box-shadow:0 0 10px #7C3403;
+	-webkit-box-shadow:0 0 10px #7C3403;
+	box-shadow:0 0 10px #7C3403;
 }
 
 
@@ -197,14 +217,15 @@ textarea, input{
 /**************************************/
 
 #main{
-	background:url(images/main_bg.jpg) repeat-x #FFEB87;
 	margin:0;
 	padding:10px 0;
 }
 
 #content{
 	background:#FFF;
-	padding-bottom:10px;
+	-moz-box-shadow:0 0 10px #7C3403;
+	-webkit-box-shadow:0 0 10px #7C3403;
+	box-shadow:0 0 10px #7C3403;
 }
 
 #main .container{
@@ -224,12 +245,14 @@ textarea, input{
 }
 
 #content p{
-	margin:0 20px;
+	margin:10px 10px 20px 20px;;
 }
 
 #main #admin-container{
   background:#8F0704;
-  
+	-moz-box-shadow:0 0 10px #7C3403;
+	-webkit-box-shadow:0 0 10px #7C3403;
+	box-shadow:0 0 10px #7C3403;
 }
 
 #admin-container #content{
@@ -237,6 +260,9 @@ textarea, input{
   background:#EAEAEA;
   min-height:550px;
   border-bottom:1px solid #fff;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
 }
 
 #admin-container #content h2{
@@ -347,10 +373,34 @@ textarea, input{
 /**************************************/
 /*               FOOTER               */
 /**************************************/
+
+#footbar{
+	border-bottom:1px solid #D19743;
+}
+
+#footbar h4{
+	text-align:center;
+	margin:20px 0 0 0;
+	color:#7C3403;
+	text-shadow:1px 1px 0 #D19743;
+	font-weight:bold;
+}
+
+#footbar h3{
+	text-align:center;
+	margin:5px 0 20px 0;
+	color:#7C3403;
+	text-shadow:1px 1px 0 #D19743;
+	font-size:23px;
+	font-weight:bold;
+}
+
 #footer {
-  background-color:#000;
-  padding:10px 0;
-  color:#fff;
+	background:#333;
+	color:#fff;
+	border-top:1px solid #000;
+    border-bottom:1px solid #666;
+    padding:10px 0;
 }
 #footer a{
   color:#fff;
@@ -380,7 +430,7 @@ textarea, input{
 }
 
 .list-view .view{
-  border-bottom:2px solid #FFEB87;
+  border-bottom:2px solid #BA7800;
 }
 
 .list-view .view h2{
@@ -406,6 +456,15 @@ textarea, input{
   -webkit-border-radius:5px;
   border-radius:5px;
   -moz-box-shadow:0 0 5px #CCCCCC;
+  margin:0 10px 20px 20px;
+}
+
+#admin-container #content .form{
+	margin:0px;
+}
+
+#content .form p{
+	margin:10px;
 }
 
 .form .note{
@@ -418,9 +477,10 @@ textarea, input{
 }
 .form .row label{
   float:left;
-  width:175px;
-  padding:5px 0;
+  width:150px;
+  padding:5px 10px 5px 0;
   margin-top:7px;
+  text-align:right;
 }
 
 .form .row input, .form .row select{
@@ -437,7 +497,7 @@ textarea, input{
 
 .form .row .errorMessage{
   position:absolute;
-  left:450px;
+  left:430px;
   top:12px;
 }
 
@@ -450,10 +510,11 @@ textarea, input{
 .form .checkbox input{
   border:none;
   width:auto;
-  margin-left:175px;
+  margin-left:160px;
 }
 
-.form .buttons input{
+.form .buttons input,
+.button{
   margin-top:1em;
   border:none;
   width:auto;
@@ -463,10 +524,15 @@ textarea, input{
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
-  padding:10px 15px;
+  padding:5px 15px;
   color:#fff;
+  text-shadow:1px 1px 0 #BA6410;
   font-weight:bold;
-  margin-left:175px;
+	cursor:pointer;
+}
+
+.form .buttons input{
+	margin-left:160px;
 }
 
 /* Grid View */
@@ -490,10 +556,11 @@ textarea, input{
 
 .grid-view table.items th{
   color: white;
-  background:#000 url(images/tabel_bg.jpg);
+  background:#4D4D4D;
   text-align: center;
   line-height:30px;
   height:35px;
+	text-shadow:1px 1px 0 #000;
 }
 
 .grid-view table.items th a
@@ -676,5 +743,9 @@ table.detail-view tr.event td{
 
 .error,
 .alert{
-	margin:10px 10px 0 20px;
+	margin:0 0 1em 0;
+}
+
+a.search-button{
+	
 }
