@@ -21,12 +21,24 @@ p{
 }
 
 h2 a:link, h2 a:visited{
-  color:#000;
+  color:#333333;
   text-decoration:none;
 }
 
 h2 a:hover{
 	text-decoration:none;
+}
+
+.floatRight{
+	float:right;
+}
+
+.floatLeft{
+	float:left;
+}
+
+.clear{
+	clear:both;
 }
 
 
@@ -175,7 +187,7 @@ textarea, input{
 }
 
 #head-navigation li.active a{
-	color:#000;
+	color:#333333;
 	background-color: #BA7800;
 	text-shadow:1px 1px 0 #CE851B;
 	-moz-box-shadow:0 -2px 2px #560202;
@@ -186,7 +198,7 @@ textarea, input{
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
-	padding-top:4px;
+	padding:4px 14px 5px 14px;
 }
 
 .breadcrumbs{
@@ -233,7 +245,7 @@ textarea, input{
 }
 
 #content h2{
-	color:#000;
+	color:#333333;
 	font-weight:bold;
 	margin:20px 10px 0 20px;
 	text-shadow:1px 1px 0 #FFF;
@@ -265,9 +277,22 @@ textarea, input{
   box-shadow:none;
 }
 
-#admin-container #content h2{
+#admin-container #content h2,
+#admin-container #content h1{
 	padding:0;
 	margin:0 0 10px 0;
+	color:#333333;
+	text-shadow:1px 1px 0 #FFFFFF;
+}
+
+#admin-container #content li{
+	padding:3px 0;
+	list-style:square;
+}
+
+#admin-container #content p{
+	margin:5px 0;
+	padding:0;
 }
 
 /**************************************/
@@ -279,19 +304,24 @@ textarea, input{
 	background:#8F0704;
 }
 
-#login-form{
+#fp-login-form{
 	margin:0 10px;
-	padding-bottom:20px;
 	border-bottom:1px solid #750303;
 	background:url(images/login-bg.png) bottom left no-repeat;
 }
 
-#login-form form{
+#fp-login-form form{
 	float:right;
 	margin:0 10px;
 }
 
-#login-form h2,
+#fp-login-form p{
+	margin:0;
+	padding:0;
+	color:#FFFFFF;
+}
+
+#fp-login-form h2,
 #register-form h2{
 	text-shadow:1px 1px 0 #A50404;
 	background:none;
@@ -308,6 +338,23 @@ textarea, input{
 
 #register-form form{
 	margin:0 10px;
+}
+
+#fp-login-form form input,
+#register-form form input{
+	-moz-box-shadow:inset 1px 1px 3px #808080;
+	-webkit-box-shadow:inset 1px 1px 3px #808080;
+	box-shadow:inset 1px 1px 2px #808080;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #750303;
+	border-top:1px solid #B70909;
+	border-left:1px solid #B70909;
+}
+
+#fp-login-form form label{
+	margin-right:10px;
 }
 
 #sidebar{
@@ -349,7 +396,7 @@ textarea, input{
 }
 
 #sidebar li.active a{
-	color:#000;
+	color:#333333;
 	text-shadow:1px 1px 0 #FFF;
 	margin-left:10px;
 }
@@ -439,7 +486,7 @@ textarea, input{
 
 .list-view .view h2 a{
   text-decoration:none;
-  color:#000;
+  color:#333333;
 }
 
 .list-view .view p{
@@ -456,6 +503,8 @@ textarea, input{
   -webkit-border-radius:5px;
   border-radius:5px;
   -moz-box-shadow:0 0 5px #CCCCCC;
+  -webkit-box-shadow:0 0 5px #CCCCCC;
+  box-shadow:0 0 5px #CCCCCC;
   margin:0 10px 20px 20px;
 }
 
@@ -483,16 +532,57 @@ textarea, input{
   text-align:right;
 }
 
-.form .row input, .form .row select{
+.form .row input{
   margin-top:7px;
-  width:250px;
-  padding:5px 0;
+  width:240px;
+  padding:5px;
+	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
+	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
+	box-shadow:inset 1px 1px 2px #CCCCCC;
+	border:1px solid #CCCCCC;
+}
+
+.form .row select{
+	margin-top:7px;
+	width:252px;
+	padding:5px;
+	background:transparent;
+	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
+	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
+	box-shadow:inset 1px 1px 2px #CCCCCC;
+	border:1px solid #CCCCCC;
+}
+
+.form .row input#ContactForm_verifyCode{
+	margin-top:7px;
+	margin-left:160px;
+	width:240px;
+	padding:5px;
+}
+
+.hint{
+	margin-left:160px;
+	color:#819606;
 }
 
 .form .row textarea{
 	margin-top:7px;
 	width:500px;
-	padding:5px 0;
+	padding:5px;
+	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
+	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
+	box-shadow:inset 1px 1px 2px #CCCCCC;
+	border:1px solid #CCCCCC;
+}
+
+.form .row textarea#ContactForm_body{
+	margin-top:7px;
+	width:240px;
+	padding:5px;
+	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
+	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
+	box-shadow:inset 1px 1px 2px #CCCCCC;
+	border:1px solid #CCCCCC;
 }
 
 .form .row .errorMessage{
@@ -514,7 +604,8 @@ textarea, input{
 }
 
 .form .buttons input,
-.button{
+#fp-login-form form input.button,
+#register-form form input.button{
   margin-top:1em;
   border:none;
   width:auto;
@@ -529,10 +620,16 @@ textarea, input{
   text-shadow:1px 1px 0 #BA6410;
   font-weight:bold;
 	cursor:pointer;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
 }
 
 .form .buttons input{
 	margin-left:160px;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
 }
 
 /* Grid View */

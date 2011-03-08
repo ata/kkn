@@ -52,13 +52,13 @@ $this->breadcrumbs=array(
             <?php echo $form->textField($model,'verifyCode'); ?>
             </div>
             <div class="hint">
-                <?php echo Yii::t('app','Silahkan Masukkan hurup dalam gambar')?>
+                <?php echo Yii::t('app','Silakan masukkan huruf dalam gambar')?>
             </div>
         </div>
         <?php endif; ?>
 
         <div class="row buttons">
-            <?php echo CHtml::submitButton('Submit'); ?>
+            <?php echo CHtml::submitButton('Kirim'); ?>
         </div>
 
     <?php $this->endWidget(); ?>

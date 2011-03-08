@@ -7,25 +7,26 @@
 				<?php echo $content?>
 			</div>
 			<div class="span-8 last" id="fsidebar">
-				<div id="login-form">
+				<div id="fp-login-form">
 					<h2>LOGIN</h2>
 					<form>
-						<label></label>
+						<label>Username</label>
 						<input type="text"><br>
+						<label>Password</label>
 						<input type="password"><br>
-						<input type="submit" value="LOGIN" class="button">
+						<input type="submit" value="LOGIN" class="button floatRight">
 					</form>
 					<div class="clear"></div>
+					<p>Belum terdaftar? Silakan registrasi</p>
 				</div>
 				<div id="register-form">
 					<h2 class="floatRight">REGISTRASI</h2>
+					<div class="clear"></div>
 					<form>
-						<label></label>
+						<label>NIM</label><br>
 						<input type="text"><br>
-						<input type="password"><br>
 						<input type="submit" value="DAFTAR" class="button">
 					</form>
-					<div class="clear"></div>
 				</div>
 			</div>
 			</div>
