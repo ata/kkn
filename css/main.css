@@ -257,7 +257,9 @@ textarea, input{
 }
 
 #content p{
-	margin:10px 10px 20px 20px;;
+	margin:10px 10px 20px 20px;
+	border:1px solid #EAEAEA;
+	padding: 10px;
 }
 
 #main #admin-container{
@@ -319,6 +321,7 @@ textarea, input{
 	margin:0;
 	padding:0;
 	color:#FFFFFF;
+	border:none;
 }
 
 #fp-login-form h2,
@@ -477,7 +480,7 @@ textarea, input{
 }
 
 .list-view .view{
-  border-bottom:2px solid #BA7800;
+  
 }
 
 .list-view .view h2{
@@ -502,9 +505,7 @@ textarea, input{
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
-  -moz-box-shadow:0 0 5px #CCCCCC;
-  -webkit-box-shadow:0 0 5px #CCCCCC;
-  box-shadow:0 0 5px #CCCCCC;
+	border:1px solid #EAEAEA;
   margin:0 10px 20px 20px;
 }
 
@@ -524,7 +525,8 @@ textarea, input{
   clear:left;
   position:relative;
 }
-.form .row label{
+.form .row label,
+.form .type-text label{
   float:left;
   width:150px;
   padding:5px 10px 5px 0;
@@ -532,9 +534,10 @@ textarea, input{
   text-align:right;
 }
 
-.form .row input{
+.form .row input,
+.form .type-text input{
   margin-top:7px;
-  width:240px;
+  width:230px;
   padding:5px;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
 	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -544,7 +547,7 @@ textarea, input{
 
 .form .row select{
 	margin-top:7px;
-	width:252px;
+	width:242px;
 	padding:5px;
 	background:transparent;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -587,7 +590,7 @@ textarea, input{
 
 .form .row .errorMessage{
   position:absolute;
-  left:430px;
+  left:420px;
   top:12px;
 }
 
@@ -841,6 +844,10 @@ table.detail-view tr.event td{
 .error,
 .alert{
 	margin:0 0 1em 0;
+}
+
+.success{
+	margin:20px 10px 20px 20px;
 }
 
 a.search-button{
