@@ -72,18 +72,19 @@
 
 <div id="footbar">
 	<div class="container">
-		<h4>LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</h4>
-		<h3>UNIVERSITAS PENDIDIKAN INDONESIA</h3>
+		
 	</div>
 </div>
 
 <div id="footer">
     <div class="container">
         <span class="span-12 al">
-            <?php echo Yii::powered(); ?>
+			LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT<br/>
+			<b>UNIVERSITAS PENDIDIKAN INDONESIA</b>
         </span>
         <span class="span-12 last ar">
-            Copyright &copy; 2010 by <?php echo CHtml::link('Nevisa','http://nevisa.web.id') ?>
+            Copyright &copy; 2010 by <?php echo CHtml::link('Nevisa','http://nevisa.web.id') ?><br/>
+            <?php echo Yii::powered(); ?>
         </span>
     </div>
 </div><!-- end#footer-->

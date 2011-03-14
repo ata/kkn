@@ -84,12 +84,12 @@ $this->breadcrumbs=array(
     });
 </script>
 <?php if($currentMahasiswa->kelompokId == 0):?>
-<div class="">
-    <?php echo CHtml::link(Yii::t('app','Pilih Kelompok ini'), 
+<div class="pilih-link">
+    <?php echo CHtml::link(Yii::t('app','Pilih Kelompok Ini'), 
         array('pilih','id' => $kelompok->id), 
         array(
             'submit'=>array('pilih','id'=>$kelompok->id),
-            'confirm'=>Yii::t('app','Anda tidak lagi bisa memilih ulang lagi kelompok, apa anda yakin akan memilih kelompok ini?')))?>
+            'confirm'=>Yii::t('app','Anda tidak bisa memilih ulang kelompok, apa anda yakin akan memilih kelompok ini?')))?>
 </div>
 <?php endif?>
 

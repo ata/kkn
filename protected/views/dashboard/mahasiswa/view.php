@@ -27,5 +27,5 @@ $this->menu=array(
     ));
 ?>
 <?php if($editable):?>
-    <?php echo CHtml::link(Yii::t('app','perbaharui'),array('/dashboard/mahasiswa/update','id'=>$mahasiswa->id));?>
+    <?php echo CHtml::link(Yii::t('app','Perbaharui'),array('/dashboard/mahasiswa/update','id'=>$mahasiswa->id),array('class' => 'update-link'));?>
 <?php endif?>
