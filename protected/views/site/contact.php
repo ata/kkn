@@ -4,7 +4,7 @@ $this->breadcrumbs=array(
     'Contact',
 );
 ?>
-<div class="content">
+<div class="list-view">
     <h2><?php echo Yii::t('app','Kontak Kami') ?></h2>
     <?php if(Yii::app()->user->hasFlash('contact')): ?>
         <div class="flash-success">

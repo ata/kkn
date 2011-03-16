@@ -11,7 +11,7 @@ a{
 }
 
 h2{
-	margin:5px 0;
+	margin:0;
 }
 
 p{
@@ -241,13 +241,13 @@ textarea, input{
 }
 
 #main .container{
-
+	
 }
 
 #content h2{
 	color:#333333;
 	font-weight:bold;
-	margin:20px 10px 0 20px;
+	/*margin:20px 10px 0 20px;*/
 	text-shadow:1px 1px 0 #FFF;
 	background:#EAEAEA;
 	padding:0 10px;
@@ -257,9 +257,9 @@ textarea, input{
 }
 
 #content p{
-	margin:10px 10px 20px 20px;
+	/*margin:10px 10px 20px 20px;
 	border:1px solid #EAEAEA;
-	padding: 10px;
+	padding: 10px;*/
 }
 
 #main #admin-container{
@@ -304,17 +304,17 @@ textarea, input{
 
 #fsidebar{
 	background:#8F0704;
+	width:270px;
+	padding:20px;
 }
 
 #fp-login-form{
-	margin:0 10px;
 	border-bottom:1px solid #750303;
 	background:url(images/login-bg.png) bottom left no-repeat;
 }
 
 #fp-login-form form{
 	float:right;
-	margin:0 10px;
 }
 
 #fp-login-form p{
@@ -333,14 +333,12 @@ textarea, input{
 
 #register-form{
 	border-top:1px solid #A50404;
-	margin:0 10px;
 	padding-bottom:20px;
 	border-bottom:1px solid #750303;
 	background:url(images/register-bg.png) bottom right no-repeat;
 }
 
 #register-form form{
-	margin:0 10px;
 }
 
 #fp-login-form form input,
@@ -469,18 +467,21 @@ textarea, input{
 /*  CList View */
 .list-view{
   position:relative;
-  padding-bottom:20px;
+  margin:20px 10px 20px 20px;
 }
 
 .list-view .summary{
   position:absolute;
-  bottom:0;
+  bottom:-20px;
   text-align:right;
   width:100%;
 }
 
 .list-view .view{
-  
+	padding:10px 20px;
+	border:1px solid #EAEAEA;
+	-moz-border-radius:0 0 5px 5px;
+	margin-bottom:20px;
 }
 
 .list-view .view h2{
@@ -506,7 +507,7 @@ textarea, input{
   -webkit-border-radius:5px;
   border-radius:5px;
 	border:1px solid #EAEAEA;
-  margin:0 10px 20px 20px;
+  /*margin:0 10px 20px 20px;*/
 }
 
 #admin-container #content .form{
@@ -549,7 +550,7 @@ textarea, input{
 	margin-top:7px;
 	width:242px;
 	padding:5px;
-	background:transparent;
+	background:#ffffff;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
 	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
 	box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -864,8 +865,21 @@ table.detail-view tr.event td{
 	margin:0 0 1em 0;
 }
 
+.form .error label,
+.form .success label{
+	width:140px;
+}
+
+.form .success input{
+	
+}
+
 .success{
-	margin:20px 10px 20px 20px;
+	margin:10px 0;
+}
+
+.notice{
+	margin:20px 0;
 }
 
 .detail-view{
