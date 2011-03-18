@@ -5,38 +5,41 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h2><?php echo Yii::t('app','Login') ?></h2>
+<div class="list-view">
 
-<div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
-    'id'=>'login-form',
-    'enableAjaxValidation'=>true,
-    
-)); ?>
+	<h2><?php echo Yii::t('app','Login') ?></h2>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+	<div class="form">
+	<?php $form=$this->beginWidget('CActiveForm', array(
+		'id'=>'login-form',
+		'enableAjaxValidation'=>true,
+		
+	)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username'); ?>
-        <?php echo $form->error($model,'username'); ?>
-    </div>
+		<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'password'); ?>
-        <?php echo $form->passwordField($model,'password'); ?>
-        <?php echo $form->error($model,'password'); ?>
-    </div>
+		<div class="row">
+			<?php echo $form->labelEx($model,'username'); ?>
+			<?php echo $form->textField($model,'username'); ?>
+			<?php echo $form->error($model,'username'); ?>
+		</div>
 
-    <div class="row checkbox">
-        <?php echo $form->checkBox($model,'rememberMe'); ?>
-        <?php echo $form->label($model,'rememberMe'); ?>
-        <?php echo $form->error($model,'rememberMe'); ?>
-    </div>
+		<div class="row">
+			<?php echo $form->labelEx($model,'password'); ?>
+			<?php echo $form->passwordField($model,'password'); ?>
+			<?php echo $form->error($model,'password'); ?>
+		</div>
 
-    <div class="row buttons">
-        <?php echo CHtml::submitButton('Login'); ?>
-    </div>
+		<div class="row checkbox">
+			<?php echo $form->checkBox($model,'rememberMe'); ?>
+			<?php echo $form->label($model,'rememberMe'); ?>
+			<?php echo $form->error($model,'rememberMe'); ?>
+		</div>
 
-<?php $this->endWidget(); ?>
-</div><!-- form -->
+		<div class="row buttons">
+			<?php echo CHtml::submitButton('Login'); ?>
+		</div>
+
+	<?php $this->endWidget(); ?>
+	</div><!-- form -->
+</div><!-- list-view -->

@@ -11,7 +11,7 @@ a{
 }
 
 h2{
-	margin:5px 0;
+	margin:0;
 }
 
 p{
@@ -230,7 +230,7 @@ textarea, input{
 
 #main{
 	margin:0;
-	padding:10px 0;
+	padding:10px 0 20px 0;
 }
 
 #content{
@@ -241,13 +241,13 @@ textarea, input{
 }
 
 #main .container{
-
+	
 }
 
 #content h2{
 	color:#333333;
 	font-weight:bold;
-	margin:20px 10px 0 20px;
+	/*margin:20px 10px 0 20px;*/
 	text-shadow:1px 1px 0 #FFF;
 	background:#EAEAEA;
 	padding:0 10px;
@@ -257,7 +257,9 @@ textarea, input{
 }
 
 #content p{
-	margin:10px 10px 20px 20px;;
+	/*margin:10px 10px 20px 20px;
+	border:1px solid #EAEAEA;
+	padding: 10px;*/
 }
 
 #main #admin-container{
@@ -302,23 +304,24 @@ textarea, input{
 
 #fsidebar{
 	background:#8F0704;
+	width:270px;
+	padding:20px;
 }
 
 #fp-login-form{
-	margin:0 10px;
 	border-bottom:1px solid #750303;
 	background:url(images/login-bg.png) bottom left no-repeat;
 }
 
 #fp-login-form form{
 	float:right;
-	margin:0 10px;
 }
 
 #fp-login-form p{
 	margin:0;
 	padding:0;
 	color:#FFFFFF;
+	border:none;
 }
 
 #fp-login-form h2,
@@ -330,14 +333,12 @@ textarea, input{
 
 #register-form{
 	border-top:1px solid #A50404;
-	margin:0 10px;
 	padding-bottom:20px;
 	border-bottom:1px solid #750303;
 	background:url(images/register-bg.png) bottom right no-repeat;
 }
 
 #register-form form{
-	margin:0 10px;
 }
 
 #fp-login-form form input,
@@ -466,18 +467,21 @@ textarea, input{
 /*  CList View */
 .list-view{
   position:relative;
-  padding-bottom:20px;
+  margin:20px 10px 20px 20px;
 }
 
 .list-view .summary{
   position:absolute;
-  bottom:0;
+  bottom:-20px;
   text-align:right;
   width:100%;
 }
 
 .list-view .view{
-  border-bottom:2px solid #BA7800;
+	padding:10px 20px;
+	border:1px solid #EAEAEA;
+	-moz-border-radius:0 0 5px 5px;
+	margin-bottom:20px;
 }
 
 .list-view .view h2{
@@ -502,10 +506,8 @@ textarea, input{
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
-  -moz-box-shadow:0 0 5px #CCCCCC;
-  -webkit-box-shadow:0 0 5px #CCCCCC;
-  box-shadow:0 0 5px #CCCCCC;
-  margin:0 10px 20px 20px;
+	border:1px solid #EAEAEA;
+  /*margin:0 10px 20px 20px;*/
 }
 
 #admin-container #content .form{
@@ -524,7 +526,8 @@ textarea, input{
   clear:left;
   position:relative;
 }
-.form .row label{
+.form .row label,
+.form .type-text label{
   float:left;
   width:150px;
   padding:5px 10px 5px 0;
@@ -532,9 +535,10 @@ textarea, input{
   text-align:right;
 }
 
-.form .row input{
+.form .row input,
+.form .type-text input{
   margin-top:7px;
-  width:240px;
+  width:230px;
   padding:5px;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
 	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -544,9 +548,9 @@ textarea, input{
 
 .form .row select{
 	margin-top:7px;
-	width:252px;
+	width:242px;
 	padding:5px;
-	background:transparent;
+	background:#ffffff;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
 	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
 	box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -556,7 +560,7 @@ textarea, input{
 .form .row input#ContactForm_verifyCode{
 	margin-top:7px;
 	margin-left:160px;
-	width:240px;
+	width:230px;
 	padding:5px;
 }
 
@@ -577,7 +581,7 @@ textarea, input{
 
 .form .row textarea#ContactForm_body{
 	margin-top:7px;
-	width:240px;
+	width:230px;
 	padding:5px;
 	-moz-box-shadow:inset 1px 1px 2px #CCCCCC;
 	-webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
@@ -587,7 +591,7 @@ textarea, input{
 
 .form .row .errorMessage{
   position:absolute;
-  left:430px;
+  left:420px;
   top:12px;
 }
 
@@ -605,8 +609,9 @@ textarea, input{
 
 .form .buttons input,
 #fp-login-form form input.button,
-#register-form form input.button{
-  margin-top:1em;
+#register-form form input.button,
+a.update-link,
+.pilih-link a{
   border:none;
   width:auto;
   background:#BA6410;
@@ -625,11 +630,28 @@ textarea, input{
 	box-shadow:none;
 }
 
+#fp-login-form form input.button,
+#register-form form input.button{
+	margin-top:1em;
+}
+
 .form .buttons input{
 	margin-left:160px;
 	-moz-box-shadow:none;
 	-webkit-box-shadow:none;
 	box-shadow:none;
+}
+
+a.update-link{
+	text-decoration:none;
+}
+
+.pilih-link{
+	margin:20px 0 10px 0;
+}
+
+.pilih-link a{
+	text-decoration:none;
 }
 
 /* Grid View */
@@ -841,6 +863,27 @@ table.detail-view tr.event td{
 .error,
 .alert{
 	margin:0 0 1em 0;
+}
+
+.form .error label,
+.form .success label{
+	width:140px;
+}
+
+.form .success input{
+	
+}
+
+.success{
+	margin:10px 0;
+}
+
+.notice{
+	margin:20px 0;
+}
+
+.detail-view{
+	
 }
 
 a.search-button{
