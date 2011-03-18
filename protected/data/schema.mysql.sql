@@ -1,13 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.8.1deb5+lenny5
+-- version 3.3.7deb5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 16, 2010 at 08:41 PM
--- Server version: 5.0.51
--- PHP Version: 5.3.3-0.dotdeb.0
+-- Generation Time: Mar 18, 2011 at 03:09 PM
+-- Server version: 5.1.55
+-- PHP Version: 5.3.5-0.dotdeb.1
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT=0;
+START TRANSACTION;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,12 +29,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `berita` (
-  `id` bigint(20) NOT NULL auto_increment,
-  `title` varchar(255) NOT NULL,
-  `body` text NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `body` text,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -39,8 +42,7 @@ CREATE TABLE IF NOT EXISTS `berita` (
 --
 
 INSERT INTO `berita` (`id`, `title`, `body`, `created`, `modified`) VALUES
-(1, 'Berita baik', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \r\n\r\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ', '2010-08-15 22:51:54', '2010-08-17 06:25:10'),
-(2, 'hai', 'cek... cek...', '2010-08-17 09:25:03', '0000-00-00 00:00:00');
+(2, 'Berita Baru', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. \r\n\r\nStet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consete', '2011-03-18 14:13:07', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -49,26 +51,27 @@ INSERT INTO `berita` (`id`, `title`, `body`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fakultas` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `kode` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `fakultas`
 --
 
-INSERT INTO `fakultas` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
-(1, 'Fakultas Matematika dan Ilmu Pengetahuan Alam', 'FPMIPA', '2010-07-17 13:27:41', '2010-08-15 19:08:15'),
-(2, 'Fakultas Ilmu Pendidikan', 'FIP', '2010-08-15 19:11:12', '0000-00-00 00:00:00'),
-(3, 'Fakultas Pendidikan Ilmu Pengetahuan Sosial', 'FPIPS', '2010-08-15 19:12:00', '0000-00-00 00:00:00'),
-(4, 'Fakultas Pendidikan Bahasa Dan Seni', 'FPBS', '2010-08-15 19:12:57', '0000-00-00 00:00:00'),
-(5, 'Fakultas Pendidikan Teknik Dan Kejuruan', 'FPTK', '2010-08-15 19:14:05', '0000-00-00 00:00:00'),
-(6, 'Fakultas Pendidikan Olahraga Dan Kesehatan', 'FPOK', '2010-08-15 19:14:58', '2010-08-15 21:26:58'),
-(7, 'Sekolah Pascasarjana (S2)', 'SPS', '2010-08-15 19:15:49', '2010-08-15 21:05:56');
+INSERT INTO `fakultas` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
+(1, 'Fakultas Pendidikan Matematika Dan Ilmu Pengetahuan Alam', 'FPMIPA', '', '2010-07-17 13:27:41', '2011-03-18 14:28:47'),
+(2, 'Fakultas Ilmu Pendidikan', 'FIP', '', '2010-08-15 19:11:12', '0000-00-00 00:00:00'),
+(3, 'Fakultas Pendidikan Ilmu Pengetahuan Sosial', 'FPIPS', '', '2010-08-15 19:12:00', '0000-00-00 00:00:00'),
+(4, 'Fakultas Pendidikan Bahasa Dan Seni', 'FPBS', '', '2010-08-15 19:12:57', '0000-00-00 00:00:00'),
+(5, 'Fakultas Pendidikan Teknik Dan Kejuruan', 'FPTK', '', '2010-08-15 19:14:05', '0000-00-00 00:00:00'),
+(6, 'Fakultas Pendidikan Olahraga Dan Kesehatan', 'FPOK', '', '2010-08-15 19:14:58', '2010-08-15 21:26:58'),
+(7, 'Sekolah Pascasarjana (S2)', 'SPS', '', '2010-08-15 19:15:49', '2010-08-15 21:05:56');
 
 -- --------------------------------------------------------
 
@@ -77,21 +80,22 @@ INSERT INTO `fakultas` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jenjang` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `kode` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `jenjang`
 --
 
-INSERT INTO `jenjang` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
-(1, 'Strata 1', 'S1', '2010-08-16 00:03:11', '2010-08-17 07:11:14'),
-(2, 'Strata 2', 'S2', '2010-08-16 00:03:28', '2010-08-17 07:11:24');
+INSERT INTO `jenjang` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
+(1, 'Strata 1', 'S1', '', '2010-08-16 00:03:11', '2010-08-17 07:11:14'),
+(2, 'Strata 2', 'S2', '', '2010-08-16 00:03:28', '2010-08-17 07:11:24');
 
 -- --------------------------------------------------------
 
@@ -100,106 +104,107 @@ INSERT INTO `jenjang` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jurusan` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
-  `jenjangId` bigint(20) NOT NULL,
   `kode` varchar(255) NOT NULL,
-  `fakultasId` bigint(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `jenjangId` int(11) DEFAULT NULL,
+  `fakultasId` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `fakultasId` (`fakultasId`),
-  KEY `jenjangId` (`jenjangId`)
+  PRIMARY KEY (`id`),
+  KEY `jurusan_jenjangId` (`jenjangId`),
+  KEY `jurusan_fakultasId` (`fakultasId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
 
 --
 -- Dumping data for table `jurusan`
 --
 
-INSERT INTO `jurusan` (`id`, `nama`, `jenjangId`, `kode`, `fakultasId`, `created`, `modified`) VALUES
-(2, 'Administrasi Pendidikan', 1, 'AP', 2, '2010-08-15 19:18:57', '0000-00-00 00:00:00'),
-(3, 'Psik. Pend. & Bimbingan', 1, 'PB', 2, '2010-08-15 19:19:59', '0000-00-00 00:00:00'),
-(4, 'Pendidikan Luar Sekolah', 1, 'LS', 2, '2010-08-15 19:20:58', '0000-00-00 00:00:00'),
-(5, 'Pendidikan Luar Biasa', 1, 'LB', 2, '2010-08-15 19:23:16', '0000-00-00 00:00:00'),
-(6, 'Teknologi Pendidikan', 1, 'TP', 2, '2010-08-15 19:23:59', '0000-00-00 00:00:00'),
-(7, 'Pendidikan Guru Sekolah Dasar', 1, 'GD', 2, '2010-08-15 19:24:43', '0000-00-00 00:00:00'),
-(8, 'Pendidikan Guru Taman Kanak-Kanak', 1, 'GT', 2, '2010-08-15 19:25:29', '0000-00-00 00:00:00'),
-(9, 'Psikologi', 1, 'PG', 2, '2010-08-15 19:25:59', '0000-00-00 00:00:00'),
-(10, 'Pendidikan Moral Pancasila dan Kewarganegaraan (PMPKN)', 1, 'KN', 3, '2010-08-15 19:27:36', '2010-08-15 19:28:16'),
-(11, 'Pendidikan Sejarah', 1, 'SJ', 3, '2010-08-15 19:28:48', '0000-00-00 00:00:00'),
-(12, 'Pendidikan Geografi', 1, 'GG', 3, '2010-08-15 19:29:14', '0000-00-00 00:00:00'),
-(13, 'Pendidikan Ekonomi', 1, 'PE', 3, '2010-08-15 19:30:09', '0000-00-00 00:00:00'),
-(14, 'Pendididkan Akutansi', 1, 'PA', 3, '2010-08-15 19:30:56', '0000-00-00 00:00:00'),
-(15, 'Pendidikan Tata Niaga', 1, 'TN', 3, '2010-08-15 19:31:26', '0000-00-00 00:00:00'),
-(16, 'Pendidikan Administrasi Perkantoran', 1, 'MK', 3, '2010-08-15 19:32:20', '0000-00-00 00:00:00'),
-(17, 'Pendidikan Ekonomi Dan Koperasi', 1, 'KP', 3, '2010-08-15 19:33:25', '0000-00-00 00:00:00'),
-(18, 'Manajemen', 1, 'MJ', 3, '2010-08-15 19:34:02', '0000-00-00 00:00:00'),
-(19, 'Akutansi', 1, 'AK', 3, '2010-08-15 19:34:35', '0000-00-00 00:00:00'),
-(20, 'Manajemen Pemasaran Turisme', 1, 'MP', 3, '2010-08-15 19:35:52', '0000-00-00 00:00:00'),
-(21, 'Manajemen Industri Katering', 1, 'MI', 3, '2010-08-15 19:36:54', '0000-00-00 00:00:00'),
-(22, 'Manajemen Resort dan Leisure', 1, 'MR', 3, '2010-08-15 19:37:39', '0000-00-00 00:00:00'),
-(23, 'Pendididkan Biologi', 1, 'BI', 1, '2010-08-15 19:38:21', '0000-00-00 00:00:00'),
-(24, 'Pendididkan Fisika', 1, 'FI', 1, '2010-08-15 19:38:48', '0000-00-00 00:00:00'),
-(25, 'Pendididkan Kimia', 1, 'KI', 1, '2010-08-15 19:39:10', '0000-00-00 00:00:00'),
-(26, 'Pendidikan Matematika', 1, 'MT', 1, '2010-08-15 19:39:39', '2010-08-15 21:10:44'),
-(27, 'Pendididkan Ilmu Komputer', 1, 'IK', 1, '2010-08-15 19:40:19', '0000-00-00 00:00:00'),
-(28, 'Biologi', 1, 'BI', 1, '2010-08-15 19:40:45', '0000-00-00 00:00:00'),
-(29, 'Fisika', 1, 'FI', 1, '2010-08-15 19:41:03', '0000-00-00 00:00:00'),
-(30, 'Kimia', 1, 'KI', 1, '2010-08-15 19:41:24', '0000-00-00 00:00:00'),
-(31, 'Matematika', 1, 'MT', 1, '2010-08-15 19:41:48', '0000-00-00 00:00:00'),
-(32, 'Ilmu Komputer', 1, 'IK', 1, '2010-08-15 19:42:08', '0000-00-00 00:00:00'),
-(33, 'Pendidikan Bahasa Indonesia', 1, 'IN', 4, '2010-08-15 20:28:52', '0000-00-00 00:00:00'),
-(34, 'Pendidikan Bahasa Daerah', 1, 'DR', 4, '2010-08-15 20:30:24', '0000-00-00 00:00:00'),
-(35, 'Pendidikan Bahasa Inggris', 1, 'IG', 4, '2010-08-15 20:31:03', '0000-00-00 00:00:00'),
-(36, 'Pendidikan Bahasa Jerman', 1, 'JR', 4, '2010-08-15 20:31:45', '0000-00-00 00:00:00'),
-(37, 'Pendidikan Bahasa Arab', 1, 'AR', 4, '2010-08-15 20:32:41', '0000-00-00 00:00:00'),
-(38, 'Pendidikan Bahasa Jepang', 1, 'JP', 4, '2010-08-15 20:33:07', '0000-00-00 00:00:00'),
-(39, 'Pendidikan Bahasa Perancis', 1, 'PR', 4, '2010-08-15 20:33:32', '0000-00-00 00:00:00'),
-(40, 'Pendidikan Seni Musik', 1, 'SM', 4, '2010-08-15 20:34:22', '0000-00-00 00:00:00'),
-(41, 'Pendidikan Seni Tari', 1, 'ST', 4, '2010-08-15 20:34:42', '0000-00-00 00:00:00'),
-(42, 'Pendidikan Seni Rupa dan Kerajinan', 1, 'RK', 4, '2010-08-15 20:35:19', '0000-00-00 00:00:00'),
-(43, 'Bahasa dan Sastra Indonesia', 1, 'IN', 4, '2010-08-15 20:35:57', '0000-00-00 00:00:00'),
-(44, 'Bahasa dan Sastra Inggris', 1, 'IG', 4, '2010-08-15 20:36:35', '0000-00-00 00:00:00'),
-(45, 'Pendididkan Teknik Bangunan', 1, 'TB', 5, '2010-08-15 20:38:03', '0000-00-00 00:00:00'),
-(46, 'Pendididkan Teknik Sipil', 1, 'TS', 5, '2010-08-15 20:38:34', '0000-00-00 00:00:00'),
-(47, 'Pendididkan Teknik Arsitektur', 1, 'TA', 5, '2010-08-15 20:39:16', '0000-00-00 00:00:00'),
-(48, 'Pendididkan Teknik Mesin', 1, 'TM', 5, '2010-08-15 20:39:39', '0000-00-00 00:00:00'),
-(49, 'Pendidikan Listrik Tenaga', 1, 'LT', 5, '2010-08-15 20:40:12', '0000-00-00 00:00:00'),
-(50, 'Pendididkan Elektronika Komputer', 1, 'EK', 5, '2010-08-15 20:41:07', '0000-00-00 00:00:00'),
-(51, 'Pendididkan Tata Boga', 1, 'BG', 5, '2010-08-15 20:41:59', '0000-00-00 00:00:00'),
-(52, 'Pendididkan Tata Busana', 1, 'BU', 5, '2010-08-15 20:48:58', '0000-00-00 00:00:00'),
-(53, 'Teknik Sipil', 1, 'TS', 5, '2010-08-15 20:49:44', '0000-00-00 00:00:00'),
-(54, 'Teknik Arsitektur', 1, 'TA', 5, '2010-08-15 20:50:14', '0000-00-00 00:00:00'),
-(55, 'Teknik Perumahan', 1, 'TR', 5, '2010-08-15 20:50:53', '0000-00-00 00:00:00'),
-(56, 'Teknik Mesin', 1, 'TM', 5, '2010-08-15 20:51:30', '0000-00-00 00:00:00'),
-(57, 'Teknik Elektro', 1, 'TE', 5, '2010-08-15 20:52:56', '0000-00-00 00:00:00'),
-(58, 'Pendidikan Teknik Produksi dan Perancangan', 1, 'PP', 5, '2010-08-15 20:54:14', '0000-00-00 00:00:00'),
-(59, 'Pendidikan Teknik Otomotif', 1, 'OT', 5, '2010-08-15 20:56:18', '0000-00-00 00:00:00'),
-(60, 'Pendidikan Teknik Refrigasi dan Tata Udara', 1, 'RT', 5, '2010-08-15 20:57:56', '0000-00-00 00:00:00'),
-(61, 'Pendididkan Olahraga', 1, 'OR', 6, '2010-08-15 20:59:16', '0000-00-00 00:00:00'),
-(62, 'Pendidikan kesehatan dan Rekreasi', 1, 'KR', 6, '2010-08-15 21:00:02', '0000-00-00 00:00:00'),
-(63, 'Pendidikan Kepelatihan', 1, 'KP', 6, '2010-08-15 21:00:47', '0000-00-00 00:00:00'),
-(64, 'Pendidikan Guru Penjas', 1, 'GJ', 6, '2010-08-15 21:01:26', '0000-00-00 00:00:00'),
-(65, 'ilmu Keolahragaan', 1, 'IO', 6, '2010-08-15 21:01:51', '0000-00-00 00:00:00'),
-(66, 'Administrasi Pendidikan', 2, 'AP', 7, '2010-08-15 21:02:59', '2010-08-30 22:21:57'),
-(67, 'Pengembangan Kurikulum', 2, 'TK', 7, '2010-08-15 21:03:26', '0000-00-00 00:00:00'),
-(68, 'Bimbingan dan Konseling', 2, 'BK', 7, '2010-08-15 21:04:05', '0000-00-00 00:00:00'),
-(69, 'Pendidikan Luar Sekolah', 2, 'LS', 7, '2010-08-15 21:04:49', '2010-08-15 21:05:03'),
-(70, 'Pendidikan Umum ', 2, 'PU', 7, '2010-08-15 21:07:36', '0000-00-00 00:00:00'),
-(71, 'Pendidikan Kebutuhan Khusus', 2, 'KK', 7, '2010-08-15 21:08:10', '0000-00-00 00:00:00'),
-(72, 'Pendidikan IPA', 2, 'PA', 7, '2010-08-15 21:09:09', '0000-00-00 00:00:00'),
-(73, 'Pendidikan Matematika', 2, 'MT', 7, '2010-08-15 21:10:09', '0000-00-00 00:00:00'),
-(74, 'Pendidikan Bahasa Indonesia', 2, 'IN', 7, '2010-08-15 21:11:38', '0000-00-00 00:00:00'),
-(75, 'Pendidikan Bahasa Inggris', 2, 'IG', 7, '2010-08-15 21:12:17', '0000-00-00 00:00:00'),
-(76, 'Pendidikan Bahasa Jepang', 2, 'JP', 7, '2010-08-15 21:12:45', '0000-00-00 00:00:00'),
-(77, 'Pendidikan Bahasa Perancis', 2, 'PR', 7, '2010-08-15 21:13:21', '0000-00-00 00:00:00'),
-(78, 'Pendidikan IPS', 2, 'SS', 7, '2010-08-15 21:13:47', '0000-00-00 00:00:00'),
-(79, 'Pendidikan Kewarganegaraan', 2, 'KN', 7, '2010-08-15 21:14:40', '0000-00-00 00:00:00'),
-(80, 'Pendidikan Kesenian', 2, 'KS', 7, '2010-08-15 21:15:20', '0000-00-00 00:00:00'),
-(81, 'Pendidikan Teknik Kejuruan', 2, 'KJ', 7, '2010-08-15 21:16:01', '0000-00-00 00:00:00'),
-(82, 'Pendidikan Olahraga', 2, 'OR', 7, '2010-08-15 21:16:36', '0000-00-00 00:00:00'),
-(83, 'Magister Manajemen Bisnis', 2, 'MB', 7, '2010-08-15 21:17:33', '0000-00-00 00:00:00'),
-(84, 'Linguistik', 2, 'LG', 7, '2010-08-15 21:17:59', '0000-00-00 00:00:00');
+INSERT INTO `jurusan` (`id`, `nama`, `kode`, `email`, `jenjangId`, `fakultasId`, `created`, `modified`) VALUES
+(2, 'Administrasi Pendidikan', 'AP', '', 1, 2, '2010-08-15 19:18:57', '0000-00-00 00:00:00'),
+(3, 'Psik. Pend. & Bimbingan', 'PB', '', 1, 2, '2010-08-15 19:19:59', '0000-00-00 00:00:00'),
+(4, 'Pendidikan Luar Sekolah', 'LS', '', 1, 2, '2010-08-15 19:20:58', '0000-00-00 00:00:00'),
+(5, 'Pendidikan Luar Biasa', 'LB', '', 1, 2, '2010-08-15 19:23:16', '0000-00-00 00:00:00'),
+(6, 'Teknologi Pendidikan', 'TP', '', 1, 2, '2010-08-15 19:23:59', '0000-00-00 00:00:00'),
+(7, 'Pendidikan Guru Sekolah Dasar', 'GD', '', 1, 2, '2010-08-15 19:24:43', '0000-00-00 00:00:00'),
+(8, 'Pendidikan Guru Taman Kanak-Kanak', 'GT', '', 1, 2, '2010-08-15 19:25:29', '0000-00-00 00:00:00'),
+(9, 'Psikologi', 'PG', '', 1, 2, '2010-08-15 19:25:59', '0000-00-00 00:00:00'),
+(10, 'Pendidikan Moral Pancasila dan Kewarganegaraan (PMPKN)', 'KN', '', 1, 3, '2010-08-15 19:27:36', '2010-08-15 19:28:16'),
+(11, 'Pendidikan Sejarah', 'SJ', '', 1, 3, '2010-08-15 19:28:48', '0000-00-00 00:00:00'),
+(12, 'Pendidikan Geografi', 'GG', '', 1, 3, '2010-08-15 19:29:14', '0000-00-00 00:00:00'),
+(13, 'Pendidikan Ekonomi', 'PE', '', 1, 3, '2010-08-15 19:30:09', '0000-00-00 00:00:00'),
+(14, 'Pendididkan Akutansi', 'PA', '', 1, 3, '2010-08-15 19:30:56', '0000-00-00 00:00:00'),
+(15, 'Pendidikan Tata Niaga', 'TN', '', 1, 3, '2010-08-15 19:31:26', '0000-00-00 00:00:00'),
+(16, 'Pendidikan Administrasi Perkantoran', 'MK', '', 1, 3, '2010-08-15 19:32:20', '0000-00-00 00:00:00'),
+(17, 'Pendidikan Ekonomi Dan Koperasi', 'KP', '', 1, 3, '2010-08-15 19:33:25', '0000-00-00 00:00:00'),
+(18, 'Manajemen', 'MJ', '', 1, 3, '2010-08-15 19:34:02', '0000-00-00 00:00:00'),
+(19, 'Akutansi', 'AK', '', 1, 3, '2010-08-15 19:34:35', '0000-00-00 00:00:00'),
+(20, 'Manajemen Pemasaran Turisme', 'MP', '', 1, 3, '2010-08-15 19:35:52', '0000-00-00 00:00:00'),
+(21, 'Manajemen Industri Katering', 'MI', '', 1, 3, '2010-08-15 19:36:54', '0000-00-00 00:00:00'),
+(22, 'Manajemen Resort dan Leisure', 'MR', '', 1, 3, '2010-08-15 19:37:39', '0000-00-00 00:00:00'),
+(23, 'Pendididkan Biologi', 'BI', '', 1, 1, '2010-08-15 19:38:21', '0000-00-00 00:00:00'),
+(24, 'Pendididkan Fisika', 'FI', '', 1, 1, '2010-08-15 19:38:48', '0000-00-00 00:00:00'),
+(25, 'Pendididkan Kimia', 'KI', '', 1, 1, '2010-08-15 19:39:10', '0000-00-00 00:00:00'),
+(26, 'Pendidikan Matematika', 'MT', '', 1, 1, '2010-08-15 19:39:39', '2010-08-15 21:10:44'),
+(27, 'Pendididkan Ilmu Komputer', 'IK', '', 1, 1, '2010-08-15 19:40:19', '0000-00-00 00:00:00'),
+(28, 'Biologi', 'BI', '', 1, 1, '2010-08-15 19:40:45', '0000-00-00 00:00:00'),
+(29, 'Fisika', 'FI', '', 1, 1, '2010-08-15 19:41:03', '0000-00-00 00:00:00'),
+(30, 'Kimia', 'KI', '', 1, 1, '2010-08-15 19:41:24', '0000-00-00 00:00:00'),
+(31, 'Matematika', 'MT', '', 1, 1, '2010-08-15 19:41:48', '0000-00-00 00:00:00'),
+(32, 'Ilmu Komputer', 'IK', '', 1, 1, '2010-08-15 19:42:08', '0000-00-00 00:00:00'),
+(33, 'Pendidikan Bahasa Indonesia', 'IN', '', 1, 4, '2010-08-15 20:28:52', '0000-00-00 00:00:00'),
+(34, 'Pendidikan Bahasa Daerah', 'DR', '', 1, 4, '2010-08-15 20:30:24', '0000-00-00 00:00:00'),
+(35, 'Pendidikan Bahasa Inggris', 'IG', '', 1, 4, '2010-08-15 20:31:03', '0000-00-00 00:00:00'),
+(36, 'Pendidikan Bahasa Jerman', 'JR', '', 1, 4, '2010-08-15 20:31:45', '0000-00-00 00:00:00'),
+(37, 'Pendidikan Bahasa Arab', 'AR', '', 1, 4, '2010-08-15 20:32:41', '0000-00-00 00:00:00'),
+(38, 'Pendidikan Bahasa Jepang', 'JP', '', 1, 4, '2010-08-15 20:33:07', '0000-00-00 00:00:00'),
+(39, 'Pendidikan Bahasa Perancis', 'PR', '', 1, 4, '2010-08-15 20:33:32', '0000-00-00 00:00:00'),
+(40, 'Pendidikan Seni Musik', 'SM', '', 1, 4, '2010-08-15 20:34:22', '0000-00-00 00:00:00'),
+(41, 'Pendidikan Seni Tari', 'ST', '', 1, 4, '2010-08-15 20:34:42', '0000-00-00 00:00:00'),
+(42, 'Pendidikan Seni Rupa dan Kerajinan', 'RK', '', 1, 4, '2010-08-15 20:35:19', '0000-00-00 00:00:00'),
+(43, 'Bahasa dan Sastra Indonesia', 'IN', '', 1, 4, '2010-08-15 20:35:57', '0000-00-00 00:00:00'),
+(44, 'Bahasa dan Sastra Inggris', 'IG', '', 1, 4, '2010-08-15 20:36:35', '0000-00-00 00:00:00'),
+(45, 'Pendididkan Teknik Bangunan', 'TB', '', 1, 5, '2010-08-15 20:38:03', '0000-00-00 00:00:00'),
+(46, 'Pendididkan Teknik Sipil', 'TS', '', 1, 5, '2010-08-15 20:38:34', '0000-00-00 00:00:00'),
+(47, 'Pendididkan Teknik Arsitektur', 'TA', '', 1, 5, '2010-08-15 20:39:16', '0000-00-00 00:00:00'),
+(48, 'Pendididkan Teknik Mesin', 'TM', '', 1, 5, '2010-08-15 20:39:39', '0000-00-00 00:00:00'),
+(49, 'Pendidikan Listrik Tenaga', 'LT', '', 1, 5, '2010-08-15 20:40:12', '0000-00-00 00:00:00'),
+(50, 'Pendididkan Elektronika Komputer', 'EK', '', 1, 5, '2010-08-15 20:41:07', '0000-00-00 00:00:00'),
+(51, 'Pendididkan Tata Boga', 'BG', '', 1, 5, '2010-08-15 20:41:59', '0000-00-00 00:00:00'),
+(52, 'Pendididkan Tata Busana', 'BU', '', 1, 5, '2010-08-15 20:48:58', '0000-00-00 00:00:00'),
+(53, 'Teknik Sipil', 'TS', '', 1, 5, '2010-08-15 20:49:44', '0000-00-00 00:00:00'),
+(54, 'Teknik Arsitektur', 'TA', '', 1, 5, '2010-08-15 20:50:14', '0000-00-00 00:00:00'),
+(55, 'Teknik Perumahan', 'TR', '', 1, 5, '2010-08-15 20:50:53', '0000-00-00 00:00:00'),
+(56, 'Teknik Mesin', 'TM', '', 1, 5, '2010-08-15 20:51:30', '0000-00-00 00:00:00'),
+(57, 'Teknik Elektro', 'TE', '', 1, 5, '2010-08-15 20:52:56', '0000-00-00 00:00:00'),
+(58, 'Pendidikan Teknik Produksi dan Perancangan', 'PP', '', 1, 5, '2010-08-15 20:54:14', '0000-00-00 00:00:00'),
+(59, 'Pendidikan Teknik Otomotif', 'OT', '', 1, 5, '2010-08-15 20:56:18', '0000-00-00 00:00:00'),
+(60, 'Pendidikan Teknik Refrigasi dan Tata Udara', 'RT', '', 1, 5, '2010-08-15 20:57:56', '0000-00-00 00:00:00'),
+(61, 'Pendididkan Olahraga', 'OR', '', 1, 6, '2010-08-15 20:59:16', '0000-00-00 00:00:00'),
+(62, 'Pendidikan kesehatan dan Rekreasi', 'KR', '', 1, 6, '2010-08-15 21:00:02', '0000-00-00 00:00:00'),
+(63, 'Pendidikan Kepelatihan', 'KP', '', 1, 6, '2010-08-15 21:00:47', '0000-00-00 00:00:00'),
+(64, 'Pendidikan Guru Penjas', 'GJ', '', 1, 6, '2010-08-15 21:01:26', '0000-00-00 00:00:00'),
+(65, 'ilmu Keolahragaan', 'IO', '', 1, 6, '2010-08-15 21:01:51', '0000-00-00 00:00:00'),
+(66, 'Administrasi Pendidikan', 'AP', '', 2, 7, '2010-08-15 21:02:59', '2010-08-30 22:21:57'),
+(67, 'Pengembangan Kurikulum', 'TK', '', 2, 7, '2010-08-15 21:03:26', '0000-00-00 00:00:00'),
+(68, 'Bimbingan dan Konseling', 'BK', '', 2, 7, '2010-08-15 21:04:05', '0000-00-00 00:00:00'),
+(69, 'Pendidikan Luar Sekolah', 'LS', '', 2, 7, '2010-08-15 21:04:49', '2010-08-15 21:05:03'),
+(70, 'Pendidikan Umum ', 'PU', '', 2, 7, '2010-08-15 21:07:36', '0000-00-00 00:00:00'),
+(71, 'Pendidikan Kebutuhan Khusus', 'KK', '', 2, 7, '2010-08-15 21:08:10', '0000-00-00 00:00:00'),
+(72, 'Pendidikan IPA', 'PA', '', 2, 7, '2010-08-15 21:09:09', '0000-00-00 00:00:00'),
+(73, 'Pendidikan Matematika', 'MT', '', 2, 7, '2010-08-15 21:10:09', '0000-00-00 00:00:00'),
+(74, 'Pendidikan Bahasa Indonesia', 'IN', '', 2, 7, '2010-08-15 21:11:38', '0000-00-00 00:00:00'),
+(75, 'Pendidikan Bahasa Inggris', 'IG', '', 2, 7, '2010-08-15 21:12:17', '0000-00-00 00:00:00'),
+(76, 'Pendidikan Bahasa Jepang', 'JP', '', 2, 7, '2010-08-15 21:12:45', '0000-00-00 00:00:00'),
+(77, 'Pendidikan Bahasa Perancis', 'PR', '', 2, 7, '2010-08-15 21:13:21', '0000-00-00 00:00:00'),
+(78, 'Pendidikan IPS', 'SS', '', 2, 7, '2010-08-15 21:13:47', '0000-00-00 00:00:00'),
+(79, 'Pendidikan Kewarganegaraan', 'KN', '', 2, 7, '2010-08-15 21:14:40', '0000-00-00 00:00:00'),
+(80, 'Pendidikan Kesenian', 'KS', '', 2, 7, '2010-08-15 21:15:20', '0000-00-00 00:00:00'),
+(81, 'Pendidikan Teknik Kejuruan', 'KJ', '', 2, 7, '2010-08-15 21:16:01', '0000-00-00 00:00:00'),
+(82, 'Pendidikan Olahraga', 'OR', '', 2, 7, '2010-08-15 21:16:36', '0000-00-00 00:00:00'),
+(83, 'Magister Manajemen Bisnis', 'MB', '', 2, 7, '2010-08-15 21:17:33', '0000-00-00 00:00:00'),
+(84, 'Linguistik', 'LG', '', 2, 7, '2010-08-15 21:17:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -208,11 +213,11 @@ INSERT INTO `jurusan` (`id`, `nama`, `jenjangId`, `kode`, `fakultasId`, `created
 --
 
 CREATE TABLE IF NOT EXISTS `kabupaten` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
@@ -244,15 +249,15 @@ INSERT INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `kecamatan` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
-  `kabupatenId` bigint(20) NOT NULL,
-  `programKknId` bigint(20) NOT NULL,
+  `kabupatenId` int(11) DEFAULT NULL,
+  `programKknId` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `kabupatenId` (`kabupatenId`),
-  KEY `programKknId` (`programKknId`)
+  PRIMARY KEY (`id`),
+  KEY `kecamatan_kabupatenId` (`kabupatenId`),
+  KEY `kecamatan_programKknId` (`programKknId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
@@ -260,24 +265,24 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
 --
 
 INSERT INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`, `modified`) VALUES
-(2, 'Cikalong Wetan', 6, 5, '2010-08-15 22:03:12', '2010-09-29 22:37:55'),
-(3, 'Lembang', 6, 0, '2010-08-15 22:03:59', '0000-00-00 00:00:00'),
-(4, 'Gununghalu', 6, 0, '2010-08-15 22:05:32', '0000-00-00 00:00:00'),
-(5, 'Cipeundeuy', 6, 0, '2010-08-15 22:06:03', '0000-00-00 00:00:00'),
-(6, 'Cililin', 6, 0, '2010-08-15 22:06:34', '0000-00-00 00:00:00'),
-(7, 'Desa Sukamanah Kecamatan Rongga', 6, 0, '2010-08-15 22:07:25', '0000-00-00 00:00:00'),
-(8, 'Desa Batujajar Timur Kecamatan Batujajar', 6, 0, '2010-08-15 22:08:00', '0000-00-00 00:00:00'),
-(9, 'Desa Nyenang Kecamatan Cipeundeuy', 6, 0, '2010-08-15 22:08:42', '0000-00-00 00:00:00'),
-(10, 'Cipatat', 6, 0, '2010-08-15 22:09:15', '0000-00-00 00:00:00'),
-(11, 'Cimahi Tengah', 4, 0, '2010-08-15 22:16:17', '0000-00-00 00:00:00'),
-(12, 'Cigugur Tengah', 4, 0, '2010-08-15 22:20:06', '0000-00-00 00:00:00'),
-(13, 'Baros', 4, 0, '2010-08-15 22:24:20', '0000-00-00 00:00:00'),
-(14, 'Sucinaraja', 8, 0, '2010-08-15 22:31:59', '0000-00-00 00:00:00'),
-(15, 'Wanaraja', 8, 0, '2010-08-15 22:33:13', '0000-00-00 00:00:00'),
-(16, 'Pangatikan', 8, 0, '2010-08-15 22:33:45', '0000-00-00 00:00:00'),
-(17, 'Sukasari', 3, 0, '2010-08-15 22:38:22', '0000-00-00 00:00:00'),
-(18, 'Andir', 3, 0, '2010-08-15 22:38:52', '0000-00-00 00:00:00'),
-(19, 'Sukajadi', 3, 0, '2010-08-15 22:39:31', '0000-00-00 00:00:00');
+(2, 'Cikalong Wetan', 6, NULL, '2010-08-15 22:03:12', '2010-09-29 22:37:55'),
+(3, 'Lembang', 6, NULL, '2010-08-15 22:03:59', '0000-00-00 00:00:00'),
+(4, 'Gununghalu', 6, NULL, '2010-08-15 22:05:32', '0000-00-00 00:00:00'),
+(5, 'Cipeundeuy', 6, NULL, '2010-08-15 22:06:03', '0000-00-00 00:00:00'),
+(6, 'Cililin', 6, NULL, '2010-08-15 22:06:34', '0000-00-00 00:00:00'),
+(7, 'Desa Sukamanah Kecamatan Rongga', 6, NULL, '2010-08-15 22:07:25', '0000-00-00 00:00:00'),
+(8, 'Desa Batujajar Timur Kecamatan Batujajar', 6, NULL, '2010-08-15 22:08:00', '0000-00-00 00:00:00'),
+(9, 'Desa Nyenang Kecamatan Cipeundeuy', 6, NULL, '2010-08-15 22:08:42', '0000-00-00 00:00:00'),
+(10, 'Cipatat', 6, NULL, '2010-08-15 22:09:15', '0000-00-00 00:00:00'),
+(11, 'Cimahi Tengah', 4, NULL, '2010-08-15 22:16:17', '0000-00-00 00:00:00'),
+(12, 'Cigugur Tengah', 4, NULL, '2010-08-15 22:20:06', '0000-00-00 00:00:00'),
+(13, 'Baros', 4, NULL, '2010-08-15 22:24:20', '0000-00-00 00:00:00'),
+(14, 'Sucinaraja', 8, NULL, '2010-08-15 22:31:59', '0000-00-00 00:00:00'),
+(15, 'Wanaraja', 8, NULL, '2010-08-15 22:33:13', '0000-00-00 00:00:00'),
+(16, 'Pangatikan', 8, NULL, '2010-08-15 22:33:45', '0000-00-00 00:00:00'),
+(17, 'Sukasari', 3, NULL, '2010-08-15 22:38:22', '0000-00-00 00:00:00'),
+(18, 'Andir', 3, NULL, '2010-08-15 22:38:52', '0000-00-00 00:00:00'),
+(19, 'Sukajadi', 3, NULL, '2010-08-15 22:39:31', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -286,20 +291,22 @@ INSERT INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`,
 --
 
 CREATE TABLE IF NOT EXISTS `kelompok` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `lokasi` varchar(255) NOT NULL,
-  `kabupatenId` bigint(20) NOT NULL,
-  `kecamatanId` bigint(20) NOT NULL,
-  `programKknId` bigint(20) NOT NULL,
-  `latitude` double NOT NULL,
-  `longitude` double NOT NULL,
-  `jumlahAnggota` int(11) NOT NULL,
-  `jumlahLakiLaki` int(11) NOT NULL,
-  `jumlahPerempuan` int(11) NOT NULL,
+  `kabupatenId` int(11) DEFAULT NULL,
+  `kecamatanId` int(11) DEFAULT NULL,
+  `programKknId` int(11) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `jumlahAnggota` int(11) DEFAULT NULL,
+  `jumlahLakiLaki` int(11) DEFAULT NULL,
+  `jumlahPerempuan` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `kabupatenId` (`kabupatenId`,`kecamatanId`,`programKknId`)
+  PRIMARY KEY (`id`),
+  KEY `kelompok_kabupatenId` (`kabupatenId`),
+  KEY `kelompok_kecamatanId` (`kecamatanId`),
+  KEY `kelompok_programKknId` (`programKknId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
@@ -328,148 +335,148 @@ INSERT INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `programKk
 --
 
 CREATE TABLE IF NOT EXISTS `mahasiswa` (
-  `id` bigint(20) NOT NULL auto_increment,
-  `userId` bigint(20) default NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `namaLengkap` varchar(255) NOT NULL,
   `nim` varchar(255) NOT NULL,
-  `alamatAsal` varchar(255) NOT NULL,
-  `alamatTinggal` varchar(255) NOT NULL,
-  `fakultasId` bigint(20) NOT NULL,
-  `jurusanId` bigint(20) NOT NULL,
-  `kelompokId` bigint(20) NOT NULL,
-  `jenjangId` bigint(20) NOT NULL,
-  `jenisKelamin` tinyint(1) default NULL,
-  `phone1` varchar(255) NOT NULL,
-  `phone2` varchar(255) NOT NULL,
-  `photoPath` varchar(255) NOT NULL,
-  `registered` tinyint(1) NOT NULL,
+  `alamatAsal` varchar(255) DEFAULT NULL,
+  `alamatTinggal` varchar(255) DEFAULT NULL,
+  `fakultasId` int(11) DEFAULT NULL,
+  `jenjangId` int(11) DEFAULT NULL,
+  `jurusanId` int(11) DEFAULT NULL,
+  `kelompokId` int(11) DEFAULT NULL,
+  `jenisKelamin` varchar(255) DEFAULT NULL,
+  `phone1` varchar(255) DEFAULT NULL,
+  `phone2` varchar(255) DEFAULT NULL,
+  `photoPath` varchar(255) DEFAULT NULL,
+  `registred` tinyint(1) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `fakultasId` (`fakultasId`,`jurusanId`,`jenjangId`),
-  KEY `kelompokId` (`kelompokId`),
-  KEY `userId` (`userId`)
+  PRIMARY KEY (`id`),
+  KEY `mahasiswa_jenjangId` (`jenjangId`),
+  KEY `mahasiswa_fakultasId` (`fakultasId`),
+  KEY `mahasiswa_jurusanId` (`jurusanId`),
+  KEY `mahasiswa_kelompokId` (`kelompokId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=115 ;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `userId`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jurusanId`, `kelompokId`, `jenjangId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `registered`, `created`, `modified`) VALUES
-(1, 5, 'Angga Kusumah P.', '045065', 'Jl.', 'Jl.', 1, 2, 0, 1, 0, '78675', '', '', 1, '0000-00-00 00:00:00', '2010-10-15 23:47:55'),
-(2, 3, 'Aprianti Fitriana R.', '0705016', 'Jl. Jalan', 'Jl.', 1, 2, 11, 1, 1, '0857667567', '', '', 1, '0000-00-00 00:00:00', '2010-10-15 23:41:38'),
-(3, 4, 'Ani Anjaniah Kamilah', '0705118', 'Jl. Jalan', 'Jl.', 1, 2, 12, 1, 1, '0857667567', '', '', 1, '0000-00-00 00:00:00', '2010-10-15 23:46:20'),
-(4, NULL, 'Disky Herdian', '0707849', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, NULL, 'Fadjar Agung W.', '0705849', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, NULL, 'Yopi Rosdiana', '054005', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, NULL, 'Rusmiyanti', '0706682', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, NULL, 'Ahmad Hamdan', '0703737', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, NULL, 'Rika Wahyuni', '0704453', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, NULL, 'Wida Widaningsih', '0705347', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, NULL, 'Rendi Yogaswara', '0703796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, NULL, 'Supriadi', '0707053', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, NULL, 'Taufan Setio Hadi  P.', '0705642', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, NULL, 'Fusti Yunita', '0706796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, NULL, 'Ahmad Hamdan', '0703737', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, NULL, 'Rika Wahyuni', '0704453', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, NULL, 'Wida Widaningsih', '0705347', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, NULL, 'Rendi Yogaswara', '0703796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, NULL, 'Supriadi', '0707053', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, NULL, 'Taufan Setio Hadi  P.', '0705642', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, NULL, 'Fusti Yunita', '0706796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, NULL, 'Gustiana Rikho', '0700069', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(23, NULL, 'Nina Rosalina', '0705053', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(24, NULL, 'Melasari Susanti', '0705127', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, NULL, 'Arlhian Fahar', '0703897', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, NULL, 'Khaerul Syabar', '0707674', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, NULL, 'Farchan Firmansyah', '0706575', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(28, NULL, 'Karima Huril Aini', '0706690', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(29, NULL, 'Ahmad Hamdan', '0703737', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(30, NULL, 'Rika Wahyuni', '0704453', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(31, NULL, 'Wida Widaningsih', '0705347', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(32, NULL, 'Rendi Yogaswara', '0703796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(33, NULL, 'Supriadi', '0707053', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, NULL, 'Taufan Setio Hadi  P.', '0705642', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, NULL, 'Fusti Yunita', '0706796', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(36, NULL, 'Gustiana Rikho', '0700069', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(37, NULL, 'Nina Rosalina', '0705053', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(38, NULL, 'Melasari Susanti', '0705127', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(39, NULL, 'Arlhian Fahar', '0703897', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(40, NULL, 'Khaerul Syabar', '0707674', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(41, NULL, 'Farchan Firmansyah', '0706575', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(42, NULL, 'Karima Huril Aini', '0706690', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(43, NULL, 'Ari Hikmah R.', '0705025', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(44, NULL, 'Feby Inggriyani', '0703802', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(45, NULL, 'Indra Kurnianto', '0705250', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(46, NULL, 'Mala Robani Zohra', '0706728', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(47, NULL, 'Nurul Hadi Sutanto', '0707720', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(48, NULL, 'Mamay Hamdani', '0705829', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(49, NULL, 'Siti Aisyah Al Adzani', '0706542', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(50, NULL, 'Muh. Muhtar', '0700619', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(51, NULL, 'Andini Kelana Putri', '0705085', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(52, NULL, 'Tiwi Kartiwi', '0705297', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(53, NULL, 'Qomarudin', '055088', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(54, NULL, 'Tatang Kusnandar', '0707682', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(55, NULL, 'Bayu Saputra', '0706754', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(56, NULL, 'Mutia Andini', '0706963', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(57, NULL, 'Latifah Az Zahra', '0700202', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(58, NULL, 'Melani Septor', '0700742', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(59, NULL, 'Reza Ali Fahmi', '0706232', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(60, NULL, 'Kamil Ahmad Hambali', '0706704', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(61, NULL, 'Satria Nugraha', '0707270', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(62, NULL, ' Ismi Rizka Febriana', '0707652', 'Jl.', 'Jl.', 1, 0, 0, 1, NULL, '789789', '', '', 0, '0000-00-00 00:00:00', '2010-08-17 09:32:31'),
-(63, NULL, 'Dessy Rahmawati', '0704275', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(64, NULL, 'Riki Ginanjar', '0704395', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(65, NULL, 'Lucky Satria', '0708547', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(66, NULL, 'Nindin Sudarna', '0706532', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(67, NULL, 'Dian Ramdani', '0705030', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(68, NULL, 'Adi Sotrisman', '0706527', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(69, NULL, 'Uni Nuraeni', '0700167', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(70, NULL, 'Neliana', '0703764', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(71, NULL, 'Bilqis Andini', '0706792', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(72, NULL, 'Ade Tito Septian', '0705055', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(73, NULL, 'MZ. Abdurohman', '067494', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(74, NULL, 'Arie Setiabudi', '0707953', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(75, NULL, 'Dian Zaini Arief', '0703916', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(76, NULL, 'Nicke Oktaviani S.', '0703984', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(77, NULL, 'Atih Ireana Mahadaniar', '0706789', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(78, NULL, 'Feny Candra Gunawan', '0706609', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(79, NULL, 'Lilik Indriani', '0700534', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(80, NULL, 'Intan Permana', '0700848', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(81, NULL, 'R. Deasy Mandasari', '0707171', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(82, NULL, 'Widyoharsono Waluyo', '0706208', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(83, NULL, 'Sani Husni Sabar', '0707215', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(84, NULL, 'Ade Agustian', '060778', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(85, NULL, 'Kharisma Purwasakti', '0704082', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(86, NULL, 'Gustika Dwi Herdiyanti', '0704633', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(87, NULL, 'Desti Dwijayanti', '0705210', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(88, NULL, 'Rini Hardini H.', '0708545', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(89, NULL, 'Vina Benita', '0902704', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(90, NULL, 'Hari Dwi Sukarmana', '0707991', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(91, NULL, 'Adi Yajidi', '0705827', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(92, NULL, 'Eka Adipura', '0700002', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(93, NULL, 'Rohani Magdalena Sinaga', '0700282', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(94, NULL, 'Desy Purwati', '070824', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(95, NULL, 'Diana Rahayu', '0706953', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(96, NULL, 'Eri Febriansyah F.', '0704171', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(97, NULL, 'Arief Priansyah N.', '0700604', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(98, NULL, 'Dendi Nurwega', '0705687', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(99, NULL, 'Garby Mukti P.', '0707625', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(100, NULL, 'Dendy Noviandi Pratama', '0704395', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(101, NULL, 'Citra Nur Anggraeni Aprilia', '0703702', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(102, NULL, 'Yulis Setiowati', '0703151', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(103, NULL, 'Hesti Meisyah', '0707056', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(104, NULL, 'Angga Febriana', '0706997', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(105, NULL, 'Reki Siaga A.', '0705023', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(106, NULL, 'Ade Nur Zaman', '0705231', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(107, NULL, 'Laili Fazri', '0706600', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(108, NULL, 'Nenny Hindatisnawati ', '0704226', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(109, NULL, 'Nindiah Sri Wahyuni', '0702929', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(110, NULL, 'Larasati Martha', '0706677', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(111, NULL, 'Andri Irawan', '0705176', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(112, NULL, 'Suharyadi', '0706628', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(113, NULL, 'Silvius Yoris Sefire', '0709300', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(114, NULL, 'Yunus Hunaeni', '0704707', '', '', 0, 0, 0, 0, NULL, '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `registred`, `created`, `modified`) VALUES
+(1, 'Angga Kusumah P.', '045065', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Aprianti Fitriana R.', '0705016', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Ani Anjaniah Kamilah', '0705118', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Disky Herdian', '0707849', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Fadjar Agung W.', '0705849', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Yopi Rosdiana', '054005', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Rusmiyanti', '0706682', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Ahmad Hamdan', '0703737', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'Rika Wahyuni', '0704453', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'Wida Widaningsih', '0705347', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'Rendi Yogaswara', '0703796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Supriadi', '0707053', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'Taufan Setio Hadi  P.', '0705642', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'Fusti Yunita', '0706796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'Ahmad Hamdan', '0703737', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'Rika Wahyuni', '0704453', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'Wida Widaningsih', '0705347', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'Rendi Yogaswara', '0703796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'Supriadi', '0707053', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'Taufan Setio Hadi  P.', '0705642', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 'Fusti Yunita', '0706796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 'Gustiana Rikho', '0700069', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 'Nina Rosalina', '0705053', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 'Melasari Susanti', '0705127', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 'Arlhian Fahar', '0703897', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'Khaerul Syabar', '0707674', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'Farchan Firmansyah', '0706575', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 'Karima Huril Aini', '0706690', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 'Ahmad Hamdan', '0703737', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 'Rika Wahyuni', '0704453', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 'Wida Widaningsih', '0705347', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 'Rendi Yogaswara', '0703796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'Supriadi', '0707053', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 'Taufan Setio Hadi  P.', '0705642', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 'Fusti Yunita', '0706796', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, 'Gustiana Rikho', '0700069', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(37, 'Nina Rosalina', '0705053', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(38, 'Melasari Susanti', '0705127', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(39, 'Arlhian Fahar', '0703897', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'Khaerul Syabar', '0707674', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(41, 'Farchan Firmansyah', '0706575', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 'Karima Huril Aini', '0706690', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(43, 'Ari Hikmah R.', '0705025', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 'Feby Inggriyani', '0703802', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 'Indra Kurnianto', '0705250', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 'Mala Robani Zohra', '0706728', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(47, 'Nurul Hadi Sutanto', '0707720', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 'Mamay Hamdani', '0705829', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 'Siti Aisyah Al Adzani', '0706542', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 'Muh. Muhtar', '0700619', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'Andini Kelana Putri', '0705085', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(52, 'Tiwi Kartiwi', '0705297', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(53, 'Qomarudin', '055088', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(54, 'Tatang Kusnandar', '0707682', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(55, 'Bayu Saputra', '0706754', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(56, 'Mutia Andini', '0706963', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(57, 'Latifah Az Zahra', '0700202', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 'Melani Septor', '0700742', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(59, 'Reza Ali Fahmi', '0706232', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(60, 'Kamil Ahmad Hambali', '0706704', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(61, 'Satria Nugraha', '0707270', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(62, ' Ismi Rizka Febriana', '0707652', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(63, 'Dessy Rahmawati', '0704275', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(64, 'Riki Ginanjar', '0704395', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(65, 'Lucky Satria', '0708547', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(66, 'Nindin Sudarna', '0706532', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(67, 'Dian Ramdani', '0705030', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(68, 'Adi Sotrisman', '0706527', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(69, 'Uni Nuraeni', '0700167', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(70, 'Neliana', '0703764', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(71, 'Bilqis Andini', '0706792', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(72, 'Ade Tito Septian', '0705055', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(73, 'MZ. Abdurohman', '067494', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(74, 'Arie Setiabudi', '0707953', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(75, 'Dian Zaini Arief', '0703916', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(76, 'Nicke Oktaviani S.', '0703984', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(77, 'Atih Ireana Mahadaniar', '0706789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(78, 'Feny Candra Gunawan', '0706609', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(79, 'Lilik Indriani', '0700534', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(80, 'Intan Permana', '0700848', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(81, 'R. Deasy Mandasari', '0707171', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(82, 'Widyoharsono Waluyo', '0706208', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(83, 'Sani Husni Sabar', '0707215', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(84, 'Ade Agustian', '060778', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(85, 'Kharisma Purwasakti', '0704082', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(86, 'Gustika Dwi Herdiyanti', '0704633', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(87, 'Desti Dwijayanti', '0705210', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(88, 'Rini Hardini H.', '0708545', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(89, 'Vina Benita', '0902704', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(90, 'Hari Dwi Sukarmana', '0707991', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(91, 'Adi Yajidi', '0705827', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(92, 'Eka Adipura', '0700002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(93, 'Rohani Magdalena Sinaga', '0700282', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(94, 'Desy Purwati', '070824', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(95, 'Diana Rahayu', '0706953', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(96, 'Eri Febriansyah F.', '0704171', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(97, 'Arief Priansyah N.', '0700604', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(98, 'Dendi Nurwega', '0705687', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(99, 'Garby Mukti P.', '0707625', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(100, 'Dendy Noviandi Pratama', '0704395', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(101, 'Citra Nur Anggraeni Aprilia', '0703702', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(102, 'Yulis Setiowati', '0703151', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(103, 'Hesti Meisyah', '0707056', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(104, 'Angga Febriana', '0706997', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(105, 'Reki Siaga A.', '0705023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(106, 'Ade Nur Zaman', '0705231', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(107, 'Laili Fazri', '0706600', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(108, 'Nenny Hindatisnawati ', '0704226', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(109, 'Nindiah Sri Wahyuni', '0702929', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(110, 'Larasati Martha', '0706677', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(111, 'Andri Irawan', '0705176', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(112, 'Suharyadi', '0706628', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(113, 'Silvius Yoris Sefire', '0709300', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(114, 'Yunus Hunaeni', '0704707', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -478,78 +485,24 @@ INSERT INTO `mahasiswa` (`id`, `userId`, `namaLengkap`, `nim`, `alamatAsal`, `al
 --
 
 CREATE TABLE IF NOT EXISTS `prioritas` (
-  `id` bigint(20) NOT NULL auto_increment,
-  `level` tinyint(4) NOT NULL,
-  `programKknId` bigint(20) NOT NULL,
-  `jurusanId` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `programKknId` int(11) DEFAULT NULL,
+  `jurusanId` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `programKknId` (`programKknId`,`jurusanId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=73 ;
+  `level` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `prioritas_programKknId` (`programKknId`),
+  KEY `prioritas_jurusanId` (`jurusanId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `prioritas`
 --
 
-INSERT INTO `prioritas` (`id`, `level`, `programKknId`, `jurusanId`, `created`, `modified`) VALUES
-(8, 1, 4, 23, '2010-08-30 21:52:13', '0000-00-00 00:00:00'),
-(9, 1, 4, 24, '2010-08-30 21:52:17', '0000-00-00 00:00:00'),
-(10, 1, 4, 25, '2010-08-30 21:52:21', '0000-00-00 00:00:00'),
-(11, 1, 4, 26, '2010-08-30 21:52:24', '0000-00-00 00:00:00'),
-(14, 1, 4, 32, '2010-08-30 21:52:50', '0000-00-00 00:00:00'),
-(15, 1, 4, 28, '2010-08-30 21:52:55', '0000-00-00 00:00:00'),
-(16, 1, 4, 29, '2010-08-30 21:52:58', '0000-00-00 00:00:00'),
-(17, 1, 4, 30, '2010-08-30 21:53:03', '0000-00-00 00:00:00'),
-(18, 1, 4, 31, '2010-08-30 21:53:09', '0000-00-00 00:00:00'),
-(19, 1, 4, 27, '2010-08-30 21:53:28', '0000-00-00 00:00:00'),
-(20, 1, 2, 2, '2010-08-30 21:55:08', '0000-00-00 00:00:00'),
-(21, 1, 2, 3, '2010-08-30 21:55:10', '0000-00-00 00:00:00'),
-(22, 1, 2, 4, '2010-08-30 21:55:13', '0000-00-00 00:00:00'),
-(23, 1, 2, 5, '2010-08-30 21:55:16', '0000-00-00 00:00:00'),
-(24, 1, 2, 6, '2010-08-30 21:55:19', '0000-00-00 00:00:00'),
-(25, 1, 2, 7, '2010-08-30 21:55:23', '0000-00-00 00:00:00'),
-(26, 1, 2, 8, '2010-08-30 21:55:28', '0000-00-00 00:00:00'),
-(27, 1, 2, 9, '2010-08-30 21:55:31', '0000-00-00 00:00:00'),
-(28, 1, 3, 10, '2010-08-30 21:57:49', '0000-00-00 00:00:00'),
-(29, 1, 3, 11, '2010-08-30 21:57:51', '0000-00-00 00:00:00'),
-(30, 1, 3, 12, '2010-08-30 21:57:53', '0000-00-00 00:00:00'),
-(31, 1, 3, 13, '2010-08-30 21:57:56', '0000-00-00 00:00:00'),
-(32, 1, 3, 14, '2010-08-30 21:57:59', '0000-00-00 00:00:00'),
-(33, 1, 3, 15, '2010-08-30 21:58:02', '0000-00-00 00:00:00'),
-(34, 1, 3, 17, '2010-08-30 21:58:06', '0000-00-00 00:00:00'),
-(35, 1, 3, 18, '2010-08-30 21:58:09', '0000-00-00 00:00:00'),
-(36, 1, 3, 19, '2010-08-30 21:58:13', '0000-00-00 00:00:00'),
-(38, 1, 5, 45, '2010-08-30 21:58:33', '0000-00-00 00:00:00'),
-(39, 1, 5, 47, '2010-08-30 21:58:36', '0000-00-00 00:00:00'),
-(40, 1, 5, 50, '2010-08-30 21:58:38', '0000-00-00 00:00:00'),
-(41, 1, 5, 53, '2010-08-30 21:58:40', '0000-00-00 00:00:00'),
-(42, 1, 5, 54, '2010-08-30 21:58:43', '0000-00-00 00:00:00'),
-(44, 1, 5, 58, '2010-08-30 21:58:54', '0000-00-00 00:00:00'),
-(45, 1, 5, 59, '2010-08-30 21:58:58', '0000-00-00 00:00:00'),
-(46, 1, 5, 60, '2010-08-30 21:59:01', '0000-00-00 00:00:00'),
-(47, 1, 6, 33, '2010-08-30 21:59:15', '0000-00-00 00:00:00'),
-(48, 1, 6, 35, '2010-08-30 21:59:17', '0000-00-00 00:00:00'),
-(49, 1, 6, 37, '2010-08-30 21:59:19', '0000-00-00 00:00:00'),
-(50, 1, 6, 39, '2010-08-30 21:59:21', '0000-00-00 00:00:00'),
-(51, 1, 6, 42, '2010-08-30 21:59:23', '0000-00-00 00:00:00'),
-(52, 1, 6, 41, '2010-08-30 21:59:25', '0000-00-00 00:00:00'),
-(53, 1, 6, 43, '2010-08-30 21:59:30', '0000-00-00 00:00:00'),
-(54, 1, 6, 44, '2010-08-30 21:59:32', '0000-00-00 00:00:00'),
-(55, 1, 6, 38, '2010-08-30 22:00:20', '0000-00-00 00:00:00'),
-(56, 1, 6, 34, '2010-08-30 22:00:30', '0000-00-00 00:00:00'),
-(58, 1, 7, 63, '2010-08-30 22:00:55', '0000-00-00 00:00:00'),
-(62, 1, 2, 61, '2010-08-30 22:22:41', '0000-00-00 00:00:00'),
-(63, 1, 3, 62, '2010-08-30 22:23:06', '0000-00-00 00:00:00'),
-(64, 1, 5, 69, '2010-08-30 22:23:38', '0000-00-00 00:00:00'),
-(65, 1, 7, 3, '2010-08-30 22:23:59', '0000-00-00 00:00:00'),
-(66, 1, 7, 68, '2010-08-30 22:24:03', '0000-00-00 00:00:00'),
-(67, 1, 7, 12, '2010-08-30 22:24:09', '0000-00-00 00:00:00'),
-(68, 1, 7, 35, '2010-08-30 22:24:14', '0000-00-00 00:00:00'),
-(69, 1, 7, 5, '2010-08-30 22:24:20', '0000-00-00 00:00:00'),
-(70, 1, 7, 71, '2010-08-30 22:24:26', '0000-00-00 00:00:00'),
-(71, 1, 7, 14, '2010-08-30 22:24:31', '0000-00-00 00:00:00'),
-(72, 1, 7, 8, '2010-08-30 22:24:37', '0000-00-00 00:00:00');
+INSERT INTO `prioritas` (`id`, `programKknId`, `jurusanId`, `created`, `modified`, `level`) VALUES
+(1, 2, 24, '2011-03-18 08:55:15', '0000-00-00 00:00:00', 1),
+(2, 2, 4, '2011-03-18 08:55:33', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -558,12 +511,12 @@ INSERT INTO `prioritas` (`id`, `level`, `programKknId`, `jurusanId`, `created`, 
 --
 
 CREATE TABLE IF NOT EXISTS `program_kkn` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
-  `deskripsi` text NOT NULL,
+  `deskripsi` text,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
@@ -582,20 +535,43 @@ INSERT INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modified`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `program_kkn_lampiran`
+--
+
+CREATE TABLE IF NOT EXISTS `program_kkn_lampiran` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  `programKknId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `program_kkn_lampiran_programKknId` (`programKknId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `program_kkn_lampiran`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `program_studi`
 --
 
 CREATE TABLE IF NOT EXISTS `program_studi` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `kode` varchar(255) NOT NULL,
-  `fakultasId` bigint(20) NOT NULL,
-  `jurusanId` bigint(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `jenjangId` int(11) DEFAULT NULL,
+  `fakultasId` int(11) DEFAULT NULL,
+  `jurusanId` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `fakultasId` (`fakultasId`),
-  KEY `jurusanId` (`jurusanId`)
+  PRIMARY KEY (`id`),
+  KEY `program_studi_jenjangId` (`jenjangId`),
+  KEY `program_studi_fakultasId` (`fakultasId`),
+  KEY `program_studi_jurusanId` (`jurusanId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -606,26 +582,103 @@ CREATE TABLE IF NOT EXISTS `program_studi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_migration`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_migration` (
+  `version` varchar(255) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_migration`
+--
+
+INSERT INTO `tbl_migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1300242374),
+('m110315_021459_initial', 1300242402),
+('m110318_015323_add_level_column_to_prioritas', 1300413280);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `role` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ata@nevisa.co.id', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, '0705016', 'ac43724f16e9241d990427ab7c8f4228', 'ata@gmail.com', 'Aprianti Fitriana R.', '2010-10-15 23:10:54', '2010-10-15 23:41:38'),
-(4, '0705118', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Ani Anjaniah Kamilah', '2010-10-15 23:45:18', '2010-10-15 23:46:20'),
-(5, '045065', 'ac43724f16e9241d990427ab7c8f4228', 'ata@javan.co.id', 'Angga Kusumah P.', '2010-10-15 23:47:55', '0000-00-00 00:00:00');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`, `role`) VALUES
+(1, 'admin', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Administrator', '2011-03-25 10:34:32', '2011-03-12 10:34:35', NULL);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  ADD CONSTRAINT `jurusan_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
+  ADD CONSTRAINT `jurusan_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`);
+
+--
+-- Constraints for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD CONSTRAINT `kecamatan_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`),
+  ADD CONSTRAINT `kecamatan_kabupatenId` FOREIGN KEY (`kabupatenId`) REFERENCES `kabupaten` (`id`);
+
+--
+-- Constraints for table `kelompok`
+--
+ALTER TABLE `kelompok`
+  ADD CONSTRAINT `kelompok_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`),
+  ADD CONSTRAINT `kelompok_kabupatenId` FOREIGN KEY (`kabupatenId`) REFERENCES `kabupaten` (`id`),
+  ADD CONSTRAINT `kelompok_kecamatanId` FOREIGN KEY (`kecamatanId`) REFERENCES `kecamatan` (`id`);
+
+--
+-- Constraints for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `mahasiswa_kelompokId` FOREIGN KEY (`kelompokId`) REFERENCES `kelompok` (`id`),
+  ADD CONSTRAINT `mahasiswa_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
+  ADD CONSTRAINT `mahasiswa_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`),
+  ADD CONSTRAINT `mahasiswa_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`);
+
+--
+-- Constraints for table `prioritas`
+--
+ALTER TABLE `prioritas`
+  ADD CONSTRAINT `prioritas_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`),
+  ADD CONSTRAINT `prioritas_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
+
+--
+-- Constraints for table `program_kkn_lampiran`
+--
+ALTER TABLE `program_kkn_lampiran`
+  ADD CONSTRAINT `program_kkn_lampiran_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
+
+--
+-- Constraints for table `program_studi`
+--
+ALTER TABLE `program_studi`
+  ADD CONSTRAINT `program_studi_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`),
+  ADD CONSTRAINT `program_studi_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
+  ADD CONSTRAINT `program_studi_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`);
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
