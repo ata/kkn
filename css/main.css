@@ -214,13 +214,103 @@ textarea, input{
 	-webkit-box-shadow:0 -2px 2px #560202;
 	box-shadow:0 -2px 2px #560202;
 	border-top:1px solid #D19743;
+	padding-top:20px;
 }
 
 #slideshow img{
-	margin:10px 0;
+	/*margin:10px 0;
 	-moz-box-shadow:0 0 10px #7C3403;
 	-webkit-box-shadow:0 0 10px #7C3403;
-	box-shadow:0 0 10px #7C3403;
+	box-shadow:0 0 10px #7C3403;*/
+}
+
+div.slider-content{
+	margin:0 0 10px 0;
+	padding-bottom:0px;
+	overflow:hidden;
+	position:relative;
+	height:220px;
+	width:950px;
+}
+
+
+div.image-reel{
+	position:absolute;
+	top:0; left:0;
+}
+
+div.image-reel img {
+	float:left;
+}
+
+div.paging-image{
+	position:absolute;
+	bottom:-5px;
+	right:-10px;
+	width: 178px; height:47px;
+	z-index: 0; /*--Assures the paging stays on the top layer--*/
+	background: url(images/paging_bg2.png) no-repeat;
+	text-align: center;
+	line-height: 40px;
+}
+
+div.paging-image a{
+	text-decoration:none;
+	color:#fff;
+}
+
+div.paging-image a.active{
+	font-weight:bold;
+	background:#920000;
+	border:1px solid #610000;
+	-moz-border-radius:3px;
+	-khtml-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+div.paging a:hover {
+	font-weight: bold;
+}
+div.slider-content p{
+	font-size:11px;
+	color:#FFF;
+	padding-left:5px;	
+}
+
+div.slider-text1,
+div.slider-text2,
+div.slider-text3,
+div.slider-text4{
+	height:35px;
+	width:950px;
+	background-color:#000;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	position:absolute; 
+	top:190px; 
+}
+
+div.slider-text1{
+	left:0;
+}
+
+div.slider-text2{
+	left:950px;
+}
+
+div.slider-text3{
+	left:1900px;
+}
+
+div.slider-text4{
+	left:3800px;
+}
+
+div.slider-text1:hover,
+div.slider-text2:hover,
+div.slider-text3:hover,
+div.slider-text4:hover{
+	opacity:0.8;
 }
 
 
@@ -321,7 +411,6 @@ textarea, input{
 	margin:0;
 	padding:0;
 	color:#FFFFFF;
-	border:none;
 }
 
 #fp-login-form h2,
@@ -349,9 +438,11 @@ textarea, input{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
+	behavior: url(border-radius.htc);
 	border:1px solid #750303;
 	border-top:1px solid #B70909;
 	border-left:1px solid #B70909;
+	width:150px;
 }
 
 #fp-login-form form label{
