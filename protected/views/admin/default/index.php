@@ -1,3 +1,8 @@
+<?php
+$this->breadcrumbs=array(
+    'Admin'=>array('index'),
+);
+?>
 
 <h1><?php echo "Halaman Admin" ?></h1>
 

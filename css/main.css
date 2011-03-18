@@ -438,7 +438,6 @@ div.slider-text4:hover{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
-	behavior: url(border-radius.htc);
 	border:1px solid #750303;
 	border-top:1px solid #B70909;
 	border-left:1px solid #B70909;

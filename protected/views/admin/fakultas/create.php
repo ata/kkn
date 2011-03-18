@@ -1,11 +1,8 @@
 <?php
 $this->breadcrumbs=array(
-    'Fakultases'=>array('index'),
-    'Create',
-);
-
-$this->menu=array(
-    array('label' => Yii::t('app','Daftar Fakultas'), 'url' => array('index')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Fakultas') => array('/admin/fakultas/index'),
+	Yii::t('app','Tambah Fakultas'),
 );
 ?>
 

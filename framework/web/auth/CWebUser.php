@@ -734,6 +734,6 @@ class CWebUser extends CApplicationComponent implements IWebUser
 		if($allowCaching && $params===array() && isset($this->_access[$operation]))
 			return $this->_access[$operation];
 		else
-			return $this->_access[$operation]=Yii::app()->getAuthManager()->checkAccess($operation,$this->getId(),$params);
+			return $this->_access[$operation]=Yii::app()->getAuthManager()->checkAccess($operation,$this->getName(),$params);
 	}
 }
