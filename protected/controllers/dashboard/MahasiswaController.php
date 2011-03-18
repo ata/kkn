@@ -4,6 +4,7 @@ class MahasiswaController extends Controller
 {
     private $_mahasiswa;
     
+    public $layout = '//layouts/dashboard';
     
     public function filters()
     {
@@ -61,6 +62,7 @@ class MahasiswaController extends Controller
 
     public function actionRegister()
     {
+        $this->layout = '//layouts/frontend';
         $mahasiswa = new Mahasiswa;
         $this->performAjaxValidation($mahasiswa);
         if (isset($_POST['Mahasiswa'])) {
@@ -91,11 +93,13 @@ class MahasiswaController extends Controller
     
     public function actionRegisterSuccess()
     {
+        $this->layout = '//layouts/frontend';
         $this->render('registerSuccess');
     }
     
     public function actionToken()
     {
+        $this->layout = '//layouts/frontend';
         $this->render('token');
     }
 
@@ -137,7 +141,7 @@ class MahasiswaController extends Controller
     
     public function actionView()
     {
-        $this->layout = '//layouts/dashboard';
+        
         if(!isset($_GET['id'])){
             $mahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
             $editable = true;

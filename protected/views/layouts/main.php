@@ -51,8 +51,7 @@
             <div class="span-9">
                 <div id="web-name">
                     <h2><?php echo Yii::t('app','KKN TEMATIK ONLINE')?></h2>
-                    <h5><?php echo Yii::t('app','PUSAT PEMBERDAYAAN MASYARAKAT, KEWIRAUSAHAAN DAN 
-                    PENGEMBANGAN KULIAH KERJA NYATA')?></h5>
+                    <h5><?php echo Yii::t('app','PUSAT PEMBERDAYAAN MASYARAKAT, KEWIRAUSAHAAN DAN PENGEMBANGAN KULIAH KERJA NYATA')?></h5>
                 </div>
             </div>
             <div class="span-12 ar last" id="head-navigation">
@@ -62,28 +61,17 @@
     </div>
 </div>
 
-<div id="slideshow">	
-	<div class="container">
-		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
-	</div>
-</div>
-
 <?php echo $content?>
-
-<div id="footbar">
-	<div class="container">
-		<h4>LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT</h4>
-		<h3>UNIVERSITAS PENDIDIKAN INDONESIA</h3>
-	</div>
-</div>
 
 <div id="footer">
     <div class="container">
         <span class="span-12 al">
-            <?php echo Yii::powered(); ?>
+            <b>LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT<br/>
+            UNIVERSITAS PENDIDIKAN INDONESIA</b>
         </span>
         <span class="span-12 last ar">
-            Copyright &copy; 2010 by <?php echo CHtml::link('Nevisa','http://nevisa.web.id') ?>
+            Copyright &copy; 2010 by <?php echo CHtml::link('Nevisa','http://nevisa.web.id') ?><br/>
+            <?php echo Yii::powered(); ?>
         </span>
     </div>
 </div><!-- end#footer-->

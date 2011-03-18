@@ -1,4 +1,11 @@
 <?php $this->beginContent('//layouts/main'); ?>
+
+<div id="slideshow">	
+	<div class="container">
+		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+	</div>
+</div>
+
 <div id="main">
     <div class="container">
 		<div id="content">
@@ -17,7 +24,7 @@
 						<input type="submit" value="LOGIN" class="button floatRight">
 					</form>
 					<div class="clear"></div>
-					<p>Belum terdaftar? Silakan registrasi</p>
+					<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
 				</div>
 				<div id="register-form">
 					<h2 class="floatRight">REGISTRASI</h2>

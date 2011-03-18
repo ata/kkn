@@ -109,6 +109,7 @@ class CDbAuthManager extends CAuthManager
 					return true;
 			}
 		}
+		
 		return false;
 	}
 
