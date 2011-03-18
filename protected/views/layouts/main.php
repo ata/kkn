@@ -64,7 +64,37 @@
 
 <div id="slideshow">	
 	<div class="container">
-		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+		<div class="slider-content">
+			<div class="image-reel">
+				<div style="position:relative;">
+					<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+					<div class="slider-text1">
+					<p >"Peranan orang tua sangatlah penting dalam perkembangan kecerdasan anak"</p></div>
+					
+					<img src="images/child-parent.jpg" 
+					width="600px"/>
+					<div class="slider-text2">
+					<p>"Teach your child to love helping others in need"</p></div>
+					
+					<img src="images/cooking-kids.jpg" 
+					width="600px"/>
+					<div class="slider-text3">
+					<p>"Tempt your picky eater to expand her taste buds"</p></div>
+			   
+					<img src="images/social-network.jpg" 
+					width="600px"/>
+					<div class="slider-text4">
+					<p>"Millennial kids are hanging out in cyber-communities like Club Penguin and Webkinz"</p></div>
+				</div>
+				   
+			</div>
+			<div class="paging-image">
+			   <a href="#" rel="1">1</a>
+			   <a href="#" rel="2">2</a>
+			   <a href="#" rel="3">3</a>
+			   <a href="#" rel="4">4</a>
+			</div>
+		</div>
 	</div>
 </div>
 
