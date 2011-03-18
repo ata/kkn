@@ -297,6 +297,10 @@ textarea, input{
 	padding:0;
 }
 
+#admin-container #content table{
+	margin-top:15px;
+}
+
 /**************************************/
 /*            SIDE NAVIGATION         */
 /**************************************/
@@ -883,14 +887,50 @@ table.detail-view tr.event td{
 }
 
 a.add-button{
-	background:#FFF url(images/add-button.png) left center no-repeat;
+	background:url(images/add-button.png) left center no-repeat;
 	color:#2D5407;
 	text-decoration:none;
-	padding:10px 10px 10px 30px;
+	padding:10px 10px 10px 20px;
 	margin:20px 0;
 }
 
 a.add-button:hover{
-	background:url(images/add-button-hover.png) left center no-repeat;
 	color:#478A08;
+}
+
+a.cancel-button{
+	margin-left:20px;
+	color:#B50412;
+	text-decoration:none;
+}
+
+a.cancel-button:hover{
+	color:#F20008;
+	text-decoration:underline;
+}
+
+a.edit-button{
+	background:url(images/update.png) left center no-repeat;
+	padding:10px 10px 10px 20px;
+	margin-left:10px;
+	color:#025B8C;
+	text-decoration:none;
+}
+
+a.edit-button:hover{
+	color:#0071BC;
+	text-decoration:underline;
+}
+
+a.delete-button{
+	background:url(images/delete.png) left center no-repeat;
+	padding:10px 10px 10px 20px;
+	margin-left:10px;
+	color:#B50412;
+	text-decoration:none;
+}
+
+a.delete-button:hover{
+	color:#F20008;
+	text-decoration:underline;
 }
