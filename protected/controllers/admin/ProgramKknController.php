@@ -139,18 +139,11 @@ class ProgramKknController extends AdminController
 		}
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$this->actionAdmin();
-	}
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$programKkn = new ProgramKkn('search');
 		$programKkn->unsetAttributes();  // clear any default values
@@ -158,7 +151,7 @@ class ProgramKknController extends AdminController
 			$programKkn->attributes = $_GET['ProgramKkn'];
 		}
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'programKkn' => $programKkn,
 		));
 	}

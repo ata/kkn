@@ -93,7 +93,7 @@ class DosenController extends AdminController
 			$dosen->attributes = $_GET['Dosen'];
 		}
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'dosen' => $dosen,
 		));
 	}
