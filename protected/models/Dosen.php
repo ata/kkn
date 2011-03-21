@@ -1,21 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "prioritas".
+ * This is the model class for table "dosen".
  *
- * The followings are the available columns in table 'prioritas':
- * @property string $id
- * @property string $programKknId
- * @property string $jurusanId
+ * The followings are the available columns in table 'dosen':
+ * @property integer $id
+ * @property string $nip
+ * @property string $namaLengkap
+ * @property string $jenisKelamin
+ * @property integer $userId
+ * @property integer $fakultasId
+ * @property integer $jurusanId
+ * @property string $kontak
  * @property string $created
  * @property string $modified
  */
-class Prioritas extends ActiveRecord
+class Dosen extends ActiveRecord
 {
-	public $fakultasId;
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Prioritas the static model class
+	 * @return Dosen the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -27,23 +31,24 @@ class Prioritas extends ActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'prioritas';
+		return 'dosen';
 	}
 
 	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('programKknId, fakultasId, level, jurusanId', 'required'),
-			array('programKknId, jurusanId', 'length', 'max'=>20),
-			array('level', 'length', 'max'=>2),
+			array('nip, namaLengkap, jenisKelamin', 'required'),
+			array('userId, fakultasId, jurusanId', 'numerical', 'integerOnly'=>true),
+			array('nip, namaLengkap, jenisKelamin, kontak', 'length', 'max'=>255),
+			array('created, modified', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, level, programKknId, jurusanId, created, modified', 'safe', 'on'=>'search'),
+			array('id, nip, namaLengkap, jenisKelamin, userId, fakultasId, jurusanId, kontak, created, modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +60,6 @@ class Prioritas extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'jurusan' => array(self::BELONGS_TO, 'Jurusan','jurusanId'),
 		);
 	}
 
@@ -65,12 +69,16 @@ class Prioritas extends ActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('app','ID'),
-			'level' => Yii::t('app','Level Prioritas'),
-			'programKknId' => Yii::t('app','Program Kkn'),
-			'jurusanId' => Yii::t('app','Jurusan'),
-			'created' => Yii::t('app','Created'),
-			'modified' => Yii::t('app','Modified'),
+			'id' => 'ID',
+			'nip' => 'Nip',
+			'namaLengkap' => 'Nama Lengkap',
+			'jenisKelamin' => 'Jenis Kelamin',
+			'userId' => 'User',
+			'fakultasId' => 'Fakultas',
+			'jurusanId' => 'Jurusan',
+			'kontak' => 'Kontak',
+			'created' => 'Created',
+			'modified' => 'Modified',
 		);
 	}
 
@@ -84,38 +92,20 @@ class Prioritas extends ActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+
 		$criteria->compare('id',$this->id);
-		$criteria->compare('level',$this->level);
-		$criteria->compare('programKknId',$this->programKknId);
+		$criteria->compare('nip',$this->nip,true);
+		$criteria->compare('namaLengkap',$this->namaLengkap,true);
+		$criteria->compare('jenisKelamin',$this->jenisKelamin,true);
+		$criteria->compare('userId',$this->userId);
+		$criteria->compare('fakultasId',$this->fakultasId);
 		$criteria->compare('jurusanId',$this->jurusanId);
+		$criteria->compare('kontak',$this->kontak,true);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
-		
-		$criteria->order = 'level';
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			'pagination' => array(
-				'pageSize' => 100
-			)
 		));
-	}
-	
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-	
-	protected function beforeValidate()
-	{
-		$prioritas = $this->findByAttributes(array(
-			'jurusanId' => $this->jurusanId,
-			'programKknId' => $this->programKknId,
-		));
-		if($prioritas !== null){
-			$this->addError('jurusanId',Yii::t('app','Jurusan ini sudah ada'));
-			return false;
-		}
-		return parent::beforeValidate();
 	}
 }

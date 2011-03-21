@@ -1,28 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "program_kkn".
+ * This is the model class for table "program_kkn_lampiran".
  *
- * The followings are the available columns in table 'program_kkn':
- * @property string $id
+ * The followings are the available columns in table 'program_kkn_lampiran':
+ * @property integer $id
  * @property string $nama
- * @property string $deskripsi
- * @property string $created
- * @property string $modified
+ * @property string $path
+ * @property integer $programKknId
+ *
+ * The followings are the available model relations:
+ * @property ProgramKkn $programKkn
  */
-class ProgramKkn extends ActiveRecord
+class ProgramKknLampiran extends ActiveRecord
 {
-	
-	/**
-	 * untuk menampung attactment dari form field bertipe file
-	 */
-	public $files = array();
-	
-	protected $displayField = 'nama';
-	
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return ProgramKkn the static model class
+	 * @return ProgramKknLampiran the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -34,23 +28,22 @@ class ProgramKkn extends ActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'program_kkn';
+		return 'program_kkn_lampiran';
 	}
 
 	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, deskripsi', 'required'),
-			array('id', 'length', 'max'=>20),
-			array('nama', 'length', 'max'=>255),
+			array('programKknId', 'numerical', 'integerOnly'=>true),
+			array('nama, path', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nama, deskripsi, created, modified', 'safe', 'on'=>'search'),
+			array('id, nama, path, programKknId', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +55,7 @@ class ProgramKkn extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'lampiran' => array(self::HAS_MANY,'ProgramKknLampiran','programKknId'),
-			
+			'programKkn' => array(self::BELONGS_TO, 'ProgramKkn', 'programKknId'),
 		);
 	}
 
@@ -73,11 +65,10 @@ class ProgramKkn extends ActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('app','ID'),
-			'nama' => Yii::t('app','Nama'),
-			'deskripsi' => Yii::t('app','Deskripsi'),
-			'created' => Yii::t('app','Created'),
-			'modified' => Yii::t('app','Modified'),
+			'id' => 'ID',
+			'nama' => 'Nama',
+			'path' => 'Path',
+			'programKknId' => 'Program Kkn',
 		);
 	}
 
@@ -91,31 +82,14 @@ class ProgramKkn extends ActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
+
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nama',$this->nama,true);
-		$criteria->compare('deskripsi',$this->deskripsi,true);
-		$criteria->compare('created',$this->created,true);
-		$criteria->compare('modified',$this->modified,true);
+		$criteria->compare('path',$this->path,true);
+		$criteria->compare('programKknId',$this->programKknId);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
-	}
-	protected function beforeSave()
-	{
-		$this->nama = strtoupper($this->nama);
-		return parent::beforeSave();
-	}
-	
-	public function addPrioritas(Prioritas $prioritas)
-	{
-	}
-	
-	public function addLampiran(ProgramKkn $lampiran)
-	{
-	}
-	
-	public function findArrayPrioritasJurusanId()
-	{
 	}
 }
