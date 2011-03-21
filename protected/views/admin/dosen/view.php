@@ -1,32 +1,32 @@
 <?php
 $this->breadcrumbs=array(
-	'Dosens'=>array('index'),
-	$model->id,
+    'Dosens'=>array('index'),
+    $dosen->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Dosen', 'url'=>array('index')),
-	array('label'=>'Create Dosen', 'url'=>array('create')),
-	array('label'=>'Update Dosen', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Dosen', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Dosen', 'url'=>array('admin')),
+    array('label'=>Yii::t('app','List Dosen'), 'url'=>array('index')),
+    array('label'=>Yii::t('app','Create Dosen'), 'url'=>array('create')),
+    array('label'=>Yii::t('app','Update Dosen'), 'url'=>array('update', 'id'=>$dosen->id)),
+    array('label'=>Yii::t('app','Delete Dosen'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$dosen->id),'confirm'=>'Are you sure you want to delete this item?')),
+    array('label'=>Yii::t('app','Manage Dosen'), 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Dosen #<?php echo $model->id; ?></h1>
+<h2><?php echo Yii::t('app','View Dosen') ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'nip',
-		'namaLengkap',
-		'jenisKelamin',
-		'userId',
-		'fakultasId',
-		'jurusanId',
-		'kontak',
-		'created',
-		'modified',
-	),
+    'data'=>$dosen,
+    'attributes'=>array(
+        'id',
+        'nip',
+        'namaLengkap',
+        'jenisKelamin',
+        'userId',
+        'fakultasId',
+        'jurusanId',
+        'kontak',
+        'created',
+        'modified',
+    ),
 )); ?>

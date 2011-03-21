@@ -1,48 +1,48 @@
 <div class="wide form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
+    'action'=>Yii::app()->createUrl($this->route),
+    'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'id'); ?>
+        <?php echo $form->textField($user,'id'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'username'); ?>
+        <?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>255)); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'email'); ?>
+        <?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>255)); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'nama'); ?>
-		<?php echo $form->textField($model,'nama',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'nama'); ?>
+        <?php echo $form->textField($user,'nama',array('size'=>60,'maxlength'=>255)); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'created'); ?>
+        <?php echo $form->textField($user,'created'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'modified'); ?>
-		<?php echo $form->textField($model,'modified'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'modified'); ?>
+        <?php echo $form->textField($user,'modified'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->label($model,'role'); ?>
-		<?php echo $form->textField($model,'role',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->label($user,'role'); ?>
+        <?php echo $form->textField($user,'role',array('size'=>60,'maxlength'=>255)); ?>
+    </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Search'); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
 
