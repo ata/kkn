@@ -858,14 +858,12 @@ table.detail-view th{
   text-align:right;
   padding-right:1em;
   line-height:25px;
-  border-bottom:1px solid #C87C21;
   text-shadow:1px 1px 0 #EAEAEA;
   width:150px;
 }
 
 table.detail-view td{
   background:#FFF;
-  border-bottom:1px solid #C87C21;
   padding-left:1em;
 }
 
