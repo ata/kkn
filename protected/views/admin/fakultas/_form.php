@@ -7,8 +7,6 @@
 
 	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
 
-	<?php echo $form->errorSummary($fakultas); ?>
-
 	<div class="row">
 		<?php echo $form->labelEx($fakultas,'nama'); ?>
 		<?php echo $form->textField($fakultas,'nama',array('size'=>60,'maxlength'=>255)); ?>

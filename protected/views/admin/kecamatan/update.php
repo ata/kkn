@@ -1,18 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-    'Kecamatans'=>array('index'),
-    $kecamatan->id=>array('view','id'=>$kecamatan->id),
-    'Update',
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Kecamatan'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Kecamatan'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','View Kecamatan'), 'url'=>array('view', 'id'=>$kecamatan->id)),
-    array('label'=>Yii::t('app','Manage Kecamatan'), 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kecamatan') => array('/admin/kecamatan/index'),
+	$kecamatan->nama => array('/admin/kecamatan/view','id' => $kecamatan->id),
+	Yii::t('app','Ubah')
 );
 ?>
 
-<h2><?php echo Yii::t('app','Update Kecamatan') ?></h2>
+<h2><?php echo Yii::t('app','Ubah Kecamatan') ?></h2>
 
 <?php echo $this->renderPartial('_form', array('kecamatan'=>$kecamatan)); ?>

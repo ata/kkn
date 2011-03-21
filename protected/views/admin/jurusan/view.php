@@ -1,31 +1,42 @@
 <?php
 $this->breadcrumbs=array(
-    'Jurusans'=>array('index'),
-    $jurusan->id,
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Jurusan'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Jurusan'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','Update Jurusan'), 'url'=>array('update', 'id'=>$jurusan->id)),
-    array('label'=>Yii::t('app','Delete Jurusan'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$jurusan->id),'confirm'=>'Are you sure you want to delete this item?')),
-    array('label'=>Yii::t('app','Manage Jurusan'), 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Jurusan') => array('/admin/jurusan/index'),
+	$jurusan->nama,
 );
 ?>
-
-<h2><?php echo Yii::t('app','View Jurusan') ?></h2>
-
+<h2><?php echo Yii::t('app','Detail Jurusan') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$jurusan->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$jurusan->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus jurusan ini?'),
+		))?>
+</div>
 <?php $this->widget('zii.widgets.CDetailView', array(
-    'data'=>$jurusan,
-    'attributes'=>array(
-        'id',
-        'nama',
-        'kode',
-        array(
-            'name' => 'fakultasId',
-            'value' => $jurusan->fakultas->nama,
-        ),
-        'created',
-        'modified',
-    ),
+	'data'=>$jurusan,
+	'attributes'=>array(
+		'id',
+		'nama',
+		'kode',
+		array(
+			'name' => 'fakultasId',
+			'value' => $jurusan->fakultas->nama,
+		),
+		'created',
+		'modified',
+	),
 )); ?>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$jurusan->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$jurusan->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus jurusan ini?'),
+		))?>
+</div>

@@ -26,9 +26,8 @@ $this->breadcrumbs=array(
 				<?php echo $form->error($mahasiswa,'nim'); ?>
 			</div>
 		<?php else:?>
-			<p class="note">Fields with <span class="required">*</span> are required.</p>
-			<?php echo $form->errorSummary($mahasiswa); ?>
-			
+			<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
+
 			<fieldset>
 				<legend><?php echo Yii::t('app','Informasi Mahasiswa')?></legend>
 				<div class="row">
@@ -77,7 +76,7 @@ $this->breadcrumbs=array(
 
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'jurusanId'); ?>
-					<?php echo $form->dropDownList($mahasiswa, 'jurusanId',Jurusan::model()->listData)?>
+					<?php echo $form->dropDownList($mahasiswa,'jurusanId', array(), array('empty' => Yii::t('app','Pilih Jurusan')))?>
 					<?php echo $form->error($mahasiswa,'jurusanId'); ?>
 				</div>
 

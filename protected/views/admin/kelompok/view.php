@@ -1,92 +1,103 @@
 <?php
 $this->breadcrumbs=array(
-    'Kelompoks'=>array('index'),
-    $kelompok->id,
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Kelompok'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Kelompok'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','Update Kelompok'), 'url'=>array('update', 'id'=>$kelompok->id)),
-    array('label'=>Yii::t('app','Delete Kelompok'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$kelompok->id),'confirm'=>'Are you sure you want to delete this item?')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kelompok') => array('/admin/kelompok/index'),
+	$kelompok->nama,
 );
 ?>
 
-<h2><?php echo Yii::t('app','View Kelompok') ?></h2>
-
+<h2><?php echo Yii::t('app','Detail Kelompok/Lokasi') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$kelompok->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$kelompok->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus kelompok ini?'),
+		))?>
+</div>
 <?php $this->widget('zii.widgets.CDetailView', array(
-    'data'=>$kelompok,
-    'attributes'=>array(
-        'id',
-        array(
-            'name' => 'programKknId',
-            'value' => $kelompok->programKkn->nama
-        ),
-        array(
-            'name' => 'kabupatenId',
-            'value' => $kelompok->kabupaten->nama
-        ),
-        array(
-            'name' => 'kecamatanId',
-            'value' => $kelompok->kecamatan->nama
-        ),
-        'lokasi',
-        'created',
-        'modified',
-    ),
+	'data'=>$kelompok,
+	'attributes'=>array(
+		'id',
+		array(
+			'name' => 'programKknId',
+			'value' => $kelompok->programKkn->nama
+		),
+		array(
+			'name' => 'kabupatenId',
+			'value' => $kelompok->kabupaten->nama
+		),
+		array(
+			'name' => 'kecamatanId',
+			'value' => $kelompok->kecamatan->nama
+		),
+		'lokasi',
+		'created',
+		'modified',
+	),
 )); ?>
+
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$kelompok->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$kelompok->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus kelompok ini?'),
+		))?>
+</div>
+
 <h2><?php echo Yii::t('app','Daftar Mahasiswa di Kelompok')?></h2>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'=>'mahasiswa-grid',
-    'dataProvider'=>$mahasiswa->search(20),
-    'columns'=>array(
-        array(
-            'header' => 'No',
-            'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',  
-            'htmlOptions' => array('width' => '50px'),
-        ),
-        'namaLengkap',
-        'displayJenisKelamin',
-        array(
-            'name'=>'jurusanId',
-            'value'=>'$data->jurusan->nama',
-              ),
-        /*array(
-            'name' => '',
-            'htmlOptions' => array('width' => '75px'),
-        ),*/
-        /*array(
-            'class'=>'CButtonColumn',
-            'viewButtonUrl' => 'array("jurusan/view","id" => $data->id)',
-            'updateButtonUrl' => 'array("jurusan/update","id" => $data->id)',
-            'deleteButtonUrl' => 'array("jurusan/delete","id" => $data->id)',
-        ),*/
-    ),
+	'id'=>'mahasiswa-grid',
+	'dataProvider'=>$mahasiswa->search(20),
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
+		'namaLengkap',
+		'displayJenisKelamin',
+		array(
+			'name'=>'kelompokId',
+			'value'=>'$data->kelompok->nama',
+		),
+		/*array(
+			'class'=>'CButtonColumn',
+			'viewButtonUrl' => 'array("kelompok/view","id" => $data->id)',
+			'updateButtonUrl' => 'array("kelompok/update","id" => $data->id)',
+			'deleteButtonUrl' => 'array("kelompok/delete","id" => $data->id)',
+		),*/
+	),
 )); ?>
+
+
 
 <h2><?php echo Yii::t('app','Peta Lokasi KKN')?></h2>
 
 <div id="map_canvas" style="height:200px"></div>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
-    var latlng = new google.maps.LatLng(<?php echo $kelompok->latitude ?>,<?php echo $kelompok->longitude?>);
-    var contentString = '<?php echo Yii::t('app','Your Location')?>';
-    
-    var options = {
-        zoom: 11,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById('map_canvas'), options);
-    var marker = new google.maps.Marker({
-        position: latlng, 
-        map: map,
-        title: contentString,
-        draggable: false
-    });
-    google.maps.event.addListener(marker, 'position_changed', function() {
-        $('#Kelompok_latitude').val(marker.getPosition().lat());
-        $('#Kelompok_longitude').val(marker.getPosition().lng());
-    });
+	var latlng = new google.maps.LatLng(<?php echo $kelompok->latitude ?>,<?php echo $kelompok->longitude?>);
+	var contentString = '<?php echo Yii::t('app','Your Location')?>';
+	
+	var options = {
+		zoom: 11,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById('map_canvas'), options);
+	var marker = new google.maps.Marker({
+		position: latlng, 
+		map: map,
+		title: contentString,
+		draggable: false
+	});
+	google.maps.event.addListener(marker, 'position_changed', function() {
+		$('#Kelompok_latitude').val(marker.getPosition().lat());
+		$('#Kelompok_longitude').val(marker.getPosition().lng());
+	});
 </script>

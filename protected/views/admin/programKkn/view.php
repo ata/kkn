@@ -1,20 +1,23 @@
 <?php
 $this->breadcrumbs=array(
-	'Program Kkns'=>array('index'),
-	$programKkn->id,
-);
-
-$this->menu=array(
-	array('label'=>Yii::t('app','List Program Kkn'), 'url'=>array('index')),
-	array('label'=>Yii::t('app','Create Program Kkn'), 'url'=>array('create')),
-	array('label'=>Yii::t('app','Update Program Kkn'), 'url'=>array('update', 'id'=>$programKkn->id)),
-	array('label'=>Yii::t('app','Delete Program Kkn'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$programKkn->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>Yii::t('app','Manage Program Kkn'), 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kelompok') => array('/admin/programKkn/index'),
+	$programKkn->nama,
 );
 ?>
 
-<h2><?php echo Yii::t('app','View Program Kkn') ?></h2>
 
+<h2><?php echo Yii::t('app','Detail Program KKN') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$programKkn->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$programKkn->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus programKkn ini?'),
+		))?>
+</div>
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$programKkn,
 	'attributes'=>array(
@@ -25,6 +28,17 @@ $this->menu=array(
 		'modified',
 	),
 )); ?>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$programKkn->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$programKkn->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus programKkn ini?'),
+		))?>
+</div>
+
 
 <h2><?php echo Yii::t('app','Prioritas Jurusan')?></h2>
 

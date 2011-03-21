@@ -30,11 +30,12 @@ class WebUser extends CWebUser
 	{
 		return $this->getState('__role');
 	}
-	
+	/*
 	public function getReturnUrl($defaultUrl=null)
 	{
 		return $this->getState('__returnUrl',Yii::app()->createUrl('dashboard/index'));
 	}
+	*/
 	
 	/**
 	 * @override Hack!

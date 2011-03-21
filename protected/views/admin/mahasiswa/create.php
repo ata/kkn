@@ -1,14 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-    'Mahasiswas'=>array('index'),
-    'Create',
-);
-
-$this->menu=array(
-    array('label' => Yii::t('app','List Mahasiswa'), 'url' => array('index')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Mahasiswa') => array('/admin/mahasiswa/index'),
+	Yii::t('app','Tambah')
 );
 ?>
 
-<h2><?php echo Yii::t('app','Create New Mahasiswa') ?></h2>
+<h2><?php echo Yii::t('app','Tambah Mahasiswa') ?></h2>
 
 <?php echo $this->renderPartial('_form', array('mahasiswa'=>$mahasiswa)); ?>

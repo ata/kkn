@@ -1,37 +1,52 @@
 <?php
 $this->breadcrumbs=array(
-    'Mahasiswas'=>array('index'),
-    $mahasiswa->id,
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Mahasiswa'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Mahasiswa'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','Update Mahasiswa'), 'url'=>array('update', 'id'=>$mahasiswa->id)),
-    array('label'=>Yii::t('app','Delete Mahasiswa'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$mahasiswa->id),'confirm'=>'Are you sure you want to delete this item?')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Mahasiswa') => array('/admin/mahasiswa/index'),
+	$mahasiswa->nama,
 );
 ?>
 
-<h2><?php echo Yii::t('app','View Mahasiswa') ?></h2>
+<h2><?php echo Yii::t('app','Detail Mahasiswa') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$mahasiswa->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$mahasiswa->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus mahasiswa ini?'),
+		))?>
+</div>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-    'data'=>$mahasiswa,
-    'attributes'=>array(
-        'id',
-        'namaLengkap',
-        'nim',
-        'alamatAsal',
-        'alamatTinggal',
-        'fakultasId',
-        'jurusanId',
-        'kelompokId',
-        'jenjangId',
-        'jenisKelamin',
-        'phone1',
-        'phone2',
-        'photoPath',
-        'registered',
-        'created',
-        'modified',
-    ),
+	'data'=>$mahasiswa,
+	'attributes'=>array(
+		'id',
+		'namaLengkap',
+		'nim',
+		'alamatAsal',
+		'alamatTinggal',
+		'fakultasId',
+		'jurusanId',
+		'kelompokId',
+		'jenjangId',
+		'jenisKelamin',
+		'phone1',
+		'phone2',
+		'photoPath',
+		'registered',
+		'created',
+		'modified',
+	),
 )); ?>
+
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$mahasiswa->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$mahasiswa->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus mahasiswa ini?'),
+		))?>
+</div>

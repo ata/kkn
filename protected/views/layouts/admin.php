@@ -4,7 +4,7 @@
 	<div class="container" id="admin-container">
 		<div class="span-5" id="sidebar">
 			<h3><?php echo Yii::t('app','Menu') ?></h3>
-			<?php $this->widget('zii.widgets.CMenu', array(
+			<?php $this->widget('SideMenu', array(
 				'items'=>array(
 					array('label' => Yii::t('app','Berita'),'url' => array('/admin/berita/index')),
 					array('label' => Yii::t('app','Fakultas'),'url' => array('/admin/fakultas/index')),

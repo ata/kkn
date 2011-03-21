@@ -2,15 +2,7 @@
 $this->breadcrumbs=array(
     'Kelompok',
 );?>
-<h2><?php echo Yii::t('app','Daftar Lokasi KKN yang tersedia')?></h2>
-<?php /*
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'_view', 
-)); ?>
-
-*/?>
-
+<h2><?php echo Yii::t('app','Daftar Kelompok/Lokasi KKN yang tersedia')?></h2>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'kelompok-grid',
