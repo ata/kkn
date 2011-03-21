@@ -17,8 +17,7 @@ $this->breadcrumbs=array(
 		'nip',
 		'namaLengkap',
 		'jenisKelamin',
-		'userId',
-		'fakultasId',
+		'jurusanId',
 		/*
 		'jurusanId',
 		'kontak',

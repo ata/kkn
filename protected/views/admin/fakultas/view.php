@@ -49,9 +49,7 @@ $this->breadcrumbs=array(
 	'filter'=>$jurusan,
 	'columns'=>array(
 		array(
-			'header' => 'No',
-			'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',  
-			'htmlOptions' => array('width' => '50px'),
+			'class' => 'NumberColumn',
 		),
 		'nama',
 		array(

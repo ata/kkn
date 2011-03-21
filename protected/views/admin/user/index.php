@@ -1,54 +1,26 @@
 <?php
 $this->breadcrumbs=array(
-    'Users'=>array('index'),
-    'Manage',
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','User'),
 );
-
-$this->menu=array(
-    array('label' => Yii::t('app','List User'), 'url' => array('index')),
-    array('label' => Yii::t('app','Create User'), 'url' => array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-    $('.search-form').toggle();
-    return false;
-});
-$('.search-form form').submit(function(){
-    $.fn.yiiGridView.update('user-grid', {
-        data: $(this).serialize()
-    });
-    return false;
-});
-");
 ?>
 
-<h2><?php echo Yii::t('app','Management User') ?></h2>
-
-<?php echo CHtml::link(Yii::t('app','Advanced Search'),'#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-    'user'=>$user,
-)); ?>
-</div><!-- search-form -->
-
+<h2><?php echo Yii::t('app','Kelola User') ?></h2>
+<?php echo CHtml::link(Yii::t('app','Tambah User'),array('create'),array('class' => 'add-button'))?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id'=>'user-grid',
-    'dataProvider'=>$user->search(),
-    'filter'=>$user,
-    'columns'=>array(
-		'id',
+	'id'=>'user-grid',
+	'dataProvider'=>$user->search(),
+	'filter'=>$user,
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
 		'username',
-		'password',
 		'email',
 		'nama',
-		'created',
-		/*
-		'modified',
 		'role',
-		*/
-        array(
-            'class'=>'CButtonColumn',
-        ),
-    ),
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
 )); ?>

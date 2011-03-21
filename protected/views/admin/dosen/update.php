@@ -1,18 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-    'Dosens'=>array('index'),
-    $dosen->id=>array('view','id'=>$dosen->id),
-    'Update',
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Dosen'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Dosen'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','View Dosen'), 'url'=>array('view', 'id'=>$dosen->id)),
-    array('label'=>Yii::t('app','Manage Dosen'), 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Dosen') => array('/admin/dosen/index'),
+	$dosen->nama => array('/admin/dosen/view','id' => $dosen->id),
+	Yii::t('app','Ubah'),
 );
 ?>
 
-<h2><?php echo Yii::t('app','Update Dosen') ?></h2>
+<h2><?php echo Yii::t('app','Ubah Dosen') ?></h2>
 
 <?php echo $this->renderPartial('_form', array('dosen'=>$dosen)); ?>
