@@ -54,7 +54,15 @@
 				</div>
 			</div>
 			<div class="span-12 ar last" id="head-navigation">
-				<?php $this->widget('HeadMenu'); ?>
+				<?php $this->widget('HeadMenu',array(
+					'items' => array(
+						array('label'=>Yii::t('app','Beranda'), 'url'=>array('/home/index')),
+						array('label'=>Yii::t('app','Tentang Kami'), 'url'=>array('/site/page', 'view'=>'about')),
+						array('label'=>Yii::t('app','Kontak Kami'), 'url'=>array('/site/contact')),
+						array('label'=>Yii::t('app','Halaman Admin'), 'url'=>array('/admin/default/index'),'visible' => Yii::app()->user->name === 'admin'),
+						array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dashboard/kelompok/view'),'visible' => !Yii::app()->user->isGuest && Yii::app()->user->name !== 'admin'),
+					)
+				))?>
 			</div><!--end.top-navigation-->
 		</div><!-- end.header -->
 	</div>

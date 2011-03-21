@@ -248,4 +248,9 @@ class Mahasiswa extends ActiveRecord
 		return $this->jenisKelamin==self::LAKI_LAKI?Yii::t('app','Laki-laki'):Yii::t('app','Perempuan');
 	}
 	
+	public function getNama()
+	{
+		return $this->namaLengkap;
+	}
+	
 }

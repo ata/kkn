@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),
 	Yii::t('app','Fakultas') => array('/admin/fakultas/index'),
 	$fakultas->nama => array('/admin/fakultas/view','id' => $fakultas->id),
-	Yii::t('app','Update Fakultas'),
+	Yii::t('app','Ubah'),
 );
 ?>
 

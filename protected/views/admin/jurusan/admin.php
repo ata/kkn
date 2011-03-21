@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 
 <h2><?php echo Yii::t('app','Kelola Jurusan') ?></h2>
 <?php echo CHtml::link(Yii::t('app','Tambah Jurusan'),array('create'),array('class' => 'add-button'))?>
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'jurusan-grid',
 	'dataProvider'=>$jurusan->search(),

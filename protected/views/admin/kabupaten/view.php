@@ -1,48 +1,56 @@
 <?php
 $this->breadcrumbs=array(
-    'Kabupatens'=>array('index'),
-    $kabupaten->id,
-);
-
-$this->menu=array(
-    array('label'=>Yii::t('app','List Kabupaten'), 'url'=>array('index')),
-    array('label'=>Yii::t('app','Create Kabupaten'), 'url'=>array('create')),
-    array('label'=>Yii::t('app','Update Kabupaten'), 'url'=>array('update', 'id'=>$kabupaten->id)),
-    array('label'=>Yii::t('app','Delete Kabupaten'), 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$kabupaten->id),'confirm'=>'Are you sure you want to delete this item?')),
-    array('label'=>Yii::t('app','Manage Kabupaten'), 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kabupaten') => array('/admin/kabupaten/index'),
+	$kabupaten->nama,
 );
 ?>
 
-<h2><?php echo Yii::t('app','View Kabupaten') ?></h2>
-
+<h2><?php echo Yii::t('app','Detail Kabupaten') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$kabupaten->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$kabupaten->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus kabupaten ini?'),
+		))?>
+</div>
 <?php $this->widget('zii.widgets.CDetailView', array(
-    'data'=>$kabupaten,
-    'attributes'=>array(
-        'id',
-        'nama',
-        'created',
-        'modified',
-    ),
+	'data'=>$kabupaten,
+	'attributes'=>array(
+		'id',
+		'nama',
+		'created',
+		'modified',
+	),
 )); ?>
-
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$kabupaten->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$kabupaten->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus kabupaten ini?'),
+		))?>
+</div>
 <?php echo Yii::t('app','Daftar Kecamatan yang Tersedia')?>
 <?php $this->widget('zii.widgets.grid.CGridView',array(
-    'id'=>'kecamatan-grid',
-    'dataProvider'=>$kecamatan->search(),
-    'filter'=>$kecamatan,
-    'columns'=>array(
-        array(
-            'header'=>'No',
-            'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
-            'htmlOptions' => array('width' => '50px'),
-        ),
-        'nama',
-        array(
-            'class'=>'CButtonColumn',
-            'viewButtonUrl' => 'array("admin/kecamatan/view","id" => $data->id)',
-            'updateButtonUrl' => 'array("admin/kecamatan/update","id" => $data->id)',
-            'deleteButtonUrl' => 'array("admin/kecamatan/delete","id" => $data->id)',
-        ),
-    ),
+	'id'=>'kecamatan-grid',
+	'dataProvider'=>$kecamatan->search(),
+	'filter'=>$kecamatan,
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
+		array(
+			'class'=>'CButtonColumn',
+			'viewButtonUrl' => 'array("admin/kecamatan/view","id" => $data->id)',
+			'updateButtonUrl' => 'array("admin/kecamatan/update","id" => $data->id)',
+			'deleteButtonUrl' => 'array("admin/kecamatan/delete","id" => $data->id)',
+		),
+	),
 ));
 ?>

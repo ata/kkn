@@ -1,15 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-    'Kecamatans'=>array('index'),
-    'Create',
-);
-
-$this->menu=array(
-    array('label' => Yii::t('app','List Kecamatan'), 'url' => array('index')),
-    array('label' => Yii::t('app','Manage Kecamatan'), 'url' => array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kecamatan') => array('/admin/kecamatan/index'),
+	Yii::t('app','Tambah')
 );
 ?>
 
-<h2><?php echo Yii::t('app','Create New Kecamatan') ?></h2>
+<h2><?php echo Yii::t('app','Tambah Kecamatan') ?></h2>
 
 <?php echo $this->renderPartial('_form', array('kecamatan'=>$kecamatan)); ?>

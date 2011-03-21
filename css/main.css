@@ -122,6 +122,7 @@ textarea, input{
 	-moz-border-radius:41px;
 	-webkit-border-radius:41px;
 	border-radius:41px;
+	behavior:url(border-radius.htc);
 	-moz-box-shadow:0 0 20px #CE2121;
 	-webkit-box-shadow:0 0 20px #CE2121;
 	box-shadow:0 0 20px #CE2121;
@@ -198,6 +199,7 @@ textarea, input{
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
+	behavior: url(border-radius.htc);
 	padding:4px 14px 5px 14px;
 }
 
@@ -214,7 +216,6 @@ textarea, input{
 	-webkit-box-shadow:0 -2px 2px #560202;
 	box-shadow:0 -2px 2px #560202;
 	border-top:1px solid #D19743;
-	padding-top:20px;
 }
 
 #slideshow img{
@@ -254,6 +255,7 @@ textarea, input{
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
+	behavior: url(border-radius.htc);
 }
 
 #content p{
@@ -352,6 +354,7 @@ textarea, input{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
+	behavior: url(border-radius.htc);
 	border:1px solid #750303;
 	border-top:1px solid #B70909;
 	border-left:1px solid #B70909;
@@ -394,6 +397,7 @@ textarea, input{
 	-moz-border-radius:7px 0 0 7px;
 	-webkit-border-radius:5px 0 0 5px;
 	border-radius:5px 0 0 5px;
+	behavior: url(border-radius.htc);
 	margin-right:-10px;
 	border-bottom:1px solid #B2B2B2;
 	border-left:1px solid #B2B2B2;
@@ -485,6 +489,9 @@ textarea, input{
 	padding:10px 20px;
 	border:1px solid #EAEAEA;
 	-moz-border-radius:0 0 5px 5px;
+	-webkit-border-radius:0 0 5px 5px;
+	border-radius:0 0 5px 5px;
+	behavior: url(border-radius.htc);
 	margin-bottom:20px;
 }
 
@@ -510,6 +517,7 @@ textarea, input{
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
+  behavior: url(border-radius.htc);
 	border:1px solid #EAEAEA;
   /*margin:0 10px 20px 20px;*/
 }
@@ -624,6 +632,7 @@ a.update-link,
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
+  behavior: url(border-radius.htc);
   padding:5px 15px;
   color:#fff;
   text-shadow:1px 1px 0 #BA6410;

@@ -1,9 +1,9 @@
 <?php
 $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),
-	Yii::t('app','Jurusan') => array('/jurusan/berita/index'),
+	Yii::t('app','Jurusan') => array('/admin/jurusan/index'),
 	$jurusan->nama => array('/admin/jurusan/view','id' => $jurusan->id),
-	Yii::t('app','Ubah Jurusan')
+	Yii::t('app','Ubah')
 );
 ?>
 
