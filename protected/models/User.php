@@ -118,4 +118,5 @@ class User extends ActiveRecord
 	{
 		return !empty($this->nama)?$this->nama:$this->username;
 	}
+
 }
