@@ -135,10 +135,9 @@ return array(
 	
 	'modules'=>array(
 		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
+			'class'=>'ext.giix.GiiModule',
 			'password'=>'rahasia',
-		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			// 'ipFilters'=>array(...a list of IPs...),
 			'newFileMode'=>0644,
 			'newDirMode'=>0755,
 		),

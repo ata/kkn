@@ -1,18 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'View User', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','User') => array('/admin/user/index'),
+	$user->nama => array('/admin/user/view','id' => $user->id),
+	Yii::t('app','Ubah'),
 );
 ?>
 
-<h1>Update User <?php echo $model->id; ?></h1>
+<h2><?php echo Yii::t('app','Ubah User') ?></h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('user'=>$user)); ?>

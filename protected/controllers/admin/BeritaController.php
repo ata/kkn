@@ -81,28 +81,10 @@ class BeritaController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-
-	/**
-	 * Lists all models.
-	 
-	public function actionIndex()
-	{
-		$dataProvider = new CActiveDataProvider('Berita');
-		$this->render('index',array(
-			'dataProvider' => $dataProvider,
-		));
-	}
-	*/
-	
-	public function actionIndex()
-	{
-		$this->actionAdmin();
-	}
-
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$berita = new Berita('search');
 		$berita->unsetAttributes();  // clear any default values
@@ -110,7 +92,7 @@ class BeritaController extends AdminController
 			$berita->attributes = $_GET['Berita'];
 		}
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'berita' => $berita,
 		));
 	}

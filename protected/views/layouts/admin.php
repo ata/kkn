@@ -14,6 +14,7 @@
 					array('label' => Yii::t('app','Kecamatan'),'url' => array('/admin/kecamatan/index')),
 					array('label' => Yii::t('app','Program KKN'),'url' => array('/admin/programKkn/index')),
 					array('label' => Yii::t('app','Kelompok / Lokasi'),'url' => array('/admin/kelompok/index')),
+					array('label' => Yii::t('app','User'),'url' => array('/admin/user/index')),
 					array('label' => Yii::t('app','Dosen'),'url' => array('/admin/dosen/index')),
 					array('label' => Yii::t('app','Mahasiswa'),'url' => array('/admin/mahasiswa/index')),
 					//array('label'=>Yii::t('app','Statistik'),'url'=>array('/admin/statistik/index')),

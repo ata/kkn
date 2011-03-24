@@ -1,58 +1,47 @@
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'user-form',
-	'enableAjaxValidation'=>false,
+<?php $form = $this->beginWidget('CActiveForm', array(
+	'id' => 'user-form',
+	'enableAjaxValidation' => true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($user); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->labelEx($user,'username'); ?>
+		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($user,'username'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->labelEx($user,'password'); ?>
+		<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($user,'password'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'email'); ?>
+		<?php echo $form->labelEx($user,'email'); ?>
+		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($user,'email'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'nama'); ?>
-		<?php echo $form->textField($model,'nama',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'nama'); ?>
+		<?php echo $form->labelEx($user,'nama'); ?>
+		<?php echo $form->textField($user,'nama',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($user,'nama'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
-		<?php echo $form->error($model,'created'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modified'); ?>
-		<?php echo $form->textField($model,'modified'); ?>
-		<?php echo $form->error($model,'modified'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'role'); ?>
-		<?php echo $form->textField($model,'role',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'role'); ?>
+		<?php echo $form->labelEx($user,'role'); ?>
+		<?php echo $form->textField($user,'role',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($user,'role'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($user->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>
+		<?php echo CHtml::link(Yii::t('app','Batal'),array('index'),array('class' => 'cancel-button'))?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -1,17 +1,23 @@
 <?php
 $this->breadcrumbs=array(
-    'Kabupatens',
-);
-
-$this->menu=array(
-    array('label' => Yii::t('app','Create Kabupaten'), 'url' => array('create')),
-    array('label' => Yii::t('app','Manage Kabupaten'), 'url' => array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kabupaten'),
 );
 ?>
 
-<h2><?php echo Yii::t('app','List of Kabupaten') ?></h2>
-
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'_view', 
+<h2><?php echo Yii::t('app','Kelola Kabupaten') ?></h2>
+<?php echo CHtml::link(Yii::t('app','Tambah Kabupaten'),array('create'),array('class' => 'add-button'))?>
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'kabupaten-grid',
+	'dataProvider'=>$kabupaten->search(),
+	'filter'=>$kabupaten,
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
+		'nama',
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
 )); ?>

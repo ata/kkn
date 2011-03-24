@@ -7,6 +7,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h2><?php echo Yii::t('app','Perbaharui Fakultas') ?></h2>
+<h2><?php echo Yii::t('app','Ubah Fakultas') ?></h2>
 
 <?php echo $this->renderPartial('_form', array('fakultas'=>$fakultas)); ?>

@@ -3,13 +3,17 @@
 class UserController extends AdminController
 {
 	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
+	 * @var CActiveRecord the currently loaded data model instance.
 	 */
-	public function actionView($id)
+	private $_model;
+
+	/**
+	 * Displays a particular model.
+	 */
+	public function actionView()
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'user' => $this->loadModel(),
 		));
 	}
 
@@ -19,115 +23,106 @@ class UserController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+		$user = new User;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($user);
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if (isset($_POST['User'])) {
+			$user->attributes=$_POST['User'];
+			if ($user->save()) {
+				$this->redirect(array('view','id' => $user->id));
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'user' => $user,
 		));
 	}
 
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
+		$user = $this->loadModel();
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($user);
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if (isset($_POST['User'])) {
+			$user->attributes=$_POST['User'];
+			if ($user->save()) {
+				$this->redirect(array('view','id' => $user->id));
+			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'user' => $user,
 		));
 	}
 
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
-	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
+		if (Yii::app()->request->isPostRequest) {
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			$this->loadModel()->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
+			if (!isset($_GET['ajax'])) {
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
+			}
+		} else {
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		}
 	}
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
+		$user = new User('search');
+		$user->unsetAttributes();  // clear any default values
+		if (isset($_GET['User'])) {
+			$user->attributes = $_GET['User'];
+		}
 
-		$this->render('admin',array(
-			'model'=>$model,
+		$this->render('index',array(
+			'user' => $user,
 		));
 	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel($id)
+	public function loadModel()
 	{
-		$model=User::model()->findByPk((int)$id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		if ($this->_model === null) {
+			if (isset($_GET['id'])) {
+				$this->_model = User::model()->findbyPk($_GET['id']);
+			}
+			if ($this->_model === null) {
+				throw new CHttpException(404,'The requested page does not exist.');
+			}
+		}
+		return $this->_model;
 	}
 
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */
-	protected function performAjaxValidation($model)
+	protected function performAjaxValidation($user)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
-		{
-			echo CActiveForm::validate($model);
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') { 
+			echo CActiveForm::validate($user);
 			Yii::app()->end();
 		}
 	}

@@ -1,15 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Dosens'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Dosen', 'url'=>array('index')),
-	array('label'=>'Manage Dosen', 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Dosen') => array('/admin/dosen/index'),
+	Yii::t('app','Tambah'),
 );
 ?>
 
-<h1>Create Dosen</h1>
+<h2><?php echo Yii::t('app','Tambah Dosen') ?></h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('dosen'=>$dosen)); ?>

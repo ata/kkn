@@ -45,6 +45,7 @@ $this->breadcrumbs=array(
 		array(
 			'class' => 'NumberColumn',
 		),
+		'nama',
 		array(
 			'class'=>'CButtonColumn',
 			'viewButtonUrl' => 'array("admin/kecamatan/view","id" => $data->id)',

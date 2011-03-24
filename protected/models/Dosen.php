@@ -60,6 +60,7 @@ class Dosen extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO,'User','userId')
 		);
 	}
 
@@ -107,5 +108,10 @@ class Dosen extends ActiveRecord
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function getNama()
+	{
+		return $this->namaLengkap;
 	}
 }

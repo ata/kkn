@@ -1,17 +1,32 @@
 <?php
 $this->breadcrumbs=array(
-    'Kecamatans',
-);
-
-$this->menu=array(
-    array('label' => Yii::t('app','Create Kecamatan'), 'url' => array('create')),
-    array('label' => Yii::t('app','Manage Kecamatan'), 'url' => array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','Kecamatan'),
 );
 ?>
-
-<h2><?php echo Yii::t('app','List of Kecamatan') ?></h2>
-
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'_view', 
+<h2><?php echo Yii::t('app','Kelola Kecamatan') ?></h2>
+<?php echo CHtml::link(Yii::t('app','Tambah Kecamatan'),array('create'),array('class' => 'add-button'))?>
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'kecamatan-grid',
+	'dataProvider'=>$kecamatan->search(),
+	'filter'=>$kecamatan,
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
+		'nama',
+		array(
+			'name' => 'kabupatenId',
+			'value' => '$data->kabupaten->nama',
+			'filter' => Kecamatan::model()->listData
+		),
+		array(
+			'name'=>'programKknId',
+			'value'=>'$data->programKkn?$data->programKkn->nama:Yii::t("app","Not Set")',
+			'filter'=>ProgramKkn::model()->listData,
+		),
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
 )); ?>

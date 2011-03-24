@@ -1,22 +1,23 @@
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete User', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','User') => array('/admin/user/index'),
+	$user->nama,
 );
 ?>
-
-<h1>View User #<?php echo $model->id; ?></h1>
-
+<h2><?php echo Yii::t('app','Detail User') ?></h2>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$user->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$user->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus berita ini?'),
+		))?>
+</div>
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
+	'data'=>$user,
 	'attributes'=>array(
 		'id',
 		'username',
@@ -28,3 +29,13 @@ $this->menu=array(
 		'role',
 	),
 )); ?>
+<div class="action ar">
+	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$user->id ),
+		array('class' => 'edit-button'))?>
+	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
+		array(
+			'class' => 'delete-button',
+			'submit' => array('delete','id'=>$user->id),
+			'confirm'=> Yii::t('app','Anda yakin akan menghapus berita ini?'),
+		))?>
+</div>

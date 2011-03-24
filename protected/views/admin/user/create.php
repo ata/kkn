@@ -1,15 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','User') => array('/admin/user/index'),
+	Yii::t('app','Tambah'),
 );
 ?>
 
-<h1>Create User</h1>
+<h2><?php echo Yii::t('app','Tambah User') ?></h2>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('user'=>$user)); ?>
