@@ -1,8 +1,12 @@
-<div class="form">
 
+
+<div class="form">
 <?php $form = $this->beginWidget('CActiveForm', array(
 	'id' => 'program-kkn-form',
 	'enableAjaxValidation' => true,
+	'htmlOptions'=>array(
+		'enctype'=>'multipart/form-data',
+	),
 )); ?>
 
 	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
@@ -19,6 +23,16 @@
 		<?php echo $form->labelEx($programKkn,'deskripsi'); ?>
 		<?php echo $form->textArea($programKkn,'deskripsi',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($programKkn,'deskripsi'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($programKkn,'files')?>
+		<div class="upload_field">
+			<?php echo $form->fileField($programKkn,'files[]');?>
+		</div>
+		<div class="upload-button">
+			<?php echo CHtml::button(Yii::t('app','Tambah File'),array('class'=>'clone','name'=>'clone','rel'=>'.upload_field'))?>
+		</div>
 	</div>
 
 	<div class="row buttons">

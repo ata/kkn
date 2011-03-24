@@ -642,6 +642,13 @@ a.update-link,
 	box-shadow:none;
 }
 
+.form .row .upload_field{
+	margin-left:170px;
+}
+
+.form .row .upload-button{
+	margin-left:170px;
+}
 a.update-link{
 	text-decoration:none;
 }

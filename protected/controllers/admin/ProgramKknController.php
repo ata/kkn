@@ -72,16 +72,28 @@ class ProgramKknController extends AdminController
 
 		if (isset($_POST['ProgramKkn'])) {
 			$programKkn->attributes=$_POST['ProgramKkn'];
-			if ($programKkn->save()) {
-				$this->redirect(array('view','id' => $programKkn->id));
+			
+			foreach ($_FILES['ProgramKkn'] as $i=>$data){
+				print_r($i);
 			}
+			/*if ($programKkn->save()) {
+				
+				$this->redirect(array('view','id' => $programKkn->id));
+			}*/
+			
 		}
 
 		$this->render('create',array(
 			'programKkn' => $programKkn,
 		));
 	}
-
+	
+	public function upload()
+	{
+		foreach($_FILES['ProgramKkn'] as $data){
+			print_r($data);
+		}
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

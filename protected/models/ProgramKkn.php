@@ -107,6 +107,21 @@ class ProgramKkn extends ActiveRecord
 		return parent::beforeSave();
 	}
 	
+	protected function afterSave()
+	{
+		if($this->isNewRecord){
+			$this->saveLampiran();
+		}
+		return parent::afterSave();
+	}
+	
+	private function saveLampiran()
+	{
+		foreach($this->files as $file){
+			die (var_dump($file));
+		}
+	}
+	
 	public function addPrioritas(Prioritas $prioritas)
 	{
 	}
