@@ -14,13 +14,20 @@
 		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($user,'username'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($user,'password'); ?>
-		<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($user,'password'); ?>
-	</div>
-
+	
+	<?php if($user->isNewRecord):?>
+		<div class="row">
+			<?php echo $form->labelEx($user,'password'); ?>
+			<?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>255)); ?>
+			<?php echo $form->error($user,'password'); ?>
+		</div>
+		
+		<div class="row">
+			<?php echo $form->labelEx($user,'confirmPassword')?>
+			<?php echo $form->passwordField($user,'confirmPassword')?>
+			<?php echo $form->error($user,'confirmPassword')?>
+		</div>
+	<?php endif?>
 	<div class="row">
 		<?php echo $form->labelEx($user,'email'); ?>
 		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>255)); ?>

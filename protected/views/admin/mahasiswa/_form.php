@@ -48,7 +48,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'jurusanId'); ?>
-		<?php echo $form->dropDownList($mahasiswa, 'jurusanId',Jurusan::model()->listData)?>
+		<?php echo $form->dropDownList($mahasiswa, 'jurusanId',Jurusan::model()->listData,array('empty'=>Yii::t('ap','Select Jurusan')))?>
 		<?php echo $form->error($mahasiswa,'jurusanId'); ?>
 	</div>
 
@@ -85,15 +85,6 @@
 		<?php echo $form->error($mahasiswa,'phone2'); ?>
 	</div>
 	
-	<div class="row">
-		<?php echo $form->labelEx($mahasiswa,'registered'); ?>
-		<?php echo $form->dropDownList($mahasiswa,'registered',array(
-				0 => Yii::t('app','Belum Registrasi'),
-				1 => Yii::t('app','Sudah Registrasi'),
-		)); ?>
-		<?php echo $form->error($mahasiswa,'jenisKelamin'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($mahasiswa->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>
 		<?php echo CHtml::link(Yii::t('app','Batal'),array('index'),array('class' => 'cancel-button'))?>
