@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2011 at 03:51 PM
+-- Generation Time: Mar 25, 2011 at 03:53 PM
 -- Server version: 5.1.55
 -- PHP Version: 5.3.5-0.dotdeb.1
 
@@ -22,80 +22,23 @@ START TRANSACTION;
 -- Database: `kkn_dev`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `berita`
---
-
-DROP TABLE IF EXISTS `berita`;
-CREATE TABLE IF NOT EXISTS `berita` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
-  `body` text,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
 --
 -- Dumping data for table `berita`
 --
 
-INSERT INTO `berita` (`id`, `title`, `body`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `berita` (`id`, `title`, `body`, `created`, `modified`) VALUES
 (2, 'Berita Baru', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. \r\n\r\nStet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consete', '2011-03-18 14:13:07', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dosen`
---
-
-DROP TABLE IF EXISTS `dosen`;
-CREATE TABLE IF NOT EXISTS `dosen` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nip` varchar(255) NOT NULL,
-  `namaLengkap` varchar(255) NOT NULL,
-  `jenisKelamin` varchar(255) NOT NULL,
-  `userId` int(11) DEFAULT NULL,
-  `fakultasId` int(11) DEFAULT NULL,
-  `jurusanId` int(11) DEFAULT NULL,
-  `kontak` varchar(255) DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dosen_userId` (`userId`),
-  KEY `dosen_fakultasId` (`fakultasId`),
-  KEY `dosen_jurusanId` (`jurusanId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `dosen`
 --
 
 
--- --------------------------------------------------------
-
---
--- Table structure for table `fakultas`
---
-
-DROP TABLE IF EXISTS `fakultas`;
-CREATE TABLE IF NOT EXISTS `fakultas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `kode` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
 --
 -- Dumping data for table `fakultas`
 --
 
-INSERT INTO `fakultas` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `fakultas` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
 (1, 'FAKULTAS ILMU PENDIDIKAN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'FAKULTAS PENDIDIKAN ILMU PENGETAHUAN SOSIAL', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'FAKULTAS PENDIDIKAN BAHASA DAN SENI', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -104,57 +47,19 @@ INSERT INTO `fakultas` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VA
 (6, 'FAKULTAS PENDIDIKAN OLAHRAGA DAN KESEHATAN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'FAKULTAS PENDIDIKAN EKONOMI DAN BISNIS', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `jenjang`
---
-
-DROP TABLE IF EXISTS `jenjang`;
-CREATE TABLE IF NOT EXISTS `jenjang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `kode` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
 --
 -- Dumping data for table `jenjang`
 --
 
-INSERT INTO `jenjang` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `jenjang` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
 (1, 'Strata 1', 'S1', '', '2010-08-16 00:03:11', '2010-08-17 07:11:14'),
 (2, 'Strata 2', 'S2', '', '2010-08-16 00:03:28', '2010-08-17 07:11:24');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jurusan`
---
-
-DROP TABLE IF EXISTS `jurusan`;
-CREATE TABLE IF NOT EXISTS `jurusan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `kode` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `jenjangId` int(11) DEFAULT NULL,
-  `fakultasId` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `jurusan_jenjangId` (`jenjangId`),
-  KEY `jurusan_fakultasId` (`fakultasId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `jurusan`
 --
 
-INSERT INTO `jurusan` (`id`, `nama`, `kode`, `email`, `jenjangId`, `fakultasId`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `jurusan` (`id`, `nama`, `kode`, `email`, `jenjangId`, `fakultasId`, `created`, `modified`) VALUES
 (1, 'ADMINISTRASI PENDIDIKAN', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'AKUNTANSI', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'BAHASA DAN SASTRA INDONESIA', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -215,26 +120,11 @@ INSERT INTO `jurusan` (`id`, `nama`, `kode`, `email`, `jenjangId`, `fakultasId`,
 (58, 'TEKNIK TENAGA ELEKTRIK', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (59, 'TEKNOLOGI PENDIDIKAN', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kabupaten`
---
-
-DROP TABLE IF EXISTS `kabupaten`;
-CREATE TABLE IF NOT EXISTS `kabupaten` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
-
 --
 -- Dumping data for table `kabupaten`
 --
 
-INSERT INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
 (3, 'Kota Bandung', '2010-08-15 21:52:21', '0000-00-00 00:00:00'),
 (4, 'Kota Cimahi', '2010-08-15 21:52:45', '0000-00-00 00:00:00'),
 (5, 'Bandung', '2010-08-15 21:53:15', '0000-00-00 00:00:00'),
@@ -252,27 +142,11 @@ INSERT INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
 (17, 'Pandeglang', '2010-08-15 21:58:59', '0000-00-00 00:00:00'),
 (18, 'Serang', '2010-08-31 18:40:37', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kampus`
---
-
-DROP TABLE IF EXISTS `kampus`;
-CREATE TABLE IF NOT EXISTS `kampus` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `alamat` varchar(255) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
 --
 -- Dumping data for table `kampus`
 --
 
-INSERT INTO `kampus` (`id`, `nama`, `alamat`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `kampus` (`id`, `nama`, `alamat`, `created`, `modified`) VALUES
 (1, 'PUSAT', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'CIBIRU', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'SUMEDANG', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -280,30 +154,11 @@ INSERT INTO `kampus` (`id`, `nama`, `alamat`, `created`, `modified`) VALUES
 (5, 'TASIKMALAYA', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'SERANG', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kecamatan`
---
-
-DROP TABLE IF EXISTS `kecamatan`;
-CREATE TABLE IF NOT EXISTS `kecamatan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `kabupatenId` int(11) DEFAULT NULL,
-  `programKknId` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kecamatan_kabupatenId` (`kabupatenId`),
-  KEY `kecamatan_programKknId` (`programKknId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
-
 --
 -- Dumping data for table `kecamatan`
 --
 
-INSERT INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`, `modified`) VALUES
 (2, 'Cikalong Wetan', 6, NULL, '2010-08-15 22:03:12', '2010-09-29 22:37:55'),
 (3, 'Lembang', 6, NULL, '2010-08-15 22:03:59', '0000-00-00 00:00:00'),
 (4, 'Gununghalu', 6, NULL, '2010-08-15 22:05:32', '0000-00-00 00:00:00'),
@@ -323,37 +178,11 @@ INSERT INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`,
 (18, 'Andir', 3, NULL, '2010-08-15 22:38:52', '0000-00-00 00:00:00'),
 (19, 'Sukajadi', 3, NULL, '2010-08-15 22:39:31', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kelompok`
---
-
-DROP TABLE IF EXISTS `kelompok`;
-CREATE TABLE IF NOT EXISTS `kelompok` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lokasi` varchar(255) NOT NULL,
-  `kabupatenId` int(11) DEFAULT NULL,
-  `kecamatanId` int(11) DEFAULT NULL,
-  `programKknId` int(11) DEFAULT NULL,
-  `latitude` double DEFAULT NULL,
-  `longitude` double DEFAULT NULL,
-  `jumlahAnggota` int(11) DEFAULT NULL,
-  `jumlahLakiLaki` int(11) DEFAULT NULL,
-  `jumlahPerempuan` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kelompok_kabupatenId` (`kabupatenId`),
-  KEY `kelompok_kecamatanId` (`kecamatanId`),
-  KEY `kelompok_programKknId` (`programKknId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
-
 --
 -- Dumping data for table `kelompok`
 --
 
-INSERT INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `programKknId`, `latitude`, `longitude`, `jumlahAnggota`, `jumlahLakiLaki`, `jumlahPerempuan`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `programKknId`, `latitude`, `longitude`, `jumlahAnggota`, `jumlahLakiLaki`, `jumlahPerempuan`, `created`, `modified`) VALUES
 (2, 'Jl. Amd No. 33 Ciraja Desa Mandalasari', 6, 2, 5, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:11:05', '2010-09-29 22:37:55'),
 (3, 'Desa Wangunsari Rt 01 Rw. 09', 6, 3, 6, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:12:02', '0000-00-00 00:00:00'),
 (4, 'Kp. Paratag Rt. 02 Rw. 21 Desa Gununghalu', 6, 4, 6, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:14:02', '0000-00-00 00:00:00'),
@@ -368,45 +197,11 @@ INSERT INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `programKk
 (13, 'Kelurahan Sukawarna', 3, 19, 3, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:42:30', '0000-00-00 00:00:00'),
 (14, 'Kelurahan Pasteur', 3, 19, 2, -6.88927628005024, 107.55546587793, 0, 0, 0, '2010-08-31 18:52:39', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `mahasiswa`
---
-
-DROP TABLE IF EXISTS `mahasiswa`;
-CREATE TABLE IF NOT EXISTS `mahasiswa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `namaLengkap` varchar(255) NOT NULL,
-  `nim` varchar(255) NOT NULL,
-  `alamatAsal` varchar(255) DEFAULT NULL,
-  `alamatTinggal` varchar(255) DEFAULT NULL,
-  `fakultasId` int(11) DEFAULT NULL,
-  `jenjangId` int(11) DEFAULT NULL,
-  `jurusanId` int(11) DEFAULT NULL,
-  `kelompokId` int(11) DEFAULT NULL,
-  `jenisKelamin` varchar(255) DEFAULT NULL,
-  `phone1` varchar(255) DEFAULT NULL,
-  `phone2` varchar(255) DEFAULT NULL,
-  `photoPath` varchar(255) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `registered` tinyint(1) DEFAULT NULL,
-  `userId` int(11) DEFAULT NULL,
-  `kampusId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `mahasiswa_jenjangId` (`jenjangId`),
-  KEY `mahasiswa_fakultasId` (`fakultasId`),
-  KEY `mahasiswa_jurusanId` (`jurusanId`),
-  KEY `mahasiswa_kelompokId` (`kelompokId`),
-  KEY `mahasiswa_kampusId` (`kampusId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8192 ;
-
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (1, 'REZA FAHDI FAISAL', '0704241', NULL, NULL, 1, 1, 1, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2, 'SHINTA MARGARETA', '0705056', NULL, NULL, 1, 1, 1, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3, 'HARRY SEPTIANSYAH', '0800042', NULL, NULL, 1, 1, 1, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -727,7 +522,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (318, 'ABY DZAR', '0806922', NULL, NULL, 1, 1, 59, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (319, 'NIDYA NARULITA', '0806923', NULL, NULL, 1, 1, 59, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (320, 'NENENG NURAENI R', '0806925', NULL, NULL, 1, 1, 59, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (321, 'DALLY ASH SHIDIEQY', '0806926', NULL, NULL, 1, 1, 59, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (322, 'APRIYANTI', '0806927', NULL, NULL, 1, 1, 59, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (323, 'RIZAL AZIZ MUSLIM', '0806928', NULL, NULL, 1, 1, 59, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -1049,7 +844,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (639, 'RIKA WIRASTI', '0902859', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (640, 'LAELA BAROKAH', '0902863', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (641, 'BIBIANE NAFILAH', '0902866', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (642, 'YANI NURAENI', '0902867', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (643, 'MERI HERMAWATi', '0902873', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (644, 'VINA DWI PRATIWI', '0902874', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -1369,7 +1164,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (958, 'MAYA YULINDA', '0802653', NULL, NULL, 2, 1, 29, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (959, 'JOSEP PURWO NUGROHO', '0802662', NULL, NULL, 2, 1, 29, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (960, 'NANI SURYANI', '0802677', NULL, NULL, 2, 1, 29, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (961, 'RIDHAN SUTRIS PURWANDARA', '0802750', NULL, NULL, 2, 1, 29, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (962, 'ADE HERIYANTO', '0802784', NULL, NULL, 2, 1, 29, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (963, 'WIDYAN LUTFIL', '0802820', NULL, NULL, 2, 1, 29, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -1687,7 +1482,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (1275, 'TIA MARTIANA', '0800773', NULL, NULL, 3, 1, 4, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1276, 'SANI SATYA PRATIWI', '0801270', NULL, NULL, 3, 1, 4, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1277, 'MUFTI RIZKY OKTAVIANI', '0801271', NULL, NULL, 3, 1, 4, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (1278, 'SEPTIANI RAHMAWATI', '0801272', NULL, NULL, 3, 1, 4, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1279, 'DIMAS SETIAWAN', '0801274', NULL, NULL, 3, 1, 4, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1280, 'RENDY DYONATA', '0801275', NULL, NULL, 3, 1, 4, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -2005,7 +1800,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (1592, 'RIZKY NAWANG D', '0807233', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1593, 'VIRLY SHIVA LAVIANI', '0807234', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1594, 'SYIFA FARIED R', '0807235', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (1595, 'SULASTRI', '0807237', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1596, 'NURUL M SISILIA', '0807238', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1597, 'RIZQI NUR AMALLIAH', '0807240', NULL, NULL, 3, 1, 20, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -2323,7 +2118,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (1909, 'GISTI SAADIAH', '0807428', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1910, 'EKA FITRIA M', '0807429', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1911, 'MAGDALENA L MANUAMA', '0807430', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (1912, 'MEWASARI', '0808342', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1913, 'NAZLIYA IRSANTI', '0808491', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (1914, 'MERIDIANA DWI SAMALA', '0808719', NULL, NULL, 3, 1, 24, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -2641,7 +2436,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (2226, 'NURUL FAUZIAH', '0806477', NULL, NULL, 4, 1, 6, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2227, 'RIKI AHMAD TAUFIK', '0806560', NULL, NULL, 4, 1, 6, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2228, 'INDAH OKTAVIANI', '0807626', NULL, NULL, 4, 1, 6, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (2229, 'DHORA DWIFIANTI', '0807627', NULL, NULL, 4, 1, 6, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2230, 'SENNY YUSTITIA', '0807628', NULL, NULL, 4, 1, 6, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2231, 'HASBI YUSUF', '0807629', NULL, NULL, 4, 1, 6, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -2959,7 +2754,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (2543, 'ASTRI AGUSTIA', '0801306', NULL, NULL, 4, 1, 28, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2544, 'LIA SRI ANGGRAENI', '0801307', NULL, NULL, 4, 1, 28, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2545, 'ALIF LUKMAN HIDAYAT', '0801308', NULL, NULL, 4, 1, 28, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (2546, 'FEBRIAN ANDI MARTA', '0801309', NULL, NULL, 4, 1, 28, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2547, 'ILMI RIZKIA', '0802500', NULL, NULL, 4, 1, 28, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2548, 'WIDHI NOOR DIANSYAH', '0802501', NULL, NULL, 4, 1, 28, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -3277,7 +3072,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (2860, 'GUSTI CHYSTA SARAH I', '0809149', NULL, NULL, 5, 1, 52, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2861, 'DEVI FITRIANIDIA', '0809150', NULL, NULL, 5, 1, 52, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2862, 'MARIO SETYAHADI S', '0809151', NULL, NULL, 5, 1, 52, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (2863, 'MUTIARA MASYITHAH', '0809152', NULL, NULL, 5, 1, 52, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2864, 'WULAN TRESNA MUKTI', '0809153', NULL, NULL, 5, 1, 52, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (2865, 'SYIFA NURUL H', '0809154', NULL, NULL, 5, 1, 52, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -3596,7 +3391,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (3178, 'SHOLIHAT DEVANA', '0807887', NULL, NULL, 5, 1, 50, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3179, 'MELLA H S RIDAM', '0808605', NULL, NULL, 5, 1, 50, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3180, 'MARIA DAHLIANA S', '0808984', NULL, NULL, 5, 1, 50, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (3181, 'LILIEK NURMALIKIYAH', '0809186', NULL, NULL, 5, 1, 50, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3182, 'WENNY JUWITA BERTI', '0809613', NULL, NULL, 5, 1, 50, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3183, 'RAMDAN TOPIK', '0801374', NULL, NULL, 5, 1, 58, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -3913,7 +3708,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (3494, 'SUKMAYADI', '0807707', NULL, NULL, 6, 1, 34, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3495, 'YOGI SUWARDI', '0807708', NULL, NULL, 6, 1, 34, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3496, 'DENI PERMANA', '0807709', NULL, NULL, 6, 1, 34, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (3497, 'HERI RISWANTO', '0807710', NULL, NULL, 6, 1, 34, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3498, 'PUJI RAHMAWATI', '0807712', NULL, NULL, 6, 1, 34, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3499, 'RICKY ZAENAL ARIFIN', '0807713', NULL, NULL, 6, 1, 34, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -4231,7 +4026,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (3811, 'AZIZ MUHAMMAD', '0800182', NULL, NULL, 7, 1, 42, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3812, 'GANJAR SEPTEHANDRIKA ANDRIAWAN', '0800205', NULL, NULL, 7, 1, 42, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3813, 'RISZA DWI ANGGRAENI', '0800262', NULL, NULL, 7, 1, 42, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (3814, 'NOVI EKA TRISNOWATI', '0800384', NULL, NULL, 7, 1, 42, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3815, 'MUSTIKA AYUDINANTI', '0800425', NULL, NULL, 7, 1, 42, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (3816, 'FITRI WATI JATNIKA', '0800513', NULL, NULL, 7, 1, 42, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -4549,7 +4344,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (4128, 'AGUNG EKO SUPRIYONO', '0808429', NULL, NULL, 7, 1, 2, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (4129, 'DERIL FESTINOVAL', '0808430', NULL, NULL, 7, 1, 2, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (4130, 'IRA KARTIKA SARI', '0808431', NULL, NULL, 7, 1, 2, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (4131, 'HETTY ARITONANG', '0808432', NULL, NULL, 7, 1, 2, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (4132, 'ASEP KERISNANDI', '0808945', NULL, NULL, 7, 1, 2, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
 (4133, 'AGUS FIRMANSYAH', '0809296', NULL, NULL, 7, 1, 2, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -4869,7 +4664,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (4447, 'MAYA SUKMAYANTI', '1008526', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2),
 (4448, 'TINI HARTINI', '1008528', NULL, NULL, 1, 1, 30, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2),
 (4449, 'RADEN ILAR GUMILAR', '1008541', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (4450, 'TUTI NURLATIPAH', '1008556', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2),
 (4451, 'ROSMAWATI', '1008557', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2),
 (4452, 'ERNI NURWENDAH', '1008558', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 2),
@@ -5189,7 +4984,7 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (4766, 'DEA RATNA ANGGRAINI', '0804711', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4),
 (4767, 'NANI SURYANI', '0805080', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4),
 (4768, 'LILIS HANDAYANI', '0805081', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (4769, 'ERI NURAENI', '0805082', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4),
 (4770, 'YUYU YULIFAH', '0805083', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4),
 (4771, 'WIWIN WINANGSIH', '0805088', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 4),
@@ -5509,9 +5304,9 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (5085, 'AFUD SYAIFUDDIN', '0805178', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
 (5086, 'VEPI SOPIA', '0805179', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
 (5087, 'YETI', '0805180', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
-(5088, 'MIMIH NURHAIDAH', '0805181', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
-(5089, 'SURYATIN', '0805182', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+(5088, 'MIMIH NURHAIDAH', '0805181', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5);
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+(5089, 'SURYATIN', '0805182', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
 (5090, 'IDA NIA KURNIASIH', '0805183', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
 (5091, 'CUCU SUHARTINI', '0805184', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
 (5092, 'ETI RUSMIATI', '0805185', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 5),
@@ -5831,9 +5626,9 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (5406, 'FIKA DESIYAWATI', '0802082', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5407, 'RATNA PRTIDINA', '0802083', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5408, 'TSANIATRI NOVIYANTI', '0802084', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
-(5409, 'INA ROSTINA', '0802085', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
-(5410, 'DEWI FAUJIAH', '0802086', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6);
-INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+(5409, 'INA ROSTINA', '0802085', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6);
+INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
+(5410, 'DEWI FAUJIAH', '0802086', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5411, 'WILDA MAYASARI', '0802087', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5412, 'NURUL IMAN', '0802088', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5413, 'ERNA ENZELINA', '0802089', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
@@ -6020,51 +5815,16 @@ INSERT INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTingga
 (5594, 'ANAH', '1008799', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5595, 'SALAHUDIN ALAYUBI', '1008808', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `prioritas`
---
-
-DROP TABLE IF EXISTS `prioritas`;
-CREATE TABLE IF NOT EXISTS `prioritas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `programKknId` int(11) DEFAULT NULL,
-  `jurusanId` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `level` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `prioritas_programKknId` (`programKknId`),
-  KEY `prioritas_jurusanId` (`jurusanId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
 --
 -- Dumping data for table `prioritas`
 --
 
 
--- --------------------------------------------------------
-
---
--- Table structure for table `program_kkn`
---
-
-DROP TABLE IF EXISTS `program_kkn`;
-CREATE TABLE IF NOT EXISTS `program_kkn` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `deskripsi` text,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
 --
 -- Dumping data for table `program_kkn`
 --
 
-INSERT INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modified`) VALUES
+INSERT IGNORE INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modified`) VALUES
 (2, 'POSDAYA', 'nanti di isi', '2010-08-15 21:47:58', '2010-08-15 22:29:32'),
 (3, 'PAUD', 'nanti di isi', '2010-08-15 21:48:31', '0000-00-00 00:00:00'),
 (4, 'MANAJEMEN BERBASIS SEKOLAH (MBS)', 'nanti di isi', '2010-08-15 21:49:08', '0000-00-00 00:00:00'),
@@ -6073,141 +5833,21 @@ INSERT INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modified`) VAL
 (7, 'SENI BUDAYA', 'nanti di isi', '2010-08-15 21:51:04', '0000-00-00 00:00:00'),
 (8, 'TEKA', 'efghjui9o', '2010-10-11 19:58:19', '0000-00-00 00:00:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `program_kkn_lampiran`
---
-
-DROP TABLE IF EXISTS `program_kkn_lampiran`;
-CREATE TABLE IF NOT EXISTS `program_kkn_lampiran` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) DEFAULT NULL,
-  `path` varchar(255) DEFAULT NULL,
-  `programKknId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `program_kkn_lampiran_programKknId` (`programKknId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
 --
 -- Dumping data for table `program_kkn_lampiran`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `program_studi`
---
-
-DROP TABLE IF EXISTS `program_studi`;
-CREATE TABLE IF NOT EXISTS `program_studi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `kode` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `jenjangId` int(11) DEFAULT NULL,
-  `fakultasId` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `program_studi_jenjangId` (`jenjangId`),
-  KEY `program_studi_fakultasId` (`fakultasId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `program_studi`
 --
 
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`, `role`) VALUES
+INSERT IGNORE INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`, `role`) VALUES
 (1, 'admin', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Administrator', '2011-03-25 10:34:32', '2011-03-12 10:34:35', 'admin');
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `dosen`
---
-ALTER TABLE `dosen`
-  ADD CONSTRAINT `dosen_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`),
-  ADD CONSTRAINT `dosen_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
-  ADD CONSTRAINT `dosen_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `jurusan`
---
-ALTER TABLE `jurusan`
-  ADD CONSTRAINT `jurusan_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
-  ADD CONSTRAINT `jurusan_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`);
-
---
--- Constraints for table `kecamatan`
---
-ALTER TABLE `kecamatan`
-  ADD CONSTRAINT `kecamatan_kabupatenId` FOREIGN KEY (`kabupatenId`) REFERENCES `kabupaten` (`id`),
-  ADD CONSTRAINT `kecamatan_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
-
---
--- Constraints for table `kelompok`
---
-ALTER TABLE `kelompok`
-  ADD CONSTRAINT `kelompok_kabupatenId` FOREIGN KEY (`kabupatenId`) REFERENCES `kabupaten` (`id`),
-  ADD CONSTRAINT `kelompok_kecamatanId` FOREIGN KEY (`kecamatanId`) REFERENCES `kecamatan` (`id`),
-  ADD CONSTRAINT `kelompok_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
-
---
--- Constraints for table `mahasiswa`
---
-ALTER TABLE `mahasiswa`
-  ADD CONSTRAINT `mahasiswa_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
-  ADD CONSTRAINT `mahasiswa_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`),
-  ADD CONSTRAINT `mahasiswa_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`),
-  ADD CONSTRAINT `mahasiswa_kampusId` FOREIGN KEY (`kampusId`) REFERENCES `kampus` (`id`),
-  ADD CONSTRAINT `mahasiswa_kelompokId` FOREIGN KEY (`kelompokId`) REFERENCES `kelompok` (`id`);
-
---
--- Constraints for table `prioritas`
---
-ALTER TABLE `prioritas`
-  ADD CONSTRAINT `prioritas_jurusanId` FOREIGN KEY (`jurusanId`) REFERENCES `jurusan` (`id`),
-  ADD CONSTRAINT `prioritas_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
-
---
--- Constraints for table `program_kkn_lampiran`
---
-ALTER TABLE `program_kkn_lampiran`
-  ADD CONSTRAINT `program_kkn_lampiran_programKknId` FOREIGN KEY (`programKknId`) REFERENCES `program_kkn` (`id`);
-
---
--- Constraints for table `program_studi`
---
-ALTER TABLE `program_studi`
-  ADD CONSTRAINT `program_studi_fakultasId` FOREIGN KEY (`fakultasId`) REFERENCES `fakultas` (`id`),
-  ADD CONSTRAINT `program_studi_jenjangId` FOREIGN KEY (`jenjangId`) REFERENCES `jenjang` (`id`);
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;

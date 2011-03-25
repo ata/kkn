@@ -15,7 +15,7 @@ class m110321_035537_create_table_dosen extends CDbMigration
 			'kontak' => 'string',
 			'created' => 'datetime',
 			'modified' => 'datetime',
-		));
+		),'engine=innoDB');
 		$this->addForeignKey('dosen_userId','dosen','userId','user','id');
 		$this->addForeignKey('dosen_fakultasId','dosen','fakultasId','fakultas','id');
 		$this->addForeignKey('dosen_jurusanId','dosen','jurusanId','jurusan','id');
