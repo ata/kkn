@@ -115,7 +115,7 @@ class Kelompok extends ActiveRecord
     
     protected function beforeSave()
     {
-        //$this->lokasi = ucwords(strtolower($this->lokasi));
+        $this->lokasi = strtoupper($this->lokasi);
         return parent::beforeSave();
     }
     
