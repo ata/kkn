@@ -8,4 +8,4 @@ $this->breadcrumbs=array(
 
 <h2><?php echo Yii::t('app','Tambah Dosen') ?></h2>
 
-<?php echo $this->renderPartial('_form', array('dosen'=>$dosen)); ?>
+<?php echo $this->renderPartial('_form', array('user'=>$user,'dosen'=>$dosen)); ?>

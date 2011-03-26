@@ -1,3 +1,11 @@
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/reCopy.js')?>
+<?php Yii::app()->clientScript->registerScript('upload-js','
+	var linkHapus = "'."<a onclick='$(this).parent().slideUp(function(){ $(this).remove() }); return false' class='remove' href='#'>remove</a>".'";
+
+	$(".clone").relCopy({ append: linkHapus}); 
+')
+?>
+
 <?php
 $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),

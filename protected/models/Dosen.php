@@ -21,6 +21,9 @@ class Dosen extends ActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * @return Dosen the static model class
 	 */
+	const LAKI = 'LAKI-LAKI';
+	const PEREMPUAN = 'PEREMPUAN';
+	
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -60,7 +63,9 @@ class Dosen extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO,'User','userId')
+			'user' => array(self::BELONGS_TO,'User','userId'),
+			'jurusan' => array(self::BELONGS_TO,'Jurusan','jurusanId'),
+			'fakultas' => array(self::BELONGS_TO,'Fakultas','fakultasId'),
 		);
 	}
 
@@ -110,8 +115,39 @@ class Dosen extends ActiveRecord
 		));
 	}
 	
+	protected function beforeSave()
+	{
+		$this->namaLengkap = ucwords(strtolower($this->namaLengkap));
+		return parent::beforeSave();
+	}
+	
+	protected function afterSave()
+	{
+		$this->saveUserDosen();
+		return parent::afterSave();
+	}
+	
 	public function getNama()
 	{
 		return $this->namaLengkap;
 	}
+	
+	public function getJurusan()
+	{
+		return $this->jurusan->nama;
+	}
+	
+	public function getFakultas()
+	{
+		return $this->fakultas->nama;
+	}
+	
+	public function saveUserDosen()
+	{
+		$this->user->role = User::ROLE_DOSEN;
+		$this->user->nama = $this->namaLengkap;
+		$this->user->save();
+	}
+	
+	
 }

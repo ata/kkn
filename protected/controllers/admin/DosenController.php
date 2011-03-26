@@ -6,7 +6,22 @@ class DosenController extends AdminController
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-
+	
+	public function accessRules()
+	{
+		return array(
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions' => array(
+					'admin','delete','index','view','create','update',
+					'dependentSelectJurusan',
+				),
+				'users' => array('admin'),
+			),
+			array('deny',  // deny all users
+				'users' => array('*'),
+			),
+		);
+	}
 	/**
 	 * Displays a particular model.
 	 */
@@ -23,23 +38,40 @@ class DosenController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$dosen = new Dosen;
-
+		//$dosen = new Dosen;
+		$user = new User;
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($dosen);
-
-		if (isset($_POST['Dosen'])) {
-			$dosen->attributes=$_POST['Dosen'];
-			if ($dosen->save()) {
-				$this->redirect(array('view','id' => $dosen->id));
+		$dosen = new Dosen;
+		//$this->performAjaxValidation($user);
+		$this->performAjaxValidation(array($dosen,$user));
+		if (isset($_POST['User'])&&isset($_POST['Dosen'])) {
+			//$user->role = User::ROLE_DOSEN;
+			$user->attributes=$_POST['User'];
+			if ($user->save()) {
+				$dosen->userId = $user->id;
+				$dosen->attributes = $_POST['Dosen'];
+				if($dosen->save()){
+					$this->redirect(array('view','id'=>$dosen->id));
+				}
+				
 			}
+			
 		}
 
 		$this->render('create',array(
-			'dosen' => $dosen,
+			'user' => $user,
+			'dosen'=> $dosen, 
 		));
 	}
-
+	
+	public function actionDependentSelectJurusan()
+	{
+		echo CHtml::activeDropDownList(Dosen::model(),'jurusanId', 
+			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Jurusan'))
+		);
+		Yii::app()->end();
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

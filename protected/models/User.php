@@ -18,8 +18,10 @@ class User extends ActiveRecord
 	const ROLE_DOSEN = 'DOSEN';
 	const ROLE_MAHASISWA = 'MAHASISWA';
 	
+	
 	protected $_displayField = 'username';
 	public $requestNewPassword = false;
+	public $confirmPassword;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return User the static model class
@@ -46,10 +48,12 @@ class User extends ActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, email', 'required'),
-			array('username, password, email, nama', 'length', 'max'=>255),
+			array('username, password, email, nama,role', 'length', 'max'=>255),
+			array('confirmPassword','compare','compareAttribute'=>'password'),
+			array('confirmPassword','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, email, nama, created, modified', 'safe', 'on'=>'search'),
+			array('id, username, password, email, nama, role, created, modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +66,7 @@ class User extends ActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'mahasiswa' => array(self::HAS_ONE, 'Mahasiswa','userId'),
+			'dosen' => array(self::HAS_ONE,'DOsen','userId'),
 		);
 	}
 
@@ -80,7 +85,15 @@ class User extends ActiveRecord
 			'modified' => Yii::t('app','Modified'),
 		);
 	}
-
+	
+	protected function afterValidate()
+	{
+		if(!$this->isNewRecord && !$this->requestNewPassword){
+			$this->clearErrors('password');
+			$this->clearErrors('confirmPassword');
+		}
+		
+	}
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.

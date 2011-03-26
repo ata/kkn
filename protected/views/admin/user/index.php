@@ -21,6 +21,14 @@ $this->breadcrumbs=array(
 		'role',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{resetPassword}{update}{view}{delete}',
+			'buttons'=>array(
+				'resetPassword'=>array(
+					'label'=>Yii::t('app','Reset Password'),
+					'imageUrl'=>Yii::app()->request->baseUrl.'/images/key.png',
+					'url'=>'Yii::app()->createUrl("/admin/user/resetPassword",array("id"=>$data->id))'
+				),
+			),
 		),
 	),
 )); ?>
