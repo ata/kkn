@@ -164,7 +164,7 @@ class Mahasiswa extends ActiveRecord
 	
 	protected function beforeSave()
 	{
-		$this->namaLengkap = ucwords(strtolower($this->namaLengkap));
+		$this->namaLengkap = strtoupper($this->namaLengkap);
 		$this->saveUser();
 		return parent::beforeSave();
 	}
