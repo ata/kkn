@@ -369,6 +369,11 @@ textarea, input{
     width:150px;
 }
 
+#fp-login-form form input:focus,
+#register-form form input:focus{
+    border:1px solid #ed1c24;
+}
+
 #fp-login-form form label{
     margin-right:10px;
 }
@@ -433,9 +438,9 @@ textarea, input{
 }
 
 .lampiran .lampiran-ui{
-	background-color:#f2f2f2;
-	border-bottom:1px solid #e5eaf1;
-	margin-left:170px;
+    background-color:#f2f2f2;
+    border-bottom:1px solid #e5eaf1;
+    margin-left:170px;
 }
 
 
@@ -562,13 +567,21 @@ textarea, input{
 
 .form .row input,
 .form .type-text input{
-  margin-top:7px;
-  width:230px;
-  padding:5px;
+    margin-top:7px;
+    width:230px;
+    padding:5px;
     -moz-box-shadow:inset 1px 1px 2px #CCCCCC;
     -webkit-box-shadow:inset 1px 1px 2px #CCCCCC;
     box-shadow:inset 1px 1px 2px #CCCCCC;
     border:1px solid #CCCCCC;
+}
+
+.form .row input:focus,
+.form .type-text input:focus{
+    border:1px solid #B7B7B7;
+    -moz-box-shadow:inset 1px 1px 2px #B7B7B7;
+    -webkit-box-shadow:inset 1px 1px 2px #B7B7B7;
+    box-shadow:inset 1px 1px 2px #B7B7B7;
 }
 
 .form .row select{
@@ -604,6 +617,17 @@ textarea, input{
     border:1px solid #CCCCCC;
 }
 
+.form .row textarea:focus{
+    border:1px solid #B7B7B7;
+    -moz-box-shadow:inset 1px 1px 2px #B7B7B7;
+    -webkit-box-shadow:inset 1px 1px 2px #B7B7B7;
+    box-shadow:inset 1px 1px 2px #B7B7B7;
+}
+
+.form .error textarea{
+    margin-left:150px;
+}
+
 .form .row textarea#ContactForm_body{
     margin-top:7px;
     width:230px;
@@ -637,23 +661,48 @@ textarea, input{
 #register-form form input.button,
 a.update-link,
 .pilih-link a{
-  border:none;
-  width:auto;
-  background:#BA6410;
-  background:-moz-linear-gradient(#E7B045, #BA6410);
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#E7B045), to(#BA6410));
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  border-radius:5px;
-  behavior: url(border-radius.htc);
-  padding:5px 15px;
-  color:#fff;
-  text-shadow:1px 1px 0 #BA6410;
-  font-weight:bold;
+    border:none;
+    width:auto;
+    background:#BA6410;
+    background:-moz-linear-gradient(#E7B045, #BA6410);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#E7B045), to(#BA6410));
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    behavior: url(border-radius.htc);
+    padding:5px 15px;
+    color:#fff;
+    text-shadow:1px 1px 0 #BA6410;
+    font-weight:bold;
     cursor:pointer;
     -moz-box-shadow:none;
     -webkit-box-shadow:none;
     box-shadow:none;
+}
+
+.form .buttons input:hover,
+#fp-login-form form input.button:hover,
+#register-form form input.button:hover,
+a.update-link:hover,
+.pilih-link a:hover{
+    -moz-box-shadow:0 0 5px #0076a3;
+}
+
+.form .buttons input:active,
+#fp-login-form form input.button:active,
+#register-form form input.button:active,
+a.update-link:active,
+.pilih-link a:active{
+    -moz-box-shadow:inset 0 0 5px #7C3403;
+    -webkit-box-shadow:inset 0 0 5px #7C3403;
+    box-shadow:inset 0 0 5px #7C3403;
+    border:none;
+}
+
+.form .buttons input:focus,
+#fp-login-form form input.button:focus,
+#register-form form input.button:focus{
+    border:none;
 }
 
 #fp-login-form form input.button,
@@ -669,11 +718,11 @@ a.update-link,
 }
 
 .form .row .upload_field{
-	margin-left:170px;
+    margin-left:170px;
 }
 
 .form .row .upload-button{
-	margin-left:170px;
+    margin-left:170px;
 }
 a.update-link{
     text-decoration:none;
