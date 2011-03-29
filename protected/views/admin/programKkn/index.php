@@ -17,6 +17,10 @@ $this->breadcrumbs=array(
 		'nama',
 		'deskripsi',
 		array(
+			'header'=>Yii::t('app','Lampiran'),
+			'name'=>'displayLampiran',
+		),
+		array(
 			'class'=>'CButtonColumn',
 		),
 	),

@@ -28,7 +28,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($programKkn,'files')?>
 		<div class="upload_field">
-			<?php echo $form->fileField($programKkn,'files[]');?>
+			<?php echo $form->fileField($programKkn,'files[]',array('class'=>'formUpload'));?>
 		</div>
 		<div class="upload-button">
 			<?php echo CHtml::button(Yii::t('app','Tambah File'),array('class'=>'clone','name'=>'clone','rel'=>'.upload_field'))?>
