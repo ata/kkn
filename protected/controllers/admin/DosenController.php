@@ -42,10 +42,8 @@ class DosenController extends AdminController
 		$user = new User;
 		// Uncomment the following line if AJAX validation is needed
 		$dosen = new Dosen;
-		//$this->performAjaxValidation($user);
 		$this->performAjaxValidation(array($dosen,$user));
 		if (isset($_POST['User'])&&isset($_POST['Dosen'])) {
-			//$user->role = User::ROLE_DOSEN;
 			$user->attributes=$_POST['User'];
 			if ($user->save()) {
 				$dosen->userId = $user->id;

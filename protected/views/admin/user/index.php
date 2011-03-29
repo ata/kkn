@@ -21,7 +21,7 @@ $this->breadcrumbs=array(
 		'role',
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{resetPassword}{update}{view}{delete}',
+			'template'=>'{resetPassword} {update} {view} {delete}',
 			'buttons'=>array(
 				'resetPassword'=>array(
 					'label'=>Yii::t('app','Reset Password'),
@@ -29,6 +29,7 @@ $this->breadcrumbs=array(
 					'url'=>'Yii::app()->createUrl("/admin/user/resetPassword",array("id"=>$data->id))'
 				),
 			),
+			'htmlOptions' => array('class'=>'button-column','style' => 'width:75px'),
 		),
 	),
 )); ?>

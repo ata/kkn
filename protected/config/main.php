@@ -39,8 +39,8 @@ return array(
 				'admin/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
 				'admin/<controller:\w+>/<id:\d+>/<action:\w+>'=>'admin/<controller>/<action>',
 				'admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
-				
-				
+
+
 				/*
 				'dashboard/profile' => 'dashboard/mahasiswa/view',
 				'dashboard/kelompok' => 'dashboard/kelompok/index',
@@ -48,9 +48,9 @@ return array(
 				'dashboard' => 'dashboard/kelompok/view',
 				'dashboard/index' => 'dashboard/kelompok/view',
 				'dashboard/kelompok/map' => 'kelompok/map',
-				
+
 				'register' => 'dashboard/mahasiswa/register',
-				
+
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<id:\d+>/<action:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
@@ -64,14 +64,14 @@ return array(
 			'password' => 'kkn',
 			'charset' => 'utf8',
 		),
-		
+
 		'authManager'=>array(
 			'class'=>'DbAuthManager',
 			'connectionID'=>'db',
 			'autoCreate' => true,
 			'defaultRoles'=>array('authenticated', 'guest'),
 		),
-		
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -90,7 +90,7 @@ return array(
 					//'showInFireBug' => true,
 				),
 				*/
-				
+
 			),
 		),
 		'widgetFactory'=>array(
@@ -111,14 +111,14 @@ return array(
 					'cssFile' => false,
 				),
 				'CActiveForm' => array(
-					
+
 					'clientOptions' => array(
 						'validateOnSubmit' => true,
 						'validateOnChange' => false,
 					),
-					
+
 				),
-				
+
 			),
 		),
 		'mailer' => array(
@@ -132,7 +132,7 @@ return array(
 			'FromName' => 'LPPM'
 		),
 	),
-	
+
 	'modules'=>array(
 		'gii'=>array(
 			'class'=>'ext.giix.GiiModule',
@@ -148,5 +148,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'ata@navisa.web.id',
+		'webroot' => dirname(dirname(dirname(__FILE__))),
 	),
 );

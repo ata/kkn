@@ -1,7 +1,15 @@
+<?php
+$this->breadcrumbs=array(
+	Yii::t('app','Admin') => array('/admin/default/index'),
+	Yii::t('app','User') => array('/admin/user/index'),
+	$user->nama,
+	Yii::t('app','Ubah Sandi'),
+);
+?>
 <div class="form">
 	<?php $form = $this->beginWidget('CActiveForm', array(
 		'id' => 'user-form',
-		//'enableAjaxValidation' => true,
+		'enableAjaxValidation' => true,
 	)); ?>
 	
 	<?php echo $form->errorSummary($user); ?>

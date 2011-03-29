@@ -48,9 +48,10 @@ class User extends ActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, email', 'required'),
-			array('username, password, email, nama,role', 'length', 'max'=>255),
+			array('username, email, nama,role', 'length', 'max'=>255),
 			array('confirmPassword','compare','compareAttribute'=>'password'),
 			array('confirmPassword','safe'),
+			array('password', 'length', 'min' => 6),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, username, password, email, nama, role, created, modified', 'safe', 'on'=>'search'),

@@ -7,6 +7,8 @@
  * @property integer $id
  * @property string $nama
  * @property string $path
+ * @property string $mimetype
+ * @property double $size
  * @property integer $programKknId
  *
  * The followings are the available model relations:
@@ -40,7 +42,9 @@ class ProgramKknLampiran extends ActiveRecord
 		// will receive user inputs.
 		return array(
 			array('programKknId', 'numerical', 'integerOnly'=>true),
-			array('nama, path', 'length', 'max'=>255),
+			array('size','numerical'),
+			array('nama, path, mimetype', 'length', 'max'=>255),
+			array('created, modified','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, nama, path, programKknId', 'safe', 'on'=>'search'),
@@ -92,7 +96,7 @@ class ProgramKknLampiran extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	public function getCountLampiran($programKknId)
 	{
 		return $this->count('programKknId = :id',array('id'=>$programKknId));

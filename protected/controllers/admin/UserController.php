@@ -64,7 +64,6 @@ class UserController extends AdminController
 	public function actionUpdate()
 	{
 		$user = $this->loadModel();
-
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($user);
 
@@ -118,6 +117,7 @@ class UserController extends AdminController
 	public function actionResetPassword()
 	{
 		$user = $this->loadModel();
+		$this->performAjaxValidation($user);
 		if(isset($_POST['User'])){
 			$user->attributes = $_POST['User'];
 			$user->requestNewPassword = true;

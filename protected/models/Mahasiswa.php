@@ -14,6 +14,11 @@
  * @property string $kelompokId
  * @property string $jenjangId
  * @property integer $jenisKelamin
+ * @property string $phone1
+ * @property string $phone2
+ * @property string $photoPath
+ * @property boolean $registered
+ * @property integer userId
  * @property string $created
  * @property string $modified
  */
