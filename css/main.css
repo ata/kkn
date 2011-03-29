@@ -424,6 +424,11 @@ textarea, input{
 	color:#FFF;
 }
 
+.lampiran .lampiran-ui{
+	background-color:#f2f2f2;
+	border-bottom:1px solid #e5eaf1;
+	margin-left:170px;
+}
 
 
 /**************************************/

@@ -13,7 +13,8 @@ class ProgramKknController extends AdminController
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions' => array(
 					'admin','delete','index','view','create','update',
-					'addPrioritas','dependentSelectJurusan','deletePrioritas'
+					'addPrioritas','dependentSelectJurusan','deletePrioritas',
+					'deleteFile','downloadFile',
 				),
 				'users' => array('admin'),
 			),
@@ -73,13 +74,19 @@ class ProgramKknController extends AdminController
 		if (isset($_POST['ProgramKkn'])) {
 			$programKkn->attributes=$_POST['ProgramKkn'];
 			
-			foreach ($_FILES['ProgramKkn'] as $i=>$data){
-				print_r($i);
-			}
-			/*if ($programKkn->save()) {
-				
+			if ($programKkn->save()) {
 				$this->redirect(array('view','id' => $programKkn->id));
+			}
+			
+			
+			/*$lampiran = CUploadedFile::getInstancesByName($programKkn->files);
+			for($i=0,$size = sizeof($lampiran);$i<$size;$i++){
+				$programKknLampiran = new ProgramKknLampiran;
+				$programKknLampiran->nama = $lampiran[$i]->name;
+				$programKknLampiran->save(false);
 			}*/
+			
+			
 			
 		}
 
@@ -88,12 +95,7 @@ class ProgramKknController extends AdminController
 		));
 	}
 	
-	public function upload()
-	{
-		foreach($_FILES['ProgramKkn'] as $data){
-			print_r($data);
-		}
-	}
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -133,6 +135,31 @@ class ProgramKknController extends AdminController
 			}
 		} else {
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		}
+	}
+	
+	public function actionDownloadFile(){
+		if(isset($_GET['id'])){
+			$file = ProgramKknLampiran::model()->findByPk($_GET['id']);
+			header("Content-Disposition: attachment;filename=".$file->nama."");
+			header("Content-Length:".filesize($file->path)."");
+			header("Content-Type:".substr(strchr($file->nama,'.'),1)."");
+			echo readfile($file->path);
+			
+		}
+	}
+	
+	public function actionDeleteFile()
+	{
+		if(isset($_POST['id'])){
+			$file = ProgramKknLampiran::model()->findByPk($_POST['id']);
+			$pathFile = Yii::app()->request->baseUrl.'/'.$file->path;
+			if($file->delete()){
+				unlink($file->path);
+				echo "success";
+			} else {
+				echo "gagal";
+			}
 		}
 	}
 	
