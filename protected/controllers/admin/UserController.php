@@ -10,6 +10,23 @@ class UserController extends AdminController
 	/**
 	 * Displays a particular model.
 	 */
+	
+	public function accessRules()
+	{
+		return array(
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions' => array(
+					'admin','delete','index','view','create','update',
+					'resetPassword'
+				),
+				'users' => array('admin'),
+			),
+			array('deny',  // deny all users
+				'users' => array('*'),
+			),
+		);
+	}
+	
 	public function actionView()
 	{
 		$this->render('view',array(
@@ -96,6 +113,21 @@ class UserController extends AdminController
 		$this->render('index',array(
 			'user' => $user,
 		));
+	}
+	
+	public function actionResetPassword()
+	{
+		$user = $this->loadModel();
+		if(isset($_POST['User'])){
+			$user->attributes = $_POST['User'];
+			$user->requestNewPassword = true;
+			if($user->save()){
+				 Yii::app()->user->setFlash('message',Yii::t('app',
+					'Password has been reset'));
+				$this->redirect(array('index'));
+			}
+		}
+		$this->render('resetPassword',array('user'=>$user));
 	}
 
 	/**

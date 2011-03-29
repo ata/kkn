@@ -39,6 +39,10 @@ $this->breadcrumbs=array(
 		))?>
 </div>
 
+<h2><?php echo Yii::t('app','Lampiran')?></h2>
+<?php foreach($programKkn->lampiran as $data):?>
+	<?php echo CHtml::link($data->nama,array('downloadFile','id'=>$data->id))?><br>
+<?php endforeach?>
 
 <h2><?php echo Yii::t('app','Prioritas Jurusan')?></h2>
 

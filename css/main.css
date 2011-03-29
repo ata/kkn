@@ -432,6 +432,11 @@ textarea, input{
     color:#FFF;
 }
 
+.lampiran .lampiran-ui{
+	background-color:#f2f2f2;
+	border-bottom:1px solid #e5eaf1;
+	margin-left:170px;
+}
 
 
 /**************************************/
@@ -663,6 +668,13 @@ a.update-link,
     box-shadow:none;
 }
 
+.form .row .upload_field{
+	margin-left:170px;
+}
+
+.form .row .upload-button{
+	margin-left:170px;
+}
 a.update-link{
     text-decoration:none;
 }

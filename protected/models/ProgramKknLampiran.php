@@ -92,4 +92,9 @@ class ProgramKknLampiran extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getCountLampiran($programKknId)
+	{
+		return $this->count('programKknId = :id',array('id'=>$programKknId));
+	}
 }
