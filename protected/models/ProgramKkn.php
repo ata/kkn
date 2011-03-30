@@ -146,10 +146,8 @@ class ProgramKkn extends ActiveRecord
 	{
 		$filePath = 'files/lampiran/' . $this->id;
 		
-		if($this->isNewRecord){
-			if(!file_exists(Yii::app()->params['webroot']).$filePath){
-				mkdir(Yii::app()->params['webroot'].$filePath,0775,true);
-			}
+		if(!file_exists(Yii::app()->params['webroot'].$filePath)){
+			mkdir(Yii::app()->params['webroot'].$filePath,0775,true);
 		}
 		$folder = Yii::app()->params['webroot'].$filePath.'/';
 		
