@@ -93,10 +93,10 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()) {
 				//$this->redirect(Yii::app()->user->returnUrl);
-				if(Yii::app()->user->name === 'admin') {
-					$this->redirect(array('admin/default'));
+				if(Yii::app()->user->role === User::ROLE_MAHASISWA) {
+					$this->redirect(array('dashboard/kelompok/view'));
 				} else {
-					$this->redirect(array('kelompok/view'));
+					$this->redirect(array('admin/default'));
 				}
 			}
 		}

@@ -13,12 +13,12 @@
  */
 class User extends ActiveRecord
 {
-	
+
 	const ROLE_ADMIN = 'ADMIN';
 	const ROLE_DOSEN = 'DOSEN';
 	const ROLE_MAHASISWA = 'MAHASISWA';
-	
-	
+
+
 	protected $_displayField = 'username';
 	public $requestNewPassword = false;
 	public $confirmPassword;
@@ -43,12 +43,12 @@ class User extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
 			array('username, password, email', 'required'),
-			array('username, email, nama,role', 'length', 'max'=>255),
+			array('username, email, nama, role', 'length', 'max'=>255),
 			array('confirmPassword','compare','compareAttribute'=>'password'),
 			array('confirmPassword','safe'),
 			array('password', 'length', 'min' => 6),
@@ -86,14 +86,14 @@ class User extends ActiveRecord
 			'modified' => Yii::t('app','Modified'),
 		);
 	}
-	
+
 	protected function afterValidate()
 	{
 		if(!$this->isNewRecord && !$this->requestNewPassword){
 			$this->clearErrors('password');
 			$this->clearErrors('confirmPassword');
 		}
-		
+
 	}
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -117,7 +117,7 @@ class User extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	protected function beforeSave()
 	{
 		$this->username = strtolower($this->username);
@@ -127,7 +127,7 @@ class User extends ActiveRecord
 		}
 		return parent::beforeSave();
 	}
-	
+
 	public function displayName()
 	{
 		return !empty($this->nama)?$this->nama:$this->username;

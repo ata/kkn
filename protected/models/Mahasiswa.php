@@ -171,11 +171,6 @@ class Mahasiswa extends ActiveRecord
 	{
 		$this->namaLengkap = strtoupper($this->namaLengkap);
 		$this->saveUser();
-		if($this->user !== null) {
-			$this->registered = true;
-		} else {
-			$this->registered = false;
-		}
 		return parent::beforeSave();
 	}
 
@@ -199,8 +194,10 @@ class Mahasiswa extends ActiveRecord
 		}
 		$this->user->username = $this->nim;
 		$this->user->email = $this->email;
+		$this->user->role = User::ROLE_MAHASISWA;
 		if(!empty($this->password)){
 			$this->user->password = $this->password;
+			$this->user->confirmPassword = $this->confirmPassword;
 			if($this->update == true){
 				$this->user->requestNewPassword = true;
 			}
@@ -208,6 +205,9 @@ class Mahasiswa extends ActiveRecord
 		$this->user->nama = $this->namaLengkap;
 		if ($this->user->save()) {
 			$this->userId = $this->user->id;
+		} else {
+			var_dump($this->user->errors);
+			die();
 		}
 
 	}
@@ -261,6 +261,14 @@ class Mahasiswa extends ActiveRecord
 	public function getNama()
 	{
 		return $this->namaLengkap;
+	}
+
+	public function getIsRegistered()
+	{
+		if($this->user === null) {
+			return false;
+		}
+		return true;
 	}
 
 }

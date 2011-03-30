@@ -16,25 +16,15 @@ $this->breadcrumbs=array(
 		array(
 			'class' => 'NumberColumn',
 		),
+		'nim',
 		array(
 			'name' => 'namaLengkap',
 			'header' => 'Nama'
 		),
-		'nim',
-		array(
-			'name' =>'jenjangId',
-			'filter' => Jenjang::model()->listData,
-			'value' => '$data->kodeJenjang',
-		),
-		array(
-			'name' =>'fakultasId',
-			'filter' => Fakultas::model()->listData,
-			'value' => '$data->kodeFakultas',
-		),
 		array(
 			'name' =>'jurusanId',
 			'filter' => Jurusan::model()->listData,
-			'value' => '$data->kodeJurusan',
+			'value' => '$data->namaJurusan',
 		),
 		array(
 			'name' =>'jenisKelamin',
@@ -51,7 +41,6 @@ $this->breadcrumbs=array(
 			'filter' => array(
 				0 => Yii::t('app','Belum Registrasi'),
 				1 => Yii::t('app','Sudah Registrasi'),
-				
 			)
 		),
 		array(

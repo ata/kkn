@@ -20,7 +20,7 @@ class RegisterController extends Controller
 		$this->performAjaxValidation($mahasiswa);
 		if (isset($_POST['Mahasiswa'])) {
 			$mahasiswa = Mahasiswa::model()->findByNIM(trim($_POST['Mahasiswa']['nim']));
-			if($mahasiswa !== null && $mahasiswa->registered == 1) {
+			if($mahasiswa !== null && $mahasiswa->isRegistered) {
 				Yii::app()->user->setFlash('message',"Mahasiswa dengan "
 					. "NIM <b>{$mahasiswa->nim}</b> sudah terdaftar");
 				$this->redirect(array('token'));
@@ -32,7 +32,6 @@ class RegisterController extends Controller
 				$mahasiswa = new Mahasiswa;
 			} else if(isset($_POST['Mahasiswa']['namaLengkap'])) {
 				$mahasiswa->attributes = $_POST['Mahasiswa'];
-				$mahasiswa->registered = 1;
 				if($mahasiswa->save()) {
 					$this->redirect(array('registerSuccess'));
 				}
