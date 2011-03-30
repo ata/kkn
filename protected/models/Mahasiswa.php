@@ -29,18 +29,18 @@ class Mahasiswa extends ActiveRecord
 	 * @return Mahasiswa the static model class
 	 */
 	const PEREMPUAN = 'PEREMPUAN';
-	const LAKI_LAKI = 'LAKI-LAKI'; 
-	
+	const LAKI_LAKI = 'LAKI-LAKI';
+
 	public $password;
 	public $confirmPassword;
 	public $email;
 	public $verifyCode;
 	public $file;
 	public $update = false;
-	
+
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
-	
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -58,7 +58,7 @@ class Mahasiswa extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -71,7 +71,7 @@ class Mahasiswa extends ActiveRecord
 			array('confirmPassword', 'compare', 'compareAttribute'=>'password'),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update),
 			array('file', 'file', 'types'=>'jpg, jpeg, png, gif','allowEmpty' => true),
-			
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, namaLengkap, nim, registered, alamatAsal, alamatTinggal, fakultasId, jurusanId, kelompokId, jenjangId, jenisKelamin, created, modified', 'safe', 'on'=>'search'),
@@ -151,10 +151,10 @@ class Mahasiswa extends ActiveRecord
 			)
 		));
 	}
-	
+
 	protected function afterValidate()
 	{
-		
+
 		if(!$this->update && User::model()->findByAttributes(array('email' => $this->email))){
 			$this->addError('email',Yii::t('app','Email Sudah digunakan'));
 		}
@@ -166,19 +166,24 @@ class Mahasiswa extends ActiveRecord
 		}
 		return parent::afterValidate();
 	}
-	
+
 	protected function beforeSave()
 	{
 		$this->namaLengkap = strtoupper($this->namaLengkap);
 		$this->saveUser();
+		if($this->user !== null) {
+			$this->registered = true;
+		} else {
+			$this->registered = false;
+		}
 		return parent::beforeSave();
 	}
-	
+
 	protected function afterSave()
 	{
 		return parent::afterSave();
 	}
-	
+
 	protected function afterFind()
 	{
 		if($this->user){
@@ -186,7 +191,7 @@ class Mahasiswa extends ActiveRecord
 		}
 		parent::afterFind();
 	}
-	
+
 	private function saveUser()
 	{
 		if ($this->user === null) {
@@ -204,34 +209,34 @@ class Mahasiswa extends ActiveRecord
 		if ($this->user->save()) {
 			$this->userId = $this->user->id;
 		}
-		
+
 	}
-	
+
 	public function findByUserId($userId)
 	{
 		return $this->findByAttributes(array('userId' => $userId));
 	}
-	
+
 	public function findByNIM($nim)
 	{
 		return $this->findByAttributes(array('nim' => $nim));
 	}
-	
+
 	public function countLakiLaki()
 	{
 		return self::$_countLakiLaki !== null?self::$_countLakiLaki
 			:self::$_countLakiLaki = $this->count('jenisKelamin = :jk',
 				array('jk' => self::LAKI_LAKI));
 	}
-	
+
 	public function countPerempuan()
 	{
 		return self::$_countPerempuan !== null?self::$_countPerempuan
 			:self::$_countPerempuan = $this->count('jenisKelamin = :jk',
 				array('jk' => self::PEREMPUAN));
 	}
-	
-	
+
+
 	public function getKodeJenjang()
 	{
 		return $this->jenjang?$this->jenjang->kode:Yii::t('app','Belum diisi');
@@ -252,10 +257,10 @@ class Mahasiswa extends ActiveRecord
 	{
 		return $this->jenisKelamin==self::LAKI_LAKI?Yii::t('app','Laki-laki'):Yii::t('app','Perempuan');
 	}
-	
+
 	public function getNama()
 	{
 		return $this->namaLengkap;
 	}
-	
+
 }

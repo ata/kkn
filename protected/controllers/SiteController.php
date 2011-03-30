@@ -2,11 +2,7 @@
 
 class SiteController extends Controller
 {
-	
-	public $layout='//layouts/frontend';
-	/**
-	 * Declares class-based actions.
-	 */
+
 	public function actions()
 	{
 		return array(
@@ -33,7 +29,7 @@ class SiteController extends Controller
 		$this->render('index',array(
 			'dataProvider' => $dataProvider,
 		));
-	} 
+	}
 
 	/**
 	 * This is the action to handle external exceptions.
@@ -55,13 +51,13 @@ class SiteController extends Controller
 	public function actionContact()
 	{
 		$model=new ContactForm;
-		
+
 		if(isset($_POST['ajax']))
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-		
+
 		if(isset($_POST['ContactForm']))
 		{
 			$model->attributes=$_POST['ContactForm'];

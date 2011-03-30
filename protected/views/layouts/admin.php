@@ -17,6 +17,7 @@
 					array('label' => Yii::t('app','User'),'url' => array('/admin/user/index'),Yii::app()->user->role === 'admin'),
 					array('label' => Yii::t('app','Dosen'),'url' => array('/admin/dosen/index'),Yii::app()->user->role === 'admin'),
 					array('label' => Yii::t('app','Mahasiswa'),'url' => array('/admin/mahasiswa/index'),Yii::app()->user->role === 'admin'),
+					array('label' => Yii::t('app','Setting'),'url' => array('/admin/setting/index'),Yii::app()->user->role === 'admin'),
 					//array('label'=>Yii::t('app','Statistik'),'url'=>array('/admin/statistik/index')),
 				),
 				'htmlOptions'=>array('class'=>'sidemenu'),
