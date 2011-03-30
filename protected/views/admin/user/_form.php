@@ -14,7 +14,6 @@
 		<?php echo $form->textField($user,'username',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($user,'username'); ?>
 	</div>
-	
 	<?php if($user->isNewRecord):?>
 		<div class="row">
 			<?php echo $form->labelEx($user,'password'); ?>

@@ -24,7 +24,7 @@
 		<div class="span-12 last ar" id="top-navigation">
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'items' => array(
-					array('label'=>Yii::t('app','Daftar'), 'url'=>array('/dashboard/mahasiswa/register'),
+					array('label'=>Yii::t('app','Daftar'), 'url'=>array('/register'),
 						'visible' => Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Login'), 'url'=>array('/site/login'),
 						'visible' => Yii::app()->user->isGuest),
@@ -35,9 +35,9 @@
 					array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
 						'visible' => !Yii::app()->user->isGuest),
 				 ))); ?>
-			
+
 		</div>
-		
+
 	</div>
 </div>
 
@@ -72,7 +72,7 @@
 
 <div id="footbar">
 	<div class="container">
-		
+
 	</div>
 </div>
 

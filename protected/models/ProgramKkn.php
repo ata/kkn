@@ -12,14 +12,14 @@
  */
 class ProgramKkn extends ActiveRecord
 {
-	
+
 	/**
 	 * untuk menampung attactment dari form field bertipe file
 	 */
 	public $files;
-	
+
 	protected $displayField = 'nama';
-	
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return ProgramKkn the static model class
@@ -41,7 +41,7 @@ class ProgramKkn extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -63,7 +63,7 @@ class ProgramKkn extends ActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'lampiran' => array(self::HAS_MANY,'ProgramKknLampiran','programKknId'),
-			
+
 		);
 	}
 
@@ -106,7 +106,7 @@ class ProgramKkn extends ActiveRecord
 		$this->nama = strtoupper($this->nama);
 		return parent::beforeSave();
 	}
-	
+
 	protected function afterSave()
 	{
 		if($this->isNewRecord){
@@ -116,18 +116,18 @@ class ProgramKkn extends ActiveRecord
 		}
 		return parent::afterSave();
 	}
-	
+
 	protected function beforeDelete()
 	{
-		
+
 		foreach($this->lampiran as $lampiran){
 			$lampiran->delete();
 		}
 		$this->deleteFile();
-		
+
 		return parent::beforeDelete();
 	}
-	
+
 	private function deleteFile()
 	{
 		$path = 'files/lampiran/' . $this->id;
@@ -141,46 +141,41 @@ class ProgramKkn extends ActiveRecord
 		$path->close();
 		rmdir($filePath);
 	}
-	
+
 	public function saveLampiran()
 	{
-		$filePath = 'files/lampiran/' . $this->id;
-		
-		if(!file_exists(Yii::app()->params['webroot'].$filePath)){
-			mkdir(Yii::app()->params['webroot'].$filePath,0775,true);
+		$dirPath = '/files/lampiran/' . $this->id;
+		if(!file_exists(Yii::app()->params['webroot'] . $dirPath)){
+			mkdir(Yii::app()->params['webroot'] . $dirPath, 0775, true);
 		}
-		$folder = Yii::app()->params['webroot'].$filePath.'/';
-		
 		$lampiran = CUploadedFile::getInstancesByName($this->files);
 		foreach($lampiran as $data){
-			$this->dbConnection->createCommand("INSERT INTO 
-				program_kkn_lampiran (nama,path,programKknId)
-				VALUES (:nama,:path,:programKknId)")->query(array(
-					'nama'=>$data->name,
-					'path'=>$folder.$data->name,
-					'programKknId'=>$this->id,
-				));
-			$data->saveAs($folder.$data->name);
+			$lampiran = new ProgramKknLampiran;
+			$lampiran->nama = $data->name;
+			$lampiran->path = $dirPath . '/' . $data->name;
+			$lampiran->mimetype = $data->type;
+			$lampiran->size = $data->size;
+			$lampiran->programKknId = $this->id;
+			$data->saveAs(Yii::app()->params['webroot'] . $lampiran->path);
+			$lampiran->save();
 		}
-		
-		
 	}
-	
+
 	public function getDisplayLampiran()
 	{
 		return Yii::t('app','Jumlah file lampiran {jumlah}',array(
 			'{jumlah}'=>ProgramKknLampiran::model()->getCountLampiran($this->id)
 		));
 	}
-	
+
 	public function addPrioritas(Prioritas $prioritas)
 	{
 	}
-	
+
 	public function addLampiran(ProgramKkn $lampiran)
 	{
 	}
-	
+
 	public function findArrayPrioritasJurusanId()
 	{
 	}

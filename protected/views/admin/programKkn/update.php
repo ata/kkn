@@ -2,8 +2,8 @@
 <?php Yii::app()->clientScript->registerScript('upload-js','
 	var linkHapus = "'."<a onclick='$(this).parent().slideUp(function(){ $(this).remove() }); return false' class='remove' href='#'>remove</a>".'";
 
-	$(".clone").relCopy({ append: linkHapus}); 
-	
+	$(".clone").relCopy({ append: linkHapus});
+
 	$(".lampiran-delete").live("click",function(){
 		var ID = $(this).attr("id");
 		if(confirm("'.Yii::t("app","Anda yakin ingin menghapus file ini?").'")){
@@ -62,22 +62,22 @@ $this->breadcrumbs=array(
 		<?php echo $form->textArea($programKkn,'deskripsi',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($programKkn,'deskripsi'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($programKkn,'files')?>
 		<div class="lampiran">
 			<?php foreach($programKkn->lampiran as $data):?>
 				<div class="lampiran-ui" id="<?php echo $data->id?>">
-					<span class="title"><a href="<?php echo Yii::app()->createUrl("admin/programKkn/downloadFile","id"=>$data->id)?>"><?php echo $data->nama?></a></span>
-					<a href="#" class="lampiran-delete" id="<?php echo $data->id?>">x</a>
+					<span class="title"><a href="<?php echo Yii::app()->params['webroot']."/".$data->path?>"><?php echo $data->nama?></a></span>
+					<a href="#" class="lampiran-delete" id="<?php echo $data->id?>"><?php Yii::t('app','batal') ?></a>
 				</div>
 			<?php endforeach?>
 		</div>
-		<div class="upload_field">
+		<div id="upload_field" class="upload_field">
 			<?php echo $form->fileField($programKkn,'files[]',array('class'=>'formUpload'));?>
 		</div>
 		<div class="upload-button">
-			<?php echo CHtml::button(Yii::t('app','Tambah File'),array('class'=>'clone','name'=>'clone','rel'=>'.upload_field'))?>
+			<?php echo CHtml::link(Yii::t('app','Tambah File lain'),array('#'),array('class'=>'clone','name'=>'clone','rel'=>'#upload_field'))?>
 		</div>
 	</div>
 

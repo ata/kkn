@@ -1,7 +1,7 @@
 
 <?php $this->beginContent('//layouts/main'); ?>
 
-<div id="main">
+<div id="main-admin">
     <div class="container" id="admin-container">
         <div class="span-5" id="sidebar">
             <h3><?php echo Yii::t('app','Menu') ?></h3>

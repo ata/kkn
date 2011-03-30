@@ -3,9 +3,9 @@
 class MahasiswaController extends Controller
 {
 	private $_mahasiswa;
-	
+
 	public $layout = '//layouts/dashboard';
-	
+
 	public function filters()
 	{
 		return array(
@@ -27,18 +27,18 @@ class MahasiswaController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions' => array('index','view','update'),
-				'users' => array('@'),
+				'roles' => array('mahasiswa'),
 			),
 			array('deny',  // deny all users
 				'users' => array('*'),
 			),
 		);
 	}
-	
+
 	public function actions()
 	{
 		return array(
-			// captcha action renders the CAPTCHA image displayed on 
+			// captcha action renders the CAPTCHA image displayed on
 			//the contact page
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
@@ -46,7 +46,7 @@ class MahasiswaController extends Controller
 			),
 		);
 	}
-	
+
 	public function actionIndex()
 	{
 		$mahasiswa = new Mahasiswa('search');
@@ -85,18 +85,18 @@ class MahasiswaController extends Controller
 				}
 			}
 		}
-		
+
 		$this->render('register',array(
 			'mahasiswa' => $mahasiswa,
 		));
 	}
-	
+
 	public function actionRegisterSuccess()
 	{
 		$this->layout = '//layouts/frontend';
 		$this->render('registerSuccess');
 	}
-	
+
 	public function actionToken()
 	{
 		$this->layout = '//layouts/frontend';
@@ -111,7 +111,7 @@ class MahasiswaController extends Controller
 		if(isset($_POST['Mahasiswa'])){
 			$_POST['Mahasiswa']['password'];
 			$mahasiswa->attributes=$_POST['Mahasiswa'];
-			
+
 			if ($mahasiswa->save()) {
 				$this->redirect(array('/dashboard/mahasiswa/view'));
 			}
@@ -120,34 +120,34 @@ class MahasiswaController extends Controller
 			'mahasiswa'=>$mahasiswa,
 		));
 	}
-	
+
 	public function actionDependentSelectJurusan()
 	{
-		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId', 
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
 		Yii::app()->end();
 	}
-	
-	
+
+
 	protected function performAjaxValidation($model)
 	{
-		if (isset($_POST['ajax'])) { 
+		if (isset($_POST['ajax'])) {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-	
+
 	public function actionView()
 	{
-		
+
 		if(!isset($_GET['id'])){
 			$mahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
 			$editable = true;
 		} else {
 			$mahasiswa = Mahasiswa::model()->findByPk($_GET['id']);
-		} 
+		}
 		if ($mahasiswa === null) {
 			throw new CHttpException(404,'The requested page does not exist.');
 		}

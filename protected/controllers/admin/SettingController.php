@@ -1,34 +1,19 @@
 <?php
 
-class DosenController extends AdminController
+class SettingController extends AdminController
 {
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-	
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'dependentSelectJurusan',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
+
 	/**
 	 * Displays a particular model.
 	 */
 	public function actionView()
 	{
 		$this->render('view',array(
-			'dosen' => $this->loadModel(),
+			'setting' => $this->loadModel(),
 		));
 	}
 
@@ -38,58 +23,43 @@ class DosenController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		//$dosen = new Dosen;
-		$user = new User;
+		$setting = new Setting;
+
 		// Uncomment the following line if AJAX validation is needed
-		$dosen = new Dosen;
-		$this->performAjaxValidation(array($dosen,$user));
-		if (isset($_POST['User'])&&isset($_POST['Dosen'])) {
-			$user->attributes=$_POST['User'];
-			if ($user->save()) {
-				$dosen->userId = $user->id;
-				$dosen->attributes = $_POST['Dosen'];
-				if($dosen->save()){
-					$this->redirect(array('view','id'=>$dosen->id));
-				}
-				
+		$this->performAjaxValidation($setting);
+
+		if (isset($_POST['Setting'])) {
+			$setting->attributes=$_POST['Setting'];
+			if ($setting->save()) {
+				$this->redirect(array('view','id' => $setting->id));
 			}
-			
 		}
 
 		$this->render('create',array(
-			'user' => $user,
-			'dosen'=> $dosen, 
+			'setting' => $setting,
 		));
 	}
-	
-	public function actionDependentSelectJurusan()
-	{
-		echo CHtml::activeDropDownList(Dosen::model(),'jurusanId', 
-			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
-			array('empty' => Yii::t('app','Select Jurusan'))
-		);
-		Yii::app()->end();
-	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionUpdate()
 	{
-		$dosen = $this->loadModel();
+		$setting = $this->loadModel();
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($dosen);
+		$this->performAjaxValidation($setting);
 
-		if (isset($_POST['Dosen'])) {
-			$dosen->attributes=$_POST['Dosen'];
-			if ($dosen->save()) {
-				$this->redirect(array('view','id' => $dosen->id));
+		if (isset($_POST['Setting'])) {
+			$setting->attributes=$_POST['Setting'];
+			if ($setting->save()) {
+				$this->redirect(array('view','id' => $setting->id));
 			}
 		}
 
 		$this->render('update',array(
-			'dosen' => $dosen,
+			'setting' => $setting,
 		));
 	}
 
@@ -117,14 +87,14 @@ class DosenController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$dosen = new Dosen('search');
-		$dosen->unsetAttributes();  // clear any default values
-		if (isset($_GET['Dosen'])) {
-			$dosen->attributes = $_GET['Dosen'];
+		$setting = new Setting('search');
+		$setting->unsetAttributes();  // clear any default values
+		if (isset($_GET['Setting'])) {
+			$setting->attributes = $_GET['Setting'];
 		}
 
 		$this->render('index',array(
-			'dosen' => $dosen,
+			'setting' => $setting,
 		));
 	}
 
@@ -136,7 +106,7 @@ class DosenController extends AdminController
 	{
 		if ($this->_model === null) {
 			if (isset($_GET['id'])) {
-				$this->_model = Dosen::model()->findbyPk($_GET['id']);
+				$this->_model = Setting::model()->findbyPk($_GET['id']);
 			}
 			if ($this->_model === null) {
 				throw new CHttpException(404,'The requested page does not exist.');
@@ -149,10 +119,10 @@ class DosenController extends AdminController
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */
-	protected function performAjaxValidation($dosen)
+	protected function performAjaxValidation($setting)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'dosen-form') { 
-			echo CActiveForm::validate($dosen);
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'setting-form') {
+			echo CActiveForm::validate($setting);
 			Yii::app()->end();
 		}
 	}

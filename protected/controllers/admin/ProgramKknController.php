@@ -6,7 +6,7 @@ class ProgramKknController extends AdminController
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-	
+
 	public function accessRules()
 	{
 		return array(
@@ -38,21 +38,21 @@ class ProgramKknController extends AdminController
 			'programKkn' => $programKkn,
 		));
 	}
-	
+
 	public function actionDependentSelectJurusan()
 	{
-		echo CHtml::activeDropDownList(Prioritas::model(),'jurusanId', 
+		echo CHtml::activeDropDownList(Prioritas::model(),'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
 		Yii::app()->end();
 	}
-	
+
 	public function actionAddPrioritas()
 	{
 		$prioritas = new Prioritas;
 		$prioritas->programKknId = $this->loadModel()->id;
-		if (isset($_POST['Prioritas'])) { 
+		if (isset($_POST['Prioritas'])) {
 			$prioritas->attributes = $_POST['Prioritas'];
 			$prioritas->save();
 		}
@@ -73,29 +73,19 @@ class ProgramKknController extends AdminController
 
 		if (isset($_POST['ProgramKkn'])) {
 			$programKkn->attributes=$_POST['ProgramKkn'];
-			
+
 			if ($programKkn->save()) {
 				$this->redirect(array('view','id' => $programKkn->id));
 			}
-			
-			
-			/*$lampiran = CUploadedFile::getInstancesByName($programKkn->files);
-			for($i=0,$size = sizeof($lampiran);$i<$size;$i++){
-				$programKknLampiran = new ProgramKknLampiran;
-				$programKknLampiran->nama = $lampiran[$i]->name;
-				$programKknLampiran->save(false);
-			}*/
-			
-			
-			
+
 		}
 
 		$this->render('create',array(
 			'programKkn' => $programKkn,
 		));
 	}
-	
-	
+
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -137,18 +127,19 @@ class ProgramKknController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-	
+
 	public function actionDownloadFile(){
 		if(isset($_GET['id'])){
 			$file = ProgramKknLampiran::model()->findByPk($_GET['id']);
-			header("Content-Disposition: attachment;filename=".$file->nama."");
-			header("Content-Length:".filesize($file->path)."");
-			header("Content-Type:".substr(strchr($file->nama,'.'),1)."");
-			echo readfile($file->path);
-			
+			//die(Yii::app()->request->baseUrl . $file->path);
+			header("Content-Disposition: attachment;filename={$file->nama}");
+			header("Content-Length: {$file->size}");
+			header("Content-Type: {$file->mimetype}");
+			readfile(Yii::app()->params['webroot'] . $file->path);
+
 		}
 	}
-	
+
 	public function actionDeleteFile()
 	{
 		if(isset($_POST['id'])){
@@ -162,7 +153,7 @@ class ProgramKknController extends AdminController
 			}
 		}
 	}
-	
+
 	public function actionDeletePrioritas()
 	{
 		if (Yii::app()->request->isPostRequest) {
@@ -172,7 +163,7 @@ class ProgramKknController extends AdminController
 			if (!isset($_GET['ajax'])) {
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('view','id' => $_GET['id']));
 			}
-			
+
 		} else {
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
@@ -218,7 +209,7 @@ class ProgramKknController extends AdminController
 	 */
 	protected function performAjaxValidation($programKkn)
 	{
-		if (isset($_POST['ajax'])) { 
+		if (isset($_POST['ajax'])) {
 			echo CActiveForm::validate($programKkn);
 			Yii::app()->end();
 		}
