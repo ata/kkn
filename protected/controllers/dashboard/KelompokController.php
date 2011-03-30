@@ -23,7 +23,7 @@ class KelompokController extends Controller
 		return array(
 			array('allow',
 				'actions' => array('index','view','pilih'),
-				'users' => array('mahasiswa'),
+				'roles' => array(User::ROLE_MAHASISWA),
 			),
 			array('deny',  // deny all users
 				'users' => array('*'),

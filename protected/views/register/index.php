@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-    'Mahasiswa'=>array('/mahasiswa'),
-    'Register',
+	'Mahasiswa'=>array('/mahasiswa'),
+	'Register',
 );?>
 
 <div class="list-view">
@@ -35,7 +35,7 @@ $this->breadcrumbs=array(
 					<?php echo $form->textField($mahasiswa,'nim',array('size'=>60,'maxlength'=>255,'readonly' => 'readonly')); ?>
 					<?php echo $form->error($mahasiswa,'nim'); ?>
 				</div>
-				
+
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'namaLengkap'); ?>
 					<?php echo $form->textField($mahasiswa,'namaLengkap',array('size'=>60,'maxlength'=>255,'readonly' => 'readonly')); ?>
@@ -54,7 +54,7 @@ $this->breadcrumbs=array(
 					<?php echo $form->textField($mahasiswa,'alamatTinggal',array('size'=>60,'maxlength'=>255)); ?>
 					<?php echo $form->error($mahasiswa,'alamatTinggal'); ?>
 				</div>
-				
+
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'jenjangId'); ?>
 					<?php echo $form->dropDownList($mahasiswa, 'jenjangId',Jenjang::model()->listData)?>
@@ -76,7 +76,8 @@ $this->breadcrumbs=array(
 
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'jurusanId'); ?>
-					<?php echo $form->dropDownList($mahasiswa,'jurusanId', array(), array('empty' => Yii::t('app','Pilih Jurusan')))?>
+					<?php echo $form->dropDownList($mahasiswa,'jurusanId', Jurusan::model()->listData, array(
+						'empty' => Yii::t('app','Pilih Jurusan')))?>
 					<?php echo $form->error($mahasiswa,'jurusanId'); ?>
 				</div>
 
@@ -88,22 +89,22 @@ $this->breadcrumbs=array(
 					)); ?>
 					<?php echo $form->error($mahasiswa,'jenisKelamin'); ?>
 				</div>
-				
+
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'phone1'); ?>
 					<?php echo $form->textField($mahasiswa,'phone1',array('size'=>60,'maxlength'=>255)); ?>
 					<?php echo $form->error($mahasiswa,'phone1'); ?>
 				</div>
-				
+
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'phone2'); ?>
 					<?php echo $form->textField($mahasiswa,'phone2',array('size'=>60,'maxlength'=>255)); ?>
 					<?php echo $form->error($mahasiswa,'phone2'); ?>
 				</div>
 			</fieldset>
-			
-		   
-			
+
+
+
 			<fieldset>
 				<legend><?php echo Yii::t('app','Informasi User')?></legend>
 				<div class="row">
@@ -133,9 +134,9 @@ $this->breadcrumbs=array(
 				</div>
 				<?php endif; ?>
 			</fieldset>
-			
+
 		<?php endif?>
-		
+
 
 		<div class="row buttons">
 			<?php echo CHtml::submitButton(Yii::t('app','Submit')); ?>

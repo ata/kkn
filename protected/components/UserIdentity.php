@@ -7,7 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	
+
 	private $_id;
 	private $_name;
 	public $role;
@@ -22,13 +22,13 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$user=User::model()->find('(username = LOWER(:username) 
+		$user=User::model()->find('(username = LOWER(:username)
 			OR email = LOWER(:email)) AND password = :password ',array(
 			'username' => $this->username,
 			'email' => $this->username,
 			'password' => md5($this->password)
 		));
-		
+
 		if($user){
 			$this->_id = $user->id;
 			$this->_name = $user->username;
@@ -36,9 +36,9 @@ class UserIdentity extends CUserIdentity
 			$this->fullname = $user->nama;
 			return true;
 		}
-		return false; 
+		return false;
 	}
-	
+
 	public function getId()
 	{
 		return $this->_id;

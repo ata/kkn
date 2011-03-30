@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions' => array('index','view','update'),
-				'roles' => array('mahasiswa'),
+				'roles' => array(User::ROLE_MAHASISWA),
 			),
 			array('deny',  // deny all users
 				'users' => array('*'),
