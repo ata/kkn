@@ -12,8 +12,14 @@ class JurusanController extends AdminController
 	 */
 	public function actionView()
 	{
+		$jurusan = $this->loadModel();
+		$mahasiswa = new Mahasiswa('search');
+		$mahasiswa->unsetAttributes();
+		$mahasiswa->jurusanId = $jurusan->id;
+
 		$this->render('view',array(
-			'jurusan' => $this->loadModel(),
+			'jurusan' => $jurusan,
+			'mahasiswa' => $mahasiswa,
 		));
 	}
 
@@ -47,7 +53,6 @@ class JurusanController extends AdminController
 	public function actionUpdate()
 	{
 		$jurusan = $this->loadModel();
-
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($jurusan);
 

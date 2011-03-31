@@ -51,12 +51,16 @@ class ProgramKknController extends AdminController
 	public function actionAddPrioritas()
 	{
 		$prioritas = new Prioritas;
-		$prioritas->programKknId = $this->loadModel()->id;
+		//$prioritas->programKknId = $_POST['id'];
+		$this->performAjaxValidation($prioritas);
+		
 		if (isset($_POST['Prioritas'])) {
 			$prioritas->attributes = $_POST['Prioritas'];
+			//var_dump($prioritas->attributes);
 			$prioritas->save();
 		}
-		Yii::app()->end();
+		echo "tes";
+		//Yii::app()->end();
 	}
 
 
