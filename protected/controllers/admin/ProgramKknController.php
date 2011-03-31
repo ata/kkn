@@ -59,8 +59,7 @@ class ProgramKknController extends AdminController
 			//var_dump($prioritas->attributes);
 			$prioritas->save();
 		}
-		echo "tes";
-		//Yii::app()->end();
+		Yii::app()->end();
 	}
 
 
