@@ -69,7 +69,7 @@ $this->breadcrumbs=array(
 			<?php foreach($programKkn->lampiran as $data):?>
 				<div class="lampiran-ui" id="<?php echo $data->id?>">
 					<span class="title"><a href="<?php echo Yii::app()->params['webroot']."/".$data->path?>"><?php echo $data->nama?></a></span>
-					<a href="#" class="lampiran-delete" id="<?php echo $data->id?>"><?php Yii::t('app','batal') ?></a>
+					<a href="#" class="lampiran-delete" id="<?php echo $data->id?>"><?php echo Yii::t('app','hapus') ?></a>
 				</div>
 			<?php endforeach?>
 		</div>

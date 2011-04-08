@@ -36,16 +36,12 @@ class KelompokController extends Controller
 		if(!isset($_GET['Kelompok_sort'])) {
 			$_GET['Kelompok_sort'] = 'kabupatenId';
 		}
-
-		$filter = new Kelompok;
+		$kelompok = new Kelompok('search');
 		if(isset($_GET['Kelompok'])) {
-			$filter->attributes = $_GET['Kelompok'];
+			$kelompok->attributes = $_GET['Kelompok'];
 		}
-		$currentMahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
-		$dataProvider = Kelompok::model()->searchAvailableKelompok($currentMahasiswa->id,$filter);
 		$this->render('index',array(
-			'dataProvider' => $dataProvider,
-			'filter' => $filter,
+			'kelompok' => $kelompok,
 		));
 	}
 

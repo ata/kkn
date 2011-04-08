@@ -97,6 +97,12 @@ class ProgramKknLampiran extends ActiveRecord
 		));
 	}
 
+	public function beforeDelete()
+	{
+		unlink(Yii::app()->params['webroot'] . $this->path);
+		return parent::beforeDelete();
+	}
+
 	public function getCountLampiran($programKknId)
 	{
 		return $this->count('programKknId = :id',array('id'=>$programKknId));
