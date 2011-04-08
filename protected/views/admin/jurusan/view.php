@@ -40,3 +40,30 @@ $this->breadcrumbs=array(
 			'confirm'=> Yii::t('app','Anda yakin akan menghapus jurusan ini?'),
 		))?>
 </div>
+
+<br/><br/>
+
+<h2><?php echo Yii::t('app','Daftar Mahasiswa')?></h2>
+<?php $this->widget('zii.widgets.grid.CGridview',array(
+	'id'=>'mahasiswa-grid',
+	'dataProvider'=>$mahasiswa->search(),
+	'filter'=>$mahasiswa,
+	'columns'=>array(
+		array(
+			'class' => 'NumberColumn',
+		),
+		'nim',
+		'nama',
+		array(
+			'name' =>'jenisKelamin',
+			'header' => 'J.Kelamin',
+			'filter' => array(
+				Mahasiswa::LAKI_LAKI => Yii::t('app','Laki-laki'),
+				Mahasiswa::PEREMPUAN => Yii::t('app','Perempuan'),
+			)
+		),
+		array(
+			'class'=>'CButtonColumn',
+		),
+	)
+))?>

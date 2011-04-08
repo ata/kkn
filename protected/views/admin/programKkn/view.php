@@ -51,6 +51,28 @@ $this->breadcrumbs=array(
 <?php $form = $this->beginWidget('CActiveForm', array(
 	'id' => 'program-kkn-form',
 	'enableAjaxValidation' => true,
+	'action'=>'#',
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+		'afterValidate'=>'js:function(form,data,hasError){
+				if(!hasError){
+					var Isi = $("form").serialize();
+					jQuery.ajax({
+						url:"'.Yii::app()->createUrl("admin/programKkn/addPrioritas").'",
+						cache:false,
+						type:"POST",
+						data:$("form").serialize(),
+						success:function(){
+							jQuery.fn.yiiGridView.update("prioritas-grid", {
+								data: jQuery(this).serialize()
+							});
+							$("form").get(0).reset();
+						},
+					});
+				}
+			}'
+	),
+
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -66,7 +88,7 @@ $this->breadcrumbs=array(
 				3 => 'Level 3',
 				4 => 'Level 4',
 				5 => 'Level 5'
-			)); ?>
+			),array('empty'=>Yii::t('app','Pilih Level Prioritas'))); ?>
 		<?php echo $form->error($prioritas,'level'); ?>
 	</div>
 	
@@ -90,15 +112,20 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($prioritas,'jurusanId'); ?>
 	</div>
 	
-	<div class="row buttons">
-		<?php echo CHtml::ajaxSubmitButton('Tambah Prioritas',
+	<?php echo $form->hiddenField($prioritas,'programKknId',array('value'=>$programKkn->id))?>
+	<!--<div class="row buttons">
+		<?php /*echo CHtml::ajaxSubmitButton('Tambah Prioritas',
 			array('addPrioritas','id' => $programKkn->id),
 			array('success' => "js:function(){
 				jQuery.fn.yiiGridView.update('prioritas-grid', {
 					data: jQuery(this).serialize()
 				})}"
-			)); ?>
+			)); */?>
+	</div>-->
+	<div class="row buttons">
+		<?php echo CHtml::submitButton(Yii::t('app','submit'));?>
 	</div>
+	
 
 <?php $this->endWidget(); ?>
 
