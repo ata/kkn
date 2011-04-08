@@ -6144,7 +6144,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`, `role`) VALUES
-(1, 'admin', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Administrator', '2011-03-25 10:34:32', '2011-03-12 10:34:35', 'admin');
+(1, 'admin', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Administrator', '2011-03-25 10:34:32', '2011-03-12 10:34:35', 'ADMIN');
 
 --
 -- Constraints for dumped tables
