@@ -10,13 +10,30 @@ class JurusanController extends AdminController
 	/**
 	 * Displays a particular model.
 	 */
+	public function accessRules()
+	{
+		return array(
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions' => array(
+					'admin','delete','index','view','create','update',
+					'mahasiswaPrint',
+				),
+				'users' => array('admin'),
+			),
+			array('deny',  // deny all users
+				'users' => array('*'),
+			),
+		);
+	}
 	public function actionView()
 	{
 		$jurusan = $this->loadModel();
 		$mahasiswa = new Mahasiswa('search');
 		$mahasiswa->unsetAttributes();
 		$mahasiswa->jurusanId = $jurusan->id;
-
+		if (isset($_GET['Mahasiswa'])) {
+			$mahasiswa->attributes = $_GET['Mahasiswa'];
+		}
 		$this->render('view',array(
 			'jurusan' => $jurusan,
 			'mahasiswa' => $mahasiswa,
@@ -27,6 +44,25 @@ class JurusanController extends AdminController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+	
+	public function actionMahasiswaPrint()
+	{
+		//var_dump($_POST);
+		$this->layout = false;
+		$mahasiswa = new Mahasiswa('search');
+		$mahasiswa->unsetAttributes();
+		if(isset($_GET['Mahasiswa']) && isset($_GET['jurusanId'])){
+			$mahasiswa->jurusanId = $_GET['jurusanId'];
+			$mahasiswa->attributes = $_GET['Mahasiswa'];
+			
+			$dataProvider = $mahasiswa->search();
+			$dataProvider->pagination = false;
+			
+
+		}
+		
+		$this->render('mahasiswaPrint',array('mahasiswa'=>$dataProvider->getData()));
+	}
 	public function actionCreate()
 	{
 		$jurusan = new Jurusan;
