@@ -2,12 +2,12 @@
 
 class m110330_014123_add_registered_again extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->addColumn('mahasiswa','registered','boolean');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropColumn('mahasiswa','registered');
 	}

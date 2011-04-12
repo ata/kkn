@@ -11,31 +11,28 @@
  * Messages that no longer need translation will have their translations
  * enclosed between a pair of '@@' marks.
  *
- * Message string can be used with plural forms format. Check i18n section
- * of the guide for details.
- *
  * NOTE, this file must be saved in UTF-8 encoding.
  *
  * @version $Id: $
  */
 return array (
-  'Are you sure you want to delete this item?' => '',
-  'Delete' => '',
-  'Displaying {start}-{end} of {count} result(s).' => '',
-  'Either "name" or "value" must be specified for CDataColumn.' => '',
-  'Home' => '',
-  'No results found.' => '',
-  'Not set' => '',
-  'Please specify the "attributes" property.' => '',
-  'Please specify the "data" property.' => '',
-  'Sort by: ' => '',
-  'The "dataProvider" property cannot be empty.' => '',
-  'The attribute must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => '',
-  'The button type "{type}" is not supported.' => '',
-  'The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => '',
-  'The property "itemView" cannot be empty.' => '',
-  'Total {count} result(s).' => '',
-  'Update' => '',
-  'View' => '',
-  '{class} must specify "model" and "attribute" or "name" property values.' => '',
+  'The button type "{type}" is not supported.' => 'O botão do tipo "{type} não é suportado"',
+  'Are you sure you want to delete this item?' => 'Deseja realmente excluir este item?',
+  'Delete' => 'Excluir',
+  'Displaying {start}-{end} of {count} result(s).' => 'Exibindo {start}-{end} de {count} resultado(s).',
+  'Either "name" or "value" must be specified for CDataColumn.' => '"name" ou "value" deve ser especificado para CDataColumn.',
+  'Home' => 'Página inicial',
+  'No results found.' => 'Nenhum resultado encontrado.',
+  'Not set' => 'Não configurado',
+  'Please specify the "attributes" property.' => 'Por favor, especifique a propriedade "attributes".',
+  'Please specify the "data" property.' => 'Por favor, especifique a propriedade "data".',
+  'Sort by: ' => 'Ordenar por: ',
+  'The "dataProvider" property cannot be empty.' => 'A propriedade "dataProvider" não pode estar vazia.',
+  'The attribute must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'O atributo deve ser especificado no formato "Nome:Tipo:Etiqueta", onde "Tipo" e "Etiqueta" são opcionais.',
+  'The column must be specified in the format of "Name:Type:Label", where "Type" and "Label" are optional.' => 'A coluna deve ser especificada no formato "Nome:Tipo:Etiqueta", onde "Tipo" e "Etiqueta" são opcionais.',
+  'The property "itemView" cannot be empty.' => 'A propriedade "itemView" não pode estar vazia.',
+  'Total {count} result(s).' => '{count} resultado(s) no total.',
+  'Update' => 'Editar',
+  'View' => 'Exibir',
+  '{class} must specify "model" and "attribute" or "name" property values.' => '{class} deve definir o valor das propriedads "model" e "attribute" ou "name".',
 );

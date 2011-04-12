@@ -17,12 +17,12 @@ $this->breadcrumbs=array(
 		'nama',
 		array(
 			'name' => 'kabupatenId',
-			'value' => '$data->kabupaten->nama',
+			'value' => '$data->namaKabupaten',
 			'filter' => Kecamatan::model()->listData
 		),
 		array(
 			'name'=>'programKknId',
-			'value'=>'$data->programKkn?$data->programKkn->nama:Yii::t("app","Not Set")',
+			'value'=>'$data->namaProgramKkn',
 			'filter'=>ProgramKkn::model()->listData,
 		),
 		array(

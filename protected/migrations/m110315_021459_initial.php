@@ -2,7 +2,7 @@
 
 class m110315_021459_initial extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		// 1
 		$this->createTable('user',array(
@@ -15,7 +15,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 2
 		$this->createTable('fakultas',array(
 			'id' => 'pk',
@@ -25,7 +25,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 3
 		$this->createTable('jenjang',array(
 			'id' => 'pk',
@@ -35,7 +35,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 4
 		$this->createTable('jurusan',array(
 			'id' => 'pk',
@@ -47,10 +47,10 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		$this->addForeignKey('jurusan_jenjangId','jurusan','jenjangId','jenjang','id');
 		$this->addForeignKey('jurusan_fakultasId','jurusan','fakultasId','fakultas','id');
-		
+
 		// 5
 		$this->createTable('program_studi',array(
 			'id' => 'pk',
@@ -63,11 +63,11 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		$this->addForeignKey('program_studi_jenjangId','program_studi','jenjangId','jenjang','id');
 		$this->addForeignKey('program_studi_fakultasId','program_studi','fakultasId','fakultas','id');
 		$this->addForeignKey('program_studi_jurusanId','program_studi','jurusanId','jurusan','id');
-		
+
 		// 6
 		$this->createTable('program_kkn',array(
 			'id' => 'pk',
@@ -76,7 +76,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 7
 		$this->createTable('program_kkn_lampiran',array(
 			'id' => 'pk',
@@ -84,11 +84,11 @@ class m110315_021459_initial extends CDbMigration
 			'path' => 'string',
 			'programKknId' => 'integer',
 		),'engine=innoDB');
-		
+
 		$this->addForeignKey('program_kkn_lampiran_programKknId',
 							 'program_kkn_lampiran','programKknId',
 							 'program_kkn','id');
-		
+
 		// 8
 		$this->createTable('kabupaten',array(
 			'id' => 'pk',
@@ -96,7 +96,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 9
 		$this->createTable('kecamatan',array(
 			'id' => 'pk',
@@ -106,15 +106,15 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		$this->addForeignKey('kecamatan_kabupatenId',
 							 'kecamatan','kabupatenId',
 							 'kabupaten','id');
-		
+
 		$this->addForeignKey('kecamatan_programKknId',
 							 'kecamatan','programKknId',
 							 'program_kkn','id');
-		
+
 		// 10
 		$this->createTable('berita',array(
 			'id' => 'pk',
@@ -123,7 +123,7 @@ class m110315_021459_initial extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		// 11
 		$this->createTable('prioritas',array(
 			'id' => 'pk',
@@ -138,7 +138,7 @@ class m110315_021459_initial extends CDbMigration
 		$this->addForeignKey('prioritas_jurusanId',
 							 'prioritas','jurusanId',
 							 'jurusan','id');
-		
+
 		// 12
 		$this->createTable('kelompok',array(
 			'id' => 'pk',
@@ -163,7 +163,7 @@ class m110315_021459_initial extends CDbMigration
 		$this->addForeignKey('kelompok_programKknId',
 							 'kelompok','programKknId',
 							 'program_kkn','id');
-		
+
 		$this->createTable('mahasiswa',array(
 			'id' => 'pk',
 			'namaLengkap' => 'string NOT NULL',
@@ -188,7 +188,7 @@ class m110315_021459_initial extends CDbMigration
 		$this->addForeignKey('mahasiswa_kelompokId','mahasiswa','kelompokId','kelompok','id');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropTable('mahasiswa');
 		$this->dropTable('kelompok');

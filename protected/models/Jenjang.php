@@ -33,7 +33,7 @@ class Jenjang extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -53,6 +53,9 @@ class Jenjang extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'jurusan' => array(self::HAS_MANY,'Jurusan','jenjangId'),
+			'programStudi' => array(self::HAS_MANY,'ProgramStudi','jenjangId'),
+			'mahasiswa' => array(self::HAS_MANY,'Mahasiswa','jenjangId'),
 		);
 	}
 

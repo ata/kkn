@@ -2,7 +2,7 @@
 
 class m110325_091132_delete_email_column extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->dropColumn('fakultas','email');
 		$this->dropColumn('jurusan','email');
@@ -10,7 +10,7 @@ class m110325_091132_delete_email_column extends CDbMigration
 		$this->dropColumn('program_studi','email');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->addColumn('fakultas','email','string NOT NULL');
 		$this->addColumn('jurusan','email','string NOT NULL');

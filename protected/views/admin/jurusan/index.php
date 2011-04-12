@@ -22,12 +22,12 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'name' => 'fakultasId',
-			'value' => '$data->fakultas->nama',
+			'value' => '$data->namaFakultas',
 			'filter' => Fakultas::model()->listData,
 		),
 		array(
 			'name' => 'jenjangId',
-			'value' => '$data->jenjang->nama',
+			'value' => '$data->namaJenjang',
 			'filter' => Jenjang::model()->listData,
 		),
 		array(

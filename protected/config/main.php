@@ -64,14 +64,6 @@ return array(
 			'password' => 'kkn',
 			'charset' => 'utf8',
 		),
-		/*
-		'authManager'=>array(
-			'class'=>'DbAuthManager',
-			'connectionID'=>'db',
-			'autoCreate' => true,
-			'defaultRoles'=>array('authenticated', 'guest'),
-		),
-		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -83,12 +75,9 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				array(
-					'class'=>'CWebLogRoute',
-					//'showInFireBug' => true,
-				),
 			),
 		),
+
 		'widgetFactory'=>array(
 			'widgets'=>array(
 				'CListView' => array(
@@ -117,6 +106,7 @@ return array(
 
 			),
 		),
+
 		'mailer' => array(
 			'class' => 'application.extensions.mailer.EMailer',
 			'Mailer' => 'smtp',

@@ -35,7 +35,7 @@ class Jurusan extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -58,6 +58,8 @@ class Jurusan extends ActiveRecord
 		return array(
 			'fakultas' => array(self::BELONGS_TO, 'Fakultas','fakultasId'),
 			'jenjang' => array(self::BELONGS_TO, 'Jenjang','jenjangId'),
+			'mahasiswa' => array(self::HAS_MANY,'Mahasiswa','jurusanId'),
+			'prioritas' => array(self::HAS_MANY,'Prioritas','jurusanId'),
 		);
 	}
 
@@ -104,9 +106,19 @@ class Jurusan extends ActiveRecord
 		$this->nama = strtoupper($this->nama);
 		return parent::beforeSave();
 	}
-	
+
 	public function findAllByFakultasId($fakultasId)
 	{
 		return $this->findAllByAttributes(array('fakultasId' => $fakultasId));
+	}
+
+	public function getNamaFakultas()
+	{
+		return $this->fakultas ? $this->fakultas->nama : Yii::t('app','Belum diisi');
+	}
+
+	public function getNamaJenjang()
+	{
+		return $this->jenjang ? $this->jenjang->nama : Yii::t('app','Belum diisi');
 	}
 }

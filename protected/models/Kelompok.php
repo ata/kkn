@@ -9,6 +9,7 @@
  * @property string $kabupatenId
  * @property string $kecamatanId
  * @property string $programKknId
+ * @property string $pembimbingId
  * @property double $latitude
  * @property double $longitude
  * @property integer $jumlahAnggota
@@ -50,11 +51,11 @@ class Kelompok extends ActiveRecord
 		return array(
 			array('lokasi, kabupatenId, kecamatanId, programKknId', 'required'),
 			array('lokasi', 'length', 'max'=>255),
-			array('latitude, longitude, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan', 'numerical'),
+			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan', 'numerical'),
 			array('kabupatenId, kecamatanId, programKknId', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, lokasi, kabupatenId, kecamatanId, programKknId, jumlahAnggota, created, modified', 'safe', 'on'=>'search'),
+			array('id, lokasi, pembimbingId, kabupatenId, kecamatanId, programKknId, jumlahAnggota, created, modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,8 +69,8 @@ class Kelompok extends ActiveRecord
 		return array(
 			'kabupaten' => array(self::BELONGS_TO, 'Kabupaten', 'kabupatenId'),
 			'kecamatan' => array(self::BELONGS_TO, 'Kecamatan', 'kecamatanId'),
-			'anggota' => array(self::HAS_MANY, 'Mahasiswa','kelompokId'),
 			'programKkn' => array(self::BELONGS_TO,'ProgramKkn','programKknId'),
+			'anggota' => array(self::HAS_MANY, 'Mahasiswa','kelompokId'),
 			'mahasiswa' => array(self::HAS_MANY, 'Mahasiswa','kelompokId'),
 		);
 	}
@@ -105,6 +106,7 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('kabupatenId',$this->kabupatenId);
 		$criteria->compare('kecamatanId',$this->kecamatanId);
 		$criteria->compare('programKknId',$this->programKknId);
+		$criteria->compare('pembimbingId',$this->pembimbingId);
 		$criteria->compare('jumlahAnggota',$this->jumlahAnggota);
 		$criteria->compare('jumlahLakiLaki',$this->jumlahLakiLaki);
 		$criteria->compare('jumlahPerempuan',$this->jumlahPerempuan);

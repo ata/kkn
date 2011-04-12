@@ -4,20 +4,21 @@ return CMap::mergeArray(
 	require(dirname(__FILE__).'/main.php'),
 	array(
 		'components'=>array(
-			'fixture'=>array(
-				'class'=>'system.test.CDbFixtureManager',
+			/* uncomment the following to provide test database connection
+			'db'=>array(
+				'connectionString'=>'DSN for test database',
 			),
-			'db'=> array(
+			*/
+			'db'=>array(
 				'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
 				'emulatePrepare' => true,
-				'username' => 'kkn',
-				'password' => 'kkn',
+				'username' => 'root',
+				'password' => 'root',
 				'charset' => 'utf8',
 			),
 			'log'=>array(
 				'class'=>'CLogRouter',
 				'routes'=>array(
-
 					array(
 						'class'=>'CFileLogRoute',
 						'levels'=>'error, warning',
@@ -26,12 +27,11 @@ return CMap::mergeArray(
 
 					array(
 						'class'=>'CWebLogRoute',
-						//'showInFireBug' => true,
 					),
-
 
 				),
 			),
 		),
 	)
 );
+

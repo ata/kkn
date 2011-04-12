@@ -23,7 +23,7 @@ class Dosen extends ActiveRecord
 	 */
 	const LAKI = 'LAKI-LAKI';
 	const PEREMPUAN = 'PEREMPUAN';
-	
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -45,7 +45,7 @@ class Dosen extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nip, namaLengkap, jenisKelamin', 'required'),
+			array('userId, fakultasId, jurusanId, nip, namaLengkap, jenisKelamin', 'required'),
 			array('userId, fakultasId, jurusanId', 'numerical', 'integerOnly'=>true),
 			array('nip, namaLengkap, jenisKelamin, kontak', 'length', 'max'=>255),
 			array('created, modified', 'safe'),
@@ -66,6 +66,7 @@ class Dosen extends ActiveRecord
 			'user' => array(self::BELONGS_TO,'User','userId'),
 			'jurusan' => array(self::BELONGS_TO,'Jurusan','jurusanId'),
 			'fakultas' => array(self::BELONGS_TO,'Fakultas','fakultasId'),
+			'kelompok' => array(self::HAS_MANY,'Kelompok','dosenId'),
 		);
 	}
 
@@ -114,40 +115,42 @@ class Dosen extends ActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
+
 	protected function beforeSave()
 	{
 		$this->namaLengkap = ucwords(strtolower($this->namaLengkap));
 		return parent::beforeSave();
 	}
-	
+
 	protected function afterSave()
 	{
 		$this->saveUserDosen();
 		return parent::afterSave();
 	}
-	
+
 	public function getNama()
 	{
 		return $this->namaLengkap;
 	}
-	
+
 	public function getJurusan()
 	{
 		return $this->jurusan->nama;
 	}
-	
+
 	public function getFakultas()
 	{
 		return $this->fakultas->nama;
 	}
-	
+
+
 	public function saveUserDosen()
 	{
 		$this->user->role = User::ROLE_DOSEN;
 		$this->user->nama = $this->namaLengkap;
 		$this->user->save();
 	}
-	
-	
+
+
 }

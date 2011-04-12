@@ -3,7 +3,7 @@
 abstract class ActiveRecord extends CActiveRecord
 {
 	protected $displayField = 'name';
-	
+
 	public function behaviors(){
 		return array(
 			'CSaveRelationsBehavior' => array(
@@ -15,21 +15,21 @@ abstract class ActiveRecord extends CActiveRecord
 				'updateAttribute' => 'modified',
 			)
 		);
-		
+
 	}
-	
+
 	public function __toString()
 	{
 		return isset($this->nama)?$this->nama:$this->id;
 	}
-	
-	
-	
+
+
+
 	public function toJSON()
 	{
 		return CJSON::encode($this->attributes);
 	}
-	
+
 	public function displayField()
 	{
 		if ($this->displayField !== null) {
@@ -39,12 +39,25 @@ abstract class ActiveRecord extends CActiveRecord
 				'{class}' => get_class($this)
 			)));
 		}
-		
+
 	}
-	
+
 	public function getListData()
 	{
 		return CHtml::listData($this->findAll(),'id',$this->displayField());
 	}
-	
+
+	protected function beforeDelete()
+	{
+		foreach($this->relations() as $relationName => $relation) {
+			if ($relation[0] === self::HAS_MANY || $relation[0] === self::HAS_ONE) {
+				$classModel = $relation[1];
+				$foreignKey = $relation[2];
+				$classModel::model()->updateAll(array($foreignKey => null),
+						"$foreignKey = :id",array('id' => $this->id));
+			}
+		}
+		return true;
+	}
+
 }

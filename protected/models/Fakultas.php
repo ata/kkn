@@ -34,7 +34,7 @@ class Fakultas extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -54,6 +54,10 @@ class Fakultas extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'dosen' => array(self::HAS_MANY,'Dosen','fakultasId'),
+			'jurusan' => array(self::HAS_MANY,'Jurusan','fakultasId'),
+			'programStudi' => array(self::HAS_MANY,'ProgramStudi','fakultasId'),
+			'mahasiswa' => array(self::HAS_MANY,'Mahasiswa','fakultasId'),
 		);
 	}
 
@@ -96,19 +100,19 @@ class Fakultas extends ActiveRecord
 		$this->nama = strtoupper($this->nama);
 		return parent::beforeSave();
 	}
-	
-	
+
+
 	public function getCountMahasiswa()
 	{
 		return Mahasiswa::model()->count('fakultasId = :id',array('id' => $this->id));
 	}
-	
+
 	private $_staticMahasiswa;
-	
+
 	public function getStaticMahasiswa()
 	{
-		return $this->_staticMahasiswa?$this->_staticMahasiswa:$this->_staticMahasiswa = 
+		return $this->_staticMahasiswa?$this->_staticMahasiswa:$this->_staticMahasiswa =
 				CHtml::listData($this->findAll(), 'kode', 'countMahasiswa');
-			
+
 	}
 }
