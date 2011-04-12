@@ -1,3 +1,17 @@
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/jquery.printPage.js')?>
+<?php Yii::app()->clientScript->registerScript('upload-js','
+	$("#print").click(function(){
+		var filter = $(":input").serialize();
+		var pageUrl = "'.Yii::app()->createUrl("admin/jurusan/mahasiswaPrint").'" + "&" + "jurusanId" + "=" + "'.$jurusan->id.'" + "&" + filter;
+		$("#print").printPage({
+			url: pageUrl,
+		});
+		
+	})
+')?>
+<script type="text/javascript">
+	
+</script>
 <?php
 $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),
@@ -6,6 +20,7 @@ $this->breadcrumbs=array(
 );
 ?>
 <h2><?php echo Yii::t('app','Detail Jurusan') ?></h2>
+
 <div class="action ar">
 	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$jurusan->id ),
 		array('class' => 'edit-button'))?>
@@ -43,9 +58,13 @@ $this->breadcrumbs=array(
 
 <br/><br/>
 
+
+<a href="#" id="print">print</a>
+
 <h2><?php echo Yii::t('app','Daftar Mahasiswa')?></h2>
 <?php $this->widget('zii.widgets.grid.CGridview',array(
 	'id'=>'mahasiswa-grid',
+	'cssFile' => false,
 	'dataProvider'=>$mahasiswa->search(),
 	'filter'=>$mahasiswa,
 	'columns'=>array(
@@ -53,7 +72,10 @@ $this->breadcrumbs=array(
 			'class' => 'NumberColumn',
 		),
 		'nim',
-		'nama',
+		array(
+			'name' => 'namaLengkap',
+			'header' => 'Nama'
+		),
 		array(
 			'name' =>'jenisKelamin',
 			'header' => 'J.Kelamin',
@@ -67,3 +89,4 @@ $this->breadcrumbs=array(
 		),
 	)
 ))?>
+
