@@ -9,7 +9,7 @@
  * @property string $kabupatenId
  * @property string $created
  * @property string $modified
- * 
+ *
  */
 class Kecamatan extends ActiveRecord
 {
@@ -18,7 +18,7 @@ class Kecamatan extends ActiveRecord
 	 * @return Kecamatan the static model class
 	 */
 	protected $displayField = 'nama';
-	
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -36,7 +36,7 @@ class Kecamatan extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -108,12 +108,22 @@ class Kecamatan extends ActiveRecord
 		}
 		return parent::beforeSave();
 	}
-	
-	
-	
+
+
+
 	public function findAllByKabupatenId($kabupatenId)
 	{
 		return $this->findAllByAttributes(array('kabupatenId' => $kabupatenId));
 	}
-	
+
+	public function getNamaKabupaten()
+	{
+		return $this->kabupaten ? $this->kabupaten->nama : Yii::t('app','Belum diisi');
+	}
+
+	public function getNamaProgramKkn()
+	{
+		return $this->programKkn ? $this->programKkn->nama : Yii::t('app','Belum diisi');
+	}
+
 }

@@ -2,7 +2,7 @@
 
 class m110330_015314_create_table_setting extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->createTable('setting',array(
 			'id' => 'pk',
@@ -10,10 +10,10 @@ class m110330_015314_create_table_setting extends CDbMigration
 			'value' => 'string NOT NULL',
 			'created' => 'DATETIME NOT NULL',
 			'modified' => 'DATETIME NOT NULL',
-		));
+		),'engine=innoDB');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropTable('setting');
 	}

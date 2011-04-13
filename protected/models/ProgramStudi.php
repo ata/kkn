@@ -1,18 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "program_studi".
+ * This is the model class for table "programStudi".
  *
- * The followings are the available columns in table 'program_studi':
+ * The followings are the available columns in table 'programStudi':
  * @property string $id
  * @property string $nama
- * @property string $jurusanId
+ * @property string $kode
  * @property string $fakultasId
  * @property string $created
  * @property string $modified
  */
 class ProgramStudi extends ActiveRecord
 {
+	protected $displayField = 'nama';
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return ProgramStudi the static model class
@@ -27,23 +28,23 @@ class ProgramStudi extends ActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'program_studi';
+		return 'programStudi';
 	}
 
 	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, kode, fakultasId, jurusanId', 'required'),
+			array('nama, kode, jenjangId, fakultasId', 'required'),
 			array('nama, kode', 'length', 'max'=>255),
-			array('jurusanId, fakultasId', 'length', 'max'=>20),
+			array('fakultasId', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nama, kode, jurusanId, fakultasId, created, modified', 'safe', 'on'=>'search'),
+			array('id, nama, kode, jenjangId, fakultasId, created, modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +57,9 @@ class ProgramStudi extends ActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'fakultas' => array(self::BELONGS_TO, 'Fakultas','fakultasId'),
-			'jurusan' => array(self::BELONGS_TO, 'Jurusan','jurusanId'),
+			'jenjang' => array(self::BELONGS_TO, 'Jenjang','jenjangId'),
+			'mahasiswa' => array(self::HAS_MANY,'Mahasiswa','programStudiId'),
+			'prioritas' => array(self::HAS_MANY,'Prioritas','programStudiId'),
 		);
 	}
 
@@ -70,7 +73,7 @@ class ProgramStudi extends ActiveRecord
 			'nama' => Yii::t('app','Nama'),
 			'kode' => Yii::t('app','Kode'),
 			'fakultasId' => Yii::t('app','Fakultas'),
-			'jurusanId' => Yii::t('app','Jurusan'),
+			'jenjangId' => Yii::t('app','Jenjang'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 		);
@@ -89,12 +92,11 @@ class ProgramStudi extends ActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nama',$this->nama,true);
 		$criteria->compare('kode',$this->kode);
-		$criteria->compare('jurusanId',$this->jurusanId);
 		$criteria->compare('fakultasId',$this->fakultasId);
+		$criteria->compare('jenjangId',$this->jenjangId);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
-		//$criteria->with = array('jurusan','fakultas');
-		
+
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
@@ -103,5 +105,20 @@ class ProgramStudi extends ActiveRecord
 	{
 		$this->nama = strtoupper($this->nama);
 		return parent::beforeSave();
+	}
+
+	public function findAllByFakultasId($fakultasId)
+	{
+		return $this->findAllByAttributes(array('fakultasId' => $fakultasId));
+	}
+
+	public function getNamaFakultas()
+	{
+		return $this->fakultas ? $this->fakultas->nama : Yii::t('app','Belum diisi');
+	}
+
+	public function getNamaJenjang()
+	{
+		return $this->jenjang ? $this->jenjang->nama : Yii::t('app','Belum diisi');
 	}
 }

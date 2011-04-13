@@ -2,13 +2,13 @@
 
 class m110330_015538_add_lunas_asuransi extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->addColumn('mahasiswa','lunasAsuransi','boolean');
 		$this->addColumn('mahasiswa','jumlahAsuransi','double');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropColumn('mahasiswa','lunasAsuransi');
 		$this->dropColumn('mahasiswa','jumlahAsuransi');

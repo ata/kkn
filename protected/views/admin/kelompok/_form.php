@@ -8,10 +8,10 @@
 	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
 
 	<?php echo $form->errorSummary($kelompok); ?>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($kelompok,'programKknId'); ?>
-		<?php echo $form->dropDownList($kelompok,'programKknId',ProgramKkn::model()->listData); ?>
+		<?php echo $form->dropDownList($kelompok,'programKknId',ProgramKkn::model()->listData,array('empty' => Yii::t('app','Pilih Program KKN'))); ?>
 		<?php echo $form->error($kelompok,'programKknId'); ?>
 	</div>
 
@@ -33,18 +33,24 @@
 		<?php echo $form->dropDownList($kelompok,'kecamatanId',Kecamatan::model()->listData,array('empty' => Yii::t('app','Select Kecamatan'))); ?>
 		<?php echo $form->error($kelompok,'kecamatanId'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($kelompok,'lokasi'); ?>
 		<?php echo $form->textField($kelompok,'lokasi',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($kelompok,'lokasi'); ?>
 	</div>
-	
+
 	<div class="type-text">
 		<?php echo $form->labelEx($kelompok,'position'); ?>
 		<?php echo $form->hiddenField($kelompok,'latitude')?>
 		<?php echo $form->hiddenField($kelompok,'longitude')?>
 		<div id="map_canvas" style="height:200px"></div>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'pembimbingId'); ?>
+		<?php echo $form->dropDownList($kelompok,'pembimbingId',Dosen::model()->listData,array('empty' => Yii::t('app','Pilih Dosen Pembimbing'))); ?>
+		<?php echo $form->error($kelompok,'pembimbingId'); ?>
 	</div>
 
 	<div class="row buttons">
@@ -61,7 +67,7 @@
 <script type="text/javascript">
 	var latlng = new google.maps.LatLng(<?php echo $kelompok->latitude ?>,<?php echo $kelompok->longitude?>);
 	var contentString = '<?php echo Yii::t('app','Your Location')?>';
-	
+
 	var options = {
 		zoom: 11,
 		center: latlng,
@@ -69,7 +75,7 @@
 	};
 	var map = new google.maps.Map(document.getElementById('map_canvas'), options);
 	var marker = new google.maps.Marker({
-		position: latlng, 
+		position: latlng,
 		map: map,
 		title: contentString,
 		draggable: true

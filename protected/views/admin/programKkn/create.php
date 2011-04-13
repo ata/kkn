@@ -1,10 +1,10 @@
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/reCopy.js')?>
 <?php Yii::app()->clientScript->registerScript('upload-js','
-	
-	
+
+
 	var linkHapus = "'."<a onclick='$(this).parent().slideUp(function(){ $(this).remove() }); return false' class='remove' href='#'>remove</a>".'";
 
-	$(".clone").relCopy({ append: linkHapus}); 
+	$(".clone").relCopy({ append: linkHapus});
 ')
 ?>
 
@@ -43,14 +43,14 @@ $this->breadcrumbs=array(
 		<?php echo $form->textArea($programKkn,'deskripsi',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($programKkn,'deskripsi'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($programKkn,'files')?>
-		<div class="upload_field">
+		<div id="upload_field" class="upload_field">
 			<?php echo $form->fileField($programKkn,'files[]',array('class'=>'formUpload'));?>
 		</div>
 		<div class="upload-button">
-			<?php echo CHtml::button(Yii::t('app','Tambah File'),array('class'=>'clone','name'=>'clone','rel'=>'.upload_field'))?>
+			<?php echo CHtml::button(Yii::t('app','Tambah File'),array('class'=>'clone','name'=>'clone','rel'=>'#upload_field'))?>
 		</div>
 	</div>
 

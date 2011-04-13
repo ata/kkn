@@ -33,7 +33,7 @@ class Kabupaten extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -53,6 +53,8 @@ class Kabupaten extends ActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'kecamatan' => array(self::HAS_MANY,'Kecamatan','kabupatenId'),
+			'kelompok' => array(self::HAS_MANY,'Kelompok','kabupatenId'),
 		);
 	}
 
@@ -92,6 +94,6 @@ class Kabupaten extends ActiveRecord
 	{
 		$this->nama = strtoupper($this->nama);
 		return parent::beforeSave();
-	
+
 	}
 }

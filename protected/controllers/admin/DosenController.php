@@ -6,7 +6,7 @@ class DosenController extends AdminController
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-	
+
 	public function accessRules()
 	{
 		return array(
@@ -45,26 +45,27 @@ class DosenController extends AdminController
 		$this->performAjaxValidation(array($dosen,$user));
 		if (isset($_POST['User'])&&isset($_POST['Dosen'])) {
 			$user->attributes=$_POST['User'];
+			$user->username = $_POST['Dosen']['nip'];
 			if ($user->save()) {
 				$dosen->userId = $user->id;
 				$dosen->attributes = $_POST['Dosen'];
 				if($dosen->save()){
 					$this->redirect(array('view','id'=>$dosen->id));
 				}
-				
+
 			}
-			
+
 		}
 
 		$this->render('create',array(
 			'user' => $user,
-			'dosen'=> $dosen, 
+			'dosen'=> $dosen,
 		));
 	}
-	
+
 	public function actionDependentSelectJurusan()
 	{
-		echo CHtml::activeDropDownList(Dosen::model(),'jurusanId', 
+		echo CHtml::activeDropDownList(Dosen::model(),'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
@@ -151,7 +152,7 @@ class DosenController extends AdminController
 	 */
 	protected function performAjaxValidation($dosen)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'dosen-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'dosen-form') {
 			echo CActiveForm::validate($dosen);
 			Yii::app()->end();
 		}

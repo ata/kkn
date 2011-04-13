@@ -58,20 +58,12 @@ return array(
 		),
 		*/
 		'db'=> array(
-			'connectionString' => 'mysql:host=localhost;dbname=kkn',
+			'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
 			'emulatePrepare' => true,
 			'username' => 'kkn',
 			'password' => 'kkn',
 			'charset' => 'utf8',
 		),
-
-		'authManager'=>array(
-			'class'=>'DbAuthManager',
-			'connectionID'=>'db',
-			'autoCreate' => true,
-			'defaultRoles'=>array('authenticated', 'guest'),
-		),
-
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
@@ -83,16 +75,9 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
-					'class'=>'CWebLogRoute',
-					//'showInFireBug' => true,
-				),
-				*/
-
 			),
 		),
+
 		'widgetFactory'=>array(
 			'widgets'=>array(
 				'CListView' => array(
@@ -121,6 +106,7 @@ return array(
 
 			),
 		),
+
 		'mailer' => array(
 			'class' => 'application.extensions.mailer.EMailer',
 			'Mailer' => 'smtp',

@@ -30,7 +30,7 @@
 						'visible' => Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Administrasi'), 'url'=>array('/admin/default/index'),
 						'visible' => Yii::app()->user->name === 'admin'),
-					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/kelompok/view'),
+					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dashboard/kelompok/view'),
 						'visible' => !Yii::app()->user->isGuest && Yii::app()->user->name !== 'admin'),
 					array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
 						'visible' => !Yii::app()->user->isGuest),

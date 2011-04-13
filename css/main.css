@@ -714,12 +714,46 @@ a.update-link:active,
 }
 
 .form .row .upload_field{
-    margin-left:170px;
+    margin-left:160px;
 }
 
 .form .row .upload-button{
-    margin-left:170px;
+    margin-left:160px;
 }
+
+.form .row .upload-button input.clone{
+    border:none;
+    width:auto;
+    background:#BA6410;
+    background:-moz-linear-gradient(#0054a6, #002157);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#E7B045), to(#BA6410));
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    behavior: url(border-radius.htc);
+    padding:5px 15px;
+    color:#fff;
+    text-shadow:1px 1px 0 #0d004c;
+    font-weight:bold;
+    cursor:pointer;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    margin-bottom:10px;
+}
+
+.form .row .upload-button input.clone:hover{
+    -moz-box-shadow:0 0 3px #0076a3;
+    -webkit-box-shadow:0 0 3px #0076a3;
+    box-shadow:0 0 3px #0076a3;
+}
+
+.form .row .upload-button input.clone:active{
+    -moz-box-shadow:inset 0 0 5px #090033;
+    -webkit-box-shadow:inset 0 0 5px #090033;
+    box-shadow:inset 0 0 5px #090033;
+}
+
 a.update-link{
     text-decoration:none;
 }
@@ -752,30 +786,31 @@ a.update-link{
 }
 
 .grid-view table.items th{
-  color: white;
-  background:#4D4D4D;
-  text-align: center;
-  line-height:30px;
-  height:35px;
+    color:white;
+    background:#4D4D4D;
+    text-align:left;
+    line-height:30px;
+    height:35px;
     text-shadow:1px 1px 0 #000;
+    padding-left:10px;;
 }
 
 .grid-view table.items th a
 {
-  color: #EEE;
-  font-weight: bold;
+    color: #EEE;
+    font-weight: bold;
     text-decoration:none;
 }
 
 .grid-view table.items th a:hover
 {
-  color: #FFF;
+    color: #FFF;
 }
 
 .grid-view table.items th a.asc
 {
-  background:url(images/up.gif) right center no-repeat;
-  padding-right: 10px;
+    background:url(images/up.gif) right center no-repeat;
+    padding-right: 10px;
 }
 
 .grid-view table.items th a.desc
@@ -1016,6 +1051,16 @@ a.delete-button{
 }
 
 a.delete-button:hover{
+    color:#F20008;
+    text-decoration:underline;
+}
+
+a.remove{
+    color:#B50412;
+    text-decoration:none;
+}
+
+a.remove:hover{
     color:#F20008;
     text-decoration:underline;
 }

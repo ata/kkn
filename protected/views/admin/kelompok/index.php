@@ -17,20 +17,25 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'name'=>'programKknId',
-			'value'=>'$data->programKkn->nama',
+			'value'=>'$data->namaProgramKkn',
 			'filter'=>ProgramKkn::model()->listData,
 		),
 		array(
 			'name'=>'kabupatenId',
-			'value'=>'$data->kabupaten->nama',
+			'value'=>'$data->namaKabupaten',
 			'filter'=>Kabupaten::model()->listData,
-		), 
+		),
 		array(
 			'name'=>'kecamatanId',
-			'value'=>'$data->kecamatan->nama',
+			'value'=>'$data->namaKecamatan',
 			'filter'=>Kecamatan::model()->listData,
 		),
 		'lokasi',
+		array(
+			'name'=>'pembimbingId',
+			'value'=>'$data->namaPembimbing',
+			'filter'=>Dosen::model()->listData,
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),

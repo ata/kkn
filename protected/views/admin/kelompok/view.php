@@ -23,17 +23,21 @@ $this->breadcrumbs=array(
 		'id',
 		array(
 			'name' => 'programKknId',
-			'value' => $kelompok->programKkn->nama
+			'value' => $kelompok->namaProgramKkn
 		),
 		array(
 			'name' => 'kabupatenId',
-			'value' => $kelompok->kabupaten->nama
+			'value' => $kelompok->namaKabupaten
 		),
 		array(
 			'name' => 'kecamatanId',
-			'value' => $kelompok->kecamatan->nama
+			'value' => $kelompok->namaKecamatan
 		),
 		'lokasi',
+		array(
+			'name' => 'kecamatanId',
+			'value' => $kelompok->namaPembimbing
+		),
 		'created',
 		'modified',
 	),
@@ -83,7 +87,7 @@ $this->breadcrumbs=array(
 <script type="text/javascript">
 	var latlng = new google.maps.LatLng(<?php echo $kelompok->latitude ?>,<?php echo $kelompok->longitude?>);
 	var contentString = '<?php echo Yii::t('app','Your Location')?>';
-	
+
 	var options = {
 		zoom: 11,
 		center: latlng,
@@ -91,7 +95,7 @@ $this->breadcrumbs=array(
 	};
 	var map = new google.maps.Map(document.getElementById('map_canvas'), options);
 	var marker = new google.maps.Marker({
-		position: latlng, 
+		position: latlng,
 		map: map,
 		title: contentString,
 		draggable: false

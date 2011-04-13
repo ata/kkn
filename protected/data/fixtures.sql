@@ -1,128 +1,91 @@
--- phpMyAdmin SQL Dump
--- version 3.3.7deb5
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Mar 25, 2011 at 03:53 PM
--- Server version: 5.1.55
--- PHP Version: 5.3.5-0.dotdeb.1
-
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT=0;
 START TRANSACTION;
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `kkn_dev`
---
-
---
--- Dumping data for table `berita`
---
 
 INSERT IGNORE INTO `berita` (`id`, `title`, `body`, `created`, `modified`) VALUES
 (2, 'Berita Baru', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. \r\n\r\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. \r\n\r\nStet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consete', '2011-03-18 14:13:07', '0000-00-00 00:00:00');
 
---
--- Dumping data for table `dosen`
---
 
+INSERT IGNORE INTO `fakultas` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
+(1, 'FAKULTAS ILMU PENDIDIKAN', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'FAKULTAS PENDIDIKAN ILMU PENGETAHUAN SOSIAL', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'FAKULTAS PENDIDIKAN BAHASA DAN SENI', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'FAKULTAS PENDIDIKAN MATEMATIKA DAN ILMU PENGETAHUAN ALAM', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'FAKULTAS PENDIDIKAN TEKNIK DAN KEJURUAN', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'FAKULTAS PENDIDIKAN OLAHRAGA DAN KESEHATAN', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'FAKULTAS PENDIDIKAN EKONOMI DAN BISNIS', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
---
--- Dumping data for table `fakultas`
---
+INSERT IGNORE INTO `jenjang` (`id`, `nama`, `kode`, `created`, `modified`) VALUES
+(1, 'Strata 1', 'S1', '2010-08-16 00:03:11', '2010-08-17 07:11:14'),
+(2, 'Strata 2', 'S2', '2010-08-16 00:03:28', '2010-08-17 07:11:24');
 
-INSERT IGNORE INTO `fakultas` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
-(1, 'FAKULTAS ILMU PENDIDIKAN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'FAKULTAS PENDIDIKAN ILMU PENGETAHUAN SOSIAL', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'FAKULTAS PENDIDIKAN BAHASA DAN SENI', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'FAKULTAS PENDIDIKAN MATEMATIKA DAN ILMU PENGETAHUAN ALAM', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'FAKULTAS PENDIDIKAN TEKNIK DAN KEJURUAN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'FAKULTAS PENDIDIKAN OLAHRAGA DAN KESEHATAN', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'FAKULTAS PENDIDIKAN EKONOMI DAN BISNIS', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
---
--- Dumping data for table `jenjang`
---
-
-INSERT IGNORE INTO `jenjang` (`id`, `nama`, `kode`, `email`, `created`, `modified`) VALUES
-(1, 'Strata 1', 'S1', '', '2010-08-16 00:03:11', '2010-08-17 07:11:14'),
-(2, 'Strata 2', 'S2', '', '2010-08-16 00:03:28', '2010-08-17 07:11:24');
-
---
--- Dumping data for table `jurusan`
---
-
-INSERT IGNORE INTO `jurusan` (`id`, `nama`, `kode`, `email`, `jenjangId`, `fakultasId`, `created`, `modified`) VALUES
-(1, 'ADMINISTRASI PENDIDIKAN', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'AKUNTANSI', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'BAHASA DAN SASTRA INDONESIA', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'BAHASA DAN SASTRA INGGRIS', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'BIMBINGAN DAN KONSELING', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'BIOLOGI', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'FISIKA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, 'ILMU KEOLAHRAGAAN', '', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, 'ILMU KOMPUTER', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 'ILMU PENDIDIKAN AGAMA ISLAM', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 'KIMIA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'MANAJEMEN', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 'MANAJEMEN INDUSTRI KATERING', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 'MANAJEMEN PEMASARAN PARIWISATA', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 'MANAJEMEN RESORT DAN LEISURE', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 'MATEMATIKA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 'PENDIDIKAN AKUNTANSI', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'PENDIDIKAN BAHASA ARAB', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19, 'PENDIDIKAN BAHASA DAERAH', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(20, 'PENDIDIKAN BAHASA DAN SASTRA INDONESIA', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(21, 'PENDIDIKAN BAHASA INDONESIA', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, 'PENDIDIKAN BAHASA INGGRIS', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(23, 'PENDIDIKAN BAHASA JEPANG', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(24, 'PENDIDIKAN BAHASA JERMAN', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 'PENDIDIKAN BAHASA PERANCIS', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(26, 'PENDIDIKAN BIOLOGI', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, 'PENDIDIKAN EKONOMI DAN KOPERASI', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(28, 'PENDIDIKAN FISIKA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(29, 'PENDIDIKAN GEOGRAFI', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(30, 'PENDIDIKAN GURU PENDIDIKAN ANAK USIA DINI', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(31, 'PENDIDIKAN GURU SEKOLAH DASAR', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(32, 'PENDIDIKAN GURU SEKOLAH DASAR PENDIDIKAN JASMANI', '', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(33, 'PENDIDIKAN ILMU KOMPUTER', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(34, 'PENDIDIKAN JASMANI KESEHATAN DAN REKREASI', '', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(35, 'PENDIDIKAN KEPELATIHAN OLAHRAGA', '', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(36, 'PENDIDIKAN KESEJAHTERAAN KELUARGA', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(37, 'PENDIDIKAN KEWARGANEGARAAN', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(38, 'PENDIDIKAN KIMIA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(39, 'PENDIDIKAN LUAR BIASA', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(40, 'PENDIDIKAN LUAR SEKOLAH', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(41, 'PENDIDIKAN MANAJEMEN BISNIS', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(42, 'PENDIDIKAN MANAJEMEN PERKANTORAN', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(43, 'PENDIDIKAN MATEMATIKA', '', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(44, 'PENDIDIKAN SEJARAH', '', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(45, 'PENDIDIKAN SENI MUSIK', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(46, 'PENDIDIKAN SENI RUPA', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(47, 'PENDIDIKAN SENI RUPA DAN KERAJINAN', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(48, 'PENDIDIKAN SENI TARI', '', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(49, 'PENDIDIKAN TATA BOGA', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(50, 'PENDIDIKAN TATA BUSANA', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(51, 'PENDIDIKAN TATA NIAGA', '', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(52, 'PENDIDIKAN TEKNIK ARSITEKTUR', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(53, 'PENDIDIKAN TEKNIK BANGUNAN', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(54, 'PENDIDIKAN TEKNIK ELEKTRO', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(55, 'PENDIDIKAN TEKNIK MESIN', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(56, 'PENDIDIKAN TEKNIK SIPIL', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(57, 'PSIKOLOGI', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(58, 'TEKNIK TENAGA ELEKTRIK', '', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(59, 'TEKNOLOGI PENDIDIKAN', '', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
---
--- Dumping data for table `kabupaten`
---
+INSERT IGNORE INTO `jurusan` (`id`, `nama`, `kode`, `jenjangId`, `fakultasId`, `created`, `modified`) VALUES
+(1, 'ADMINISTRASI PENDIDIKAN', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'AKUNTANSI', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'BAHASA DAN SASTRA INDONESIA', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'BAHASA DAN SASTRA INGGRIS', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'BIMBINGAN DAN KONSELING', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'BIOLOGI', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'FISIKA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'ILMU KEOLAHRAGAAN', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'ILMU KOMPUTER', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'ILMU PENDIDIKAN AGAMA ISLAM', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'KIMIA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'MANAJEMEN', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'MANAJEMEN INDUSTRI KATERING', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'MANAJEMEN PEMASARAN PARIWISATA', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'MANAJEMEN RESORT DAN LEISURE', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'MATEMATIKA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'PENDIDIKAN AKUNTANSI', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'PENDIDIKAN BAHASA ARAB', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'PENDIDIKAN BAHASA DAERAH', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'PENDIDIKAN BAHASA DAN SASTRA INDONESIA', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 'PENDIDIKAN BAHASA INDONESIA', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 'PENDIDIKAN BAHASA INGGRIS', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 'PENDIDIKAN BAHASA JEPANG', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 'PENDIDIKAN BAHASA JERMAN', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 'PENDIDIKAN BAHASA PERANCIS', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 'PENDIDIKAN BIOLOGI', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'PENDIDIKAN EKONOMI DAN KOPERASI', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 'PENDIDIKAN FISIKA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 'PENDIDIKAN GEOGRAFI', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 'PENDIDIKAN GURU PENDIDIKAN ANAK USIA DINI', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 'PENDIDIKAN GURU SEKOLAH DASAR', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 'PENDIDIKAN GURU SEKOLAH DASAR PENDIDIKAN JASMANI', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'PENDIDIKAN ILMU KOMPUTER', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 'PENDIDIKAN JASMANI KESEHATAN DAN REKREASI', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 'PENDIDIKAN KEPELATIHAN OLAHRAGA', '', 1, 6, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, 'PENDIDIKAN KESEJAHTERAAN KELUARGA', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(37, 'PENDIDIKAN KEWARGANEGARAAN', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(38, 'PENDIDIKAN KIMIA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(39, 'PENDIDIKAN LUAR BIASA', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'PENDIDIKAN LUAR SEKOLAH', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(41, 'PENDIDIKAN MANAJEMEN BISNIS', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 'PENDIDIKAN MANAJEMEN PERKANTORAN', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(43, 'PENDIDIKAN MATEMATIKA', '', 1, 4, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 'PENDIDIKAN SEJARAH', '', 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 'PENDIDIKAN SENI MUSIK', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 'PENDIDIKAN SENI RUPA', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(47, 'PENDIDIKAN SENI RUPA DAN KERAJINAN', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 'PENDIDIKAN SENI TARI', '', 1, 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 'PENDIDIKAN TATA BOGA', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 'PENDIDIKAN TATA BUSANA', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'PENDIDIKAN TATA NIAGA', '', 1, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(52, 'PENDIDIKAN TEKNIK ARSITEKTUR', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(53, 'PENDIDIKAN TEKNIK BANGUNAN', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(54, 'PENDIDIKAN TEKNIK ELEKTRO', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(55, 'PENDIDIKAN TEKNIK MESIN', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(56, 'PENDIDIKAN TEKNIK SIPIL', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(57, 'PSIKOLOGI', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 'TEKNIK TENAGA ELEKTRIK', '', 1, 5, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(59, 'TEKNOLOGI PENDIDIKAN', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 INSERT IGNORE INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
 (3, 'Kota Bandung', '2010-08-15 21:52:21', '0000-00-00 00:00:00'),
@@ -142,10 +105,6 @@ INSERT IGNORE INTO `kabupaten` (`id`, `nama`, `created`, `modified`) VALUES
 (17, 'Pandeglang', '2010-08-15 21:58:59', '0000-00-00 00:00:00'),
 (18, 'Serang', '2010-08-31 18:40:37', '0000-00-00 00:00:00');
 
---
--- Dumping data for table `kampus`
---
-
 INSERT IGNORE INTO `kampus` (`id`, `nama`, `alamat`, `created`, `modified`) VALUES
 (1, 'PUSAT', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'CIBIRU', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -153,10 +112,6 @@ INSERT IGNORE INTO `kampus` (`id`, `nama`, `alamat`, `created`, `modified`) VALU
 (4, 'PURWAKARTA', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 'TASIKMALAYA', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'SERANG', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
---
--- Dumping data for table `kecamatan`
---
 
 INSERT IGNORE INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `created`, `modified`) VALUES
 (2, 'Cikalong Wetan', 6, NULL, '2010-08-15 22:03:12', '2010-09-29 22:37:55'),
@@ -178,10 +133,6 @@ INSERT IGNORE INTO `kecamatan` (`id`, `nama`, `kabupatenId`, `programKknId`, `cr
 (18, 'Andir', 3, NULL, '2010-08-15 22:38:52', '0000-00-00 00:00:00'),
 (19, 'Sukajadi', 3, NULL, '2010-08-15 22:39:31', '0000-00-00 00:00:00');
 
---
--- Dumping data for table `kelompok`
---
-
 INSERT IGNORE INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `programKknId`, `latitude`, `longitude`, `jumlahAnggota`, `jumlahLakiLaki`, `jumlahPerempuan`, `created`, `modified`) VALUES
 (2, 'Jl. Amd No. 33 Ciraja Desa Mandalasari', 6, 2, 5, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:11:05', '2010-09-29 22:37:55'),
 (3, 'Desa Wangunsari Rt 01 Rw. 09', 6, 3, 6, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:12:02', '0000-00-00 00:00:00'),
@@ -196,10 +147,6 @@ INSERT IGNORE INTO `kelompok` (`id`, `lokasi`, `kabupatenId`, `kecamatanId`, `pr
 (12, 'Kelurahan Campaka', 3, 18, 3, -6.906659, 107.605591, 1, 1, 0, '2010-08-15 22:41:49', '2010-10-15 23:46:21'),
 (13, 'Kelurahan Sukawarna', 3, 19, 3, -6.906659, 107.605591, 0, 0, 0, '2010-08-15 22:42:30', '0000-00-00 00:00:00'),
 (14, 'Kelurahan Pasteur', 3, 19, 2, -6.88927628005024, 107.55546587793, 0, 0, 0, '2010-08-31 18:52:39', '0000-00-00 00:00:00');
-
---
--- Dumping data for table `mahasiswa`
---
 
 INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alamatTinggal`, `fakultasId`, `jenjangId`, `jurusanId`, `kelompokId`, `jenisKelamin`, `phone1`, `phone2`, `photoPath`, `created`, `modified`, `registered`, `userId`, `kampusId`) VALUES
 (1, 'REZA FAHDI FAISAL', '0704241', NULL, NULL, 1, 1, 1, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 1),
@@ -5815,14 +5762,6 @@ INSERT IGNORE INTO `mahasiswa` (`id`, `namaLengkap`, `nim`, `alamatAsal`, `alama
 (5594, 'ANAH', '1008799', NULL, NULL, 1, 1, 31, NULL, 'PEREMPUAN', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6),
 (5595, 'SALAHUDIN ALAYUBI', '1008808', NULL, NULL, 1, 1, 31, NULL, 'LAKI-LAKI', NULL, NULL, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, 6);
 
---
--- Dumping data for table `prioritas`
---
-
-
---
--- Dumping data for table `program_kkn`
---
 
 INSERT IGNORE INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modified`) VALUES
 (2, 'POSDAYA', 'nanti di isi', '2010-08-15 21:47:58', '2010-08-15 22:29:32'),
@@ -5833,19 +5772,7 @@ INSERT IGNORE INTO `program_kkn` (`id`, `nama`, `deskripsi`, `created`, `modifie
 (7, 'SENI BUDAYA', 'nanti di isi', '2010-08-15 21:51:04', '0000-00-00 00:00:00'),
 (8, 'TEKA', 'efghjui9o', '2010-10-11 19:58:19', '0000-00-00 00:00:00');
 
---
--- Dumping data for table `program_kkn_lampiran`
---
 
-
---
--- Dumping data for table `program_studi`
---
-
-
---
--- Dumping data for table `user`
---
 
 INSERT IGNORE INTO `user` (`id`, `username`, `password`, `email`, `nama`, `created`, `modified`, `role`) VALUES
 (1, 'admin', 'ac43724f16e9241d990427ab7c8f4228', 'th3crypt@gmail.com', 'Administrator', '2011-03-25 10:34:32', '2011-03-12 10:34:35', 'admin');

@@ -34,7 +34,7 @@ class Prioritas extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -66,7 +66,7 @@ class Prioritas extends ActiveRecord
 	{
 		return array(
 			'id' => Yii::t('app','ID'),
-			'level' => Yii::t('app','Level Prioritas'),
+			'level' => Yii::t('app','Tingkat Prioritas'),
 			'programKknId' => Yii::t('app','Program Kkn'),
 			'jurusanId' => Yii::t('app','Jurusan'),
 			'created' => Yii::t('app','Created'),
@@ -90,7 +90,7 @@ class Prioritas extends ActiveRecord
 		$criteria->compare('jurusanId',$this->jurusanId);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
-		
+
 		$criteria->order = 'level';
 
 		return new CActiveDataProvider(get_class($this), array(
@@ -100,12 +100,12 @@ class Prioritas extends ActiveRecord
 			)
 		));
 	}
-	
+
 	protected function beforeSave()
 	{
 		return parent::beforeSave();
 	}
-	
+
 	protected function beforeValidate()
 	{
 		$prioritas = $this->findByAttributes(array(

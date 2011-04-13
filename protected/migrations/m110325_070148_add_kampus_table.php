@@ -2,7 +2,7 @@
 
 class m110325_070148_add_kampus_table extends CDbMigration
 {
-	public function up()
+	public function safeUp()
 	{
 		$this->createTable('kampus',array(
 			'id' => 'pk',
@@ -11,13 +11,13 @@ class m110325_070148_add_kampus_table extends CDbMigration
 			'created' => 'datetime NOT NULL',
 			'modified' => 'datetime NOT NULL',
 		),'engine=innoDB');
-		
+
 		$this->addColumn('mahasiswa','kampusId','integer');
-		
+
 		$this->addForeignKey('mahasiswa_kampusId','mahasiswa','kampusId','kampus','id');
 	}
 
-	public function down()
+	public function safeDown()
 	{
 		$this->dropForeignKey('mahasiswa_kampusId','mahasiswa');
 		$this->dropColumn('mahasiswa','kampusId');

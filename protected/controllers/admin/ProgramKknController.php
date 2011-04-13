@@ -146,14 +146,7 @@ class ProgramKknController extends AdminController
 	public function actionDeleteFile()
 	{
 		if(isset($_POST['id'])){
-			$file = ProgramKknLampiran::model()->findByPk($_POST['id']);
-			$pathFile = Yii::app()->request->baseUrl.'/'.$file->path;
-			if($file->delete()){
-				unlink($file->path);
-				echo "success";
-			} else {
-				echo "gagal";
-			}
+			ProgramKknLampiran::model()->findByPk($_POST['id'])->delete();
 		}
 	}
 

@@ -63,7 +63,8 @@ class ProgramKkn extends ActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'lampiran' => array(self::HAS_MANY,'ProgramKknLampiran','programKknId'),
-
+			'prioritas' => array(self::HAS_MANY,'Prioritas','programKknId'),
+			'kelompok' => array(self::HAS_MANY,'Kelompok','programKknId'),
 		);
 	}
 
