@@ -21,8 +21,11 @@ class Dosen extends ActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * @return Dosen the static model class
 	 */
+
 	const LAKI = 'LAKI-LAKI';
 	const PEREMPUAN = 'PEREMPUAN';
+
+	protected $displayField = 'namaLengkap';
 
 	public static function model($className=__CLASS__)
 	{
@@ -119,7 +122,7 @@ class Dosen extends ActiveRecord
 
 	protected function beforeSave()
 	{
-		$this->namaLengkap = ucwords(strtolower($this->namaLengkap));
+		//$this->namaLengkap = ucwords(strtolower($this->namaLengkap));
 		return parent::beforeSave();
 	}
 

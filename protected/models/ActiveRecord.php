@@ -2,7 +2,7 @@
 
 abstract class ActiveRecord extends CActiveRecord
 {
-	protected $displayField = 'name';
+	protected $displayField = 'nama';
 
 	public function behaviors(){
 		return array(

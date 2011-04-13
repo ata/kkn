@@ -70,6 +70,7 @@ class Kelompok extends ActiveRecord
 			'kabupaten' => array(self::BELONGS_TO, 'Kabupaten', 'kabupatenId'),
 			'kecamatan' => array(self::BELONGS_TO, 'Kecamatan', 'kecamatanId'),
 			'programKkn' => array(self::BELONGS_TO,'ProgramKkn','programKknId'),
+			'pembimbing' => array(self::BELONGS_TO,'Dosen','pembimbingId'),
 			'anggota' => array(self::HAS_MANY, 'Mahasiswa','kelompokId'),
 			'mahasiswa' => array(self::HAS_MANY, 'Mahasiswa','kelompokId'),
 		);
@@ -83,6 +84,7 @@ class Kelompok extends ActiveRecord
 		return array(
 			'id' => Yii::t('app','ID'),
 			'lokasi' => Yii::t('app','Lokasi'),
+			'pembimbingId' => Yii::t('app','Pembimbing'),
 			'kabupatenId' => Yii::t('app','Kabupaten'),
 			'kecamatanId' => Yii::t('app','Kecamatan'),
 			'programKknId' => Yii::t('app','Program KKN'),
@@ -248,10 +250,21 @@ class Kelompok extends ActiveRecord
 
 	public function getNamaProgramKkn()
 	{
-		if ($this->programKkn !== null) {
-			return $this->programKkn->nama;
-		} else {
-			return Yii::t('app','Belum ditetapkan');
-		}
+		return $this->programKkn ? $this->programKkn->nama : Yii::t('app','Belum ditetapkan');
+	}
+
+	public function getNamaPembimbing()
+	{
+		return $this->pembimbing ? $this->pembimbing->namaLengkap : Yii::t('app','Belum ditetapkan');
+	}
+
+	public function getNamaKabupaten()
+	{
+		return $this->kabupaten ? $this->kabupaten->nama : Yii::t('app','Belum diisi');
+	}
+
+	public function getNamaKecamatan()
+	{
+		return $this->kecamatan ? $this->kecamatan->nama : Yii::t('app','Belum diisi');
 	}
 }
