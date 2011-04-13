@@ -3,10 +3,19 @@
 	$("#print").click(function(){
 		var filter = $(":input").serialize();
 		var pageUrl = "'.Yii::app()->createUrl("admin/jurusan/mahasiswaPrint").'" + "&" + "jurusanId" + "=" + "'.$jurusan->id.'" + "&" + filter;
-		$("#print").printPage({
-			url: pageUrl,
-		});
 		
+		if(!$("#iframePrint")[0])
+		{
+			$("body").append("<iframe src="+pageUrl+" name='."iframePrint".' id='."iframePrint".'></iframe>");
+			$("#iframePrint").bind("load",
+				function(){
+					frames["iframePrint"].focus();
+					frames["iframePrint"].print();
+				}
+			)
+		} else {
+			$("#iframePrint").attr("src",pageUrl);
+		}
 	})
 ')?>
 <script type="text/javascript">
