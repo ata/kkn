@@ -1,5 +1,6 @@
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/jquery.printPage.js')?>
-<?php Yii::app()->clientScript->registerScript('upload-js','
+
+<?php Yii::app()->clientScript->registerScript('print-js','
+	$(":input").val("");
 	$("#print").click(function(){
 		var filter = $(":input").serialize();
 		var pageUrl = "'.Yii::app()->createUrl("admin/jurusan/mahasiswaPrint").'" + "&" + "jurusanId" + "=" + "'.$jurusan->id.'" + "&" + filter;
@@ -67,8 +68,10 @@ $this->breadcrumbs=array(
 
 <br/><br/>
 
+<div class="print-button">
+	<a href="#" id="print"><img src="<?php echo Yii::app()->request->baseUrl.'/images/print.gif'?>"></a>
+</div>
 
-<a href="#" id="print">print</a>
 
 <h2><?php echo Yii::t('app','Daftar Mahasiswa')?></h2>
 <?php $this->widget('zii.widgets.grid.CGridview',array(
@@ -95,6 +98,9 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'viewButtonUrl' => 'array("admin/mahasiswa/view","id" => $data->id)',
+			'updateButtonUrl' => 'array("admin/mahasiswa/update","id" => $data->id)',
+			'deleteButtonUrl' => 'array("admin/mahasiswa/delete","id" => $data->id)',
 		),
 	)
 ))?>

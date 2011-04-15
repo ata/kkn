@@ -1,3 +1,4 @@
+
 <?php
 $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),
@@ -40,7 +41,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-<div class="action ar">
+<div class="action ar" id="action-view">
 	<?php echo CHtml::link(Yii::t('app','Ubah'),array('update','id' =>$mahasiswa->id ),
 		array('class' => 'edit-button'))?>
 	<?php echo CHtml::link(Yii::t('app','Hapus'),array('delete'),
@@ -49,4 +50,17 @@ $this->breadcrumbs=array(
 			'submit' => array('delete','id'=>$mahasiswa->id),
 			'confirm'=> Yii::t('app','Anda yakin akan menghapus mahasiswa ini?'),
 		))?>
+	<?php echo CHtml::ajaxLink(Yii::t('app','Bayar Asuransi'),
+		Yii::app()->createUrl('admin/mahasiswa/bayarAsuransi'),
+		array(
+			'onlick'=>'$("#bayarDiv").dialog("open");return false;',
+			'update'=>'#bayarDiv',
+			'type'=>'POST',
+			'data'=>array('id'=>$mahasiswa->id),
+		),
+		array('id'=>'showBayarDiv'))?>
+</div>
+
+<div id="bayarDiv">
+	
 </div>

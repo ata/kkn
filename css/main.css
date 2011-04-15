@@ -310,6 +310,19 @@ textarea, input{
     margin-top:15px;
 }
 
+#iframePrint{
+	position: absolute; 
+	top: 0px;
+	left: 0px; 
+	width: 0px; 
+	height: 0px;
+	border: 0px none; z-index: -1;
+}
+
+.print-button {
+	margin-right:-100px;
+}
+
 /**************************************/
 /*            SIDE NAVIGATION         */
 /**************************************/

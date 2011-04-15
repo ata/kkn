@@ -37,6 +37,7 @@ class Mahasiswa extends ActiveRecord
 	public $verifyCode;
 	public $file;
 	public $update = false;
+	public $inputCaptcha = true;
 
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
@@ -62,14 +63,14 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
+			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin,jumlahAsuransi', 'required'),
 			array('userId, registered', 'numerical', 'integerOnly'=>true),
 			array('nim', 'numerical'),
 			array('email','email'),
 			array('jenisKelamin, namaLengkap, phone1, phone2, alamatAsal, alamatTinggal', 'length', 'max'=>255),
 			array('userId, fakultasId, nim, jurusanId, kelompokId, jenjangId', 'length', 'max'=>20),
 			array('confirmPassword', 'compare', 'compareAttribute'=>'password'),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update || $this->inputCaptcha),
 			array('file', 'file', 'types'=>'jpg, jpeg, png, gif','allowEmpty' => true),
 
 			// The following rule is used by search().
@@ -115,6 +116,7 @@ class Mahasiswa extends ActiveRecord
 			'phone2' => Yii::t('app','Phone 2'),
 			'password' => Yii::t('app','Password'),
 			'confirmPassword' => Yii::t('app','Confirm Password'),
+			'jumlahAsuransi'=>Yii::t('app','Jumlah Asuransi'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 		);

@@ -13,7 +13,7 @@ class MahasiswaController extends AdminController
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions' => array(
 					'admin','delete','index','view','create','update',
-					'dependentSelectJurusan',
+					'dependentSelectJurusan','bayarAsuransi',
 				),
 				'users' => array('admin'),
 			),
@@ -28,8 +28,10 @@ class MahasiswaController extends AdminController
 	 */
 	public function actionView()
 	{
+		$mahasiswa = $this->loadModel();
+		$this->performValidationAsuransi($mahasiswa);
 		$this->render('view',array(
-			'mahasiswa' => $this->loadModel(),
+			'mahasiswa' => $mahasiswa,
 		));
 	}
 
@@ -121,6 +123,29 @@ class MahasiswaController extends AdminController
 		);
 		Yii::app()->end();
 	}
+	
+	public function actionBayarAsuransi()
+	{
+		$mahasiswa = new Mahasiswa('search');
+		//$mahasiswa->unsetAttributes();
+		if(isset($_POST['id'])){
+			$mahasiswa->id = $_POST['id'];
+		}
+		
+		$this->performValidationAsuransi($mahasiswa);
+		
+		$flag = true;
+		if(isset($_POST['Mahasiswa'])){
+			$flag = false;
+			$mahasiswa->attributes = $_POST['Mahasiswa'];
+			$mahasiswa->inputCaptcha = false;
+			$mahasiswa->save(false);
+		}
+		
+		if($flag){
+			$this->renderPartial('bayarAsuransi',array('mahasiswa'=>$mahasiswa),false,true);
+		}
+	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -147,6 +172,14 @@ class MahasiswaController extends AdminController
 	{
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'mahasiswa-form') { 
 			echo CActiveForm::validate($mahasiswa);
+			Yii::app()->end();
+		}
+	}
+	
+	protected function performValidationAsuransi($mahasiswa)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='mahasiswa-form'){
+			echo CActiveForm::validate($mahasiswa,array('jumlahAsuransi'));
 			Yii::app()->end();
 		}
 	}
