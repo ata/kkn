@@ -1,664 +1,476 @@
-1:
+%YAML 1.1
+---
+# kkn_test.jurusan
+-
+  id: 1
+  nama: ADMINISTRASI PENDIDIKAN
+  kode: 
+  jenjangId: 1
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
+  modified: 0000-00-00 00:00:00
+-
   id: 2
-  nama: Administrasi Pendidikan
+  nama: AKUNTANSI
+  kode: 
   jenjangId: 1
-  kode: AP
-  fakultasId: 2
-  created: 2010-08-15 19:18:57
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-2:
+-
   id: 3
-  nama: Psik. Pend. &amp; Bimbingan
+  nama: BAHASA DAN SASTRA INDONESIA
+  kode: 
   jenjangId: 1
-  kode: PB
-  fakultasId: 2
-  created: 2010-08-15 19:19:59
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-3:
+-
   id: 4
-  nama: Pendidikan Luar Sekolah
+  nama: BAHASA DAN SASTRA INGGRIS
+  kode: 
   jenjangId: 1
-  kode: LS
-  fakultasId: 2
-  created: 2010-08-15 19:20:58
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-4:
+-
   id: 5
-  nama: Pendidikan Luar Biasa
+  nama: BIMBINGAN DAN KONSELING
+  kode: 
   jenjangId: 1
-  kode: LB
-  fakultasId: 2
-  created: 2010-08-15 19:23:16
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-5:
+-
   id: 6
-  nama: Teknologi Pendidikan
+  nama: BIOLOGI
+  kode: 
   jenjangId: 1
-  kode: TP
-  fakultasId: 2
-  created: 2010-08-15 19:23:59
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-6:
+-
   id: 7
-  nama: Pendidikan Guru Sekolah Dasar
+  nama: FISIKA
+  kode: 
   jenjangId: 1
-  kode: GD
-  fakultasId: 2
-  created: 2010-08-15 19:24:43
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-7:
+-
   id: 8
-  nama: Pendidikan Guru Taman Kanak-Kanak
+  nama: ILMU KEOLAHRAGAAN
+  kode: 
   jenjangId: 1
-  kode: GT
-  fakultasId: 2
-  created: 2010-08-15 19:25:29
+  fakultasId: 6
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-8:
+-
   id: 9
-  nama: Psikologi
+  nama: ILMU KOMPUTER
+  kode: 
   jenjangId: 1
-  kode: PG
-  fakultasId: 2
-  created: 2010-08-15 19:25:59
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-9:
+-
   id: 10
-  nama: Pendidikan Moral Pancasila dan Kewarganegaraan (PMPKN)
+  nama: ILMU PENDIDIKAN AGAMA ISLAM
+  kode: 
   jenjangId: 1
-  kode: KN
-  fakultasId: 3
-  created: 2010-08-15 19:27:36
-  modified: 2010-08-15 19:28:16
-10:
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
+  modified: 0000-00-00 00:00:00
+-
   id: 11
-  nama: Pendidikan Sejarah
+  nama: KIMIA
+  kode: 
   jenjangId: 1
-  kode: SJ
-  fakultasId: 3
-  created: 2010-08-15 19:28:48
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-11:
+-
   id: 12
-  nama: Pendidikan Geografi
+  nama: MANAJEMEN
+  kode: 
   jenjangId: 1
-  kode: GG
-  fakultasId: 3
-  created: 2010-08-15 19:29:14
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-12:
+-
   id: 13
-  nama: Pendidikan Ekonomi
+  nama: MANAJEMEN INDUSTRI KATERING
+  kode: 
   jenjangId: 1
-  kode: PE
-  fakultasId: 3
-  created: 2010-08-15 19:30:09
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-13:
+-
   id: 14
-  nama: Pendididkan Akutansi
+  nama: MANAJEMEN PEMASARAN PARIWISATA
+  kode: 
   jenjangId: 1
-  kode: PA
-  fakultasId: 3
-  created: 2010-08-15 19:30:56
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-14:
+-
   id: 15
-  nama: Pendidikan Tata Niaga
+  nama: MANAJEMEN RESORT DAN LEISURE
+  kode: 
   jenjangId: 1
-  kode: TN
-  fakultasId: 3
-  created: 2010-08-15 19:31:26
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-15:
+-
   id: 16
-  nama: Pendidikan Administrasi Perkantoran
+  nama: MATEMATIKA
+  kode: 
   jenjangId: 1
-  kode: MK
-  fakultasId: 3
-  created: 2010-08-15 19:32:20
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-16:
+-
   id: 17
-  nama: Pendidikan Ekonomi Dan Koperasi
+  nama: PENDIDIKAN AKUNTANSI
+  kode: 
   jenjangId: 1
-  kode: KP
-  fakultasId: 3
-  created: 2010-08-15 19:33:25
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-17:
+-
   id: 18
-  nama: Manajemen
+  nama: PENDIDIKAN BAHASA ARAB
+  kode: 
   jenjangId: 1
-  kode: MJ
   fakultasId: 3
-  created: 2010-08-15 19:34:02
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-18:
+-
   id: 19
-  nama: Akutansi
+  nama: PENDIDIKAN BAHASA DAERAH
+  kode: 
   jenjangId: 1
-  kode: AK
   fakultasId: 3
-  created: 2010-08-15 19:34:35
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-19:
+-
   id: 20
-  nama: Manajemen Pemasaran Turisme
+  nama: PENDIDIKAN BAHASA DAN SASTRA INDONESIA
+  kode: 
   jenjangId: 1
-  kode: MP
   fakultasId: 3
-  created: 2010-08-15 19:35:52
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-20:
+-
   id: 21
-  nama: Manajemen Industri Katering
+  nama: PENDIDIKAN BAHASA INDONESIA
+  kode: 
   jenjangId: 1
-  kode: MI
   fakultasId: 3
-  created: 2010-08-15 19:36:54
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-21:
+-
   id: 22
-  nama: Manajemen Resort dan Leisure
+  nama: PENDIDIKAN BAHASA INGGRIS
+  kode: 
   jenjangId: 1
-  kode: MR
   fakultasId: 3
-  created: 2010-08-15 19:37:39
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-22:
+-
   id: 23
-  nama: Pendididkan Biologi
+  nama: PENDIDIKAN BAHASA JEPANG
+  kode: 
   jenjangId: 1
-  kode: BI
-  fakultasId: 1
-  created: 2010-08-15 19:38:21
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-23:
+-
   id: 24
-  nama: Pendididkan Fisika
+  nama: PENDIDIKAN BAHASA JERMAN
+  kode: 
   jenjangId: 1
-  kode: FI
-  fakultasId: 1
-  created: 2010-08-15 19:38:48
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-24:
+-
   id: 25
-  nama: Pendididkan Kimia
+  nama: PENDIDIKAN BAHASA PERANCIS
+  kode: 
   jenjangId: 1
-  kode: KI
-  fakultasId: 1
-  created: 2010-08-15 19:39:10
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-25:
+-
   id: 26
-  nama: Pendidikan Matematika
+  nama: PENDIDIKAN BIOLOGI
+  kode: 
   jenjangId: 1
-  kode: MT
-  fakultasId: 1
-  created: 2010-08-15 19:39:39
-  modified: 2010-08-15 21:10:44
-26:
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
+  modified: 0000-00-00 00:00:00
+-
   id: 27
-  nama: Pendididkan Ilmu Komputer
+  nama: PENDIDIKAN EKONOMI DAN KOPERASI
+  kode: 
   jenjangId: 1
-  kode: IK
-  fakultasId: 1
-  created: 2010-08-15 19:40:19
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-27:
+-
   id: 28
-  nama: Biologi
+  nama: PENDIDIKAN FISIKA
+  kode: 
   jenjangId: 1
-  kode: BI
-  fakultasId: 1
-  created: 2010-08-15 19:40:45
+  fakultasId: 4
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-28:
+-
   id: 29
-  nama: Fisika
+  nama: PENDIDIKAN GEOGRAFI
+  kode: 
   jenjangId: 1
-  kode: FI
-  fakultasId: 1
-  created: 2010-08-15 19:41:03
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-29:
+-
   id: 30
-  nama: Kimia
+  nama: PENDIDIKAN GURU PENDIDIKAN ANAK USIA DINI
+  kode: 
   jenjangId: 1
-  kode: KI
   fakultasId: 1
-  created: 2010-08-15 19:41:24
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-30:
+-
   id: 31
-  nama: Matematika
+  nama: PENDIDIKAN GURU SEKOLAH DASAR
+  kode: 
   jenjangId: 1
-  kode: MT
   fakultasId: 1
-  created: 2010-08-15 19:41:48
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-31:
+-
   id: 32
-  nama: Ilmu Komputer
+  nama: PENDIDIKAN GURU SEKOLAH DASAR PENDIDIKAN JASMANI
+  kode: 
   jenjangId: 1
-  kode: IK
-  fakultasId: 1
-  created: 2010-08-15 19:42:08
+  fakultasId: 6
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-32:
+-
   id: 33
-  nama: Pendidikan Bahasa Indonesia
+  nama: PENDIDIKAN ILMU KOMPUTER
+  kode: 
   jenjangId: 1
-  kode: IN
   fakultasId: 4
-  created: 2010-08-15 20:28:52
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-33:
+-
   id: 34
-  nama: Pendidikan Bahasa Daerah
+  nama: PENDIDIKAN JASMANI KESEHATAN DAN REKREASI
+  kode: 
   jenjangId: 1
-  kode: DR
-  fakultasId: 4
-  created: 2010-08-15 20:30:24
+  fakultasId: 6
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-34:
+-
   id: 35
-  nama: Pendidikan Bahasa Inggris
+  nama: PENDIDIKAN KEPELATIHAN OLAHRAGA
+  kode: 
   jenjangId: 1
-  kode: IG
-  fakultasId: 4
-  created: 2010-08-15 20:31:03
+  fakultasId: 6
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-35:
+-
   id: 36
-  nama: Pendidikan Bahasa Jerman
+  nama: PENDIDIKAN KESEJAHTERAAN KELUARGA
+  kode: 
   jenjangId: 1
-  kode: JR
-  fakultasId: 4
-  created: 2010-08-15 20:31:45
+  fakultasId: 5
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-36:
+-
   id: 37
-  nama: Pendidikan Bahasa Arab
+  nama: PENDIDIKAN KEWARGANEGARAAN
+  kode: 
   jenjangId: 1
-  kode: AR
-  fakultasId: 4
-  created: 2010-08-15 20:32:41
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-37:
+-
   id: 38
-  nama: Pendidikan Bahasa Jepang
+  nama: PENDIDIKAN KIMIA
+  kode: 
   jenjangId: 1
-  kode: JP
   fakultasId: 4
-  created: 2010-08-15 20:33:07
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-38:
+-
   id: 39
-  nama: Pendidikan Bahasa Perancis
+  nama: PENDIDIKAN LUAR BIASA
+  kode: 
   jenjangId: 1
-  kode: PR
-  fakultasId: 4
-  created: 2010-08-15 20:33:32
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-39:
+-
   id: 40
-  nama: Pendidikan Seni Musik
+  nama: PENDIDIKAN LUAR SEKOLAH
+  kode: 
   jenjangId: 1
-  kode: SM
-  fakultasId: 4
-  created: 2010-08-15 20:34:22
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-40:
+-
   id: 41
-  nama: Pendidikan Seni Tari
+  nama: PENDIDIKAN MANAJEMEN BISNIS
+  kode: 
   jenjangId: 1
-  kode: ST
-  fakultasId: 4
-  created: 2010-08-15 20:34:42
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-41:
+-
   id: 42
-  nama: Pendidikan Seni Rupa dan Kerajinan
+  nama: PENDIDIKAN MANAJEMEN PERKANTORAN
+  kode: 
   jenjangId: 1
-  kode: RK
-  fakultasId: 4
-  created: 2010-08-15 20:35:19
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-42:
+-
   id: 43
-  nama: Bahasa dan Sastra Indonesia
+  nama: PENDIDIKAN MATEMATIKA
+  kode: 
   jenjangId: 1
-  kode: IN
   fakultasId: 4
-  created: 2010-08-15 20:35:57
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-43:
+-
   id: 44
-  nama: Bahasa dan Sastra Inggris
+  nama: PENDIDIKAN SEJARAH
+  kode: 
   jenjangId: 1
-  kode: IG
-  fakultasId: 4
-  created: 2010-08-15 20:36:35
+  fakultasId: 2
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-44:
+-
   id: 45
-  nama: Pendididkan Teknik Bangunan
+  nama: PENDIDIKAN SENI MUSIK
+  kode: 
   jenjangId: 1
-  kode: TB
-  fakultasId: 5
-  created: 2010-08-15 20:38:03
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-45:
+-
   id: 46
-  nama: Pendididkan Teknik Sipil
+  nama: PENDIDIKAN SENI RUPA
+  kode: 
   jenjangId: 1
-  kode: TS
-  fakultasId: 5
-  created: 2010-08-15 20:38:34
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-46:
+-
   id: 47
-  nama: Pendididkan Teknik Arsitektur
+  nama: PENDIDIKAN SENI RUPA DAN KERAJINAN
+  kode: 
   jenjangId: 1
-  kode: TA
-  fakultasId: 5
-  created: 2010-08-15 20:39:16
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-47:
+-
   id: 48
-  nama: Pendididkan Teknik Mesin
+  nama: PENDIDIKAN SENI TARI
+  kode: 
   jenjangId: 1
-  kode: TM
-  fakultasId: 5
-  created: 2010-08-15 20:39:39
+  fakultasId: 3
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-48:
+-
   id: 49
-  nama: Pendidikan Listrik Tenaga
+  nama: PENDIDIKAN TATA BOGA
+  kode: 
   jenjangId: 1
-  kode: LT
   fakultasId: 5
-  created: 2010-08-15 20:40:12
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-49:
+-
   id: 50
-  nama: Pendididkan Elektronika Komputer
+  nama: PENDIDIKAN TATA BUSANA
+  kode: 
   jenjangId: 1
-  kode: EK
   fakultasId: 5
-  created: 2010-08-15 20:41:07
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-50:
+-
   id: 51
-  nama: Pendididkan Tata Boga
+  nama: PENDIDIKAN TATA NIAGA
+  kode: 
   jenjangId: 1
-  kode: BG
-  fakultasId: 5
-  created: 2010-08-15 20:41:59
+  fakultasId: 7
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-51:
+-
   id: 52
-  nama: Pendididkan Tata Busana
+  nama: PENDIDIKAN TEKNIK ARSITEKTUR
+  kode: 
   jenjangId: 1
-  kode: BU
   fakultasId: 5
-  created: 2010-08-15 20:48:58
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-52:
+-
   id: 53
-  nama: Teknik Sipil
+  nama: PENDIDIKAN TEKNIK BANGUNAN
+  kode: 
   jenjangId: 1
-  kode: TS
   fakultasId: 5
-  created: 2010-08-15 20:49:44
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-53:
+-
   id: 54
-  nama: Teknik Arsitektur
+  nama: PENDIDIKAN TEKNIK ELEKTRO
+  kode: 
   jenjangId: 1
-  kode: TA
   fakultasId: 5
-  created: 2010-08-15 20:50:14
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-54:
+-
   id: 55
-  nama: Teknik Perumahan
+  nama: PENDIDIKAN TEKNIK MESIN
+  kode: 
   jenjangId: 1
-  kode: TR
   fakultasId: 5
-  created: 2010-08-15 20:50:53
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-55:
+-
   id: 56
-  nama: Teknik Mesin
+  nama: PENDIDIKAN TEKNIK SIPIL
+  kode: 
   jenjangId: 1
-  kode: TM
   fakultasId: 5
-  created: 2010-08-15 20:51:30
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-56:
+-
   id: 57
-  nama: Teknik Elektro
+  nama: PSIKOLOGI
+  kode: 
   jenjangId: 1
-  kode: TE
-  fakultasId: 5
-  created: 2010-08-15 20:52:56
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-57:
+-
   id: 58
-  nama: Pendidikan Teknik Produksi dan Perancangan
+  nama: TEKNIK TENAGA ELEKTRIK
+  kode: 
   jenjangId: 1
-  kode: PP
   fakultasId: 5
-  created: 2010-08-15 20:54:14
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-58:
+-
   id: 59
-  nama: Pendidikan Teknik Otomotif
+  nama: TEKNOLOGI PENDIDIKAN
+  kode: 
   jenjangId: 1
-  kode: OT
-  fakultasId: 5
-  created: 2010-08-15 20:56:18
+  fakultasId: 1
+  created: 0000-00-00 00:00:00
   modified: 0000-00-00 00:00:00
-59:
-  id: 60
-  nama: Pendidikan Teknik Refrigasi dan Tata Udara
-  jenjangId: 1
-  kode: RT
-  fakultasId: 5
-  created: 2010-08-15 20:57:56
-  modified: 0000-00-00 00:00:00
-60:
-  id: 61
-  nama: Pendididkan Olahraga
-  jenjangId: 1
-  kode: OR
-  fakultasId: 6
-  created: 2010-08-15 20:59:16
-  modified: 0000-00-00 00:00:00
-61:
-  id: 62
-  nama: Pendidikan kesehatan dan Rekreasi
-  jenjangId: 1
-  kode: KR
-  fakultasId: 6
-  created: 2010-08-15 21:00:02
-  modified: 0000-00-00 00:00:00
-62:
-  id: 63
-  nama: Pendidikan Kepelatihan
-  jenjangId: 1
-  kode: KP
-  fakultasId: 6
-  created: 2010-08-15 21:00:47
-  modified: 0000-00-00 00:00:00
-63:
-  id: 64
-  nama: Pendidikan Guru Penjas
-  jenjangId: 1
-  kode: GJ
-  fakultasId: 6
-  created: 2010-08-15 21:01:26
-  modified: 0000-00-00 00:00:00
-64:
-  id: 65
-  nama: ilmu Keolahragaan
-  jenjangId: 1
-  kode: IO
-  fakultasId: 6
-  created: 2010-08-15 21:01:51
-  modified: 0000-00-00 00:00:00
-65:
-  id: 66
-  nama: Administrasi Pendidikan
-  jenjangId: 2
-  kode: AP
-  fakultasId: 7
-  created: 2010-08-15 21:02:59
-  modified: 2010-08-30 22:21:57
-66:
-  id: 67
-  nama: Pengembangan Kurikulum
-  jenjangId: 2
-  kode: TK
-  fakultasId: 7
-  created: 2010-08-15 21:03:26
-  modified: 0000-00-00 00:00:00
-67:
-  id: 68
-  nama: Bimbingan dan Konseling
-  jenjangId: 2
-  kode: BK
-  fakultasId: 7
-  created: 2010-08-15 21:04:05
-  modified: 0000-00-00 00:00:00
-68:
-  id: 69
-  nama: Pendidikan Luar Sekolah
-  jenjangId: 2
-  kode: LS
-  fakultasId: 7
-  created: 2010-08-15 21:04:49
-  modified: 2010-08-15 21:05:03
-69:
-  id: 70
-  nama: Pendidikan Umum 
-  jenjangId: 2
-  kode: PU
-  fakultasId: 7
-  created: 2010-08-15 21:07:36
-  modified: 0000-00-00 00:00:00
-70:
-  id: 71
-  nama: Pendidikan Kebutuhan Khusus
-  jenjangId: 2
-  kode: KK
-  fakultasId: 7
-  created: 2010-08-15 21:08:10
-  modified: 0000-00-00 00:00:00
-71:
-  id: 72
-  nama: Pendidikan IPA
-  jenjangId: 2
-  kode: PA
-  fakultasId: 7
-  created: 2010-08-15 21:09:09
-  modified: 0000-00-00 00:00:00
-72:
-  id: 73
-  nama: Pendidikan Matematika
-  jenjangId: 2
-  kode: MT
-  fakultasId: 7
-  created: 2010-08-15 21:10:09
-  modified: 0000-00-00 00:00:00
-73:
-  id: 74
-  nama: Pendidikan Bahasa Indonesia
-  jenjangId: 2
-  kode: IN
-  fakultasId: 7
-  created: 2010-08-15 21:11:38
-  modified: 0000-00-00 00:00:00
-74:
-  id: 75
-  nama: Pendidikan Bahasa Inggris
-  jenjangId: 2
-  kode: IG
-  fakultasId: 7
-  created: 2010-08-15 21:12:17
-  modified: 0000-00-00 00:00:00
-75:
-  id: 76
-  nama: Pendidikan Bahasa Jepang
-  jenjangId: 2
-  kode: JP
-  fakultasId: 7
-  created: 2010-08-15 21:12:45
-  modified: 0000-00-00 00:00:00
-76:
-  id: 77
-  nama: Pendidikan Bahasa Perancis
-  jenjangId: 2
-  kode: PR
-  fakultasId: 7
-  created: 2010-08-15 21:13:21
-  modified: 0000-00-00 00:00:00
-77:
-  id: 78
-  nama: Pendidikan IPS
-  jenjangId: 2
-  kode: SS
-  fakultasId: 7
-  created: 2010-08-15 21:13:47
-  modified: 0000-00-00 00:00:00
-78:
-  id: 79
-  nama: Pendidikan Kewarganegaraan
-  jenjangId: 2
-  kode: KN
-  fakultasId: 7
-  created: 2010-08-15 21:14:40
-  modified: 0000-00-00 00:00:00
-79:
-  id: 80
-  nama: Pendidikan Kesenian
-  jenjangId: 2
-  kode: KS
-  fakultasId: 7
-  created: 2010-08-15 21:15:20
-  modified: 0000-00-00 00:00:00
-80:
-  id: 81
-  nama: Pendidikan Teknik Kejuruan
-  jenjangId: 2
-  kode: KJ
-  fakultasId: 7
-  created: 2010-08-15 21:16:01
-  modified: 0000-00-00 00:00:00
-81:
-  id: 82
-  nama: Pendidikan Olahraga
-  jenjangId: 2
-  kode: OR
-  fakultasId: 7
-  created: 2010-08-15 21:16:36
-  modified: 0000-00-00 00:00:00
-82:
-  id: 83
-  nama: Magister Manajemen Bisnis
-  jenjangId: 2
-  kode: MB
-  fakultasId: 7
-  created: 2010-08-15 21:17:33
-  modified: 0000-00-00 00:00:00
-83:
-  id: 84
-  nama: Linguistik
-  jenjangId: 2
-  kode: LG
-  fakultasId: 7
-  created: 2010-08-15 21:17:59
-  modified: 0000-00-00 00:00:00
+...

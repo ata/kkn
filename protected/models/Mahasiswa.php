@@ -37,6 +37,7 @@ class Mahasiswa extends ActiveRecord
 	public $verifyCode;
 	public $file;
 	public $update = false;
+	public $registered;
 
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
@@ -140,9 +141,15 @@ class Mahasiswa extends ActiveRecord
 		$criteria->compare('kelompokId',$this->kelompokId);
 		$criteria->compare('jenjangId',$this->jenjangId);
 		$criteria->compare('jenisKelamin',$this->jenisKelamin);
-		$criteria->compare('registered',$this->registered);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		if($this->registered !== null) {
+			if($this->registered == 0) {
+				$criteria->addCondition('userId is NULL');
+			} else {
+				$criteria->addCondition('userId is NOT NULL');
+			}
+		}
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
@@ -205,6 +212,7 @@ class Mahasiswa extends ActiveRecord
 		$this->user->nama = $this->namaLengkap;
 		if ($this->user->save()) {
 			$this->userId = $this->user->id;
+			//$this->registered = true;
 		} else {
 			var_dump($this->user->errors);
 			die();
@@ -269,6 +277,11 @@ class Mahasiswa extends ActiveRecord
 			return false;
 		}
 		return true;
+	}
+
+	public function getRegisteredLabel()
+	{
+		return $this->isRegistered ? Yii::t('app','Sudah Registrasi') : Yii::t('app','Belum Registrasi');
 	}
 
 }

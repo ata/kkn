@@ -12,10 +12,10 @@
  */
 class ProgramKkn extends ActiveRecord
 {
-
 	/**
 	 * untuk menampung attactment dari form field bertipe file
 	 */
+
 	public $files;
 
 	protected $displayField = 'nama';

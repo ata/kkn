@@ -1,6 +1,5 @@
 <?php
 $this->breadcrumbs=array(
-	'Mahasiswa'=>array('/mahasiswa'),
 	'Register',
 );?>
 
@@ -103,8 +102,6 @@ $this->breadcrumbs=array(
 				</div>
 			</fieldset>
 
-
-
 			<fieldset>
 				<legend><?php echo Yii::t('app','Informasi User')?></legend>
 				<div class="row">
@@ -146,5 +143,3 @@ $this->breadcrumbs=array(
 
 	</div><!-- form -->
 </div><!-- list-view -->
-
-

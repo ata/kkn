@@ -28,11 +28,11 @@
 						<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
 					</div>
 					<div id="register-form">
-						<h2 class="floatRight">REGISTRASI</h2>
+						<h2 class="floatRight"><?php echo Yii::t('app','REGISTRASI')?></h2>
 						<div class="clear"></div>
-						<form>
+						<form action="<?php echo $this->createUrl('/register')?>" method="post">
 							<label>NIM</label><br>
-							<input type="text"><br>
+							<input type="text" name="Mahasiswa[nim]"><br>
 							<input type="submit" value="DAFTAR" class="button">
 						</form>
 					</div>

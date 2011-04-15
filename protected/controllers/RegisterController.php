@@ -10,6 +10,7 @@ class RegisterController extends Controller
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
+				'testLimit' => 0,
 			),
 		);
 	}

@@ -12,6 +12,8 @@
  */
 class Prioritas extends ActiveRecord
 {
+
+	const MAX_LEVEL = 5;
 	public $fakultasId;
 	/**
 	 * Returns the static model of the specified AR class.
