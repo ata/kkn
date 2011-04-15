@@ -78,7 +78,7 @@ $this->breadcrumbs=array(
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($prioritas); ?>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($prioritas,'level'); ?>
 		<?php echo $form->dropDownList($prioritas,'level',
@@ -87,11 +87,11 @@ $this->breadcrumbs=array(
 				2 => 'Level 2',
 				3 => 'Level 3',
 				4 => 'Level 4',
-				5 => 'Level 5'
+				5 => 'Level 5',
 			),array('empty'=>Yii::t('app','Pilih Level Prioritas'))); ?>
 		<?php echo $form->error($prioritas,'level'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($prioritas,'fakultasId'); ?>
 		<?php echo $form->dropDownList($prioritas,'fakultasId',Fakultas::model()->listData,array(
@@ -104,14 +104,14 @@ $this->breadcrumbs=array(
 		)); ?>
 		<?php echo $form->error($prioritas,'fakultasId'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($prioritas,'jurusanId'); ?>
 		<?php echo $form->dropDownList($prioritas,'jurusanId',
 			Jurusan::model()->listData,array('empty' => Yii::t('app','Pilih Jurusan'))); ?>
 		<?php echo $form->error($prioritas,'jurusanId'); ?>
 	</div>
-	
+
 	<?php echo $form->hiddenField($prioritas,'programKknId',array('value'=>$programKkn->id))?>
 	<!--<div class="row buttons">
 		<?php /*echo CHtml::ajaxSubmitButton('Tambah Prioritas',
@@ -125,7 +125,7 @@ $this->breadcrumbs=array(
 	<div class="row buttons">
 		<?php echo CHtml::submitButton(Yii::t('app','submit'));?>
 	</div>
-	
+
 
 <?php $this->endWidget(); ?>
 
@@ -138,7 +138,7 @@ $this->breadcrumbs=array(
 	'columns'=>array(
 		array(
 			'header' => 'No',
-			'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',  
+			'value'=>'$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
 			'htmlOptions' => array('width' => '50px'),
 		),
 		'level',

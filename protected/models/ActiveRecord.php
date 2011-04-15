@@ -53,7 +53,8 @@ abstract class ActiveRecord extends CActiveRecord
 			if ($relation[0] === self::HAS_MANY || $relation[0] === self::HAS_ONE) {
 				$classModel = $relation[1];
 				$foreignKey = $relation[2];
-				$classModel::model()->updateAll(array($foreignKey => null),
+				$model = new $classModel;
+				$model->updateAll(array($foreignKey => null),
 						"$foreignKey = :id",array('id' => $this->id));
 			}
 		}

@@ -37,7 +37,7 @@ $this->breadcrumbs=array(
 		array(
 			'name' =>'registered',
 			'header' => 'Registrasi',
-			'value' => '$data->registered?Yii::t("app","Sudah Registrasi"):Yii::t("app","Belum Registrasi")',
+			'value' => '$data->registeredLabel',
 			'filter' => array(
 				0 => Yii::t('app','Belum Registrasi'),
 				1 => Yii::t('app','Sudah Registrasi'),

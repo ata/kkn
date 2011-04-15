@@ -1,0 +1,24 @@
+%YAML 1.1
+---
+# kkn_test.dosen
+-
+  id: 1
+  nip: 00001
+  namaLengkap: Ahmad Tanwir
+  jenisKelamin: LAKI-LAKI
+  userId: 2
+  fakultasId: 2
+  jurusanId: 14
+  kontak: 0978767
+  created: 2011-04-13 10:41:09
+-
+  id: 2
+  nip: 00002
+  namaLengkap: Ahmad Tanwir Ii
+  jenisKelamin: LAKI-LAKI
+  userId: 3
+  fakultasId: 3
+  jurusanId: 18
+  kontak: 0978767
+  created: 2011-04-13 10:45:05
+...

@@ -15,12 +15,12 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'name'=>'kabupatenId',
-			'value'=>'$data->kabupaten->nama',
+			'value'=>'$data->namaKabupaten',
 			'filter'=>Kabupaten::model()->listData,
 		),
 		array(
 			'name'=>'kecamatanId',
-			'value'=>'$data->kecamatan->nama',
+			'value'=>'$data->namaKecamatan',
 			'filter'=>Kecamatan::model()->listData,
 		),
 		'lokasi',
@@ -32,8 +32,7 @@ $this->breadcrumbs=array(
 		array(
 			'name' => 'jumlahAnggota',
 			'header' => 'Anggota',
-			'value' => '$data->jumlahAnggota . " orang (" . $data->jumlahLakiLaki . '
-						. '" laki-laki, " . $data->jumlahLakiLaki . " perempuan)"',
+			'value' => '$data->jumlahAnggotaDisplay',
 			'filter' => false,
 		),
 		array(

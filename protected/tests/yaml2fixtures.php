@@ -4,15 +4,20 @@ $yaml = new sfYamlParser;
 //$fix = array('fakultas','jenjang','jurusan','kabupaten','kecamatan','kelompok','mahasiswa','program_kkn');
 $fix = array(
     'berita',
+    'dosen',
     'fakultas',
     'jenjang',
     'jurusan',
     'kabupaten',
+    'kampus',
     'kecamatan',
     'kelompok',
     'mahasiswa',
     'prioritas',
     'program_kkn',
+    'program_kkn_lampiran',
+    'program_studi',
+    'setting',
     'user'
 );
 

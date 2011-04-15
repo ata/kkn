@@ -10,7 +10,7 @@ return array(
 	'name'=>'KKN',
 
 	// preloading 'log' component
-	//'preload'=>array('log'),
+	'preload'=>array('log'),
 	'language' => 'id',
 	'defaultController' => 'home',
 	// autoloading model and component classes
@@ -58,10 +58,10 @@ return array(
 		),
 		*/
 		'db'=> array(
-			'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
+			'connectionString' => 'mysql:host=localhost;dbname=unit_lppm_kkn',
 			'emulatePrepare' => true,
 			'username' => 'kkn',
-			'password' => 'kkn',
+			'password' => 'dbnaKKNup1',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
