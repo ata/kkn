@@ -20,12 +20,13 @@
 		<?php echo $form->dropDownList($kecamatan,'kabupatenId',Kabupaten::model()->listData); ?>
 		<?php echo $form->error($kecamatan,'kabupatenId'); ?>
 	</div>
-	
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($kecamatan,'programKknId'); ?>
 		<?php echo $form->dropDownList($kecamatan,'programKknId',ProgramKkn::model()->listData,array('empty' => Yii::t('app','Pilih Program'))) ?>
 		<?php echo $form->error($kecamatan,'programKknId'); ?>
 	</div>
+	*/?>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($kecamatan->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>
