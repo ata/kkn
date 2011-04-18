@@ -30,6 +30,8 @@ class Mahasiswa extends ActiveRecord
 	 */
 	const PEREMPUAN = 'PEREMPUAN';
 	const LAKI_LAKI = 'LAKI-LAKI';
+	const ASURANSI_LUNAS = '1';
+	const ASURANSI_BELUM_LUNAS = '0';
 
 	public $password;
 	public $confirmPassword;
@@ -39,6 +41,7 @@ class Mahasiswa extends ActiveRecord
 	public $update = false;
 	public $inputCaptcha = true;
 	public $registered;
+	
 
 
 	private static $_countLakiLaki;
@@ -65,8 +68,8 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin,jumlahAsuransi', 'required'),
-			array('userId, registered', 'numerical', 'integerOnly'=>true),
+			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin,jumlahAsuransi,lunasAsuransi', 'required'),
+			array('userId, registered,jumlahAsuransi', 'numerical', 'integerOnly'=>true),
 			array('nim', 'numerical'),
 			array('email','email'),
 			array('jenisKelamin, namaLengkap, phone1, phone2, alamatAsal, alamatTinggal', 'length', 'max'=>255),
@@ -119,6 +122,7 @@ class Mahasiswa extends ActiveRecord
 			'password' => Yii::t('app','Password'),
 			'confirmPassword' => Yii::t('app','Confirm Password'),
 			'jumlahAsuransi'=>Yii::t('app','Jumlah Asuransi'),
+			'lunasAsuransi'=>Yii::t('app','Lunah Asuransi'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 		);
@@ -144,6 +148,8 @@ class Mahasiswa extends ActiveRecord
 		$criteria->compare('kelompokId',$this->kelompokId);
 		$criteria->compare('jenjangId',$this->jenjangId);
 		$criteria->compare('jenisKelamin',$this->jenisKelamin);
+		$criteria->compare('lunasAsuransi',$this->lunasAsuransi);
+		$criteria->compare('jumlahAsuransi',$this->jumlahAsuransi);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
 		if($this->registered !== null) {

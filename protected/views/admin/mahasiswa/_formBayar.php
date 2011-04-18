@@ -14,7 +14,6 @@
 					success:function(){
 						$("#bayarDiv").dialog("close");
 						$("#showBayarDiv").remove();
-						$("#action-view").append("<a>test</a>");
 					}
 				});
 			}
@@ -26,7 +25,6 @@
 	<?php echo $form->labelEx($mahasiswa,'jumlahAsuransi')?>
 	<?php echo $form->textField($mahasiswa,'jumlahAsuransi')?>
 	<?php echo $form->error($mahasiswa,'jumlahAsuransi')?>
-	<?php echo $form->hiddenField($mahasiswa,'id')?>
 </div>
 
 <?php echo CHtml::submitButton('submit');?>

@@ -323,6 +323,20 @@ textarea, input{
 	margin-right:-100px;
 }
 
+div#rotator {
+	position:relative;
+	height:230px;
+	margin-left:-18px;
+}
+
+div#rotator ul li{
+	list-style: none;
+	position:absolute;
+}
+
+div#rotator ul li.show{
+	z-index:500
+}
 /**************************************/
 /*            SIDE NAVIGATION         */
 /**************************************/

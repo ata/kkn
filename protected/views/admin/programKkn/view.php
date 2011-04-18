@@ -48,32 +48,32 @@ $this->breadcrumbs=array(
 
 <div class="form">
 
-<?php $form = $this->beginWidget('CActiveForm', array(
-	'id' => 'program-kkn-form',
-	'enableAjaxValidation' => true,
-	'action'=>'#',
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-		'afterValidate'=>'js:function(form,data,hasError){
-				if(!hasError){
-					var Isi = $("form").serialize();
-					jQuery.ajax({
-						url:"'.Yii::app()->createUrl("admin/programKkn/addPrioritas").'",
-						cache:false,
-						type:"POST",
-						data:$("form").serialize(),
-						success:function(){
-							jQuery.fn.yiiGridView.update("prioritas-grid", {
-								data: jQuery(this).serialize()
-							});
-							$("form").get(0).reset();
-						},
-					});
-				}
-			}'
-	),
+	<?php $form = $this->beginWidget('CActiveForm', array(
+		'id' => 'program-kkn-form',
+		'enableAjaxValidation' => true,
+		'action'=>'#',
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+			'afterValidate'=>'js:function(form,data,hasError){
+					if(!hasError){
+						var Isi = $("form").serialize();
+						jQuery.ajax({
+							url:"'.Yii::app()->createUrl("admin/programKkn/addPrioritas").'",
+							cache:false,
+							type:"POST",
+							data:$("form").serialize(),
+							success:function(){
+								jQuery.fn.yiiGridView.update("prioritas-grid", {
+									data: jQuery(this).serialize()
+								});
+								$("form").get(0).reset();
+							},
+						});
+					}
+				}'
+		),
 
-)); ?>
+	)); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -127,7 +127,7 @@ $this->breadcrumbs=array(
 	</div>
 
 
-<?php $this->endWidget(); ?>
+	<?php $this->endWidget(); ?>
 
 </div><!-- form -->
 

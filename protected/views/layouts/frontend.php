@@ -1,8 +1,37 @@
 <?php $this->beginContent('//layouts/main'); ?>
 
-<div id="slideshow">
-	<div class="container">
-		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+<?php Yii::app()->clientScript->registerScript('rotator-js','
+	function rotate()
+	{
+		var current = ($("#rotator ul li.show")?  $("#rotator ul li.show") : $("div#rotator ul li:first"));
+		var next = ((current.next().length) ? ((current.next().hasClass("show")) ? $("#rotator ul li:first") :current.next()) : $("#rotator ul li:first"));
+		
+		next.css({opacity: 0.0})
+		.addClass("show")
+		.animate({opacity: 1.0}, 1000);
+		
+		current.animate({opacity: 0.0}, 1000)
+		.removeClass("show");
+	}
+	
+	function theRotator() {
+		$("#rotator ul li").css({opacity: 0.0});
+		$("#rotator ul li:first").css({opacity: 1.0});
+		setInterval(rotate,6000); 
+		//penggantian gambar setiap 6 detik sekali
+	}
+	
+	theRotator();
+	$("#rotator").fadeIn(1000);
+    $("#rotator ul li").fadeIn(1000);
+')?>
+<div class="container">
+	<div id="rotator">
+		<ul>
+			<li class="show"><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
+		</ul>
 	</div>
 </div>
 

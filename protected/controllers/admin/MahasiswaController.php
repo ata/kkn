@@ -138,8 +138,14 @@ class MahasiswaController extends AdminController
 		if(isset($_POST['Mahasiswa'])){
 			$flag = false;
 			$mahasiswa->attributes = $_POST['Mahasiswa'];
+			$mahasiswa->lunasAsuransi = Mahasiswa::ASURANSI_LUNAS;
 			$mahasiswa->inputCaptcha = false;
-			$mahasiswa->save(false);
+			/*if($mahasiswa->save()){
+				echo "masuk";
+			} else {
+				echo "tidak";
+			}*/
+			var_dump($mahasiswa->attributes);
 		}
 		
 		if($flag){
