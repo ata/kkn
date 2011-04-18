@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
 		array(
 			'name' => 'kabupatenId',
 			'value' => '$data->namaKabupaten',
-			'filter' => Kecamatan::model()->listData
+			'filter' => Kabupaten::model()->listData
 		),
 		array(
 			'name'=>'programKknId',
