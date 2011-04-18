@@ -243,16 +243,25 @@ class Kelompok extends ActiveRecord
 
 	public function countMaxAnggota()
 	{
+		if ($this->count() == 0) {
+			return 0;
+		}
 		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->count() / $this->count());
 	}
 
 	public function countMaxLakiLaki()
 	{
+		if ($this->count() == 0) {
+			return 0;
+		}
 		return ceil(Mahasiswa::model()->countLakiLaki() / $this->count());
 	}
 
 	public function countMaxPerempuan()
 	{
+		if ($this->count() == 0) {
+			return 0;
+		}
 		return ceil(Mahasiswa::model()->countPerempuan() / $this->count());
 	}
 
