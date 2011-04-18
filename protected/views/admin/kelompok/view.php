@@ -44,6 +44,7 @@ $this->breadcrumbs=array(
 		'jumlahAnggota',
 		'jumlahLakiLaki',
 		'jumlahPerempuan',
+		'keterangan',
 		'created',
 		'modified',
 	),

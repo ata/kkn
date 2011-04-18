@@ -25,9 +25,10 @@
 class Kelompok extends ActiveRecord
 {
 	protected $displayField = 'nama';
-	static private $_maxAnggota = null;
-	static private $_maxLakiLaki = null;
-	static private $_maxPerempuan = null;
+	private static $_maxAnggota = null;
+	private static $_maxLakiLaki = null;
+	private static $_maxPerempuan = null;
+	private static $_cacheCount;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Kelompok the static model class
@@ -139,42 +140,9 @@ class Kelompok extends ActiveRecord
 		return parent::beforeSave();
 	}
 
-	/**
-	 * kelompok yang di tampilkan memiliki criteria
-	 * 1. Menjadi prioritas dan jumlah mahasiswa dengan jenis kelamin
-	 * sama dengan mahasiswa yang mendaftarr kurang dari atau sama dengan
-	 * jumlah maksimal
-	 */
-	public function searchAvailableKelompokOld($mahasiswa_id, $filter)
-	{
-		$mahasiswa = Mahasiswa::model()->findByPk($mahasiswa_id);
-		$criteria = new CDbCriteria;
-		if($mahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('t.jumlahLakiLaki < :jkmax');
-			$criteria->params['jkmax'] = $this->countMaxLakiLaki();
-		} else {
-			$criteria->addCondition('t.jumlahPerempuan < :jkmax');
-			$criteria->params['jkmax'] = $this->countMaxPerempuan();
-		}
-		$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId)');
-		$criteria->addCondition('t.jumlahAnggota < :jmaxAnggota');
-		$criteria->params['jurusanId'] =  $mahasiswa->jurusanId;
-		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
-		// filter
-		$criteria->compare('t.lokasi',$filter->lokasi,true);
-		$criteria->compare('t.kabupatenId',$filter->kabupatenId);
-		$criteria->compare('t.kecamatanId',$filter->kecamatanId);
-		$criteria->compare('t.programKknId',$filter->programKknId);
-		$criteria->with = array('kabupaten','kecamatan','programKkn');
 
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria'=>$criteria,
-		));
-	}
-
-	public function searchAvailable($level = 1)
+	public function getAvailableCriteria($currentMahasiswa, $level)
 	{
-		$currentMahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
 		$criteria = new CDbCriteria;
 		$criteria->compare('t.lokasi',$this->lokasi,true);
 		$criteria->compare('t.kabupatenId',$this->kabupatenId);
@@ -198,31 +166,21 @@ class Kelompok extends ActiveRecord
 		}
 
 		$criteria->with = array('kabupaten','kecamatan','programKkn','programKkn.prioritas');
+		return $criteria;
+	}
 
+	public function searchAvailable($level = 1)
+	{
+		$currentMahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
+		$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
 		$count = $this->count($criteria);
-
 		if ($count == 0) {
 			return $this->searchAvailable($level + 1);
 		}
-
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
 	}
-
-	public function availableDPChoice()
-	{
-		$criteria=new CDbCriteria;
-		$criteria->with = array('kabupaten','kecamatan');
-		$criteria->order = 't.jumlahAnggota';
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria' => $criteria,
-			'pagination' => array(
-				'pageSize' => 20
-			)
-		));
-	}
-
 
 	public function pilih($mahasiswa_id)
 	{
@@ -241,25 +199,52 @@ class Kelompok extends ActiveRecord
 	}
 
 
-	public function countMaxAnggota()
+	public function getCacheCount()
 	{
-		if ($this->count() == 0) {
-			return 0;
-		}
-		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->count() / $this->count());
+		return self::$_cacheCount !== null ? self::$_cacheCount : $this->count();
 	}
 
-	public function countMaxLakiLaki()
+	/**
+	 * Merupakan Jumlah maksimal anggota dalam satu kelompok
+	 * Jika jumlah maxAnggota di isi, maka akan mengembalikan jumlah anggota
+	 * Jika jumlah anggota tidak diisi, maka akan di cek jumlah kelompok
+	 * Jika jumlah kelompok adalah nol, maka akan mengembalikan 1
+	 * (agar pembagi tetap 1 dan tidak keluar error),
+	 * Jika jumlah kelompok tidak nol, maka lakukan perhitungan:
+	 * 		Jumlah Maksimal Anggota = ceil(Jumlah Mahasiswa / jumlah kelompok kkn)
+	 */
+	public function countMaxAnggota()
 	{
-		if ($this->count() == 0) {
+		if($this->maxAnggota != null && $this->maxAnggota != 0) {
+			return $this->maxAnggota;
+		}
+		if ($this->getCacheCount() == 0) {
 			return 0;
 		}
-		return ceil(Mahasiswa::model()->countLakiLaki() / $this->count());
+		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->count() / $this->getCacheCount());
+	}
+	/**
+	 * Merupakan Jumlah maksimal Laki-laki dalam satu kelompok
+	 * jika $this->maxLakiLaki didefinisikan, maka kembalikan nilai $this->maxLakiLaki
+	 *
+	 */
+	public function countMaxLakiLaki()
+	{
+		if($this->maxLakiLaki != null && $this->maxLakiLaki != 0) {
+			return $this->maxLakiLaki;
+		}
+		if ($this->getCacheCount() == 0) {
+			return 0;
+		}
+		return ceil(Mahasiswa::model()->countLakiLaki() / $this->getCacheCount());
 	}
 
 	public function countMaxPerempuan()
 	{
-		if ($this->count() == 0) {
+		if($this->maxPerempuan != null && $this->maxPerempuan != null) {
+			return $this->maxPerempuan;
+		}
+		if ($this->getCacheCount() == 0) {
 			return 0;
 		}
 		return ceil(Mahasiswa::model()->countPerempuan() / $this->count());
@@ -273,7 +258,7 @@ class Kelompok extends ActiveRecord
 	public function getNama()
 	{
 		if ($this->programKkn !== null) {
-			return "[{$this->programKkn->nama}] {$this->lokasi}";// someting
+			return "[{$this->programKkn->nama}] {$this->lokasi}";
 		} else {
 			$this->lokasi;
 		}

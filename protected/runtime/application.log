@@ -752,3 +752,120 @@ Stack trace:
 #15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #16 /home/ata/Project/kkn/index.php(13): CApplication->run()
 #17 {main} REQUEST_URI=/kkn/
+2011/04/18 11:25:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "admin"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-dev.php?r=admin
+2011/04/18 11:25:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "admin"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-dev.php?r=admin
+2011/04/18 11:25:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/default/i...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/default/index
+2011/04/18 11:25:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/default/i...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/default/index
+2011/04/18 15:25:31 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/04/18 15:25:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/04/18 15:25:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dashboard/kelom...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=dashboard/kelompok/index
+2011/04/18 15:25:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dashboard/kelom...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=dashboard/kelompok/index
+2011/04/18 15:25:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/default/i...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/default/index
+2011/04/18 15:25:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/default/i...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/default/index
