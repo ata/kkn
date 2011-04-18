@@ -29,12 +29,14 @@ $this->breadcrumbs=array(
 			'value'=>'$data->namaProgramKkn',
 			'filter'=>ProgramKkn::model()->listData,
 		),
+		/*
 		array(
 			'name' => 'jumlahAnggota',
 			'header' => 'Anggota',
 			'value' => '$data->jumlahAnggotaDisplay',
 			'filter' => false,
 		),
+		*/
 		array(
 			'header' => '',
 			'value' => 'CHtml::link("Lihat detail",array("/dashboard/kelompok/view","id" => $data->id),array("class" => "detail-link"))',

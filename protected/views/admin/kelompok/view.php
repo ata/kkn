@@ -38,6 +38,12 @@ $this->breadcrumbs=array(
 			'name' => 'kecamatanId',
 			'value' => $kelompok->namaPembimbing
 		),
+		'maxAnggota',
+		'maxLakiLaki',
+		'maxPerempuan',
+		'jumlahAnggota',
+		'jumlahLakiLaki',
+		'jumlahPerempuan',
 		'created',
 		'modified',
 	),

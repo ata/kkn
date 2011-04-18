@@ -15,6 +15,10 @@
  * @property integer $jumlahAnggota
  * @property integer $jumlahLakiLaki
  * @property integer $jumlahPerempuan
+ * @property integer $maxAnggota
+ * @property integer $maxLakiLaki
+ * @property integer $maxPerempuan
+ * @property text $keterangan
  * @property string $created
  * @property string $modified
  */
@@ -51,8 +55,9 @@ class Kelompok extends ActiveRecord
 		return array(
 			array('lokasi, kabupatenId, kecamatanId, programKknId', 'required'),
 			array('lokasi', 'length', 'max'=>255),
-			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan', 'numerical'),
+			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan, maxAnggota, maxLakiLaki, maxPerempuan', 'numerical'),
 			array('kabupatenId, kecamatanId, programKknId', 'length', 'max'=>20),
+			array('keterangan','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, lokasi, pembimbingId, kabupatenId, kecamatanId, programKknId, jumlahAnggota, created, modified', 'safe', 'on'=>'search'),
@@ -88,6 +93,12 @@ class Kelompok extends ActiveRecord
 			'kabupatenId' => Yii::t('app','Kabupaten'),
 			'kecamatanId' => Yii::t('app','Kecamatan'),
 			'programKknId' => Yii::t('app','Program KKN'),
+			'jumlahAnggota' => Yii::t('app','Jumlah Anggota'),
+			'jumlahLakiLaki' => Yii::t('app','Jumlah Laki-Laki'),
+			'jumlahPerempuan' => Yii::t('app','Jumlah Perempuan'),
+			'maxAnggota' => Yii::t('app','Maksimal Anggota'),
+			'maxLakiLaki' => Yii::t('app','Maksimal Laki-Laki'),
+			'maxPerempuan' => Yii::t('app','Maksimal Perempuan'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 		);

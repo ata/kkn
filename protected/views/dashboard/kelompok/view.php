@@ -24,6 +24,16 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
+<?php if(!$currentMahasiswa->kelompokId):?>
+<div class="pilih-link ac">
+	<?php echo CHtml::link(Yii::t('app','Pilih Kelompok Ini'),
+		array('pilih','id' => $kelompok->id),
+		array(
+			'submit'=>array('pilih','id'=>$kelompok->id),
+			'confirm'=>Yii::t('app','Anda tidak bisa memilih ulang kelompok, apa anda yakin akan memilih kelompok ini?')))?>
+</div>
+<?php endif?>
+
 <h2><?php echo Yii::t('app','Anggota Kelompok')?></h2>
 <div class="grid-view">
 	<table class="items">
@@ -58,9 +68,7 @@ $this->breadcrumbs=array(
 	</table>
 </div>
 
-
 <h2><?php echo Yii::t('app','Peta Lokasi KKN')?></h2>
-
 <div id="map_canvas" style="height:200px"></div>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
@@ -83,8 +91,8 @@ $this->breadcrumbs=array(
 		$('#Kelompok_longitude').val(marker.getPosition().lng());
 	});
 </script>
-<?php if($currentMahasiswa->kelompokId == 0):?>
-<div class="pilih-link">
+<?php if(!$currentMahasiswa->kelompokId):?>
+<div class="pilih-link ac">
 	<?php echo CHtml::link(Yii::t('app','Pilih Kelompok Ini'),
 		array('pilih','id' => $kelompok->id),
 		array(

@@ -40,6 +40,24 @@
 		<?php echo $form->error($kelompok,'lokasi'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'maxAnggota'); ?>
+		<?php echo $form->textField($kelompok,'maxAnggota',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'maxAnggota'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'maxLakiLaki'); ?>
+		<?php echo $form->textField($kelompok,'maxLakiLaki',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'maxLakiLaki'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'maxPerempuan'); ?>
+		<?php echo $form->textField($kelompok,'maxPerempuan',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'maxPeremuan'); ?>
+	</div>
+
 	<div class="type-text">
 		<?php echo $form->labelEx($kelompok,'position'); ?>
 		<?php echo $form->hiddenField($kelompok,'latitude')?>
