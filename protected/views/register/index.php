@@ -136,7 +136,7 @@ $this->breadcrumbs=array(
 
 
 		<div class="row buttons">
-			<?php echo CHtml::submitButton(Yii::t('app','Submit')); ?>
+			<?php echo CHtml::submitButton(Yii::t('app','DAFTAR')); ?>
 		</div>
 
 	<?php $this->endWidget(); ?>

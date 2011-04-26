@@ -2,29 +2,14 @@
 
 class JurusanController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
 
-	/**
-	 * Displays a particular model.
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'mahasiswaPrint',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
 	public function actionView()
 	{
 		$jurusan = $this->loadModel();
@@ -44,7 +29,7 @@ class JurusanController extends AdminController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	
+
 	public function actionMahasiswaPrint()
 	{
 		//var_dump($_POST);
@@ -54,13 +39,13 @@ class JurusanController extends AdminController
 		if(isset($_GET['Mahasiswa']) && isset($_GET['jurusanId'])){
 			$mahasiswa->jurusanId = $_GET['jurusanId'];
 			$mahasiswa->attributes = $_GET['Mahasiswa'];
-			
+
 			$dataProvider = $mahasiswa->search();
 			$dataProvider->pagination = false;
-			
+
 
 		}
-		
+
 		$this->render('mahasiswaPrint',array('mahasiswa'=>$dataProvider->getData()));
 	}
 	public function actionCreate()
@@ -122,7 +107,7 @@ class JurusanController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-	
+
 	/**
 	 * Manages all models.
 	 */
@@ -162,7 +147,7 @@ class JurusanController extends AdminController
 	 */
 	protected function performAjaxValidation($jurusan)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'jurusan-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'jurusan-form') {
 			echo CActiveForm::validate($jurusan);
 			Yii::app()->end();
 		}

@@ -2,27 +2,13 @@
 
 class ProgramKknController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'addPrioritas','dependentSelectJurusan','deletePrioritas',
-					'deleteFile','downloadFile',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
 
 	/**
 	 * Displays a particular model.
@@ -53,7 +39,7 @@ class ProgramKknController extends AdminController
 		$prioritas = new Prioritas;
 		//$prioritas->programKknId = $_POST['id'];
 		$this->performAjaxValidation($prioritas);
-		
+
 		if (isset($_POST['Prioritas'])) {
 			$prioritas->attributes = $_POST['Prioritas'];
 			//var_dump($prioritas->attributes);

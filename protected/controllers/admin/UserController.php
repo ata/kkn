@@ -7,26 +7,6 @@ class UserController extends AdminController
 	 */
 	private $_model;
 
-	/**
-	 * Displays a particular model.
-	 */
-	
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'resetPassword'
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
-	
 	public function actionView()
 	{
 		$this->render('view',array(
@@ -113,7 +93,7 @@ class UserController extends AdminController
 			'user' => $user,
 		));
 	}
-	
+
 	public function actionResetPassword()
 	{
 		$user = $this->loadModel();
@@ -153,7 +133,7 @@ class UserController extends AdminController
 	 */
 	protected function performAjaxValidation($user)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
 			echo CActiveForm::validate($user);
 			Yii::app()->end();
 		}

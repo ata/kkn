@@ -10,33 +10,36 @@ class WebUser extends CWebUser
 		parent::login($identity,$duration);
 	}
 
-	
+
 	public function setFullname($identity)
 	{
 		$this->setState('__fullname',$identity->fullname);
 	}
-	
+
 	public function getFullname()
 	{
 		return $this->getState('__fullname');
 	}
-	
+
 	public function setRole($identity)
 	{
 		$this->setState('__role',$identity->role);
 	}
-	
+
 	public function getRole()
 	{
 		return $this->getState('__role');
 	}
-	/*
 	public function getReturnUrl($defaultUrl=null)
 	{
-		return $this->getState('__returnUrl',Yii::app()->createUrl('dashboard/index'));
+		if($this->role === User::ROLE_MAHASISWA) {
+			return Yii::app()->createUrl('mahasiswa/kelompok/view');
+		} else if($this->role === User::ROLE_DOSEN) {
+			return Yii::app()->createUrl('pembimbing/kelompok');
+		}
+		return Yii::app()->createUrl('admin/default');
 	}
-	*/
-	
+
 	/**
 	 * @override Hack!
 	 */
@@ -47,7 +50,7 @@ class WebUser extends CWebUser
 		}
 		return false;
 	}
-	
+
 
 
 }

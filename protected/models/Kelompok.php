@@ -15,15 +15,20 @@
  * @property integer $jumlahAnggota
  * @property integer $jumlahLakiLaki
  * @property integer $jumlahPerempuan
+ * @property integer $maxAnggota
+ * @property integer $maxLakiLaki
+ * @property integer $maxPerempuan
+ * @property text $keterangan
  * @property string $created
  * @property string $modified
  */
 class Kelompok extends ActiveRecord
 {
 	protected $displayField = 'nama';
-	static private $_maxAnggota = null;
-	static private $_maxLakiLaki = null;
-	static private $_maxPerempuan = null;
+	private static $_maxAnggota = null;
+	private static $_maxLakiLaki = null;
+	private static $_maxPerempuan = null;
+	private static $_cacheCount;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Kelompok the static model class
@@ -51,8 +56,9 @@ class Kelompok extends ActiveRecord
 		return array(
 			array('lokasi, kabupatenId, kecamatanId, programKknId', 'required'),
 			array('lokasi', 'length', 'max'=>255),
-			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan', 'numerical'),
+			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan, maxAnggota, maxLakiLaki, maxPerempuan', 'numerical'),
 			array('kabupatenId, kecamatanId, programKknId', 'length', 'max'=>20),
+			array('keterangan','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, lokasi, pembimbingId, kabupatenId, kecamatanId, programKknId, jumlahAnggota, created, modified', 'safe', 'on'=>'search'),
@@ -88,6 +94,12 @@ class Kelompok extends ActiveRecord
 			'kabupatenId' => Yii::t('app','Kabupaten'),
 			'kecamatanId' => Yii::t('app','Kecamatan'),
 			'programKknId' => Yii::t('app','Program KKN'),
+			'jumlahAnggota' => Yii::t('app','Jumlah Anggota'),
+			'jumlahLakiLaki' => Yii::t('app','Jumlah Laki-Laki'),
+			'jumlahPerempuan' => Yii::t('app','Jumlah Perempuan'),
+			'maxAnggota' => Yii::t('app','Maksimal Anggota'),
+			'maxLakiLaki' => Yii::t('app','Maksimal Laki-Laki'),
+			'maxPerempuan' => Yii::t('app','Maksimal Perempuan'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 		);
@@ -128,55 +140,22 @@ class Kelompok extends ActiveRecord
 		return parent::beforeSave();
 	}
 
-	/**
-	 * kelompok yang di tampilkan memiliki criteria
-	 * 1. Menjadi prioritas dan jumlah mahasiswa dengan jenis kelamin
-	 * sama dengan mahasiswa yang mendaftarr kurang dari atau sama dengan
-	 * jumlah maksimal
-	 */
-	public function searchAvailableKelompokOld($mahasiswa_id, $filter)
-	{
-		$mahasiswa = Mahasiswa::model()->findByPk($mahasiswa_id);
-		$criteria = new CDbCriteria;
-		if($mahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('t.jumlahLakiLaki < :jkmax');
-			$criteria->params['jkmax'] = $this->countMaxLakiLaki();
-		} else {
-			$criteria->addCondition('t.jumlahPerempuan < :jkmax');
-			$criteria->params['jkmax'] = $this->countMaxPerempuan();
-		}
-		$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId)');
-		$criteria->addCondition('t.jumlahAnggota < :jmaxAnggota');
-		$criteria->params['jurusanId'] =  $mahasiswa->jurusanId;
-		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
-		// filter
-		$criteria->compare('t.lokasi',$filter->lokasi,true);
-		$criteria->compare('t.kabupatenId',$filter->kabupatenId);
-		$criteria->compare('t.kecamatanId',$filter->kecamatanId);
-		$criteria->compare('t.programKknId',$filter->programKknId);
-		$criteria->with = array('kabupaten','kecamatan','programKkn');
 
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria'=>$criteria,
-		));
-	}
-
-	public function searchAvailable($level = 1)
+	public function getAvailableCriteria($currentMahasiswa, $level)
 	{
-		$currentMahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
 		$criteria = new CDbCriteria;
 		$criteria->compare('t.lokasi',$this->lokasi,true);
 		$criteria->compare('t.kabupatenId',$this->kabupatenId);
 		$criteria->compare('t.kecamatanId',$this->kecamatanId);
 		$criteria->compare('t.programKknId',$this->programKknId);
 		if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('t.jumlahLakiLaki < :jkmax');
+			$criteria->addCondition('t.jumlahLakiLaki < :jkmax OR t.jumlahLakiLaki IS NULL');
 			$criteria->params['jkmax'] = $this->countMaxLakiLaki();
 		} else {
-			$criteria->addCondition('t.jumlahPerempuan < :jkmax');
+			$criteria->addCondition('t.jumlahPerempuan < :jkmax OR t.jumlahPerempuan IS NULL');
 			$criteria->params['jkmax'] = $this->countMaxPerempuan();
 		}
-		$criteria->addCondition('t.jumlahAnggota < :jmaxAnggota');
+		$criteria->addCondition('t.jumlahAnggota < :jmaxAnggota OR t.jumlahAnggota IS NULL');
 		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
 		$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
 		$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
@@ -187,62 +166,103 @@ class Kelompok extends ActiveRecord
 		}
 
 		$criteria->with = array('kabupaten','kecamatan','programKkn','programKkn.prioritas');
+		return $criteria;
+	}
 
+	private $_loopSearch = 0;
+
+	public function searchAvailable(Mahasiswa $currentMahasiswa, $level = 1)
+	{
+		$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
 		$count = $this->count($criteria);
-
-		if ($count == 0) {
-			return $this->searchAvailable($level + 1);
+		if ($count == 0 && $this->_loopSearch < 20) {
+			$this->_loopSearch ++;
+			return $this->searchAvailable($currentMahasiswa, $level + 1);
 		}
-
+		Yii::app()->session->add('Prioritas_level', $level);
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	public function availableDPChoice()
+	public function findByUserIdPembimbing($user_id)
 	{
-		$criteria=new CDbCriteria;
-		$criteria->with = array('kabupaten','kecamatan');
-		$criteria->order = 't.jumlahAnggota';
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria' => $criteria,
-			'pagination' => array(
-				'pageSize' => 20
-			)
-		));
+		$criteria = new CDbCriteria;
+		$criteria->compare('user.id',$user_id);
+		$criteria->with = array('pembimbing','pembimbing.user');
+		return $this->find($criteria);
 	}
 
-
-	public function pilih($mahasiswa_id)
+	public function pilih(Mahasiswa $currentMahasiswa)
 	{
-		$mahasiswa = Mahasiswa::model()->findByPk($mahasiswa_id);
-		$mahasiswa->kelompokId = $this->id;
-		$mahasiswa->save(false);
-
+		$currentMahasiswa->kelompokId = $this->id;
+		$level = (int) Yii::app()->session->get('Prioritas_level');
+		$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
+		$criteria->compare('t.id', $this->id);
+		if ($this->count($criteria) == 0) {
+			return false;
+		}
+		$currentMahasiswa->save(false);
 		$this->jumlahAnggota ++;
-		if($mahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
+		if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 			$this->jumlahLakiLaki ++;
 		} else {
 			$this->jumlahPerempuan ++;
 		}
 		$this->save();
-
+		return true;
 	}
 
 
+	public function cacheCount()
+	{
+		return self::$_cacheCount !== null ? self::$_cacheCount : $this->count();
+	}
+
+	/**
+	 * Merupakan Jumlah maksimal anggota dalam satu kelompok
+	 * Jika jumlah maxAnggota di isi, maka akan mengembalikan jumlah anggota
+	 * Jika jumlah anggota tidak diisi, maka akan di cek jumlah kelompok
+	 * Jika jumlah kelompok adalah nol, maka akan mengembalikan 1
+	 * (agar pembagi tetap 1 dan tidak keluar error),
+	 * Jika jumlah kelompok tidak nol, maka lakukan perhitungan:
+	 * 		Jumlah Maksimal Anggota = ceil(Jumlah Mahasiswa / jumlah kelompok kkn)
+	 */
 	public function countMaxAnggota()
 	{
-		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->count() / $this->count());
+		if($this->maxAnggota != null && $this->maxAnggota != 0) {
+			return $this->maxAnggota;
+		}
+		if ($this->cacheCount() == 0) {
+			return 0;
+		}
+		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->cacheCount() / $this->cacheCount());
 	}
-
+	/**
+	 * Merupakan Jumlah maksimal Laki-laki dalam satu kelompok
+	 * jika $this->maxLakiLaki didefinisikan, maka kembalikan nilai $this->maxLakiLaki
+	 *
+	 */
 	public function countMaxLakiLaki()
 	{
-		return ceil(Mahasiswa::model()->countLakiLaki() / $this->count());
+		if($this->maxLakiLaki != null && $this->maxLakiLaki != 0) {
+			return $this->maxLakiLaki;
+		}
+		if ($this->cacheCount() == 0) {
+			return 0;
+		}
+		return floor(Mahasiswa::model()->countLakiLaki() / Mahasiswa::model()->cacheCount() * $this->countMaxAnggota());
 	}
 
 	public function countMaxPerempuan()
 	{
-		return ceil(Mahasiswa::model()->countPerempuan() / $this->count());
+		if($this->maxPerempuan != null && $this->maxPerempuan != null) {
+			return $this->maxPerempuan;
+		}
+		if ($this->cacheCount() == 0) {
+			return 0;
+		}
+		return ceil(Mahasiswa::model()->countPerempuan() / Mahasiswa::model()->cacheCount() * $this->countMaxAnggota());
 	}
 
 	public function getIsPenuh()
@@ -253,7 +273,7 @@ class Kelompok extends ActiveRecord
 	public function getNama()
 	{
 		if ($this->programKkn !== null) {
-			return "[{$this->programKkn->nama}] {$this->lokasi}";// someting
+			return "[{$this->programKkn->nama}] {$this->lokasi}";
 		} else {
 			$this->lokasi;
 		}
@@ -282,6 +302,11 @@ class Kelompok extends ActiveRecord
 	public function getJumlahAnggotaDisplay()
 	{
 		return "{$this->jumlahAnggota} orang ({$this->jumlahLakiLaki} laki-laki, {$this->jumlahLakiLaki} perempuan)";
+	}
+
+	public function getUser()
+	{
+		return Yii::app()->user;
 	}
 
 }

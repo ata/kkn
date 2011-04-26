@@ -46,6 +46,7 @@ class Mahasiswa extends ActiveRecord
 
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
+	private static $_cacheCount;
 
 	public static function model($className=__CLASS__)
 	{
@@ -68,14 +69,19 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+<<<<<<< HEAD
 			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin,jumlahAsuransi,lunasAsuransi', 'required'),
 			array('userId, registered,jumlahAsuransi', 'numerical', 'integerOnly'=>true),
+=======
+			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
+			array('userId, registered, jumlahAsuransi', 'numerical', 'integerOnly'=>true),
+>>>>>>> 7641d43da23860d7807057d7d8483e5d2a723452
 			array('nim', 'numerical'),
 			array('email','email'),
 			array('jenisKelamin, namaLengkap, phone1, phone2, alamatAsal, alamatTinggal', 'length', 'max'=>255),
 			array('userId, fakultasId, nim, jurusanId, kelompokId, jenjangId', 'length', 'max'=>20),
 			array('confirmPassword', 'compare', 'compareAttribute'=>'password'),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update || $this->inputCaptcha),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update || !$this->inputCaptcha),
 			array('file', 'file', 'types'=>'jpg, jpeg, png, gif','allowEmpty' => true),
 
 			// The following rule is used by search().
@@ -221,7 +227,6 @@ class Mahasiswa extends ActiveRecord
 		$this->user->nama = $this->namaLengkap;
 		if ($this->user->save()) {
 			$this->userId = $this->user->id;
-			//$this->registered = true;
 		} else {
 			var_dump($this->user->errors);
 			die();
@@ -237,6 +242,11 @@ class Mahasiswa extends ActiveRecord
 	public function findByNIM($nim)
 	{
 		return $this->findByAttributes(array('nim' => $nim));
+	}
+
+	public function cacheCount()
+	{
+		return self::$_cacheCount !== null ? self::$_cacheCount : $this->count();
 	}
 
 	public function countLakiLaki()
@@ -286,7 +296,7 @@ class Mahasiswa extends ActiveRecord
 
 	public function getIsRegistered()
 	{
-		if($this->user === null) {
+		if($this->user == null) {
 			return false;
 		}
 		return true;

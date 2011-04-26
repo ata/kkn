@@ -24,14 +24,16 @@
 		<div class="span-12 last ar" id="top-navigation">
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'items' => array(
+					array('label' => Yii::t('app','Anda login sebagai {user}',array('{user}' => Yii::app()->user->fullname)),
+						'visible' => !Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Daftar'), 'url'=>array('/register'),
 						'visible' => Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Login'), 'url'=>array('/site/login'),
 						'visible' => Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Administrasi'), 'url'=>array('/admin/default/index'),
-						'visible' => Yii::app()->user->name === 'admin'),
+						'visible' =>  in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dashboard/kelompok/view'),
-						'visible' => !Yii::app()->user->isGuest && Yii::app()->user->name !== 'admin'),
+						'visible' => !Yii::app()->user->isGuest && !in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 					array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
 						'visible' => !Yii::app()->user->isGuest),
 				 ))); ?>

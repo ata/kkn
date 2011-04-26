@@ -2,6 +2,9 @@
 
 class KabupatenController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
@@ -129,7 +132,7 @@ class KabupatenController extends AdminController
 	 */
 	protected function performAjaxValidation($kabupaten)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kabupaten-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kabupaten-form') {
 			echo CActiveForm::validate($kabupaten);
 			Yii::app()->end();
 		}

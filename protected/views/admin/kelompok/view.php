@@ -35,9 +35,16 @@ $this->breadcrumbs=array(
 		),
 		'lokasi',
 		array(
-			'name' => 'kecamatanId',
+			'name' => 'pembimbingId',
 			'value' => $kelompok->namaPembimbing
 		),
+		'maxAnggota',
+		'maxLakiLaki',
+		'maxPerempuan',
+		'jumlahAnggota',
+		'jumlahLakiLaki',
+		'jumlahPerempuan',
+		'keterangan',
 		'created',
 		'modified',
 	),
