@@ -1,3 +1,19 @@
+<?php Yii::app()->clientScript->registerScript('clear-js','
+	$("form").val();
+	$("#Mahasiswa_fakultasId").change(function(){
+		$("#mahasiswa-grid").yiiGridView.update("mahasiswa-grid",{
+			url:"'.Yii::app()->createUrl("admin/mahasiswa/dependentSelectJurusan").'"+"&"+"fakultasId"+"="+$(this).val(),
+			success:function(data){
+				var options = $("#Mahasiswa_jurusanId").attr("options");
+				$("#Mahasiswa_jurusanId").html("");
+				$.each(data,function(item){
+					$("#Mahasiswa_jurusanId").append($("<option/>").val(item.id).text(item.nama));
+				});
+			}
+		});
+		return false;
+	});
+')?>
 <?php
 $this->breadcrumbs=array(
 	Yii::t('app','Admin') => array('/admin/default/index'),
@@ -22,8 +38,19 @@ $this->breadcrumbs=array(
 			'header' => 'Nama'
 		),
 		array(
+			'name'=>'fakultasId',
+			'value'=>'$data->namaFakultas',
+			'filter'=>CHtml::activeDropDownList($mahasiswa,'fakultasId',Fakultas::model()->listData,
+				array(
+					'empty'=>'',
+				)
+			),
+		),
+		array(
 			'name' =>'jurusanId',
-			'filter' => Jurusan::model()->listData,
+			'filter' => CHtml::activeDropDownList($mahasiswa,'jurusanId',Jurusan::model()->listData,array(
+				'empty'=>'',
+				)),
 			'value' => '$data->namaJurusan',
 		),
 		array(

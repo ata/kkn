@@ -117,12 +117,23 @@ class MahasiswaController extends AdminController
 	
 	public function actionDependentSelectJurusan()
 	{
-		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId', 
+		/*echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId', 
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
-		);
+		);*/
+		//echo Jurusan::model()->findAllByFakultasId($_GET['fakultasId']);
+		//$option = '';
+		foreach (Jurusan::model()->findAllByFakultasId($_GET['fakultasId']) as $data){
+			$option = array();
+			$option['id'] = $data->id;
+			$option['nama'] = $data->nama;
+			echo json_encode($option);
+		}
+		
+		
 		Yii::app()->end();
 	}
+	
 	
 	public function actionBayarAsuransi()
 	{

@@ -270,6 +270,10 @@ class Mahasiswa extends ActiveRecord
 	{
 		return $this->jurusan?$this->jurusan->nama:Yii::t('app','Belum diisi');
 	}
+	public function getNamaFakultas()
+	{
+		return $this->fakultas?$this->fakultas->nama:Yii::t('app','Belum diisi');
+	}
 	public function getDisplayJenisKelamin()
 	{
 		return $this->jenisKelamin==self::LAKI_LAKI?Yii::t('app','Laki-laki'):Yii::t('app','Perempuan');

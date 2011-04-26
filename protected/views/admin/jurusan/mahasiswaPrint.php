@@ -1,24 +1,32 @@
+<style type="text/css" media="print,screen">
+
+</style>
 <?php $no = 1;?>
-<table id="tabelPrint">
+<div align="center">
+<table id="tabelPrint" border="1">
 	<thead>
 		<tr>
-			<tr>No</tr>
-			<tr>NIM</tr>
-			<tr>Nama Lengkap</tr>
-			<tr>Jenis Kelamin</tr>
+			<th>No</th>
+			<th>NIM</th>
+			<th>Nama Lengkap</th>
+			<th>Jenis Kelamin</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach($mahasiswa as $data):?>
-			<tr>
+			<?php if($no > 1 && $no % 30 == 0):?>
+				</tr><tr style="page-break-after:always">
+			<?php else:?>
+				</tr><tr>
+			<?php endif?>
 				<td><?php echo $no++?></td>
 				<td><?php echo $data->nim?></td>
 				<td><?php echo $data->namaLengkap?></td>
 				<td><?php echo $data->jenisKelamin?></td>
-			</tr>
 		<?php endforeach?>
 	</tbody>
 </table>
+</div>
 
 	
 	
