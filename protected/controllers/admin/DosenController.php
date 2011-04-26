@@ -2,26 +2,15 @@
 
 class DosenController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
+
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
 
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'dependentSelectJurusan',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
 	/**
 	 * Displays a particular model.
 	 */

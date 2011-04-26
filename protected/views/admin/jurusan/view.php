@@ -4,7 +4,7 @@
 	$("#print").click(function(){
 		var filter = $(":input").serialize();
 		var pageUrl = "'.Yii::app()->createUrl("admin/jurusan/mahasiswaPrint").'" + "&" + "jurusanId" + "=" + "'.$jurusan->id.'" + "&" + filter;
-		
+
 		if(!$("#iframePrint")[0])
 		{
 			$("body").append("<iframe src="+pageUrl+" name='."iframePrint".' id='."iframePrint".'></iframe>");
@@ -20,7 +20,7 @@
 	})
 ')?>
 <script type="text/javascript">
-	
+
 </script>
 <?php
 $this->breadcrumbs=array(
@@ -68,15 +68,12 @@ $this->breadcrumbs=array(
 
 <br/><br/>
 
+<h2><?php echo Yii::t('app','Daftar Mahasiswa')?></h2>
 <div class="print-button">
 	<a href="#" id="print"><img src="<?php echo Yii::app()->request->baseUrl.'/images/print.gif'?>"></a>
 </div>
-
-
-<h2><?php echo Yii::t('app','Daftar Mahasiswa')?></h2>
-<?php $this->widget('zii.widgets.grid.CGridview',array(
+<?php $this->widget('zii.widgets.grid.CGridView',array(
 	'id'=>'mahasiswa-grid',
-	'cssFile' => false,
 	'dataProvider'=>$mahasiswa->search(),
 	'filter'=>$mahasiswa,
 	'columns'=>array(

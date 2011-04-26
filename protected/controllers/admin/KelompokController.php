@@ -2,26 +2,13 @@
 
 class KelompokController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-	
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'dependentSelectKecamatan',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
 
 	/**
 	 * Displays a particular model.
@@ -32,7 +19,7 @@ class KelompokController extends AdminController
 		$mahasiswa = new Mahasiswa('search');
 		$mahasiswa->unsetAttributes();
 		$mahasiswa->kelompokId = $kelompok->id;
-		
+
 		if(isset($_GET['Mahasiswa'])){
 			$mahasiswa->attributes = $_GET['Mahasiswa'];
 		}
@@ -49,7 +36,7 @@ class KelompokController extends AdminController
 	public function actionCreate()
 	{
 		$kelompok = new Kelompok;
-		
+
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($kelompok);
@@ -68,10 +55,10 @@ class KelompokController extends AdminController
 			'kelompok' => $kelompok,
 		));
 	}
-	
+
 	public function actionDependentSelectKecamatan()
 	{
-		echo CHtml::activeDropDownList(Kelompok::model(),'kecamatanId', 
+		echo CHtml::activeDropDownList(Kelompok::model(),'kecamatanId',
 			CHtml::listData(Kecamatan::model()->findAllByKabupatenId($_GET['kabupatenId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Kecamatan'))
 		);
@@ -119,7 +106,7 @@ class KelompokController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-	
+
 	/**
 	 * Manages all models.
 	 */
@@ -159,7 +146,7 @@ class KelompokController extends AdminController
 	 */
 	protected function performAjaxValidation($kelompok)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kelompok-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kelompok-form') {
 			echo CActiveForm::validate($kelompok);
 			Yii::app()->end();
 		}

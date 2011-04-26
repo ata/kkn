@@ -2,26 +2,13 @@
 
 class MahasiswaController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
-	
-	public function accessRules()
-	{
-		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array(
-					'admin','delete','index','view','create','update',
-					'dependentSelectJurusan','bayarAsuransi',
-				),
-				'users' => array('admin'),
-			),
-			array('deny',  // deny all users
-				'users' => array('*'),
-			),
-		);
-	}
 
 	/**
 	 * Displays a particular model.
@@ -114,16 +101,16 @@ class MahasiswaController extends AdminController
 			'mahasiswa' => $mahasiswa,
 		));
 	}
-	
+
 	public function actionDependentSelectJurusan()
 	{
-		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId', 
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
 		Yii::app()->end();
 	}
-	
+
 	public function actionBayarAsuransi()
 	{
 		$mahasiswa = new Mahasiswa('search');
@@ -131,9 +118,9 @@ class MahasiswaController extends AdminController
 		if(isset($_POST['id'])){
 			$mahasiswa->id = $_POST['id'];
 		}
-		
+
 		$this->performValidationAsuransi($mahasiswa);
-		
+
 		$flag = true;
 		if(isset($_POST['Mahasiswa'])){
 			$flag = false;
@@ -141,7 +128,7 @@ class MahasiswaController extends AdminController
 			$mahasiswa->inputCaptcha = false;
 			$mahasiswa->save(false);
 		}
-		
+
 		if($flag){
 			$this->renderPartial('bayarAsuransi',array('mahasiswa'=>$mahasiswa),false,true);
 		}
@@ -170,12 +157,12 @@ class MahasiswaController extends AdminController
 	 */
 	protected function performAjaxValidation($mahasiswa)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'mahasiswa-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'mahasiswa-form') {
 			echo CActiveForm::validate($mahasiswa);
 			Yii::app()->end();
 		}
 	}
-	
+
 	protected function performValidationAsuransi($mahasiswa)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='mahasiswa-form'){

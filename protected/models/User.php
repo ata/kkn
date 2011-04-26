@@ -17,7 +17,7 @@ class User extends ActiveRecord
 	const ROLE_ADMIN = 'ADMIN';
 	const ROLE_DOSEN = 'DOSEN';
 	const ROLE_MAHASISWA = 'MAHASISWA';
-
+	const ROLE_STAFF = 'STAFF';
 
 	protected $_displayField = 'username';
 	public $requestNewPassword = false;

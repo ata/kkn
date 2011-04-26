@@ -2,6 +2,9 @@
 
 class KecamatanController extends AdminController
 {
+	public function getMoreAllowRoles() {
+		return array(User::ROLE_STAFF);
+	}
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
@@ -128,7 +131,7 @@ class KecamatanController extends AdminController
 	 */
 	protected function performAjaxValidation($kecamatan)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kecamatan-form') { 
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'kecamatan-form') {
 			echo CActiveForm::validate($kecamatan);
 			Yii::app()->end();
 		}

@@ -10,4 +10,9 @@ class KelompokTest extends CDbTestCase
 	{
 
 	}
+
+	public function testUser()
+	{
+		echo Kelompok::model()->user;
+	}
 }

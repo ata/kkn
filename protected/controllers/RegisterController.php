@@ -10,7 +10,8 @@ class RegisterController extends Controller
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
-				'testLimit' => 0,
+				'testLimit' => 10,
+				'fixedVerifyCode' => 'code',
 			),
 		);
 	}
@@ -35,6 +36,8 @@ class RegisterController extends Controller
 				$mahasiswa->attributes = $_POST['Mahasiswa'];
 				if($mahasiswa->save()) {
 					$this->redirect(array('registerSuccess'));
+				} else {
+					var_dump($mahasiswa->errors);
 				}
 			}
 		}

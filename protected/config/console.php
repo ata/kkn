@@ -17,8 +17,8 @@ return array(
 		'db'=> array(
 			'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
 			'emulatePrepare' => true,
-			'username' => 'kkn',
-			'password' => 'kkn',
+			'username' => 'root',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 	),

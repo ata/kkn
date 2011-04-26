@@ -132,6 +132,11 @@ class Dosen extends ActiveRecord
 		return parent::afterSave();
 	}
 
+	public function findByUserId($user_id)
+	{
+		return $this->findByAttributes(array('userId',$user_id));
+	}
+
 	public function getNama()
 	{
 		return $this->namaLengkap;
