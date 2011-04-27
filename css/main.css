@@ -319,10 +319,37 @@ textarea, input{
     background:#8F0704;
     width:270px;
     padding:20px;
+    overflow:hidden;
+}
+
+#fsidebar ul{
+    margin:0;
+    padding:0;
+}
+
+#fsidebar li{
+    list-style:none;
+    border-top:1px solid #A50404;
+    border-bottom:1px solid #750303;
+    padding:20px 0 10px;
+}
+
+#fsidebar li:first-child{
+    border-top:none;
+    padding-top:0;
+}
+
+#fsidebar li:last-child{
+    border-bottom:none;
+}
+
+#fsidebar h2{
+    text-shadow:1px 1px 0 #A50404;
+    background:none;
+    padding:0;
 }
 
 #fp-login-form{
-    border-bottom:1px solid #750303;
     background:url(images/login-bg.png) bottom left no-repeat;
 }
 
@@ -336,25 +363,12 @@ textarea, input{
     color:#FFFFFF;
 }
 
-#fp-login-form h2,
-#register-form h2{
-    text-shadow:1px 1px 0 #A50404;
-    background:none;
-    padding:0;
-}
-
 #register-form{
-    border-top:1px solid #A50404;
     padding-bottom:20px;
-    border-bottom:1px solid #750303;
     background:url(images/register-bg.png) bottom right no-repeat;
 }
 
-#register-form form{
-}
-
-#fp-login-form form input,
-#register-form form input{
+#fsidebar form input{
     -moz-box-shadow:inset 1px 1px 3px #808080;
     -webkit-box-shadow:inset 1px 1px 3px #808080;
     box-shadow:inset 1px 1px 2px #808080;
@@ -368,8 +382,7 @@ textarea, input{
     width:150px;
 }
 
-#fp-login-form form input:focus,
-#register-form form input:focus{
+#fsidebar form input:focus{
     border:1px solid #ed1c24;
 }
 
