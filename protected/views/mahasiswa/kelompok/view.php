@@ -45,6 +45,7 @@ $this->breadcrumbs=array(
 				<th><?php echo Yii::t('app','Jurusan')?></th>
 				<th><?php echo Yii::t('app','Jenis Kelamin')?></th>
 				<th><?php echo Yii::t('app','Telpon')?></th>
+				<th>&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,11 +53,12 @@ $this->breadcrumbs=array(
 			<?php foreach($kelompok->anggota as $i => $mahasiswa):?>
 			<tr class="<?php echo $i%2==0?'odd':'even'?>">
 				<td width="50px"><?php echo $i + 1 ?></td>
-				<td><?php echo CHtml::link($mahasiswa->namaLengkap,array('/dashboard/mahasiswa/view','id' => $mahasiswa->id))?></td>
+				<td><?php echo CHtml::link($mahasiswa->namaLengkap,array('/mahasiswa/mahasiswa/view','id' => $mahasiswa->id))?></td>
 				<td><?php echo $mahasiswa->nim?></td>
 				<td><?php echo $mahasiswa->jurusan?></td>
 				<td width="100px"><?php echo $mahasiswa->displayJenisKelamin?></td>
 				<td><?php echo $mahasiswa->phone1 ?></td>
+				<td><?php echo CHtml::link(Yii::t('app','Detail'),array('/mahasiswa/mahasiswa/view','id' => $mahasiswa->id))?></td>
 			</tr>
 			<?php endforeach?>
 			<?php else:?>

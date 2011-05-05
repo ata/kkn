@@ -1627,3 +1627,1385 @@ Stack trace:
 #9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #10 /home/ata/Project/kkn/index-test.php(15): CApplication->run()
 #11 {main} REQUEST_URI=/kkn/index-test.php?r=mahasiswa/kelompok/index
+2011/04/30 12:48:50 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/04/30 12:48:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/02 11:42:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/02 11:42:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/02 11:45:45 [error] [exception.CException] exception 'CException' with message 'Properti "CWebApplication.log" tidak didefinisikan.' in /home/ata/Project/kkn/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(92): CComponent->__set('log', Array)
+#1 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#6 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#9 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#11 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#12 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#13 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#14 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/02 11:45:45 [error] [exception.CException] exception 'CException' with message 'Properti "CWebApplication.log" tidak didefinisikan.' in /home/ata/Project/kkn/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(92): CComponent->__set('log', Array)
+#1 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#6 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#9 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#11 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#12 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#13 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#14 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/02 12:59:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('view')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('mahasiswa/mahas...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=mahasiswa/mahasiswa/view
+2011/05/02 12:59:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Anda tidak diotorisasi untuk melakukan action ini.' in /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/auth/CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(WebUser), 'Anda tidak diot...')
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('view')
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('mahasiswa/mahas...')
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/kkn/index-dev.php?r=mahasiswa/mahasiswa/view
+2011/05/03 08:33:07 [error] [php] Use of undefined constant jurusan - assumed 'jurusan' (/home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php:4)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(866): MahasiswaController->renderFile()
+#1 /home/ata/Project/kkn/framework/web/CController.php(779): MahasiswaController->renderPartial()
+#2 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(103): MahasiswaController->render()
+#3 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#4 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams()
+#5 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): MahasiswaController->runAction()
+#6 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#8 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): MahasiswaController->filterAccessControl()
+#9 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#11 /home/ata/Project/kkn/framework/web/CController.php(257): MahasiswaController->runActionWithFilters()
+#12 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): MahasiswaController->run()
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#14 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#15 /home/ata/Project/kkn/index-dev.php(13): CWebApplication->run()
+REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+in /home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php (4)
+in /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php (103)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/03 08:33:07 [error] [php] Use of undefined constant jurusan - assumed 'jurusan' (/home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php:4)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(866): MahasiswaController->renderFile()
+#1 /home/ata/Project/kkn/framework/web/CController.php(779): MahasiswaController->renderPartial()
+#2 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(103): MahasiswaController->render()
+#3 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#4 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams()
+#5 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): MahasiswaController->runAction()
+#6 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#8 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): MahasiswaController->filterAccessControl()
+#9 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#11 /home/ata/Project/kkn/framework/web/CController.php(257): MahasiswaController->runActionWithFilters()
+#12 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): MahasiswaController->run()
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#14 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#15 /home/ata/Project/kkn/index-dev.php(13): CWebApplication->run()
+REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+in /home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php (4)
+in /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php (103)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/03 10:59:42 [error] [exception.CException] exception 'CException' with message 'Properti "Mahasiswa.registredLabel" tidak didefinisikan.' in /home/ata/Project/kkn/framework/base/CComponent.php:131
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(128): CComponent->__get('registredLabel')
+#1 /home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php(38): CActiveRecord->__get('registredLabel')
+#2 /home/ata/Project/kkn/framework/web/CBaseController.php(119): require('/home/ata/Proje...')
+#3 /home/ata/Project/kkn/framework/web/CBaseController.php(88): CBaseController->renderInternal('/home/ata/Proje...', Array, true)
+#4 /home/ata/Project/kkn/framework/web/CController.php(866): CBaseController->renderFile('/home/ata/Proje...', Array, true)
+#5 /home/ata/Project/kkn/framework/web/CController.php(779): CController->renderPartial('print', Array, true)
+#6 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(103): CController->render('print', Array)
+#7 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#8 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#9 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#11 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#12 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#15 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#17 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#18 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#19 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#20 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/03 10:59:42 [error] [exception.CException] exception 'CException' with message 'Properti "Mahasiswa.registredLabel" tidak didefinisikan.' in /home/ata/Project/kkn/framework/base/CComponent.php:131
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(128): CComponent->__get('registredLabel')
+#1 /home/ata/Project/kkn/protected/views/admin/mahasiswa/print.php(38): CActiveRecord->__get('registredLabel')
+#2 /home/ata/Project/kkn/framework/web/CBaseController.php(119): require('/home/ata/Proje...')
+#3 /home/ata/Project/kkn/framework/web/CBaseController.php(88): CBaseController->renderInternal('/home/ata/Proje...', Array, true)
+#4 /home/ata/Project/kkn/framework/web/CController.php(866): CBaseController->renderFile('/home/ata/Proje...', Array, true)
+#5 /home/ata/Project/kkn/framework/web/CController.php(779): CController->renderPartial('print', Array, true)
+#6 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(103): CController->render('print', Array)
+#7 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionPrint()
+#8 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#9 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#11 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#12 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#15 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('print')
+#17 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#18 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#19 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#20 {main} REQUEST_URI=/kkn/index-dev.php?r=admin/mahasiswa/print
+2011/05/05 08:51:05 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:51:13 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:51:18 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:51:51 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:51:54 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:51:56 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:51:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:52:00 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:52:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:54:00 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:54:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:54:04 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:54:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:54:07 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:54:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:54:49 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:54:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:54:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "/kkn/site/page.aspx?view=about"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('/kkn/site/page....')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:54:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "/kkn/site/contact.aspx"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('/kkn/site/conta...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/site/contact.aspx
+2011/05/05 08:55:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "/kkn/home/index.aspx"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('/kkn/home/index...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/home/index.aspx
+2011/05/05 08:55:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "/kkn/site/page.aspx?view=about"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('/kkn/site/page....')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:55:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "/kkn/site/contact.aspx"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('/kkn/site/conta...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/site/contact.aspx
+2011/05/05 08:55:33 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:55:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:55:37 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:55:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:57:03 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:57:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 08:57:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:57:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:57:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:57:18 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:57:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('home/index')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/home/index.aspx
+2011/05/05 08:57:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:57:22 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:57:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Mahasiswa))
+#7 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(386): CActiveRecord::model('Mahasiswa')
+#8 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(62): CActiveRecord->getMetaData()
+#9 /home/ata/Project/kkn/protected/controllers/RegisterController.php(21): CActiveRecord->__construct()
+#10 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): RegisterController->actionIndex()
+#11 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#12 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#13 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#15 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('register')
+#16 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#17 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#18 {main} REQUEST_URI=/kkn/register.aspx
+2011/05/05 08:57:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "-dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('-dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn-dev
+2011/05/05 08:57:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "-dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('-dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn-dev
+2011/05/05 08:57:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "-dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('-dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn-dev/
+2011/05/05 08:57:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "-dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('-dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn-dev/
+2011/05/05 08:58:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "-dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('-dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn-dev/
+2011/05/05 08:58:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "dev"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('dev')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkndev/
+2011/05/05 08:58:50 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:58:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('home/index')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/home/index.aspx
+2011/05/05 08:58:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:59:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 08:59:40 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 08:59:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('index')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('home/index')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/home/index.aspx
+2011/05/05 08:59:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=abouts
+2011/05/05 09:00:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=abouts
+2011/05/05 09:00:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:00:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:01:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:01:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:01:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:26 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:02:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/index.php?r=site/page&view=about
+2011/05/05 09:02:40 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:02:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/index.php?r=site/page&view=about
+2011/05/05 09:02:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:02:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'View "index" tidak ditemukan' in /home/ata/Project/kkn/framework/web/actions/CViewAction.php:110
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CViewAction.php(121): CViewAction->resolveView('index')
+#1 /home/ata/Project/kkn/framework/web/actions/CAction.php(72): CViewAction->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(300): CAction->runWithParams(Array)
+#3 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CViewAction))
+#4 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('page')
+#6 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/page')
+#7 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#8 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#9 {main} REQUEST_URI=/kkn/site/page.aspx?view=about
+2011/05/05 09:20:19 [warning] [application] Gagal set attribute unsafe "files"
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (196)
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (85)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:19 [warning] [application] Gagal set attribute unsafe "files"
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (196)
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (85)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:20 [warning] [application] Gagal set attribute unsafe "files"
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (88)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:20 [warning] [application] Gagal set attribute unsafe "files"
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (88)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:26 [error] [php] Undefined index: fakultasId (/home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php:31)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): ProgramKknController->runAction()
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): ProgramKknController->filterAccessControl()
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): ProgramKknController->runActionWithFilters()
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): ProgramKknController->run()
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CWebApplication->run()
+REQUEST_URI=/kkn/admin/programKkn/dependentSelectJurusan.aspx?fakultasId=1&_=1304562026380
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (31)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:26 [error] [php] Undefined index: fakultasId (/home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php:31)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): ProgramKknController->runAction()
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): ProgramKknController->filterAccessControl()
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): ProgramKknController->runActionWithFilters()
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): ProgramKknController->run()
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-dev.php(13): CWebApplication->run()
+REQUEST_URI=/kkn/admin/programKkn/dependentSelectJurusan.aspx?fakultasId=1&_=1304562026380
+in /home/ata/Project/kkn/protected/controllers/admin/ProgramKknController.php (31)
+in /home/ata/Project/kkn/index-dev.php (13)
+2011/05/05 09:20:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "css/loading.gif"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('css/loading.gif')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/css/loading.gif
+2011/05/05 09:20:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "css/loading.gif"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('css/loading.gif')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/css/loading.gif
+2011/05/05 09:49:22 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:49:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 09:49:29 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:49:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 09:49:39 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:49:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 09:49:42 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:49:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 09:49:46 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 09:49:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 11:29:15 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 11:29:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 11:37:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register
+2011/05/05 11:37:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register
+2011/05/05 11:37:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register
+2011/05/05 11:37:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register
+2011/05/05 11:38:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:38:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:38:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:38:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:39:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:39:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:39:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:39:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:41:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 11:41:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "index-test.php/register"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('index-test.php/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index-dev.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/index-test.php/register.aspx
+2011/05/05 12:02:44 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 12:02:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 12:30:25 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 12:30:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 12:31:28 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 12:31:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/
+2011/05/05 12:46:13 [error] [exception.CDbException] SQLSTATE[28000] [1045] Access denied for user 'kkn'@'localhost' (using password: YES)
+2011/05/05 12:46:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection gagal membuka koneksi DB' in /home/ata/Project/kkn/framework/db/CDbConnection.php:354
+Stack trace:
+#0 /home/ata/Project/kkn/framework/db/CDbConnection.php(297): CDbConnection->open()
+#1 /home/ata/Project/kkn/framework/db/CDbConnection.php(275): CDbConnection->setActive(true)
+#2 /home/ata/Project/kkn/framework/base/CModule.php(372): CDbConnection->init()
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(426): CModule->getComponent('db')
+#4 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(607): CApplication->getDb()
+#5 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(2236): CActiveRecord->getDbConnection()
+#6 /home/ata/Project/kkn/framework/db/ar/CActiveRecord.php(371): CActiveRecordMetaData->__construct(Object(Berita))
+#7 /home/ata/Project/kkn/framework/web/CActiveDataProvider.php(72): CActiveRecord::model('Berita')
+#8 /home/ata/Project/kkn/protected/controllers/HomeController.php(9): CActiveDataProvider->__construct('Berita')
+#9 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): HomeController->actionIndex()
+#10 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#11 /home/ata/Project/kkn/framework/web/CController.php(278): CController->runAction(Object(CInlineAction))
+#12 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('')
+#14 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('')
+#15 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#16 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/kkn/

@@ -4,6 +4,10 @@ return CMap::mergeArray(
 	require(dirname(__FILE__).'/main.php'),
 	array(
 		'components'=>array(
+			'urlManager' => array(
+				'urlFormat'=>'get',
+				'showScriptName' => true,
+			),
 			'fixture'=>array(
 				'class'=>'system.test.CDbFixtureManager',
 			),

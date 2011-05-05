@@ -25,7 +25,6 @@
 							<input type="submit" value="LOGIN" class="button floatRight">
 						</form>
 						<div class="clear"></div>
-						<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
 					</div>
 					<div id="register-form">
 						<h2 class="floatRight"><?php echo Yii::t('app','REGISTRASI')?></h2>

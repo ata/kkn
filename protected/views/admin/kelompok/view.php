@@ -76,12 +76,10 @@ $this->breadcrumbs=array(
 			'name'=>'kelompokId',
 			'value'=>'$data->kelompok->nama',
 		),
-		/*array(
+		array(
 			'class'=>'CButtonColumn',
-			'viewButtonUrl' => 'array("kelompok/view","id" => $data->id)',
-			'updateButtonUrl' => 'array("kelompok/update","id" => $data->id)',
-			'deleteButtonUrl' => 'array("kelompok/delete","id" => $data->id)',
-		),*/
+			'viewButtonUrl' => 'array("admin/mahasiswa/view","id" => $data->id)',
+		),
 	),
 )); ?>
 

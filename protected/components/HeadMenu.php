@@ -4,7 +4,9 @@ class HeadMenu extends CMenu
 {
 	protected function isItemActive($item,$route)
 	{
-		if (strpos($route,'admin/') !== false || strpos($route,'dashboard/') !== false) {
+		if (strpos($route,'admin/') !== false
+			|| strpos($route,'mahasiswa/') !== false
+			|| strpos($route,'dosen/') !== false) {
 			if(isset($item['url']) && is_array($item['url'])) {
 				$url =  trim($item['url'][0],'/');
 				$urlSlice = explode('/',$url);

@@ -86,6 +86,22 @@ class MahasiswaController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
+
+	public function actionPrint()
+	{
+		//Yii::app()->preload = array();
+		$this->layout = '//layouts/print';
+		$mahasiswa = new Mahasiswa('search');
+		$mahasiswa->unsetAttributes();  // clear any default values
+		if (isset($_GET['Mahasiswa'])) {
+			$mahasiswa->attributes = $_GET['Mahasiswa'];
+		}
+		$fakultasList = Fakultas::model()->findAll();
+		$this->render('print',array(
+			'fakultasList' => $fakultasList,
+			'mahasiswa' => $mahasiswa
+		));
+	}
 	/**
 	 * Manages all models.
 	 */

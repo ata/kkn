@@ -70,6 +70,7 @@ class Prioritas extends ActiveRecord
 			'id' => Yii::t('app','ID'),
 			'level' => Yii::t('app','Tingkat Prioritas'),
 			'programKknId' => Yii::t('app','Program Kkn'),
+			'fakultasId' => Yii::t('app','Fakultas'),
 			'jurusanId' => Yii::t('app','Jurusan'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
