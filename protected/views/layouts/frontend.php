@@ -51,7 +51,7 @@
 							<label>Username</label>
 							<input name="LoginForm[username]" id="LoginForm_username" type="text" /><br/>
 							<label>Password</label>
-							<input type="password"><br>
+							<input name="LoginForm[password]" id="LoginForm_password" type="password" /><br/>
 							<input type="submit" value="LOGIN" class="button floatRight">
 						</form>
 						<div class="clear"></div>
@@ -62,7 +62,7 @@
 						<div class="clear"></div>
 						<form action="<?php echo $this->createUrl('/register')?>" method="post">
 							<label>NIM</label><br>
-							<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br>
+							<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br/>
 							<input type="submit" value="DAFTAR" class="button">
 						</form>
 					</li>
