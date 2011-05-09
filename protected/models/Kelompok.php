@@ -164,7 +164,8 @@ class Kelompok extends ActiveRecord
 			$criteria->addCondition('t.programKknId IN (SELECT programKknId FROM prioritas WHERE jurusanId = :jurusanId AND level = :level)');
 			$criteria->params['level'] =  $level;
 		}
-
+		$criteria->order = 't.jumlahAnggota DESC';
+		$criteria->limit = 20;
 		$criteria->with = array('kabupaten','kecamatan','programKkn','programKkn.prioritas');
 		return $criteria;
 	}
