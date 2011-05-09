@@ -174,7 +174,6 @@ class Kelompok extends ActiveRecord
 										< (SELECT count(*) FROM prioritas WHERE jurusanId = :jurusanId AND level = :level))');
 			$criteria->params['level'] =  $level;
 		} else {
-
 			if($level <= 6) {
 				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
 			}
