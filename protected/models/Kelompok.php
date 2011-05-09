@@ -160,7 +160,21 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
+		} else if($level <= 9) {
+			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
+				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
+										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
+										OR t.jumlahLakiLaki IS NULL');
+				$criteria->params['ratio'] = $this->countRatioLakiLaki();
+			} else {
+				$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
+										OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
+										OR t.jumlahPerempuan IS NULL');
+				$criteria->params['ratio'] = $this->countRatioPerempuan();
+			}
 		}
+
+
 
 		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
 									OR (t.jumlahAnggota < t.maxAnggota AND t.maxAnggota IS NOT NULL)
