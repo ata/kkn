@@ -47,6 +47,7 @@ $this->breadcrumbs=array(
 <h2><?php echo Yii::t('app','Prioritas Jurusan')?></h2>
 
 <div class="form">
+
 	<?php $form = $this->beginWidget('CActiveForm', array(
 		'id' => 'prioritas-form',
 		'enableAjaxValidation' => true,
@@ -105,7 +106,7 @@ $this->breadcrumbs=array(
 	</div>
 
 
-<?php $this->endWidget(); ?>
+	<?php $this->endWidget(); ?>
 
 </div><!-- form -->
 

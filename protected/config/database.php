@@ -1,6 +1,6 @@
 <?php
 return array(
-	'connectionString' => 'mysql:host=localhost;dbname=kkn_test',
+	'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
 	'emulatePrepare' => true,
 	'username' => 'kkn',
 	'password' => 'kkn',

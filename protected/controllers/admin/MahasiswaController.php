@@ -118,6 +118,7 @@ class MahasiswaController extends AdminController
 		$this->render('index',array(
 			'mahasiswa' => $mahasiswa,
 		));
+		
 	}
 
 	public function actionDependentSelectJurusan()
@@ -126,6 +127,9 @@ class MahasiswaController extends AdminController
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
+		
+		
+		
 		Yii::app()->end();
 	}
 
@@ -147,29 +151,7 @@ class MahasiswaController extends AdminController
 		Yii::app()->end();
 	}
 
-	public function actionBayarAsuransi()
-	{
-		$mahasiswa = new Mahasiswa('search');
-		//$mahasiswa->unsetAttributes();
-		if(isset($_POST['id'])){
-			$mahasiswa->id = $_POST['id'];
-		}
-
-		$this->performValidationAsuransi($mahasiswa);
-
-		$flag = true;
-		if(isset($_POST['Mahasiswa'])){
-			$flag = false;
-			$mahasiswa->attributes = $_POST['Mahasiswa'];
-			$mahasiswa->inputCaptcha = false;
-			$mahasiswa->save(false);
-		}
-
-		if($flag){
-			$this->renderPartial('bayarAsuransi',array('mahasiswa'=>$mahasiswa),false,true);
-		}
-	}
-
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

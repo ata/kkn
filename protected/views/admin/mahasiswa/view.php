@@ -50,6 +50,7 @@ $this->breadcrumbs=array(
 			'submit' => array('delete','id'=>$mahasiswa->id),
 			'confirm'=> Yii::t('app','Anda yakin akan menghapus mahasiswa ini?'),
 		))?>
+	<?php if($mahasiswa->lunasAsuransi != Mahasiswa::ASURANSI_LUNAS && $mahasiswa->registered):?>
 	<?php echo CHtml::ajaxLink(Yii::t('app','Bayar Asuransi'),
 		Yii::app()->createUrl('admin/mahasiswa/bayarAsuransi'),
 		array(
@@ -59,6 +60,7 @@ $this->breadcrumbs=array(
 			'data'=>array('id'=>$mahasiswa->id),
 		),
 		array('id'=>'showBayarDiv'))?>
+	<?php endif?>
 </div>
 
 <div id="bayarDiv">

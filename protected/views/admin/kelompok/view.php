@@ -78,8 +78,29 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'class'=>'CButtonColumn',
-			'viewButtonUrl' => 'array("admin/mahasiswa/view","id" => $data->id)',
+			'template'=>'{delete}',
+			'buttons'=>array(
+				'delete' => array(
+						'label'=>Yii::t('app','delete'),
+						'url' => 'Yii::app()->createUrl("admin/kelompok/hapusAnggota",array("id"=>$data->id))',
+						'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
+						'click' => 'function() {
+										if (!confirm("'. Yii::t('app','Anda yakin menghapus mahasiswa ini dari anggota kelompok?') .'")) {
+											return false;
+										}
+										$.fn.yiiGridView.update("mahasiswa-grid", {
+											type:"POST",
+											url:$(this).attr("href"),
+											success:function() {
+												$.fn.yiiGridView.update("mahasiswa-grid");
+											}
+										});
+										return false;
+									}'
+				),
+			),
 		),
+
 	),
 )); ?>
 
