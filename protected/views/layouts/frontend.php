@@ -1,5 +1,6 @@
 <?php $this->beginContent('//layouts/main'); ?>
 
+
 <?php Yii::app()->clientScript->registerScript('rotator-js','
 	function rotate()
 	{
@@ -29,7 +30,7 @@
 	<div id="rotator">
 		<ul>
 			<li class="show"><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
-			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner2.jpg"></li>
 			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
 		</ul>
 	</div>
@@ -54,7 +55,6 @@
 							<input type="submit" value="LOGIN" class="button floatRight">
 						</form>
 						<div class="clear"></div>
-						<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
 					</div>
 					<div id="register-form">
 						<h2 class="floatRight"><?php echo Yii::t('app','REGISTRASI')?></h2>

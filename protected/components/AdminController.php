@@ -31,7 +31,9 @@ class AdminController extends Controller
 				'actions' => array('admin','delete','index','view','create',
 					'update','deletePrioritas','mahasiswaPrint','addPrioritas',
 					'dependentSelectJurusan','deletePrioritas','deleteFile','downloadFile',
-					'dependentSelectKecamatan','resetPassword','bayar','findNim',
+					'dependentSelectKecamatan','resetPassword','bayarAsuransi',
+					'print','jurusan','kelompok','dependentSelectKelompok','bayar','findNim',
+					'hapusAnggota'
 				),
 				'roles' => array_merge(array(User::ROLE_ADMIN),$this->getMoreAllowRoles()),
 			),

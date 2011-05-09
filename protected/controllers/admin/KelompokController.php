@@ -9,6 +9,7 @@ class KelompokController extends AdminController
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */
 	private $_model;
+	private $_mahasiswaModel;
 
 	/**
 	 * Displays a particular model.
@@ -106,7 +107,24 @@ class KelompokController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
+	
+	
+	public function actionHapusAnggota($id)
+	{
+		if(Yii::app()->request->isPostRequest)
+		{
+			// we only allow deletion via POST request
+			$mahasiswa = $this->loadMahasiswa($id);
+			$mahasiswa->kelompokId = null;
+			$mahasiswa->update();
 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+		}
+		else
+			throw new CHttpException(400,Yii::t('app','Invalid request. Please do not repeat this request again.'));
+	}
 	/**
 	 * Manages all models.
 	 */
@@ -139,7 +157,19 @@ class KelompokController extends AdminController
 		}
 		return $this->_model;
 	}
-
+	
+	public function loadMahasiswa()
+	{
+		if($this->_mahasiswaModel === null){
+			if(isset($_GET['id'])){
+				$this->_mahasiswaModel = Mahasiswa::model()->findbyPk($_GET['id']);
+			}
+			if($this->_mahasiswaModel === null){
+				throw new CHttpException(404,'The requested page does not exist.');
+			}
+		}
+		return $this->_mahasiswaModel;
+	}
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated

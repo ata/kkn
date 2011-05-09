@@ -70,6 +70,7 @@ class Prioritas extends ActiveRecord
 			'id' => Yii::t('app','ID'),
 			'level' => Yii::t('app','Tingkat Prioritas'),
 			'programKknId' => Yii::t('app','Program Kkn'),
+			'fakultasId' => Yii::t('app','Fakultas'),
 			'jurusanId' => Yii::t('app','Jurusan'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
@@ -107,7 +108,7 @@ class Prioritas extends ActiveRecord
 	{
 		return parent::beforeSave();
 	}
-
+	/*
 	protected function beforeValidate()
 	{
 		$prioritas = $this->findByAttributes(array(
@@ -120,4 +121,5 @@ class Prioritas extends ActiveRecord
 		}
 		return parent::beforeValidate();
 	}
+	*/
 }

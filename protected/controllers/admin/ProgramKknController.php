@@ -37,13 +37,11 @@ class ProgramKknController extends AdminController
 	public function actionAddPrioritas()
 	{
 		$prioritas = new Prioritas;
-		//$prioritas->programKknId = $_POST['id'];
-		$this->performAjaxValidation($prioritas);
-
 		if (isset($_POST['Prioritas'])) {
 			$prioritas->attributes = $_POST['Prioritas'];
-			//var_dump($prioritas->attributes);
-			$prioritas->save();
+			if (!$prioritas->save()) {
+				echo CActiveForm::validate($prioritas);
+			}
 		}
 		Yii::app()->end();
 	}
@@ -92,9 +90,12 @@ class ProgramKknController extends AdminController
 				$this->redirect(array('view','id' => $programKkn->id));
 			}
 		}
+		$prioritas = new Prioritas;
+		$prioritas->programKknId = $programKkn->id;
 
 		$this->render('update',array(
 			'programKkn' => $programKkn,
+			'prioritas' => $prioritas,
 		));
 	}
 
@@ -120,7 +121,6 @@ class ProgramKknController extends AdminController
 	public function actionDownloadFile(){
 		if(isset($_GET['id'])){
 			$file = ProgramKknLampiran::model()->findByPk($_GET['id']);
-			//die(Yii::app()->request->baseUrl . $file->path);
 			header("Content-Disposition: attachment;filename={$file->nama}");
 			header("Content-Length: {$file->size}");
 			header("Content-Type: {$file->mimetype}");

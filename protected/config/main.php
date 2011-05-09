@@ -31,41 +31,29 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
 		'urlManager'=>array(
-			'urlFormat'=>'path',
+			'urlFormat'=>'get',
 			'showScriptName' => false,
-			'urlSuffix' => '.html',
+			'urlSuffix' => '.aspx',
 			'rules'=>array(
+				// spesifik
 				'admin' => 'admin/default/index',
+				'admin/<controller:\w+>/<fakutasId:\d+>/dependentSelectJurusan'=>'admin/<controller>/dependentSelectJurusan',
+
+				// common
+
 				'admin/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
 				'admin/<controller:\w+>/<id:\d+>/<action:\w+>'=>'admin/<controller>/<action>',
 				'admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
-
-
-				/*
-				'dashboard/profile' => 'dashboard/mahasiswa/view',
-				'dashboard/kelompok' => 'dashboard/kelompok/index',
-				'dashboard/kelompok/<id:\d+>' => 'dashboard/kelompok/view',
-				'dashboard' => 'dashboard/kelompok/view',
-				'dashboard/index' => 'dashboard/kelompok/view',
-				'dashboard/kelompok/map' => 'kelompok/map',
-
-				'register' => 'dashboard/mahasiswa/register',
-
+				'mahasiswa/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
+				'mahasiswa/<controller:\w+>/<id:\d+>/<action:\w+>'=>'admin/<controller>/<action>',
+				'mahasiswa/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<id:\d+>/<action:\w+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
-		'db'=> array(
-			'connectionString' => 'mysql:host=localhost;dbname=unit_lppm_kkn',
-			'emulatePrepare' => true,
-			'username' => 'kkn',
-			'password' => 'dbnaKKNup1',
-			'charset' => 'utf8',
-		),
+		'db'=> require(dirname(__FILE__).'/database.php'),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

@@ -58,7 +58,9 @@ class Jurusan extends ActiveRecord
 		return array(
 			'fakultas' => array(self::BELONGS_TO, 'Fakultas','fakultasId'),
 			'jenjang' => array(self::BELONGS_TO, 'Jenjang','jenjangId'),
-			'mahasiswa' => array(self::HAS_MANY,'Mahasiswa','jurusanId'),
+			'mahasiswa' => 	array(self::HAS_MANY,'Mahasiswa','jurusanId',
+								'order' => 'jenisKelamin'
+							),
 			'prioritas' => array(self::HAS_MANY,'Prioritas','jurusanId'),
 		);
 	}

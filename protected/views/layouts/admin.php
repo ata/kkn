@@ -18,6 +18,7 @@
 					array('label' => Yii::t('app','Dosen'),'url' => array('/admin/dosen/index'),'visible' => in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 					array('label' => Yii::t('app','Mahasiswa'),'url' => array('/admin/mahasiswa/index'),'visible' => in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 					array('label' => Yii::t('app','Asuransi'),'url' => array('/admin/asuransi/bayar'),'visible' => in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
+					array('label' => Yii::t('app','Cetak'),'url' => array('/admin/print/index'),'visible' => in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 					array('label' => Yii::t('app','Setting'),'url' => array('/admin/setting/index'),'visible' => in_array(Yii::app()->user->role, array(User::ROLE_ADMIN))),
 					//array('label'=>Yii::t('app','Statistik'),'url'=>array('/admin/statistik/index')),
 				),

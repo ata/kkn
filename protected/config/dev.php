@@ -4,17 +4,10 @@ return CMap::mergeArray(
 	require(dirname(__FILE__).'/main.php'),
 	array(
 		'components'=>array(
-			/* uncomment the following to provide test database connection
-			'db'=>array(
-				'connectionString'=>'DSN for test database',
-			),
-			*/
-			'db'=>array(
-				'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
-				'emulatePrepare' => true,
-				'username' => 'root',
-				'password' => 'root',
-				'charset' => 'utf8',
+			'db'=> require(dirname(__FILE__).'/database.php'),
+			'urlManager' => array(
+				'urlFormat'=>'get',
+				'showScriptName' => true,
 			),
 			'log'=>array(
 				'class'=>'CLogRouter',

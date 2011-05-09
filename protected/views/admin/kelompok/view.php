@@ -73,14 +73,34 @@ $this->breadcrumbs=array(
 		'namaLengkap',
 		'displayJenisKelamin',
 		array(
-			'name'=>'kelompokId',
-			'value'=>'$data->kelompok->nama',
+			'name'=>'jurusanId',
+			'value'=>'$data->namaJurusan',
 		),
-		/*array(
+		array(
 			'class'=>'CButtonColumn',
-			'viewButtonUrl' => 'array("kelompok/view","id" => $data->id)',
-			'deleteButtonUrl' => 'array("kelompok/delete","id" => $data->id)',
-		),*/
+			'template'=>'{delete}',
+			'buttons'=>array(
+				'delete' => array(
+						'label'=>Yii::t('app','delete'),
+						'url' => 'Yii::app()->createUrl("admin/kelompok/hapusAnggota",array("id"=>$data->id))',
+						'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
+						'click' => 'function() {
+										if (!confirm("'. Yii::t('app','Anda yakin menghapus mahasiswa ini dari anggota kelompok?') .'")) {
+											return false;
+										}
+										$.fn.yiiGridView.update("mahasiswa-grid", {
+											type:"POST",
+											url:$(this).attr("href"),
+											success:function() {
+												$.fn.yiiGridView.update("mahasiswa-grid");
+											}
+										});
+										return false;
+									}'
+				),
+			),
+		),
+
 	),
 )); ?>
 

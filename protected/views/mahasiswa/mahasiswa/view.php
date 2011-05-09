@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h2><?php echo Yii::t('app','Detail User')?></h2>
+<h2><?php echo Yii::t('app','Detail Mahasiswa')?></h2>
 <?php $this->widget('zii.widgets.CDetailView',array(
         'data'=>$mahasiswa,
         'attributes'=>array(
@@ -26,6 +26,6 @@ $this->menu=array(
         )
     ));
 ?>
-<?php if($editable):?>
-    <?php echo CHtml::link(Yii::t('app','Perbaharui'),array('/dashboard/mahasiswa/update','id'=>$mahasiswa->id),array('class' => 'update-link'));?>
+<?php if(isset($editable) && $editable):?>
+    <?php echo CHtml::link(Yii::t('app','Perbaharui'),array('/mahasiswa/mahasiswa/update','id'=>$mahasiswa->id),array('class' => 'update-link'));?>
 <?php endif?>

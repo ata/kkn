@@ -16,8 +16,14 @@ class RegisterController extends Controller
 		);
 	}
 
+	public function actionUnder()
+	{
+		$this->render('under');
+	}
+
 	public function actionIndex()
 	{
+		//$this->redirect(array('under'));
 		$mahasiswa = new Mahasiswa;
 		$this->performAjaxValidation($mahasiswa);
 		if (isset($_POST['Mahasiswa'])) {

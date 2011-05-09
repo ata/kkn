@@ -49,35 +49,23 @@ $this->breadcrumbs=array(
 <div class="form">
 
 	<?php $form = $this->beginWidget('CActiveForm', array(
-		'id' => 'program-kkn-form',
+		'id' => 'prioritas-form',
 		'enableAjaxValidation' => true,
-		'action'=>'#',
+		'action'=>Yii::app()->createUrl("admin/programKkn/addPrioritas"),
 		'clientOptions'=>array(
 			'validateOnSubmit'=>true,
 			'afterValidate'=>'js:function(form,data,hasError){
-					if(!hasError){
-						var Isi = $("form").serialize();
-						jQuery.ajax({
-							url:"'.Yii::app()->createUrl("admin/programKkn/addPrioritas").'",
-							cache:false,
-							type:"POST",
-							data:$("form").serialize(),
-							success:function(){
-								jQuery.fn.yiiGridView.update("prioritas-grid", {
-									data: jQuery(this).serialize()
-								});
-								$("form").get(0).reset();
-							},
-						});
-					}
-				}'
+				if(!hasError){
+					form.ajaxSend();
+					jQuery("#prioritas-form").get(0).reset();
+					jQuery.fn.yiiGridView.update("prioritas-grid");
+				}
+			}'
 		),
 
 	)); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($prioritas); ?>
+	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
 
 	<div class="row">
 		<?php echo $form->labelEx($prioritas,'level'); ?>
@@ -113,15 +101,6 @@ $this->breadcrumbs=array(
 	</div>
 
 	<?php echo $form->hiddenField($prioritas,'programKknId',array('value'=>$programKkn->id))?>
-	<!--<div class="row buttons">
-		<?php /*echo CHtml::ajaxSubmitButton('Tambah Prioritas',
-			array('addPrioritas','id' => $programKkn->id),
-			array('success' => "js:function(){
-				jQuery.fn.yiiGridView.update('prioritas-grid', {
-					data: jQuery(this).serialize()
-				})}"
-			)); */?>
-	</div>-->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton(Yii::t('app','submit'));?>
 	</div>

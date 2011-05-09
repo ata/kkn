@@ -13,13 +13,6 @@ return array(
 		'fixture'=>array(
 			'class'=>'system.test.CDbFixtureManager',
 		),
-		
-		'db'=> array(
-			'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
-			'charset' => 'utf8',
-		),
+		'db'=> require(dirname(__FILE__).'/database.php'),
 	),
 );

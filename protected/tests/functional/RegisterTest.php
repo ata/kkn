@@ -19,6 +19,7 @@ class SiteTest extends WebTestCase
 			$this->type("Mahasiswa_alamatAsal", "Jl");
 			$this->type("Mahasiswa_alamatTinggal", "Jl,");
 			$this->type("Mahasiswa_phone1", "0222");
+			$this->type("Mahasiswa_phone2", "02222");
 			$this->type("Mahasiswa_email", "mhs{$mahasiswa->id}@mail.com");
 			$this->type("Mahasiswa_password", $mahasiswa->nim);
 			$this->type("Mahasiswa_confirmPassword", $mahasiswa->nim);

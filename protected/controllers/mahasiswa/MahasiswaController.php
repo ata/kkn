@@ -4,7 +4,7 @@ class MahasiswaController extends Controller
 {
 	private $_mahasiswa;
 
-	public $layout = '//layouts/dashboard';
+	public $layout = '//layouts/mahasiswa';
 
 	public function filters()
 	{
@@ -22,11 +22,7 @@ class MahasiswaController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array('captcha','register','registerSuccess','token','dependentSelectJurusan'),
-				'users' => array('*'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions' => array('index','view','update'),
+				'actions' => array('index','view','update','dependentSelectJurusan'),
 				'roles' => array(User::ROLE_MAHASISWA),
 			),
 			array('deny',  // deny all users
@@ -60,17 +56,25 @@ class MahasiswaController extends Controller
 		));
 	}
 
+	public function actionDependentSelectJurusan()
+	{
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId',
+			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Jurusan'))
+		);
+		Yii::app()->end();
+	}
+
 	public function actionUpdate()
 	{
 		$mahasiswa = Mahasiswa::model()->findByUserId(Yii::app()->user->id);
-		$mahasiswa->update = true;
 		$this->performAjaxValidation($mahasiswa);
 		if(isset($_POST['Mahasiswa'])){
 			$_POST['Mahasiswa']['password'];
 			$mahasiswa->attributes=$_POST['Mahasiswa'];
 
 			if ($mahasiswa->save()) {
-				$this->redirect(array('/dashboard/mahasiswa/view'));
+				$this->redirect(array('/mahasiswa/mahasiswa/view'));
 			}
 		}
 		$this->render('update',array(

@@ -52,7 +52,9 @@ class MahasiswaController extends AdminController
 	public function actionUpdate()
 	{
 		$mahasiswa = $this->loadModel();
-
+		if($mahasiswa->isRegistered) {
+			$mahasiswa->update = true;
+		}
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($mahasiswa);
 
@@ -86,6 +88,22 @@ class MahasiswaController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
+
+	public function actionPrint()
+	{
+		//Yii::app()->preload = array();
+		$this->layout = '//layouts/print';
+		$mahasiswa = new Mahasiswa('search');
+		$mahasiswa->unsetAttributes();  // clear any default values
+		if (isset($_GET['Mahasiswa'])) {
+			$mahasiswa->attributes = $_GET['Mahasiswa'];
+		}
+		$fakultasList = Fakultas::model()->findAll();
+		$this->render('print',array(
+			'fakultasList' => $fakultasList,
+			'mahasiswa' => $mahasiswa
+		));
+	}
 	/**
 	 * Manages all models.
 	 */
@@ -114,63 +132,25 @@ class MahasiswaController extends AdminController
 		
 		Yii::app()->end();
 	}
-	
-	/*public function actionBayarAsuransi()
+
+	public function actionDependentSelectKecamatan()
 	{
-		$mahasiswa = new Mahasiswa('search');
-		//$mahasiswa->unsetAttributes();
-		if(isset($_POST['id'])){
-			$mahasiswa->id = $_POST['id'];
-		}
-
-		$this->performValidationAsuransi($mahasiswa);
-
-		$flag = true;
-		if(isset($_POST['Mahasiswa'])){
-			$flag = false;
-			$mahasiswa->attributes = $_POST['Mahasiswa'];
-			$mahasiswa->lunasAsuransi = Mahasiswa::ASURANSI_LUNAS;
-			$mahasiswa->inputCaptcha = false;
-			/*if($mahasiswa->save()){
-				echo "masuk";
-			} else {
-				echo "tidak";
-			}*/
-			/*var_dump($mahasiswa->attributes);
-		}
-
-		if($flag){
-			$this->renderPartial('bayarAsuransi',array('mahasiswa'=>$mahasiswa),false,true);
-		}
-	}*/
-	
-	public function actionBayarAsuransi()
-	{
-		$mahasiswa = new Mahasiswa('search');
-		
-		$this->render('bayar',array('mahasiswa'=>$mahasiswa));
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'kecamatanId',
+			CHtml::listData(Kecamatan::model()->findAllByKabupatenId($_GET['kabupatenId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Kecamatan'))
+		);
+		Yii::app()->end();
 	}
-	
-	public function actionFindNim()
+
+	public function actionDependentSelectKelompok()
 	{
-		if(isset($_GET['q'])){
-			$qtxt ="SELECT id,nim FROM mahasiswa WHERE nim LIKE :nim";
-			$command =Yii::app()->db->createCommand($qtxt);
-			$command->bindValue(":nim", '%'.$_GET['q'].'%', PDO::PARAM_STR);
-			$res =$command->queryAll();
-			//print_r($res);
-			$val1 = array('id','name');
-			$test = array();
-			foreach($res as $data){
-				$tests = array('id'=>$data['id'],'name'=>$data['nim']);
-				$test[] = $tests; 
-			}
-			$json_response = json_encode($test);
-			
-			echo $json_response;
-			//echo json_encode('{id:7,name:test}');
-		}
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'kelompokId',
+			CHtml::listData(Kelompok::model()->findAllByKecamatanId($_GET['kecamatanId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Kelompok'))
+		);
+		Yii::app()->end();
 	}
+
 	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -186,6 +166,7 @@ class MahasiswaController extends AdminController
 				throw new CHttpException(404,'The requested page does not exist.');
 			}
 		}
+		$this->_model->inputCaptcha = false;
 		return $this->_model;
 	}
 

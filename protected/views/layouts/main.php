@@ -32,8 +32,10 @@
 						'visible' => Yii::app()->user->isGuest),
 					array('label'=>Yii::t('app','Administrasi'), 'url'=>array('/admin/default/index'),
 						'visible' =>  in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
-					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dashboard/kelompok/view'),
-						'visible' => !Yii::app()->user->isGuest && !in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
+					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/mahasiswa/mahasiswa/view'),
+						'visible' => in_array(Yii::app()->user->role, array(User::ROLE_MAHASISWA))),
+					array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dosen/dosen/view'),
+						'visible' => in_array(Yii::app()->user->role, array(User::ROLE_DOSEN))),
 					array('label'=>Yii::t('app','Logout'), 'url'=>array('/site/logout'),
 						'visible' => !Yii::app()->user->isGuest),
 				 ))); ?>
@@ -59,10 +61,14 @@
 				<?php $this->widget('HeadMenu',array(
 					'items' => array(
 						array('label'=>Yii::t('app','Beranda'), 'url'=>array('/home/index')),
-						array('label'=>Yii::t('app','Tentang Kami'), 'url'=>array('/site/page', 'view'=>'about')),
-						array('label'=>Yii::t('app','Kontak Kami'), 'url'=>array('/site/contact')),
-						array('label'=>Yii::t('app','Halaman Admin'), 'url'=>array('/admin/default/index'),'visible' => Yii::app()->user->name === 'admin'),
-						array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dashboard/kelompok/view'),'visible' => !Yii::app()->user->isGuest && Yii::app()->user->name !== 'admin'),
+						array('label'=>Yii::t('app','Tentang Kami'), 'url'=>array('/site/about')),
+						//array('label'=>Yii::t('app','Kontak Kami'), 'url'=>array('/site/contact')),
+						array('label'=>Yii::t('app','Administrasi'), 'url'=>array('/admin/default/index'),
+							'visible' =>  in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
+						array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/mahasiswa/mahasiswa/view'),
+							'visible' => in_array(Yii::app()->user->role, array(User::ROLE_MAHASISWA))),
+						array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/dosen/dosen/view'),
+							'visible' => in_array(Yii::app()->user->role, array(User::ROLE_DOSEN))),
 					)
 				))?>
 			</div><!--end.top-navigation-->

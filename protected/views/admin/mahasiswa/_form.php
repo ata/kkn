@@ -7,8 +7,6 @@
 
 	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
 
-	<?php echo $form->errorSummary($mahasiswa); ?>
-
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'namaLengkap'); ?>
 		<?php echo $form->textField($mahasiswa,'namaLengkap',array('size'=>60,'maxlength'=>255)); ?>
@@ -52,9 +50,40 @@
 		<?php echo $form->error($mahasiswa,'jurusanId'); ?>
 	</div>
 
+
+	<div class="row">
+		<?php echo $form->labelEx($mahasiswa,'kabupatenId'); ?>
+		<?php echo $form->dropDownList($mahasiswa,'kabupatenId',Kabupaten::model()->listData,array(
+			'empty' => Yii::t('app','Select Kabupaten'),
+			'ajax' => array(
+				'url' => array('dependentSelectKecamatan'),
+				'data' => array('kabupatenId' => 'js:jQuery(this).val()'),
+				'replace' => '#Mahasiswa_kecamatanId'
+			)
+		)); ?>
+		<?php echo $form->error($mahasiswa,'kabupatenId'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($mahasiswa,'kecamatanId'); ?>
+		<?php echo $form->dropDownList($mahasiswa,'kecamatanId',array(),
+			array(
+				'empty' => Yii::t('app','Select Kecamatan'),
+				'ajax' => array(
+					'url' => array('dependentSelectKelompok'),
+					'data' => array('kecamatanId' => 'js:jQuery(this).val()'),
+					'replace' => '#Mahasiswa_kelompokId'
+				),
+			)); ?>
+		<?php echo $form->error($mahasiswa,'kecamatanId'); ?>
+	</div>
+
+
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'kelompokId'); ?>
-		<?php echo $form->dropDownList($mahasiswa, 'kelompokId',Kelompok::model()->listData)?>
+		<?php echo $form->dropDownList($mahasiswa, 'kelompokId',
+			array($mahasiswa->kelompokId => $mahasiswa->kelompok),
+			array('empty' => Yii::t('app','Select Kelompok')))?>
 		<?php echo $form->error($mahasiswa,'kelompokId'); ?>
 	</div>
 
@@ -72,19 +101,35 @@
 		)); ?>
 		<?php echo $form->error($mahasiswa,'jenisKelamin'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'phone1'); ?>
 		<?php echo $form->textField($mahasiswa,'phone1',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($mahasiswa,'phone1'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'phone2'); ?>
 		<?php echo $form->textField($mahasiswa,'phone2',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($mahasiswa,'phone2'); ?>
 	</div>
-	
+
+	<div class="row">
+		<?php echo $form->labelEx($mahasiswa,'email'); ?>
+		<?php echo $form->textField($mahasiswa,'email',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($mahasiswa,'email'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($mahasiswa,'password'); ?>
+		<?php echo $form->passwordField($mahasiswa,'password',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($mahasiswa,'password'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($mahasiswa,'confirmPassword'); ?>
+		<?php echo $form->passwordField($mahasiswa,'confirmPassword',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($mahasiswa,'confirmPassword'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($mahasiswa->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>
 		<?php echo CHtml::link(Yii::t('app','Batal'),array('index'),array('class' => 'cancel-button'))?>

@@ -43,6 +43,10 @@ class Mahasiswa extends ActiveRecord
 	public $registered;
 	
 
+	// untuk dependent kelompok
+	public $kabupatenId;
+	public $kecamatanId;
+
 
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
@@ -70,16 +74,16 @@ class Mahasiswa extends ActiveRecord
 		// will receive user inputs.
 		return array(
 
-			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
+			array('password, confirmPassword, email, namaLengkap, phone1, phone2, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
 			array('userId, registered, jumlahAsuransi', 'numerical', 'integerOnly'=>true),
 			array('nim', 'numerical'),
 			array('email','email'),
-			array('jenisKelamin, namaLengkap, phone1, phone2, alamatAsal, alamatTinggal', 'length', 'max'=>255),
+			array('jenisKelamin, namaLengkap, phone1, alamatAsal, alamatTinggal', 'length', 'max'=>255),
 			array('userId, fakultasId, nim, jurusanId, kelompokId, jenjangId', 'length', 'max'=>20),
 			array('confirmPassword', 'compare', 'compareAttribute'=>'password'),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update || !$this->inputCaptcha),
 			array('file', 'file', 'types'=>'jpg, jpeg, png, gif','allowEmpty' => true),
-
+			array('kabupatenId, kecamatanId','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, namaLengkap, nim, registered, alamatAsal, alamatTinggal, fakultasId, jurusanId, kelompokId, jenjangId, jenisKelamin, created, modified', 'safe', 'on'=>'search'),
@@ -115,12 +119,14 @@ class Mahasiswa extends ActiveRecord
 			'alamatTinggal' => Yii::t('app','Alamat Tinggal'),
 			'fakultasId' => Yii::t('app','Fakultas'),
 			'jurusanId' => Yii::t('app','Jurusan'),
+			'kabupatenId' => Yii::t('app','Kabupaten'),
+			'kecamatanId' => Yii::t('app','Kecamatan'),
 			'kelompokId' => Yii::t('app','Kelompok'),
 			'jenjangId' => Yii::t('app','Jenjang'),
 			'jenisKelamin' => Yii::t('app','Jenis Kelamin'),
 			'displayJenisKelamin' => Yii::t('app','Jenis Kelamin'),
-			'phone1' => Yii::t('app','Phone 1'),
-			'phone2' => Yii::t('app','Phone 2'),
+			'phone1' => Yii::t('app','Telp/HP Pribadi'),
+			'phone2' => Yii::t('app','Telp/HP Keluarga'),
 			'password' => Yii::t('app','Password'),
 			'confirmPassword' => Yii::t('app','Confirm Password'),
 			'jumlahAsuransi'=>Yii::t('app','Jumlah Asuransi'),
@@ -290,6 +296,11 @@ class Mahasiswa extends ActiveRecord
 		return $this->namaLengkap;
 	}
 
+	public function unsetKelompok()
+	{
+		$this->update(array('kelompokId' => null));
+	}
+
 	public function getIsRegistered()
 	{
 		if($this->user == null) {
@@ -310,5 +321,10 @@ class Mahasiswa extends ActiveRecord
 		$criteria->condition = 'nim like "%$nim%"';
 		
 		return $this->find($criteria);
+	}
+	
+	public function unsetMahasiswaKelompok()
+	{
+		return $this->update(array('kelompokId' => null));
 	}
 }
