@@ -206,10 +206,10 @@ class Kelompok extends ActiveRecord
 	public function calculateTotalCountItem($criteria)
 	{
 		$count = $this->count($criteria);
-		if($count < 50) {
+		if($count < 25) {
 			return $count;
 		}
-		return 50;
+		return 25;
 	}
 
 
