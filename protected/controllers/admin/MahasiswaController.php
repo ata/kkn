@@ -91,7 +91,7 @@ class MahasiswaController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		/*$mahasiswa = new Mahasiswa('search');
+		$mahasiswa = new Mahasiswa('search');
 		$mahasiswa->unsetAttributes();  // clear any default values
 		if (isset($_GET['Mahasiswa'])) {
 			$mahasiswa->attributes = $_GET['Mahasiswa'];
@@ -99,25 +99,17 @@ class MahasiswaController extends AdminController
 
 		$this->render('index',array(
 			'mahasiswa' => $mahasiswa,
-		));*/
+		));
 		
 	}
 
 	public function actionDependentSelectJurusan()
 	{
-
-		/*echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId', 
-
 		echo CHtml::activeDropDownList(Mahasiswa::model(),'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
-		);*/
-		foreach (Jurusan::model()->findAllByFakultasId($_GET['fakultasId']) as $data){
-			$option = array();
-			$option['id'] = $data->id;
-			$option['nama'] = $data->nama;
-			echo json_encode($option);
-		}
+		);
+		
 		
 		
 		Yii::app()->end();

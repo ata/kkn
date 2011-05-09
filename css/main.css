@@ -297,8 +297,9 @@ textarea, input{
 }
 
 #admin-container #content li{
-    padding:3px 0;
-    list-style:square;
+    padding:3px;
+    list-style:none;
+    
 }
 
 #admin-container #content p{
