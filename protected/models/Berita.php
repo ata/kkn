@@ -33,7 +33,7 @@ class Berita extends ActiveRecord
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
-	{ 
+	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
@@ -55,7 +55,7 @@ class Berita extends ActiveRecord
 		return array(
 		);
 	}
-	
+
 	public function defaultScope()
 	{
 		return array(
@@ -96,5 +96,10 @@ class Berita extends ActiveRecord
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function getSummary()
+	{
+		return implode(' ',array_slice(explode(' ',$this->body), 0, 75));
 	}
 }

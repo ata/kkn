@@ -32,11 +32,16 @@ return array(
 		),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
-			'urlFormat'=>'path',
+			'urlFormat'=>'get',
 			'showScriptName' => false,
 			'urlSuffix' => '.aspx',
 			'rules'=>array(
+				// spesifik
 				'admin' => 'admin/default/index',
+				'admin/<controller:\w+>/<fakutasId:\d+>/dependentSelectJurusan'=>'admin/<controller>/dependentSelectJurusan',
+
+				// common
+
 				'admin/<controller:\w+>/<id:\d+>'=>'admin/<controller>/view',
 				'admin/<controller:\w+>/<id:\d+>/<action:\w+>'=>'admin/<controller>/<action>',
 				'admin/<controller:\w+>/<action:\w+>'=>'admin/<controller>/<action>',
@@ -48,13 +53,7 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		'db'=> array(
-			'connectionString' => 'mysql:host=localhost;dbname=unit_lppm_kkn',
-			'emulatePrepare' => true,
-			'username' => 'kkn',
-			'password' => 'dbnaKKNup1',
-			'charset' => 'utf8',
-		),
+		'db'=> require(dirname(__FILE__).'/database.php'),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

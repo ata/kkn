@@ -2,7 +2,7 @@
 
 <div id="slideshow">
 	<div class="container">
-		<img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg">
+		<img src="<?php echo Yii::app()->request->baseUrl?>/images/banner2.jpg">
 	</div>
 </div>
 

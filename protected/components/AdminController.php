@@ -32,7 +32,7 @@ class AdminController extends Controller
 					'update','deletePrioritas','mahasiswaPrint','addPrioritas',
 					'dependentSelectJurusan','deletePrioritas','deleteFile','downloadFile',
 					'dependentSelectKecamatan','resetPassword','bayarAsuransi',
-					'print',
+					'print','jurusan','kelompok','dependentSelectKelompok'
 				),
 				'roles' => array_merge(array(User::ROLE_ADMIN),$this->getMoreAllowRoles()),
 			),

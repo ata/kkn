@@ -8,6 +8,6 @@ $this->breadcrumbs=array(
 	<h2><?php echo CHtml::link(CHtml::encode($berita->title), array('view', 'id'=>$berita->id)); ?></h2>
 
 	<div class="view">
-		<p><?php echo nl2br(CHtml::encode($berita->body))?></p>
+		<p><?php echo nl2br($berita->body)?></p>
 	</div>
 </div>

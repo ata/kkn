@@ -1,9 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-    'Users'=>array('index'),
-    'Create',
-);
-?>
+	'Register',
+);?>
 
 <div class="notice">
     <?php echo Yii::app()->user->getFlash('message'); ?>

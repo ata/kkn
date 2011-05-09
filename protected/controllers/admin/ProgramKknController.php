@@ -121,7 +121,6 @@ class ProgramKknController extends AdminController
 	public function actionDownloadFile(){
 		if(isset($_GET['id'])){
 			$file = ProgramKknLampiran::model()->findByPk($_GET['id']);
-			//die(Yii::app()->request->baseUrl . $file->path);
 			header("Content-Disposition: attachment;filename={$file->nama}");
 			header("Content-Length: {$file->size}");
 			header("Content-Type: {$file->mimetype}");

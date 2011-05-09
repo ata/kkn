@@ -193,6 +193,13 @@ class Kelompok extends ActiveRecord
 		return $this->find($criteria);
 	}
 
+	public function findAllByKecamatanId($kecamatanId)
+	{
+		return $this->findAllByAttributes(array(
+			'kecamatanId' => $kecamatanId
+		));
+	}
+
 	public function pilih(Mahasiswa $currentMahasiswa)
 	{
 		$currentMahasiswa->kelompokId = $this->id;

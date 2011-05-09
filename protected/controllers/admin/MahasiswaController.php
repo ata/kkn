@@ -52,7 +52,9 @@ class MahasiswaController extends AdminController
 	public function actionUpdate()
 	{
 		$mahasiswa = $this->loadModel();
-
+		if($mahasiswa->isRegistered) {
+			$mahasiswa->update = true;
+		}
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($mahasiswa);
 
@@ -127,6 +129,24 @@ class MahasiswaController extends AdminController
 		Yii::app()->end();
 	}
 
+	public function actionDependentSelectKecamatan()
+	{
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'kecamatanId',
+			CHtml::listData(Kecamatan::model()->findAllByKabupatenId($_GET['kabupatenId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Kecamatan'))
+		);
+		Yii::app()->end();
+	}
+
+	public function actionDependentSelectKelompok()
+	{
+		echo CHtml::activeDropDownList(Mahasiswa::model(),'kelompokId',
+			CHtml::listData(Kelompok::model()->findAllByKecamatanId($_GET['kecamatanId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Kelompok'))
+		);
+		Yii::app()->end();
+	}
+
 	public function actionBayarAsuransi()
 	{
 		$mahasiswa = new Mahasiswa('search');
@@ -164,6 +184,7 @@ class MahasiswaController extends AdminController
 				throw new CHttpException(404,'The requested page does not exist.');
 			}
 		}
+		$this->_model->inputCaptcha = false;
 		return $this->_model;
 	}
 

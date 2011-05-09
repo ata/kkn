@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print-preview.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print-preview.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
-<?php //Yii::app()->clientScript->registerScript('print','window.print()')?>
+<?php Yii::app()->clientScript->registerScript('print','window.print()')?>
 <?php echo $content?>
 </body>

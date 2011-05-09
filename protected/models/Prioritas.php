@@ -108,7 +108,7 @@ class Prioritas extends ActiveRecord
 	{
 		return parent::beforeSave();
 	}
-
+	/*
 	protected function beforeValidate()
 	{
 		$prioritas = $this->findByAttributes(array(
@@ -121,4 +121,5 @@ class Prioritas extends ActiveRecord
 		}
 		return parent::beforeValidate();
 	}
+	*/
 }

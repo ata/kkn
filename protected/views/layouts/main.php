@@ -62,7 +62,7 @@
 					'items' => array(
 						array('label'=>Yii::t('app','Beranda'), 'url'=>array('/home/index')),
 						array('label'=>Yii::t('app','Tentang Kami'), 'url'=>array('/site/about')),
-						array('label'=>Yii::t('app','Kontak Kami'), 'url'=>array('/site/contact')),
+						//array('label'=>Yii::t('app','Kontak Kami'), 'url'=>array('/site/contact')),
 						array('label'=>Yii::t('app','Administrasi'), 'url'=>array('/admin/default/index'),
 							'visible' =>  in_array(Yii::app()->user->role, array(User::ROLE_ADMIN, User::ROLE_STAFF))),
 						array('label'=>Yii::t('app','Dashboard'), 'url'=>array('/mahasiswa/mahasiswa/view'),
@@ -92,7 +92,7 @@
 		</span>
 		<span class="span-12 last ar">
 			Copyright &copy; 2010 by <?php echo CHtml::link('Nevisa','http://nevisa.web.id') ?><br/>
-			<?php //echo Yii::powered(); ?>
+			<?php echo Yii::powered(); ?>
 		</span>
 	</div>
 </div><!-- end#footer-->
