@@ -47,9 +47,9 @@
 				<ul>
 					<li id="fp-login-form">
 						<h2>LOGIN</h2>
-						<form action="<?php echo $this->createUrl()?>">
+						<form action="<?php echo $this->createUrl('/site/login')?>" method="post">
 							<label>Username</label>
-							<input type="text"><br>
+							<input name="LoginForm[username]" id="LoginForm_username" type="text" /><br/>
 							<label>Password</label>
 							<input type="password"><br>
 							<input type="submit" value="LOGIN" class="button floatRight">
@@ -60,9 +60,9 @@
 					<li id="register-form">
 						<h2 class="floatRight">REGISTRASI</h2>
 						<div class="clear"></div>
-						<form>
+						<form action="<?php echo $this->createUrl('/register')?>" method="post">
 							<label>NIM</label><br>
-							<input type="text"><br>
+							<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br>
 							<input type="submit" value="DAFTAR" class="button">
 						</form>
 					</li>
