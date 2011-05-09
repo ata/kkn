@@ -47,7 +47,7 @@
 				<ul>
 					<li id="fp-login-form">
 						<h2>LOGIN</h2>
-						<form>
+						<form action="<?php echo $this->createUrl()?>">
 							<label>Username</label>
 							<input type="text"><br>
 							<label>Password</label>

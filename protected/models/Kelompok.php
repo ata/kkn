@@ -185,9 +185,6 @@ class Kelompok extends ActiveRecord
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
 		}
-
-
-
 		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
 									OR (t.jumlahAnggota < t.maxAnggota AND t.maxAnggota IS NOT NULL)
 									OR t.jumlahAnggota IS NULL');

@@ -11,7 +11,7 @@ class RegisterController extends Controller
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
 				'testLimit' => 10,
-				'fixedVerifyCode' => 'code',
+				//'fixedVerifyCode' => 'code',
 			),
 		);
 	}
