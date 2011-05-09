@@ -285,6 +285,11 @@ class Mahasiswa extends ActiveRecord
 		return $this->namaLengkap;
 	}
 
+	public function unsetKelompok()
+	{
+		$this->update(array('kelompokId' => null));
+	}
+
 	public function getIsRegistered()
 	{
 		if($this->user == null) {

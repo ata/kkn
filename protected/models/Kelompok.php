@@ -199,9 +199,19 @@ class Kelompok extends ActiveRecord
 		Yii::app()->session->add('Prioritas_level', $level);
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			//'totalItemCount' => 1000,
+			'totalItemCount' => $this->calculateTotalCountItem($criteria),
 		));
 	}
+
+	public function calculateTotalCountItem($criteria)
+	{
+		$count = $this->count($criteria);
+		if($count < 50) {
+			return $count;
+		}
+		return 50;
+	}
+
 
 	public function findByUserIdPembimbing($user_id)
 	{
