@@ -166,8 +166,9 @@ class Kelompok extends ActiveRecord
 									OR t.jumlahAnggota IS NULL');
 		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
 		if ($level <= 5) {
-			$criteria->addCondition('(SELECT count(*) FROM mahasiswa WHERE kelompok.id = t.id AND jurusanId = :jurusanId)
-									< (SELECT count(*) FROM prioritas WHERE jurusanId = :jurusanId AND level = :level)');
+			$criteria->addCondition('(t.programKknId IN (SELECT programKknId FROM prioritas WHERE jurusanId = :jurusanId AND level = :level))
+										AND((SELECT count(*) FROM mahasiswa WHERE kelompokId = t.id AND jurusanId = :jurusanId)
+										< (SELECT count(*) FROM prioritas WHERE jurusanId = :jurusanId AND level = :level))');
 			$criteria->params['level'] =  $level;
 		} else {
 			$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
