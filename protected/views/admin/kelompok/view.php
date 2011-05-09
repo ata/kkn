@@ -73,8 +73,8 @@ $this->breadcrumbs=array(
 		'namaLengkap',
 		'displayJenisKelamin',
 		array(
-			'name'=>'kelompokId',
-			'value'=>'$data->kelompok->nama',
+			'name'=>'jurusanId',
+			'value'=>'$data->namaJurusan',
 		),
 		array(
 			'class'=>'CButtonColumn',

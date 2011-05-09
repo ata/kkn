@@ -60,7 +60,7 @@ return array (
   'CDbCommand failed to execute the SQL statement: {error}' => 'CDbCommand gagal menjalankan statementSQL: {error}',
   'CDbCommand failed to prepare the SQL statement: {error}' => 'CDbCommand gagal menyiapkan statement SQL: {error}',
   'CDbConnection does not support reading schema for {driver} database.' => 'CDbConnection tidak mendukung pembacaan skema untuk database {driver}.',
-  'CDbConnection failed to open the DB connection.' => 'CDbConnection gagal membuka koneksi DB',
+  'CDbConnection failed to open the DB connection.' => 'CDbConnection gagal membuka koneksi DB: server database sedang mengalami gangguan, silahkan hubungi admin database UPI untuk info lebih lanjut',
   'CDbConnection failed to open the DB connection: {error}' => 'CDbConnection gagal membuka koneksi DB: {error}',
   'CDbConnection.connectionString cannot be empty.' => 'CDbConnection.connectionString tidak boleh kosong.',
   'CDbDataReader cannot rewind. It is a forward-only reader.' => 'CDbDataReader tidak bisa bergerak mundur. Kelas ini adalah pembaca yang bergerak maju saja.',

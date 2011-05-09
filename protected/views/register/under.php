@@ -3,4 +3,4 @@ $this->breadcrumbs=array(
 	'Register',
 );?>
 
-<p>Under Construction</p>
+<div class="notice ac">Pendaftaran belum dibuka</div>

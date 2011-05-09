@@ -46,26 +46,21 @@ $this->breadcrumbs=array(
 
 		<div class="row">
 			<?php echo $form->labelEx($mahasiswa,'jenjangId'); ?>
-			<?php echo $form->dropDownList($mahasiswa, 'jenjangId',Jenjang::model()->listData)?>
+			<?php echo $form->dropDownList($mahasiswa, 'jenjangId',Jenjang::model()->listData,array(
+				'disabled' => 'disabled',
+			))?>
 			<?php echo $form->error($mahasiswa,'jenjangId'); ?>
 		</div>
 
 		<div class="row">
 			<?php echo $form->labelEx($mahasiswa,'fakultasId'); ?>
-			<?php echo $form->dropDownList($mahasiswa,'fakultasId',Fakultas::model()->listData,array(
-				'empty' => Yii::t('app','Select Fakultas'),
-				'ajax' => array(
-					'url' => array('dependentSelectJurusan'),
-					'data' => array('fakultasId' => 'js:jQuery(this).val()'),
-					'replace' => '#Mahasiswa_jurusanId'
-				)
-			)); ?>
+			<?php echo $form->dropDownList($mahasiswa,'fakultasId',Fakultas::model()->listData,array('disabled' => 'disabled',));?>
 			<?php echo $form->error($mahasiswa,'fakultasId'); ?>
 		</div>
 
 		<div class="row">
 			<?php echo $form->labelEx($mahasiswa,'jurusanId'); ?>
-			<?php echo $form->dropDownList($mahasiswa, 'jurusanId',Jurusan::model()->listData)?>
+			<?php echo $form->dropDownList($mahasiswa, 'jurusanId',Jurusan::model()->listData,array('disabled' => 'disabled',))?>
 			<?php echo $form->error($mahasiswa,'jurusanId'); ?>
 		</div>
 
@@ -74,7 +69,7 @@ $this->breadcrumbs=array(
 			<?php echo $form->dropDownList($mahasiswa,'jenisKelamin',array(
 				Mahasiswa::LAKI_LAKI => Yii::t('app','Laki-laki'),
 				Mahasiswa::PEREMPUAN => Yii::t('app','Perempuan'),
-			)); ?>
+			),array('disabled' => true,)); ?>
 			<?php echo $form->error($mahasiswa,'jenisKelamin'); ?>
 		</div>
 

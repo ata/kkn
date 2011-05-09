@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
 			'filter'=>Kecamatan::model()->listData,
 		),
 		'lokasi',
-		'maxAnggota',
+		//'maxAnggota',
 		array(
 			'name'=>'programKknId',
 			'value'=>'$data->namaProgramKkn',

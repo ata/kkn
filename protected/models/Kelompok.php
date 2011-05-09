@@ -54,7 +54,7 @@ class Kelompok extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('lokasi, kabupatenId, kecamatanId, programKknId', 'required'),
+			array('lokasi, kabupatenId, kecamatanId, programKknId, maxAnggota', 'required'),
 			array('lokasi', 'length', 'max'=>255),
 			array('latitude, longitude, pembimbingId, jumlahAnggota, jumlahLakiLaki, jumlahPerempuan, maxAnggota, maxLakiLaki, maxPerempuan', 'numerical'),
 			array('kabupatenId, kecamatanId, programKknId', 'length', 'max'=>20),
@@ -149,16 +149,19 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('t.kecamatanId',$this->kecamatanId);
 		$criteria->compare('t.programKknId',$this->programKknId);
 		if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('(t.jumlahLakiLaki < :jkmax AND t.maxLakiLaki IS NULL)
+			$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 									OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
 									OR t.jumlahLakiLaki IS NULL');
-
-			$criteria->params['jkmax'] = $this->countMaxLakiLaki();
+			//$criteria->addCondition('t.jumlahLakiLaki < :jkmax OR t.jumlahLakiLaki IS NULL');
+			//$criteria->params['jkmax'] = $this->countMaxLakiLaki();
+			$criteria->params['ratio'] = $this->countRatioLakiLaki();
 		} else {
-			$criteria->addCondition('(t.jumlahPerempuan < :jkmax AND t.maxPerempuan IS NULL)
+			$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
 									OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
 									OR t.jumlahPerempuan IS NULL');
-			$criteria->params['jkmax'] = $this->countMaxPerempuan();
+			//$criteria->addCondition('t.jumlahPerempuan < :jkmax OR t.jumlahPerempuan IS NULL');
+			//$criteria->params['jkmax'] = $this->countMaxPerempuan();
+			$criteria->params['ratio'] = $this->countRatioPerempuan();
 		}
 
 		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
@@ -172,6 +175,9 @@ class Kelompok extends ActiveRecord
 			$criteria->params['level'] =  $level;
 		} else {
 			$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
+			if($level = 6) {
+				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
+			}
 		}
 		$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 		$criteria->order = 't.jumlahAnggota DESC';
@@ -247,6 +253,7 @@ class Kelompok extends ActiveRecord
 	 * Jika jumlah kelompok tidak nol, maka lakukan perhitungan:
 	 * 		Jumlah Maksimal Anggota = ceil(Jumlah Mahasiswa / jumlah kelompok kkn)
 	 */
+
 	public function countMaxAnggota()
 	{
 		if ($this->cacheCount() == 0) {
@@ -254,6 +261,7 @@ class Kelompok extends ActiveRecord
 		}
 		return self::$_maxAnggota !== null?self::$_maxAnggota:self::$_maxAnggota = ceil(Mahasiswa::model()->cacheCount() / $this->cacheCount());
 	}
+
 	/**
 	 * Merupakan Jumlah maksimal Laki-laki dalam satu kelompok
 	 * jika $this->maxLakiLaki didefinisikan, maka kembalikan nilai $this->maxLakiLaki
@@ -265,6 +273,16 @@ class Kelompok extends ActiveRecord
 			return 0;
 		}
 		return floor(Mahasiswa::model()->countLakiLaki() / Mahasiswa::model()->cacheCount() * $this->countMaxAnggota());
+	}
+
+	public function countRatioLakiLaki()
+	{
+		return $this->countMaxLakiLaki() / $this->countMaxAnggota();
+	}
+
+	public function countRatioPerempuan()
+	{
+		return $this->countMaxPerempuan() / $this->countMaxAnggota();
 	}
 
 	public function countMaxPerempuan()
