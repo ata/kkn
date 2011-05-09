@@ -149,20 +149,29 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('t.kecamatanId',$this->kecamatanId);
 		$criteria->compare('t.programKknId',$this->programKknId);
 		if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('t.jumlahLakiLaki < :jkmax OR t.jumlahLakiLaki IS NULL');
+			$criteria->addCondition('(t.jumlahLakiLaki < :jkmax AND t.maxLakiLaki IS NULL)
+									OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
+									OR t.jumlahLakiLaki IS NULL');
+
 			$criteria->params['jkmax'] = $this->countMaxLakiLaki();
 		} else {
-			$criteria->addCondition('t.jumlahPerempuan < :jkmax OR t.jumlahPerempuan IS NULL');
+			$criteria->addCondition('(t.jumlahPerempuan < :jkmax AND t.maxPerempuan IS NULL)
+									OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
+									OR t.jumlahPerempuan IS NULL');
 			$criteria->params['jkmax'] = $this->countMaxPerempuan();
 		}
-		$criteria->addCondition('t.jumlahAnggota < :jmaxAnggota OR t.jumlahAnggota IS NULL');
+
+		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
+									OR (t.jumlahAnggota < t.maxAnggota AND t.maxAnggota IS NOT NULL)
+									OR t.jumlahAnggota IS NULL');
 		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
-		$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
-		$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 
 		if ($level <= 5) {
 			$criteria->addCondition('t.programKknId IN (SELECT programKknId FROM prioritas WHERE jurusanId = :jurusanId AND level = :level)');
 			$criteria->params['level'] =  $level;
+		} else {
+			$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
+			$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 		}
 		$criteria->order = 't.jumlahAnggota DESC';
 		$criteria->limit = 20;
@@ -183,6 +192,7 @@ class Kelompok extends ActiveRecord
 		Yii::app()->session->add('Prioritas_level', $level);
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
+			//'totalItemCount' => 1000,
 		));
 	}
 
@@ -238,9 +248,6 @@ class Kelompok extends ActiveRecord
 	 */
 	public function countMaxAnggota()
 	{
-		if($this->maxAnggota != null && $this->maxAnggota != 0) {
-			return $this->maxAnggota;
-		}
 		if ($this->cacheCount() == 0) {
 			return 0;
 		}
@@ -253,9 +260,6 @@ class Kelompok extends ActiveRecord
 	 */
 	public function countMaxLakiLaki()
 	{
-		if($this->maxLakiLaki != null && $this->maxLakiLaki != 0) {
-			return $this->maxLakiLaki;
-		}
 		if ($this->cacheCount() == 0) {
 			return 0;
 		}
@@ -264,9 +268,6 @@ class Kelompok extends ActiveRecord
 
 	public function countMaxPerempuan()
 	{
-		if($this->maxPerempuan != null && $this->maxPerempuan != null) {
-			return $this->maxPerempuan;
-		}
 		if ($this->cacheCount() == 0) {
 			return 0;
 		}
