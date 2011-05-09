@@ -67,7 +67,7 @@ class User extends ActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'mahasiswa' => array(self::HAS_ONE, 'Mahasiswa','userId'),
-			'dosen' => array(self::HAS_ONE,'DOsen','userId'),
+			'dosen' => array(self::HAS_ONE,'Dosen','userId'),
 		);
 	}
 

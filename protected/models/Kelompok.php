@@ -174,10 +174,14 @@ class Kelompok extends ActiveRecord
 										< (SELECT count(*) FROM prioritas WHERE jurusanId = :jurusanId AND level = :level))');
 			$criteria->params['level'] =  $level;
 		} else {
-			$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
-			if($level = 6) {
+
+			if($level <= 6) {
 				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
 			}
+			if($level <= 7) {
+				$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
+			}
+
 		}
 		$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 		$criteria->order = 't.jumlahAnggota DESC';
