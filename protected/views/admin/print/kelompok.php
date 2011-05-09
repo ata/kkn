@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($kelompok->anggota as $i => $mahasiswa):?>a
+				<?php foreach($kelompok->anggota as $i => $mahasiswa):?>
 				<tr>
 					<td><?php echo $i + 1 ?></td>
 					<td><?php echo $mahasiswa->nim?></td>

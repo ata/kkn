@@ -148,20 +148,18 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('t.kabupatenId',$this->kabupatenId);
 		$criteria->compare('t.kecamatanId',$this->kecamatanId);
 		$criteria->compare('t.programKknId',$this->programKknId);
-		if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-			$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
-									OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
-									OR t.jumlahLakiLaki IS NULL');
-			//$criteria->addCondition('t.jumlahLakiLaki < :jkmax OR t.jumlahLakiLaki IS NULL');
-			//$criteria->params['jkmax'] = $this->countMaxLakiLaki();
-			$criteria->params['ratio'] = $this->countRatioLakiLaki();
-		} else {
-			$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
-									OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
-									OR t.jumlahPerempuan IS NULL');
-			//$criteria->addCondition('t.jumlahPerempuan < :jkmax OR t.jumlahPerempuan IS NULL');
-			//$criteria->params['jkmax'] = $this->countMaxPerempuan();
-			$criteria->params['ratio'] = $this->countRatioPerempuan();
+		if($level <= 8) {
+			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
+				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
+										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
+										OR t.jumlahLakiLaki IS NULL');
+				$criteria->params['ratio'] = $this->countRatioLakiLaki();
+			} else {
+				$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
+										OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
+										OR t.jumlahPerempuan IS NULL');
+				$criteria->params['ratio'] = $this->countRatioPerempuan();
+			}
 		}
 
 		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
