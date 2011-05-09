@@ -91,7 +91,7 @@ class MahasiswaController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$mahasiswa = new Mahasiswa('search');
+		/*$mahasiswa = new Mahasiswa('search');
 		$mahasiswa->unsetAttributes();  // clear any default values
 		if (isset($_GET['Mahasiswa'])) {
 			$mahasiswa->attributes = $_GET['Mahasiswa'];
@@ -99,7 +99,8 @@ class MahasiswaController extends AdminController
 
 		$this->render('index',array(
 			'mahasiswa' => $mahasiswa,
-		));
+		));*/
+		
 	}
 
 	public function actionDependentSelectJurusan()
@@ -122,7 +123,7 @@ class MahasiswaController extends AdminController
 		Yii::app()->end();
 	}
 	
-	public function actionBayarAsuransi()
+	/*public function actionBayarAsuransi()
 	{
 		$mahasiswa = new Mahasiswa('search');
 		//$mahasiswa->unsetAttributes();
@@ -143,14 +144,42 @@ class MahasiswaController extends AdminController
 			} else {
 				echo "tidak";
 			}*/
-			var_dump($mahasiswa->attributes);
+			/*var_dump($mahasiswa->attributes);
 		}
 
 		if($flag){
 			$this->renderPartial('bayarAsuransi',array('mahasiswa'=>$mahasiswa),false,true);
 		}
+	}*/
+	
+	public function actionBayarAsuransi()
+	{
+		$mahasiswa = new Mahasiswa('search');
+		
+		$this->render('bayar',array('mahasiswa'=>$mahasiswa));
 	}
-
+	
+	public function actionFindNim()
+	{
+		if(isset($_GET['q'])){
+			$qtxt ="SELECT id,nim FROM mahasiswa WHERE nim LIKE :nim";
+			$command =Yii::app()->db->createCommand($qtxt);
+			$command->bindValue(":nim", '%'.$_GET['q'].'%', PDO::PARAM_STR);
+			$res =$command->queryAll();
+			//print_r($res);
+			$val1 = array('id','name');
+			$test = array();
+			foreach($res as $data){
+				$tests = array('id'=>$data['id'],'name'=>$data['nim']);
+				$test[] = $tests; 
+			}
+			$json_response = json_encode($test);
+			
+			echo $json_response;
+			//echo json_encode('{id:7,name:test}');
+		}
+	}
+	
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

@@ -69,13 +69,9 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-<<<<<<< HEAD
-			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin,jumlahAsuransi,lunasAsuransi', 'required'),
-			array('userId, registered,jumlahAsuransi', 'numerical', 'integerOnly'=>true),
-=======
+
 			array('password, confirmPassword, email, namaLengkap, phone1, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
 			array('userId, registered, jumlahAsuransi', 'numerical', 'integerOnly'=>true),
->>>>>>> 7641d43da23860d7807057d7d8483e5d2a723452
 			array('nim', 'numerical'),
 			array('email','email'),
 			array('jenisKelamin, namaLengkap, phone1, phone2, alamatAsal, alamatTinggal', 'length', 'max'=>255),
@@ -306,5 +302,13 @@ class Mahasiswa extends ActiveRecord
 	{
 		return $this->isRegistered ? Yii::t('app','Sudah Registrasi') : Yii::t('app','Belum Registrasi');
 	}
-
+	
+	public function findNimAutocomplete($nim)
+	{
+		$criteria = new CDbCriteria;
+		$criteria->select = 'id,nim';
+		$criteria->condition = 'nim like "%$nim%"';
+		
+		return $this->find($criteria);
+	}
 }
