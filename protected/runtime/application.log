@@ -5302,3 +5302,17 @@ Stack trace:
 #1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #2 /home/ata/Project/kkn/index.php(13): CApplication->run()
 #3 {main} REQUEST_URI=/kkn/?r=admin/asuransi/bayar
+2011/05/10 17:17:10 [error] [php] Trying to get property of non-object (/home/ata/Project/kkn/protected/controllers/mahasiswa/KelompokController.php:61)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): KelompokController->runAction()
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): KelompokController->filterAccessControl()
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): KelompokController->runActionWithFilters()
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): KelompokController->run()
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index.php(13): CWebApplication->run()
+REQUEST_URI=/kkn/?r=mahasiswa/kelompok/view
