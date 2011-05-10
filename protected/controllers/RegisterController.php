@@ -11,7 +11,7 @@ class RegisterController extends Controller
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
 				'testLimit' => 10,
-				//'fixedVerifyCode' => 'code',
+				'fixedVerifyCode' => 'code',
 			),
 		);
 	}
@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
 	public function actionIndex()
 	{
-		//$this->redirect(array('under'));
+		$this->redirect(array('under'));
 		$mahasiswa = new Mahasiswa;
 		$this->performAjaxValidation($mahasiswa);
 		if (isset($_POST['Mahasiswa'])) {
