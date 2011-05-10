@@ -215,13 +215,16 @@ class Kelompok extends ActiveRecord
 
 	public function searchAvailable(Mahasiswa $currentMahasiswa, $level = 1)
 	{
-		$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
-		$count = $this->count($criteria);
-		if ($count == 0 && $this->_loopSearch < 20) {
-			$this->_loopSearch ++;
-			return $this->searchAvailable($currentMahasiswa, $level + 1);
+		if(Yii::app()->session->get('Prioritas_level') == null){
+			$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
+			$count = $this->count($criteria);
+			if ($count == 0 && $this->_loopSearch < 20) {
+				$this->_loopSearch ++;
+				return $this->searchAvailable($currentMahasiswa, $level + 1);
+			}
+			Yii::app()->session->add('Prioritas_level', $level);
 		}
-		Yii::app()->session->add('Prioritas_level', $level);
+		$criteria = $this->getAvailableCriteria($currentMahasiswa, (int) Yii::app()->session->get('Prioritas_level'));
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 			'totalItemCount' => $this->calculateTotalCountItem($criteria),
