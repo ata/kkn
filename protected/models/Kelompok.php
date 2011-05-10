@@ -174,7 +174,7 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
-		} else if($level == 9) {
+		} else if($level == 10) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) + 1 AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -201,7 +201,7 @@ class Kelompok extends ActiveRecord
 			if($level <= 6) {
 				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
 			}
-			if($level <= 10) {
+			if($level <= 9) {
 				$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
 				$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 			}
