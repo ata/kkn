@@ -372,7 +372,7 @@ class Kelompok extends ActiveRecord
 		$jumlahAnggota = $this->jumlahAnggota ? $this->jumlahAnggota : 0;
 		$jumlahLakiLaki = $this->jumlahLakiLaki ? $this->jumlahLakiLaki : 0;
 		$jumlahPerempuan = $this->jumlahPerempuan ? $this->jumlahPerempuan : 0;
-		return "{$jumlahAnggota} orang ({$jumlahLakiLaki} L, {$this->jumlahPerempuan} P)";
+		return "{$jumlahAnggota} orang ({$jumlahLakiLaki} L, {$jumlahPerempuan} P)";
 	}
 
 	public function getUser()
