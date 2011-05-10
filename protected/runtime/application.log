@@ -5151,3 +5151,33 @@ Stack trace:
 #14 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #15 /home/ata/Project/kkn/index-test.php(15): CWebApplication->run()
 REQUEST_URI=/kkn/index-test.php?r=admin%2Fuser%2Fdelete&id=2455&ajax=user-grid
+2011/05/10 01:35:38 [error] [php] Trying to get property of non-object (/home/ata/Project/kkn/protected/controllers/mahasiswa/KelompokController.php:61)
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): KelompokController->runAction()
+#1 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /home/ata/Project/kkn/framework/web/CController.php(1122): CAccessControlFilter->filter()
+#3 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): KelompokController->filterAccessControl()
+#4 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#6 /home/ata/Project/kkn/framework/web/CController.php(257): KelompokController->runActionWithFilters()
+#7 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): KelompokController->run()
+#8 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#10 /home/ata/Project/kkn/index-test.php(15): CWebApplication->run()
+REQUEST_URI=/kkn/index-test.php?r=mahasiswa/kelompok/view
+2011/05/10 01:35:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/ata/Project/kkn/protected/controllers/mahasiswa/MahasiswaController.php:103
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionView()
+#1 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#2 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#4 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#5 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#8 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('view')
+#10 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('mahasiswa/mahas...')
+#11 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#12 /home/ata/Project/kkn/index-test.php(15): CApplication->run()
+#13 {main} REQUEST_URI=/kkn/index-test.php?r=mahasiswa/mahasiswa/view
