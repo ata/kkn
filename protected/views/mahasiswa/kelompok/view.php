@@ -22,7 +22,7 @@ $this->breadcrumbs=array(
 			'value' => $kelompok->namaProgramKkn
 		),
 		array(
-			'name' => 'deskripsiprogramKkn',
+			'name' => 'deskripsiProgramKkn',
 			'type' => 'raw',
 			'value' => nl2br($kelompok->deskripsiprogramKkn)
 		),
@@ -52,25 +52,23 @@ $this->breadcrumbs=array(
 		<thead>
 			<tr>
 				<th><?php echo Yii::t('app','No')?></th>
-				<th><?php echo Yii::t('app','Nama Lengkap')?></th>
 				<th><?php echo Yii::t('app','NIM')?></th>
+				<th><?php echo Yii::t('app','Nama Lengkap')?></th>
 				<th><?php echo Yii::t('app','Jurusan')?></th>
 				<th><?php echo Yii::t('app','Jenis Kelamin')?></th>
 				<th><?php echo Yii::t('app','Telpon')?></th>
-				<th>&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php if(count($kelompok->anggota) !== 0):?>
 			<?php foreach($kelompok->anggota as $i => $mahasiswa):?>
 			<tr class="<?php echo $i%2==0?'odd':'even'?>">
-				<td width="50px"><?php echo $i + 1 ?></td>
-				<td><?php echo CHtml::link($mahasiswa->namaLengkap,array('/mahasiswa/mahasiswa/view','id' => $mahasiswa->id))?></td>
-				<td><?php echo $mahasiswa->nim?></td>
+				<td width="30px"><?php echo $i + 1 ?></td>
+				<td width="60px"><?php echo $mahasiswa->nim?></td>
+				<td width="200px"><?php echo CHtml::link($mahasiswa->namaLengkap,array('/mahasiswa/mahasiswa/view','id' => $mahasiswa->id),array('title' => Yii::t('app','Klik untuk melihat detail mahasiswa')))?></td>
 				<td><?php echo $mahasiswa->jurusan?></td>
 				<td width="100px"><?php echo $mahasiswa->displayJenisKelamin?></td>
 				<td><?php echo $mahasiswa->phone1 ?></td>
-				<td><?php echo CHtml::link(Yii::t('app','Detail'),array('/mahasiswa/mahasiswa/view','id' => $mahasiswa->id))?></td>
 			</tr>
 			<?php endforeach?>
 			<?php else:?>
