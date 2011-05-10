@@ -5252,3 +5252,53 @@ Stack trace:
 #21 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #22 /home/ata/Project/kkn/index.php(13): CApplication->run()
 #23 {main} REQUEST_URI=/kkn/?r=mahasiswa/kelompok/view&id=364
+2011/05/10 14:13:43 [error] [exception.CException] exception 'CException' with message 'CCaptchaValidator.action "captcha" tidak valid. Tidak dapat menemukan action tersebut dalam controller sekarang.' in /home/ata/Project/kkn/framework/validators/CCaptchaValidator.php:76
+Stack trace:
+#0 /home/ata/Project/kkn/framework/validators/CCaptchaValidator.php(50): CCaptchaValidator->getCaptchaAction()
+#1 /home/ata/Project/kkn/framework/validators/CValidator.php(192): CCaptchaValidator->validateAttribute(Object(Mahasiswa), 'verifyCode')
+#2 /home/ata/Project/kkn/framework/base/CModel.php(152): CValidator->validate(Object(Mahasiswa), NULL)
+#3 /home/ata/Project/kkn/framework/web/widgets/CActiveForm.php(745): CModel->validate(NULL)
+#4 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(180): CActiveForm::validate(Object(Mahasiswa))
+#5 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(34): MahasiswaController->performAjaxValidation(Object(Mahasiswa))
+#6 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionCreate()
+#7 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#8 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#10 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#11 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#14 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('create')
+#16 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#17 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#18 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#19 {main} REQUEST_URI=/kkn/?r=admin/mahasiswa/create
+2011/05/10 14:14:15 [error] [exception.CException] exception 'CException' with message 'CCaptchaValidator.action "captcha" tidak valid. Tidak dapat menemukan action tersebut dalam controller sekarang.' in /home/ata/Project/kkn/framework/validators/CCaptchaValidator.php:76
+Stack trace:
+#0 /home/ata/Project/kkn/framework/validators/CCaptchaValidator.php(50): CCaptchaValidator->getCaptchaAction()
+#1 /home/ata/Project/kkn/framework/validators/CValidator.php(192): CCaptchaValidator->validateAttribute(Object(Mahasiswa), 'verifyCode')
+#2 /home/ata/Project/kkn/framework/base/CModel.php(152): CValidator->validate(Object(Mahasiswa), NULL)
+#3 /home/ata/Project/kkn/framework/web/widgets/CActiveForm.php(745): CModel->validate(NULL)
+#4 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(180): CActiveForm::validate(Object(Mahasiswa))
+#5 /home/ata/Project/kkn/protected/controllers/admin/MahasiswaController.php(34): MahasiswaController->performAjaxValidation(Object(Mahasiswa))
+#6 /home/ata/Project/kkn/framework/web/actions/CInlineAction.php(50): MahasiswaController->actionCreate()
+#7 /home/ata/Project/kkn/framework/web/CController.php(300): CInlineAction->runWithParams(Array)
+#8 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/ata/Project/kkn/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#10 /home/ata/Project/kkn/framework/web/CController.php(1122): CFilter->filter(Object(CFilterChain))
+#11 /home/ata/Project/kkn/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/ata/Project/kkn/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/ata/Project/kkn/framework/web/CController.php(283): CFilterChain->run()
+#14 /home/ata/Project/kkn/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('create')
+#16 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/mahasiswa...')
+#17 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#18 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#19 {main} REQUEST_URI=/kkn/?r=admin/mahasiswa/create
+2011/05/10 14:45:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Tidak bisa me-resolve request "admin/asuransi/bayar"' in /home/ata/Project/kkn/framework/web/CWebApplication.php:332
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('admin/asuransi/...')
+#1 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#2 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/kkn/?r=admin/asuransi/bayar

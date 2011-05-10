@@ -29,7 +29,7 @@ class MahasiswaController extends AdminController
 	public function actionCreate()
 	{
 		$mahasiswa = new Mahasiswa;
-
+		$mahasiswa->inputCaptcha = false;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($mahasiswa);
 
@@ -118,7 +118,7 @@ class MahasiswaController extends AdminController
 		$this->render('index',array(
 			'mahasiswa' => $mahasiswa,
 		));
-		
+
 	}
 
 	public function actionDependentSelectJurusan()
@@ -127,9 +127,6 @@ class MahasiswaController extends AdminController
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);
-		
-		
-		
 		Yii::app()->end();
 	}
 
@@ -151,7 +148,7 @@ class MahasiswaController extends AdminController
 		Yii::app()->end();
 	}
 
-	
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

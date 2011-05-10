@@ -41,11 +41,11 @@ class Mahasiswa extends ActiveRecord
 	public $update = false;
 	public $inputCaptcha = true;
 	public $registered;
-	
 
 	// untuk dependent kelompok
 	public $kabupatenId;
 	public $kecamatanId;
+
 
 
 	private static $_countLakiLaki;
@@ -73,7 +73,6 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-
 			array('password, confirmPassword, email, namaLengkap, phone1, phone2, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
 			array('userId, registered, jumlahAsuransi', 'numerical', 'integerOnly'=>true),
 			array('nim', 'numerical'),
@@ -313,16 +312,16 @@ class Mahasiswa extends ActiveRecord
 	{
 		return $this->isRegistered ? Yii::t('app','Sudah Registrasi') : Yii::t('app','Belum Registrasi');
 	}
-	
+
 	public function findNimAutocomplete($nim)
 	{
 		$criteria = new CDbCriteria;
 		$criteria->select = 'id,nim';
 		$criteria->condition = 'nim like "%$nim%"';
-		
+
 		return $this->find($criteria);
 	}
-	
+
 	public function unsetMahasiswaKelompok()
 	{
 		return $this->update(array('kelompokId' => null));
