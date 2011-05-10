@@ -93,6 +93,7 @@ class Prioritas extends ActiveRecord
 		$criteria->compare('jurusanId',$this->jurusanId);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		$criteria->order = 'id';
 
 		$criteria->order = 'level';
 

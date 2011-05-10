@@ -44,7 +44,9 @@ abstract class ActiveRecord extends CActiveRecord
 
 	public function getListData()
 	{
-		return CHtml::listData($this->findAll(),'id',$this->displayField());
+		$criteria = new CDbCriteria;
+		$criteria->order = $this->displayField();
+		return CHtml::listData($this->findAll($criteria),'id',$this->displayField());
 	}
 
 	protected function beforeDelete()
