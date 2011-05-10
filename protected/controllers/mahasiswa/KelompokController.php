@@ -22,7 +22,7 @@ class KelompokController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions' => array('index','view','pilih'),
+				'actions' => array('index','view','pilih','download'),
 				'roles' => array(User::ROLE_MAHASISWA),
 			),
 			array('deny',  // deny all users
@@ -81,6 +81,16 @@ class KelompokController extends Controller
 		} else {
 			//throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 			$this->redirect(array('view'));
+		}
+	}
+
+	public function actionDownload(){
+		if(isset($_GET['id'])){
+			$file = ProgramKknLampiran::model()->findByPk($_GET['id']);
+			header("Content-Disposition: attachment;filename={$file->nama}");
+			header("Content-Length: {$file->size}");
+			header("Content-Type: {$file->mimetype}");
+			readfile(Yii::app()->params['webroot'] . $file->path);
 		}
 	}
 

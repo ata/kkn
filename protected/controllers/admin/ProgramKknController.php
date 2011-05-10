@@ -125,7 +125,6 @@ class ProgramKknController extends AdminController
 			header("Content-Length: {$file->size}");
 			header("Content-Type: {$file->mimetype}");
 			readfile(Yii::app()->params['webroot'] . $file->path);
-
 		}
 	}
 

@@ -100,8 +100,10 @@ class Kelompok extends ActiveRecord
 			'maxAnggota' => Yii::t('app','Maksimal Anggota'),
 			'maxLakiLaki' => Yii::t('app','Maksimal Laki-Laki'),
 			'maxPerempuan' => Yii::t('app','Maksimal Perempuan'),
+			'deskripsiProgramKkn' => Yii::t('app','Deskripsi Program'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
+
 		);
 	}
 
@@ -148,7 +150,7 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('t.kabupatenId',$this->kabupatenId);
 		$criteria->compare('t.kecamatanId',$this->kecamatanId);
 		$criteria->compare('t.programKknId',$this->programKknId);
-		if($level <= 8) {
+		if($level <= 7) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -160,7 +162,7 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
-		} else if($level == 9) {
+		} else if($level == 8) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -172,7 +174,7 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
-		} else if($level == 10) {
+		} else if($level == 9) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) + 1 AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -199,7 +201,7 @@ class Kelompok extends ActiveRecord
 			if($level <= 6) {
 				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
 			}
-			if($level <= 7) {
+			if($level <= 10) {
 				$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
 				$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 			}
@@ -227,7 +229,7 @@ class Kelompok extends ActiveRecord
 		$criteria = $this->getAvailableCriteria($currentMahasiswa, (int) Yii::app()->session->get('Prioritas_level'));
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			'totalItemCount' => $this->calculateTotalCountItem($criteria),
+			//'totalItemCount' => $this->calculateTotalCountItem($criteria),
 		));
 	}
 
@@ -367,12 +369,20 @@ class Kelompok extends ActiveRecord
 
 	public function getJumlahAnggotaDisplay()
 	{
-		return "{$this->jumlahAnggota} orang ({$this->jumlahLakiLaki} laki-laki, {$this->jumlahLakiLaki} perempuan)";
+		$jumlahAnggota = $this->jumlahAnggota ? $this->jumlahAnggota : 0;
+		$jumlahLakiLaki = $this->jumlahLakiLaki ? $this->jumlahLakiLaki : 0;
+		$jumlahPerempuan = $this->jumlahPerempuan ? $this->jumlahPerempuan : 0;
+		return "{$jumlahAnggota} orang ({$jumlahLakiLaki} L, {$this->jumlahLakiLaki} P)";
 	}
 
 	public function getUser()
 	{
 		return Yii::app()->user;
+	}
+
+	public function getDeskripsiProgramKkn()
+	{
+		return $this->programKkn ? $this->programKkn->deskripsi : Yii::t('app','Belum diisi');
 	}
 
 }

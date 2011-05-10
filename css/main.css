@@ -241,7 +241,7 @@ textarea, input{
 }
 
 #main .container{
-    
+
 }
 
 #content h2{
@@ -299,7 +299,7 @@ textarea, input{
 #admin-container #content li{
     padding:3px;
     list-style:none;
-    
+
 }
 
 #admin-container #content p{
@@ -312,10 +312,10 @@ textarea, input{
 }
 
 #iframePrint{
-	position: absolute; 
+	position: absolute;
 	top: 0px;
-	left: 0px; 
-	width: 0px; 
+	left: 0px;
+	width: 0px;
 	height: 0px;
 	border: 0px none; z-index: -1;
 }
@@ -885,7 +885,7 @@ a.update-link{
 
 .grid-view table.items tr:hover
 {
-  
+
 }
 
 .grid-view .link-column img
@@ -1001,6 +1001,7 @@ table.detail-view th{
   line-height:25px;
   text-shadow:1px 1px 0 #EAEAEA;
   width:150px;
+  vertical-align:top;
 }
 
 table.detail-view td{
@@ -1023,7 +1024,7 @@ table.detail-view tr.event td{
 }
 
 .form .success input{
-    
+
 }
 
 .success{

@@ -7,7 +7,7 @@
 			<h3><?php echo Yii::t('app','Menu') ?></h3>
 			<?php $this->widget('SideMenu', array(
 				 'items'=>array(
-					array('label' => Yii::t('app','Profile'),'url' => array('/mahasiswa/mahasiswa/view')),
+					array('label' => Yii::t('app','Mahasiswa/Profile'),'url' => array('/mahasiswa/mahasiswa/view')),
 					array('label' => Yii::t('app','Kelompok/Lokasi'),'url' => array('/mahasiswa/kelompok/view')),
 				),
 			));?>
@@ -17,7 +17,6 @@
 				<?php echo $content; ?>
 			</div><!-- content -->
 		</div>
-
 	</div>
 </div>
 <?php $this->endContent(); ?>

@@ -29,9 +29,10 @@
 <div class="container">
 	<div id="rotator">
 		<ul>
-			<li class="show"><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
-			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner2.jpg"></li>
-			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/slideshow1.jpg"></li>
+			<li class="show"><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner-posdaya.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner-paud.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner-kbl.jpg"></li>
+			<li><img src="<?php echo Yii::app()->request->baseUrl?>/images/banner-posdaya.jpg"></li>
 		</ul>
 	</div>
 </div>
@@ -65,10 +66,6 @@
 							<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br/>
 							<input type="submit" value="DAFTAR" class="button">
 						</form>
-					</li>
-					<li>
-						<h2>SIDEBAR</h2>
-						<p>Lorem ipsum dolor sit amet.</p>
 					</li>
 				</ul>
 			</div>

@@ -17,12 +17,24 @@ $this->breadcrumbs=array(
 			'value' => $kelompok->namaKecamatan
 		),
 		'lokasi',
-		 array(
+		array(
 			'name' => 'programKknId',
 			'value' => $kelompok->namaProgramKkn
 		),
+		array(
+			'name' => 'deskripsiprogramKkn',
+			'type' => 'raw',
+			'value' => nl2br($kelompok->deskripsiprogramKkn)
+		),
+		array(
+			'name' => 'keterangan',
+			'type' => 'raw',
+			'value' => nl2br($kelompok->keterangan)
+		)
 	),
 )); ?>
+
+
 
 <?php if($currentMahasiswa->kelompokId == null):?>
 <div class="pilih-link ac">
@@ -34,7 +46,7 @@ $this->breadcrumbs=array(
 </div>
 <?php endif?>
 
-<h2><?php echo Yii::t('app','Anggota Kelompok')?></h2>
+<h3><?php echo Yii::t('app','Anggota Kelompok')?></h3>
 <div class="grid-view">
 	<table class="items">
 		<thead>
@@ -69,8 +81,15 @@ $this->breadcrumbs=array(
 		</tbody>
 	</table>
 </div>
-
-<h2><?php echo Yii::t('app','Peta Lokasi KKN')?></h2>
+<?php if(count($kelompok->programKkn->lampiran) > 0):?>
+	<h3><?php echo Yii::t('app','Lampiran')?></h3>
+	<?php foreach($kelompok->programKkn->lampiran as $data):?>
+		<?php echo CHtml::link($data->nama,array('download','id'=>$data->id))?><br>
+	<?php endforeach?>
+<?php endif?>
+<br/>
+<br/>
+<h3><?php echo Yii::t('app','Peta Lokasi KKN')?></h3>
 <div id="map_canvas" style="height:200px"></div>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
