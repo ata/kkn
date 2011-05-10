@@ -152,19 +152,19 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('t.programKknId',$this->programKknId);
 		if($level <= 7) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
+				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
 										OR t.jumlahLakiLaki IS NULL');
 				$criteria->params['ratio'] = $this->countRatioLakiLaki();
 			} else {
-				$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
+				$criteria->addCondition('(t.jumlahPerempuan < FLOOR(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
 		} else if($level == 8) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
+				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
 										OR t.jumlahLakiLaki IS NULL');
 				$criteria->params['ratio'] = $this->countRatioLakiLaki();
@@ -176,12 +176,12 @@ class Kelompok extends ActiveRecord
 			}
 		} else if($level == 10) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
-				$criteria->addCondition('(t.jumlahLakiLaki < CEIL(:ratio * t.maxAnggota) + 1 AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
+				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) - 1 AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
 										OR t.jumlahLakiLaki IS NULL');
 				$criteria->params['ratio'] = $this->countRatioLakiLaki();
 			} else {
-				$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
+				$criteria->addCondition('(t.jumlahPerempuan < CEIL(:ratio * t.maxAnggota) + 1 AND t.maxPerempuan IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahPerempuan < t.maxPerempuan AND t.maxPerempuan IS NOT NULL)
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
