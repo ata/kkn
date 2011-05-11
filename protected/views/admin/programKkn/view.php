@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
 		array(
 			'name' => 'deskripsi',
 			'type' => 'raw',
-			'value' => nl2br($data->deskripsi),
+			'value' => nl2br($programKkn->deskripsi),
 		),
 		'created',
 		'modified',
