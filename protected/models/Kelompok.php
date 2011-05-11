@@ -101,6 +101,7 @@ class Kelompok extends ActiveRecord
 			'maxLakiLaki' => Yii::t('app','Maksimal Laki-Laki'),
 			'maxPerempuan' => Yii::t('app','Maksimal Perempuan'),
 			'deskripsiProgramKkn' => Yii::t('app','Deskripsi Program'),
+			'jumlahAnggotaDisplay' => Yii::t('app','Anggota'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
 
