@@ -36,7 +36,7 @@ $this->breadcrumbs=array(
 			'value'=>'$data->namaPembimbing',
 			'filter'=>Dosen::model()->listData,
 		),
-		'displayAnggotaKelompok',
+		'jumlahAnggotaDisplay',
 		array(
 			'class'=>'CButtonColumn',
 		),
