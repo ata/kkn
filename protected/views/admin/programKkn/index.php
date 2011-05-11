@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
 			'class' => 'NumberColumn',
 		),
 		'nama',
-		'deskripsi',
+		//'deskripsi',
 		array(
 			'class'=>'CButtonColumn',
 		),

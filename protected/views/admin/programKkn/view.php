@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 	'attributes'=>array(
 		'id',
 		'nama',
-		'deskripsi',
+		'deskripsi:raw',
 		'created',
 		'modified',
 	),
