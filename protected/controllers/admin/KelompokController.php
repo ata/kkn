@@ -107,8 +107,8 @@ class KelompokController extends AdminController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 		}
 	}
-	
-	
+
+
 	public function actionHapusAnggota($id)
 	{
 		if(Yii::app()->request->isPostRequest)
@@ -132,6 +132,9 @@ class KelompokController extends AdminController
 	{
 		$kelompok = new Kelompok('search');
 		$kelompok->unsetAttributes();  // clear any default values
+		if(!isset($_GET['Kelompok_sort'])) {
+			$_GET['Kelompok_sort'] = 'jumlahAnggota DESC';
+		}
 		if (isset($_GET['Kelompok'])) {
 			$kelompok->attributes = $_GET['Kelompok'];
 		}
@@ -157,7 +160,7 @@ class KelompokController extends AdminController
 		}
 		return $this->_model;
 	}
-	
+
 	public function loadMahasiswa()
 	{
 		if($this->_mahasiswaModel === null){
