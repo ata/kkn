@@ -5316,3 +5316,60 @@ Stack trace:
 #9 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
 #10 /home/ata/Project/kkn/index.php(13): CWebApplication->run()
 REQUEST_URI=/kkn/?r=mahasiswa/kelompok/view
+2011/05/12 03:11:34 [error] [exception.CException] exception 'CException' with message 'SiteController tidak memiliki method bernama "route".' in /home/ata/Project/kkn/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/ata/Project/kkn/protected/components/Controller.php(26): CComponent->__call('route', Array)
+#1 /home/ata/Project/kkn/protected/components/Controller.php(26): SiteController->route()
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(327): Controller->init()
+#3 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#4 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#5 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#6 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:12:22 [error] [exception.CException] exception 'CException' with message 'Properti "SiteController.name" tidak didefinisikan.' in /home/ata/Project/kkn/framework/base/CComponent.php:131
+Stack trace:
+#0 /home/ata/Project/kkn/protected/components/Controller.php(26): CComponent->__get('name')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(327): Controller->init()
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:12:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Sistem tidak bisa menemukan action "under" seperti yang diminta.' in /home/ata/Project/kkn/framework/web/CController.php:477
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(262): CController->missingAction('under')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('under')
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:13:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Sistem tidak bisa menemukan action "under" seperti yang diminta.' in /home/ata/Project/kkn/framework/web/CController.php:477
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(262): CController->missingAction('under')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('under')
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:13:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Sistem tidak bisa menemukan action "under" seperti yang diminta.' in /home/ata/Project/kkn/framework/web/CController.php:477
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(262): CController->missingAction('under')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('under')
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:14:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Sistem tidak bisa menemukan action "under" seperti yang diminta.' in /home/ata/Project/kkn/framework/web/CController.php:477
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(262): CController->missingAction('under')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('under')
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/under')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/under
+2011/05/12 03:14:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Sistem tidak bisa menemukan action "maintance" seperti yang diminta.' in /home/ata/Project/kkn/framework/web/CController.php:477
+Stack trace:
+#0 /home/ata/Project/kkn/framework/web/CController.php(262): CController->missingAction('maintance')
+#1 /home/ata/Project/kkn/framework/web/CWebApplication.php(328): CController->run('maintance')
+#2 /home/ata/Project/kkn/framework/web/CWebApplication.php(121): CWebApplication->runController('site/maintance')
+#3 /home/ata/Project/kkn/framework/base/CApplication.php(155): CWebApplication->processRequest()
+#4 /home/ata/Project/kkn/index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/kkn/?r=site/maintance

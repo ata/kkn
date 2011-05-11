@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	Yii::t('app','Dashboard') => array('dashboard/default/index'),
 	Yii::t('app','Kelompok'),
 );?>
-<h2><?php echo Yii::t('app','Daftar Kelompok/Lokasi KKN yang tersedia')?></h2>
+<h2><?php echo Yii::t('app','Daftar Kelompok/Lokasi KKN yang tersedia untuk ANDA')?></h2>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'kelompok-grid',

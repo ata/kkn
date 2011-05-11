@@ -47,4 +47,9 @@ class AdminController extends Controller
 		return array();
 	}
 
+	public function init()
+	{
+
+	}
+
 }

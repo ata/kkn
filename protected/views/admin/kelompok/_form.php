@@ -61,7 +61,25 @@
 	<div class="row">
 		<?php echo $form->labelEx($kelompok,'maxPerempuan'); ?>
 		<?php echo $form->textField($kelompok,'maxPerempuan',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($kelompok,'maxPeremuan'); ?>
+		<?php echo $form->error($kelompok,'maxPerempuan'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'jumlahAnggota'); ?>
+		<?php echo $form->textField($kelompok,'jumlahAnggota',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'jumlahAnggota'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'jumlahLakiLaki'); ?>
+		<?php echo $form->textField($kelompok,'jumlahLakiLaki',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'jumlahLakiLaki'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($kelompok,'jumlahPerempuan'); ?>
+		<?php echo $form->textField($kelompok,'jumlahPerempuan',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($kelompok,'jumlahPerempuan'); ?>
 	</div>
 
 	<div class="row">
@@ -76,8 +94,6 @@
 		<?php echo $form->hiddenField($kelompok,'longitude')?>
 		<div id="map_canvas" style="height:200px"></div>
 	</div>
-
-
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($kelompok->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>

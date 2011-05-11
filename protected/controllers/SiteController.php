@@ -28,6 +28,11 @@ class SiteController extends Controller
 		));
 	}
 
+	public function actionMaintance()
+	{
+		$this->render('maintance');
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
