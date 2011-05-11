@@ -129,6 +129,7 @@ class Kelompok extends ActiveRecord
 		$criteria->compare('jumlahPerempuan',$this->jumlahPerempuan);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('modified',$this->modified,true);
+		$criteria->order = 'jumlahAnggota DESC';
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

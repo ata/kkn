@@ -37,9 +37,6 @@ class KelompokController extends Controller
 		if (!$currentMahasiswa || $currentMahasiswa->kelompokId != null) {
 			$this->redirect(array('view'));
 		}
-		if(!isset($_GET['Kelompok_sort'])) {
-			$_GET['Kelompok_sort'] = 'kabupatenId';
-		}
 		$kelompok = new Kelompok('search');
 		if(isset($_GET['Kelompok'])) {
 			$kelompok->attributes = $_GET['Kelompok'];
