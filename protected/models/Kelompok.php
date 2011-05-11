@@ -230,7 +230,7 @@ class Kelompok extends ActiveRecord
 		$criteria = $this->getAvailableCriteria($currentMahasiswa, (int) Yii::app()->session->get('Prioritas_level'));
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			//'totalItemCount' => $this->calculateTotalCountItem($criteria),
+			'totalItemCount' => $this->calculateTotalCountItem($criteria),
 		));
 	}
 

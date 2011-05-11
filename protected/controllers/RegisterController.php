@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
 	public function actionIndex()
 	{
-		$this->redirect(array('under'));
+		//$this->redirect(array('under'));
 		$mahasiswa = new Mahasiswa;
 		$this->performAjaxValidation($mahasiswa);
 		if (isset($_POST['Mahasiswa'])) {
