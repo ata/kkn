@@ -186,6 +186,7 @@ class Mahasiswa extends ActiveRecord
 				$this->clearErrors('password');
 				$this->clearErrors('confirmPassword');
 			}
+
 		}
 		return parent::afterValidate();
 	}
