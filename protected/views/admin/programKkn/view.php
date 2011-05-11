@@ -23,7 +23,11 @@ $this->breadcrumbs=array(
 	'attributes'=>array(
 		'id',
 		'nama',
-		'deskripsi:raw',
+		array(
+			'name' => 'deskripsi',
+			'type' => 'raw',
+			'value' => nl2br($data->deskripsi),
+		),
 		'created',
 		'modified',
 	),
