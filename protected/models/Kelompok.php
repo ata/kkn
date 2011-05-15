@@ -164,7 +164,7 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
-		} else if($level == 8) {
+		} else if($level >= 8) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -176,7 +176,9 @@ class Kelompok extends ActiveRecord
 										OR t.jumlahPerempuan IS NULL');
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
-		} else if($level == 10) {
+		}
+
+		else if($level == 11) {
 			if($currentMahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
 				$criteria->addCondition('(t.jumlahLakiLaki < FLOOR(:ratio * t.maxAnggota) - 1 AND t.maxLakiLaki IS NULL AND t.maxAnggota IS NOT NULL)
 										OR (t.jumlahLakiLaki < t.maxLakiLaki AND t.maxLakiLaki IS NOT NULL)
@@ -189,9 +191,14 @@ class Kelompok extends ActiveRecord
 				$criteria->params['ratio'] = $this->countRatioPerempuan();
 			}
 		}
+
 		$criteria->addCondition('(t.jumlahAnggota < :jmaxAnggota AND t.maxAnggota IS NULL)
 									OR (t.jumlahAnggota < t.maxAnggota AND t.maxAnggota IS NOT NULL)
 									OR t.jumlahAnggota IS NULL');
+		if($level <= 9) {
+			$criteria->addCondition('t.jumlahAnggota > 0');
+		}
+
 		$criteria->params['jmaxAnggota'] = $this->countMaxAnggota();
 		if ($level <= 5) {
 			$criteria->addCondition('(t.programKknId IN (SELECT programKknId FROM prioritas WHERE jurusanId = :jurusanId AND level = :level))
@@ -202,11 +209,13 @@ class Kelompok extends ActiveRecord
 		} else {
 			if($level <= 6) {
 				$criteria->addCondition('t.programKknId NOT IN (SELECT programKknId FROM prioritas)');
+
 			}
-			if($level <= 9) {
+			if($level <= 11) {
 				$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
 				$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 			}
+			$criteria->addCondition('t.programKknId != 6');
 		}
 
 		$criteria->order = 't.jumlahAnggota DESC';
@@ -222,7 +231,7 @@ class Kelompok extends ActiveRecord
 		if(Yii::app()->session->get('Prioritas_level') == null){
 			$criteria = $this->getAvailableCriteria($currentMahasiswa, $level);
 			$count = $this->count($criteria);
-			if ($count == 0 && $this->_loopSearch < 20) {
+			if ($count == 0 && $this->_loopSearch <= 10) {
 				$this->_loopSearch ++;
 				return $this->searchAvailable($currentMahasiswa, $level + 1);
 			}
@@ -231,7 +240,7 @@ class Kelompok extends ActiveRecord
 		$criteria = $this->getAvailableCriteria($currentMahasiswa, (int) Yii::app()->session->get('Prioritas_level'));
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
-			'totalItemCount' => $this->calculateTotalCountItem($criteria),
+			//'totalItemCount' => $this->calculateTotalCountItem($criteria),
 		));
 	}
 
@@ -385,6 +394,31 @@ class Kelompok extends ActiveRecord
 	public function getDeskripsiProgramKkn()
 	{
 		return $this->programKkn ? $this->programKkn->deskripsi : Yii::t('app','Belum diisi');
+	}
+
+	public function countKosong()
+	{
+		return $this->count('jumlahAnggota IS NULL');
+	}
+
+	public function countPenuh()
+	{
+		return $this->count('jumlahAnggota = maxAnggota');
+	}
+
+	public function countTerisi()
+	{
+		return $this->count('jumlahAnggota > 0');
+	}
+
+	public function countTerisiBlmPenuh()
+	{
+		return $this->count('jumlahAnggota > 0 AND jumlahAnggota < maxAnggota');
+	}
+
+	public function countAnggotaTertentu($count)
+	{
+		return $this->count('jumlahAnggota = :count',array('count' => $count));
 	}
 
 }

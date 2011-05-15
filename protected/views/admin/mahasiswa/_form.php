@@ -2,7 +2,7 @@
 
 <?php $form = $this->beginWidget('CActiveForm', array(
 	'id' => 'mahasiswa-form',
-	'enableAjaxValidation' => true,
+	'enableAjaxValidation' => false,
 )); ?>
 
 	<p class="note"><?php echo Yii::t('app','Inputan dengan tanda <span class="required">*</span> wajib di isi')?></p>
@@ -113,7 +113,7 @@
 		<?php echo $form->textField($mahasiswa,'phone2',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($mahasiswa,'phone2'); ?>
 	</div>
-
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($mahasiswa,'email'); ?>
 		<?php echo $form->textField($mahasiswa,'email',array('size'=>60,'maxlength'=>255)); ?>
@@ -129,7 +129,7 @@
 		<?php echo $form->passwordField($mahasiswa,'confirmPassword',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($mahasiswa,'confirmPassword'); ?>
 	</div>
-
+	*/?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($mahasiswa->isNewRecord ? Yii::t('app','Tambah') : Yii::t('app','Simpan')); ?>
 		<?php echo CHtml::link(Yii::t('app','Batal'),array('index'),array('class' => 'cancel-button'))?>

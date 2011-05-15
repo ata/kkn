@@ -59,4 +59,34 @@ $this->breadcrumbs=array(
 	<?php echo Yii::t('app','Jumlah Maksimal Perempuan Perkelompok: <b>{jumlah}</b> orang', array(
 		'{jumlah}' => Kelompok::model()->countMaxPerempuan()
 	))?>
+	<br/>
+	<?php echo Yii::t('app','Jumlah Kelompok Terisi: <b>{jumlah}</b> kelompok', array(
+		'{jumlah}' => Kelompok::model()->countTerisi()
+	))?>
+	</br/>
+	<?php echo Yii::t('app','Jumlah Kelompok Penuh <b>{jumlah}</b> kelompok', array(
+		'{jumlah}' => Kelompok::model()->countPenuh()
+	))?>
+	<br/>
+	<?php echo Yii::t('app','Jumlah Kelompok Terisi Tapi Belum Penuh: <b>{jumlah}</b> kelompok', array(
+		'{jumlah}' => Kelompok::model()->countTerisiBlmPenuh()
+	))?>
+	</br/>
+	<?php echo Yii::t('app','Jumlah Kelompok Kosong: <b>{jumlah}</b> kelompok', array(
+		'{jumlah}' => Kelompok::model()->countKosong()
+	))?>
+	<br/><br/>
+	<b><?php echo Yii::t('app','Jumlah Anggota Berdasarkan Jumlah Anggota')?></b><br/>
+	<ul>
+	<?php foreach(range(1,9) as $count):?>
+		<li><?php echo Yii::t('app','Jumlah Anggota {count} : <b>{jumlah}</b> kelompok', array(
+			'{count}' => $count,
+			'{jumlah}' => Kelompok::model()->countAnggotaTertentu($count),
+		))?></li>
+	<?php endforeach ?>
+	</ul>
+
+
+
+
 </div>

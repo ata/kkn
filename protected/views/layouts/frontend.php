@@ -49,7 +49,7 @@
 					<li id="fp-login-form">
 						<h2>LOGIN</h2>
 						<form action="<?php echo $this->createUrl('/site/login')?>" method="post">
-							<label>Username</label>
+							<label>NIM / NIP&nbsp;&nbsp;&nbsp;</label>
 							<input name="LoginForm[username]" id="LoginForm_username" type="text" /><br/>
 							<label>Password</label>
 							<input name="LoginForm[password]" id="LoginForm_password" type="password" /><br/>

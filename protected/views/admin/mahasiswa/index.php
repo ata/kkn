@@ -60,4 +60,12 @@ $this->breadcrumbs=array(
 	<?php echo Yii::t('app','Jumlah Perempuan: <b>{jumlah}</b> orang', array(
 		'{jumlah}' =>  Mahasiswa::model()->countPerempuan(),
 	))?>
+	<br/>
+	<?php echo Yii::t('app','Jumlah Mahasiswa Terdaftar: <b>{jumlah}</b> orang', array(
+		'{jumlah}' =>  Mahasiswa::model()->countTerdaftar(),
+	))?>
+	<br/>
+	<?php echo Yii::t('app','Jumlah Mahasiswa Terdaftar Tapi Belum Memilih Kelompok: <b>{jumlah}</b> orang', array(
+		'{jumlah}' =>  Mahasiswa::model()->countKelompokNull(),
+	))?>
 </div>

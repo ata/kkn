@@ -35,7 +35,8 @@ class MahasiswaController extends AdminController
 
 		if (isset($_POST['Mahasiswa'])) {
 			$mahasiswa->attributes=$_POST['Mahasiswa'];
-			if ($mahasiswa->save()) {
+			$mahasiswa->isAdmin = true;
+			if ($mahasiswa->save(false)) {
 				$this->redirect(array('view','id' => $mahasiswa->id));
 			}
 		}
@@ -60,7 +61,8 @@ class MahasiswaController extends AdminController
 
 		if (isset($_POST['Mahasiswa'])) {
 			$mahasiswa->attributes=$_POST['Mahasiswa'];
-			if ($mahasiswa->save()) {
+			$mahasiswa->isAdmin = true;
+			if ($mahasiswa->save(false)) {
 				$this->redirect(array('view','id' => $mahasiswa->id));
 			}
 		}

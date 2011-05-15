@@ -45,6 +45,7 @@ class Mahasiswa extends ActiveRecord
 	// untuk dependent kelompok
 	public $kabupatenId;
 	public $kecamatanId;
+	public $isAdmin = false;
 
 
 
@@ -194,7 +195,9 @@ class Mahasiswa extends ActiveRecord
 	protected function beforeSave()
 	{
 		$this->namaLengkap = strtoupper($this->namaLengkap);
-		$this->saveUser();
+		if(!$this->isAdmin){
+			$this->saveUser();
+		}
 		return parent::beforeSave();
 	}
 
@@ -298,7 +301,15 @@ class Mahasiswa extends ActiveRecord
 
 	public function unsetKelompok()
 	{
-		$this->update(array('kelompokId' => null));
+		$this->kelompok->jumlahAnggota --;
+		if($this->jenisKelamin == self::LAKI_LAKI) {
+			$this->kelompok->jumlahLakiLaki --;
+		} else {
+			$this->kelompok->jumlahPerempuan --;
+		}
+		$this->kelompok->save(false);
+		$this->kelompokId = null;
+		$this->save(false);
 	}
 
 	public function getIsRegistered()
@@ -326,5 +337,14 @@ class Mahasiswa extends ActiveRecord
 	public function unsetMahasiswaKelompok()
 	{
 		return $this->update(array('kelompokId' => null));
+	}
+
+	public function countTerdaftar()
+	{
+		return $this->count('userId IS NOT NULL');
+	}
+	public function countKelompokNull()
+	{
+		return $this->count('userId IS NOT NULL AND kelompokId IS NULL');
 	}
 }

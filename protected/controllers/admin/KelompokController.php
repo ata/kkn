@@ -115,8 +115,9 @@ class KelompokController extends AdminController
 		{
 			// we only allow deletion via POST request
 			$mahasiswa = $this->loadMahasiswa($id);
-			$mahasiswa->kelompokId = null;
-			$mahasiswa->update();
+			//$mahasiswa->kelompokId = null;
+			//$mahasiswa->update();
+			$mahasiswa->unsetKelompok();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))

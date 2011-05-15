@@ -70,6 +70,7 @@ $this->breadcrumbs=array(
 		array(
 			'class' => 'NumberColumn',
 		),
+		'nim',
 		'namaLengkap',
 		'displayJenisKelamin',
 		array(
@@ -78,12 +79,12 @@ $this->breadcrumbs=array(
 		),
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{delete}',
+			'template'=>'{view} {delete}',
 			'buttons'=>array(
 				'delete' => array(
 						'label'=>Yii::t('app','delete'),
 						'url' => 'Yii::app()->createUrl("admin/kelompok/hapusAnggota",array("id"=>$data->id))',
-						'imageUrl'=>Yii::app()->request->baseUrl.'/images/delete.png',
+						'imageUrl'=>Yii::app()->request->baseUrl.'/images/icons/cross.png',
 						'click' => 'function() {
 										if (!confirm("'. Yii::t('app','Anda yakin menghapus mahasiswa ini dari anggota kelompok?') .'")) {
 											return false;
