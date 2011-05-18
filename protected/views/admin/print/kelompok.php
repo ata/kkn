@@ -1,5 +1,5 @@
 <h2 class="ac"><?php echo Yii::t('app','Daftar Peserta KKN')?></h2>
-<?php foreach($kelompoks as $kelompok):?>
+<?php foreach($kelompoks as $i => $kelompok):?>
 	<div class="page">
 		<table class="head">
 			<thead>

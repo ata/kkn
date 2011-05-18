@@ -83,7 +83,7 @@ class Mahasiswa extends ActiveRecord
 			array('confirmPassword', 'compare', 'compareAttribute'=>'password'),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd') || $this->update || !$this->inputCaptcha),
 			array('file', 'file', 'types'=>'jpg, jpeg, png, gif','allowEmpty' => true),
-			array('kabupatenId, kecamatanId','safe'),
+			array('kabupatenId, kecamatanId, lunasAsuransi','safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, namaLengkap, nim, registered, alamatAsal, alamatTinggal, fakultasId, jurusanId, kelompokId, jenjangId, jenisKelamin, created, modified', 'safe', 'on'=>'search'),
@@ -163,7 +163,7 @@ class Mahasiswa extends ActiveRecord
 		if($this->registered !== null) {
 			if($this->registered == 0) {
 				$criteria->addCondition('userId is NULL');
-			} else {
+			} else if($this->registered == 1){
 				$criteria->addCondition('userId is NOT NULL');
 			}
 		}
@@ -299,6 +299,11 @@ class Mahasiswa extends ActiveRecord
 		return $this->namaLengkap;
 	}
 
+	public function getStatusAsuransi()
+	{
+		return $this->lunasAsuransi ? Yii::t('app','Lunas') : Yii::t('app','Belum Lunas');
+	}
+
 	public function unsetKelompok()
 	{
 		$this->kelompok->jumlahAnggota --;
@@ -346,5 +351,11 @@ class Mahasiswa extends ActiveRecord
 	public function countKelompokNull()
 	{
 		return $this->count('userId IS NOT NULL AND kelompokId IS NULL');
+	}
+	public function lunasiAsuransi()
+	{
+		$this->jumlahAsuransi = Setting::model()->get('JUMLAH_ASURANSI',15000);
+		$this->lunasAsuransi = true;
+		$this->save(false);
 	}
 }

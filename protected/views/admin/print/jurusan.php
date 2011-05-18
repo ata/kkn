@@ -24,7 +24,7 @@
 					<th><?php echo Yii::t('app','NIM')?></th>
 					<th><?php echo Yii::t('app','NAMA')?></th>
 					<th><?php echo Yii::t('app','J.KELAMIN')?></th>
-					<th><?php echo Yii::t('app','STATUS REGISTRASI')?></th>
+					<th><?php echo Yii::t('app','ASURANSI')?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,7 +34,7 @@
 					<td><?php echo $mahasiswa->nim?></td>
 					<td><?php echo $mahasiswa->nama?></td>
 					<td><?php echo $mahasiswa->jenisKelamin?></td>
-					<td><?php echo strtoupper($mahasiswa->registeredLabel)?></td>
+					<td><?php echo $mahasiswa->statusAsuransi?></td>
 				</tr>
 				<?php endforeach?>
 			</tbody>
