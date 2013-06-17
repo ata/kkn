@@ -10,7 +10,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($setting,'key'); ?>
-		<?php echo $form->textField($setting,'key',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($setting,'key',array('size'=>60,'maxlength'=>255,'disabled' => 'disabled')); ?>
 		<?php echo $form->error($setting,'key'); ?>
 	</div>
 

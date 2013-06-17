@@ -19,6 +19,8 @@
  * @property string $photoPath
  * @property boolean $registered
  * @property integer userId
+ * @property double $jumlahAsuransi
+ * @property double $lunasAsuransi
  * @property string $created
  * @property string $modified
  */
@@ -48,7 +50,6 @@ class Mahasiswa extends ActiveRecord
 	public $isAdmin = false;
 
 
-
 	private static $_countLakiLaki;
 	private static $_countPerempuan;
 	private static $_cacheCount;
@@ -74,7 +75,7 @@ class Mahasiswa extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('password, confirmPassword, email, namaLengkap, phone1, phone2, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
+			array('password, confirmPassword, email, tempatLahir, tanggalLahir,namaLengkap, phone1, phone2, nim, alamatAsal, alamatTinggal, fakultasId, jurusanId, jenjangId, jenisKelamin', 'required'),
 			array('userId, registered, jumlahAsuransi', 'numerical', 'integerOnly'=>true),
 			array('nim', 'numerical'),
 			array('email','email'),
@@ -133,6 +134,9 @@ class Mahasiswa extends ActiveRecord
 			'lunasAsuransi'=>Yii::t('app','Lunah Asuransi'),
 			'created' => Yii::t('app','Created'),
 			'modified' => Yii::t('app','Modified'),
+			'namaKelompok' => Yii::t('app','Kelompok'),
+			'namaKabupaten' => Yii::t('app','Kabupaten'),
+			'namaKecamatan' => Yii::t('app','Kecamatan'),
 		);
 	}
 
@@ -140,7 +144,7 @@ class Mahasiswa extends ActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search($pageSize = 10)
+	public function search($pageSize = 10, $order = 'id')
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
@@ -167,6 +171,7 @@ class Mahasiswa extends ActiveRecord
 				$criteria->addCondition('userId is NOT NULL');
 			}
 		}
+		$criteria->order = $order;
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
@@ -293,6 +298,18 @@ class Mahasiswa extends ActiveRecord
 	{
 		return $this->jenisKelamin==self::LAKI_LAKI?Yii::t('app','Laki-laki'):Yii::t('app','Perempuan');
 	}
+	public function getNamaKelompok()
+	{
+		return $this->kelompok?$this->kelompok->nama:Yii::t('app','Belum diisi');
+	}
+	public function getNamaKabupaten()
+	{
+		return $this->kelompok?$this->kelompok->namaKabupaten:Yii::t('app','Belum diisi');
+	}
+	public function getNamaKecamatan()
+	{
+		return $this->kelompok?$this->kelompok->namaKecamatan:Yii::t('app','Belum diisi');
+	}
 
 	public function getNama()
 	{
@@ -314,6 +331,7 @@ class Mahasiswa extends ActiveRecord
 		}
 		$this->kelompok->save(false);
 		$this->kelompokId = null;
+		$this->isAdmin = true;
 		$this->save(false);
 	}
 

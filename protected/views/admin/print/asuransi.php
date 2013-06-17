@@ -1,6 +1,6 @@
 <h2 class="ac"><?php echo Yii::t('app','Daftar Peserta KKN')?></h2>
 <?php $rowPage = 35; ?>
-<?php $pageCount = ceil(count($jurusan->mahasiswa) / $rowPage)?>
+<?php $pageCount = ceil(count($jurusan->mahasiswaLunas) / $rowPage)?>
 <?php foreach(range(0, $pageCount - 1) as $page):?>
 	<div class="page">
 		<table class="head">
@@ -24,15 +24,17 @@
 					<th><?php echo Yii::t('app','NIM')?></th>
 					<th><?php echo Yii::t('app','NAMA')?></th>
 					<th><?php echo Yii::t('app','J.KELAMIN')?></th>
+					<th><?php echo Yii::t('app','TEMPAT, TANGGAL LAHIR')?></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach(array_slice($jurusan->mahasiswa, $page * $rowPage, $rowPage) as $i => $mahasiswa):?>
+				<?php foreach(array_slice($jurusan->mahasiswaLunas, $page * $rowPage, $rowPage) as $i => $mahasiswa):?>
 				<tr>
 					<td><?php echo $page * $rowPage + $i + 1 ?></td>
 					<td><?php echo $mahasiswa->nim?></td>
 					<td><?php echo $mahasiswa->nama?></td>
 					<td><?php echo $mahasiswa->jenisKelamin?></td>
+					<td><?php echo $mahasiswa->tempatLahir?>, <?php echo $mahasiswa->tanggalLahir?></td>
 				</tr>
 				<?php endforeach?>
 			</tbody>

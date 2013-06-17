@@ -2,8 +2,29 @@
 $this->breadcrumbs=array(
 	'Kelompok'=>array('/kelompok'),
 	'View',
-);?>
-<h2><?php echo Yii::t('app','Detil Lokasi KKN') ?></h2>
+);
+Yii::app()->clientScript->registerScript('more-detai','
+	var detail = false;
+	jQuery("#switch-detail").click(function(){
+		if (!detail) {
+			jQuery(".more-detail").show("slow");
+			detail = true;
+			jQuery(this).html("Kurangi Detail");
+		} else {
+			jQuery(".more-detail").hide("slow");
+			detail = false;
+			jQuery(this).html("Lebih Detail");
+		}
+		return false;
+	});
+	jQuery("#print-link").click(function(){
+		window.open("'.$this->createUrl('print').'",
+						"Cetak","menubar=no,scrollbars=yes, width=950,height=800");
+		return false;
+	});
+');
+?>
+<h2><?php echo Yii::t('app','Lokasi KKN') ?></h2>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$kelompok,
@@ -24,29 +45,53 @@ $this->breadcrumbs=array(
 		array(
 			'name' => 'deskripsiProgramKkn',
 			'type' => 'raw',
-			'value' => nl2br($kelompok->deskripsiprogramKkn)
+			'value' => nl2br($kelompok->deskripsiprogramKkn),
+			'cssClass' => 'more-detail',
 		),
 		array(
 			'name' => 'keterangan',
 			'type' => 'raw',
-			'value' => nl2br($kelompok->keterangan)
+			'value' => nl2br($kelompok->keterangan),
+			'cssClass' => 'more-detail',
 		)
 	),
 )); ?>
 
+<div class="ar">
+	<a href="about:none" id="switch-detail"><?php echo Yii::t('app','Lebih Detail');?></a>
+</div>
 
-
+<?php if($this->isOpened()):?>
 <?php if($currentMahasiswa->kelompokId == null):?>
 <div class="pilih-link ac">
 	<?php echo CHtml::link(Yii::t('app','Pilih Kelompok Ini'),
 		array('pilih','id' => $kelompok->id),
 		array(
 			'submit'=>array('pilih','id'=>$kelompok->id),
-			'confirm'=>Yii::t('app','Anda tidak bisa memilih ulang kelompok, apa anda yakin akan memilih kelompok ini?')))?>
+			'confirm'=>Yii::t('app','Aapa anda yakin akan memilih kelompok ini?')))?>
+</div>
+<?php else:?>
+<div class="pilih-link ac">
+	<?php echo CHtml::link(Yii::t('app','Keluar dari Kelompok Ini'),
+		array('keluar'),
+		array(
+			'submit'=>array('keluar'),
+			'confirm'=>Yii::t('app','Setelah ini anda diperbolehkan memilih ulang kelompok. Anda yakin akan keluar dari kelompok ini?')))?>
 </div>
 <?php endif?>
+<?php endif?>
 
-<h3><?php echo Yii::t('app','Anggota Kelompok')?></h3>
+<br/>
+
+<div class="span-16">
+	<h3><?php echo Yii::t('app','Anggota Kelompok')?></h3>
+</div>
+<?php if($currentMahasiswa->kelompokId != null):?>
+<div class="print-link ar">
+	<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl . '/images/icons/print.gif','Print'),'#',array('id' => 'print-link')) ?>
+</div>
+<?php endif ?>
+<div class="clear"></div>
 <div class="grid-view">
 	<table class="items">
 		<thead>
@@ -110,6 +155,7 @@ $this->breadcrumbs=array(
 		$('#Kelompok_longitude').val(marker.getPosition().lng());
 	});
 </script>
+<?php if($this->isOpened()):?>
 <?php if($currentMahasiswa->kelompokId == null):?>
 <div class="pilih-link ac">
 	<?php echo CHtml::link(Yii::t('app','Pilih Kelompok Ini'),
@@ -118,5 +164,14 @@ $this->breadcrumbs=array(
 			'submit'=>array('pilih','id'=>$kelompok->id),
 			'confirm'=>Yii::t('app','Anda tidak bisa memilih ulang kelompok, apa anda yakin akan memilih kelompok ini?')))?>
 </div>
+<?php else:?>
+<div class="pilih-link ac">
+	<?php echo CHtml::link(Yii::t('app','Keluar dari Kelompok Ini'),
+		array('keluar'),
+		array(
+			'submit'=>array('keluar'),
+			'confirm'=>Yii::t('app','Setelah ini anda diperbolehkan memilih ulang kelompok. Anda yakin akan keluar dari kelompok ini?')))?>
+</div>
+<?php endif?>
 <?php endif?>
 

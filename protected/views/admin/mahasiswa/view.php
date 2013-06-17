@@ -27,10 +27,12 @@ $this->breadcrumbs=array(
 		'nim',
 		'alamatAsal',
 		'alamatTinggal',
-		'fakultasId',
-		'jurusanId',
-		'kelompokId',
-		'jenjangId',
+		'namaFakultas',
+		'namaJurusan',
+		'namaKelompok',
+		'namaKecamatan',
+		'namaKabupaten',
+		'kodeJenjang',
 		'jenisKelamin',
 		'phone1',
 		'phone2',
@@ -64,5 +66,5 @@ $this->breadcrumbs=array(
 </div>
 
 <div id="bayarDiv">
-	
+
 </div>

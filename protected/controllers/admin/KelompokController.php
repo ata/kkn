@@ -108,6 +108,46 @@ class KelompokController extends AdminController
 		}
 	}
 
+	public function actionGetMahasiswa()
+	{
+
+		$mahasiswa = Mahasiswa::model()->findByNIM(trim($_GET['nim']));
+		if($mahasiswa) {
+			if ($mahasiswa->kelompok == null) {
+				echo json_encode(array(
+					'result' => 1,
+					'id' => $mahasiswa->id,
+					'nim' => $mahasiswa->nim,
+					'namaLengkap' => $mahasiswa->namaLengkap,
+				));
+			} else {
+				echo json_encode(array(
+					'result' => 2,
+					'id' => $mahasiswa->id,
+					'nim' => $mahasiswa->nim,
+					'kelompok' => $mahasiswa->kelompok->nama,
+					'namaLengkap' => $mahasiswa->namaLengkap,
+				));
+			}
+		} else {
+			echo json_encode(array(
+				'result' => 0,
+			));
+		}
+		Yii::app()->end();
+	}
+
+	public function actionAddAnggota()
+	{
+		$mahasiswa = Mahasiswa::model()->findByNIM(trim($_GET['nim']));
+		$mahasiswa->unsetKelompok();
+		if($this->loadModel()->addAnggota($mahasiswa)) {
+			echo 'OK';
+		} else {
+			echo 'NOT OK';
+		}
+		Yii::app()->end();
+	}
 
 	public function actionHapusAnggota($id)
 	{
@@ -115,8 +155,6 @@ class KelompokController extends AdminController
 		{
 			// we only allow deletion via POST request
 			$mahasiswa = $this->loadMahasiswa($id);
-			//$mahasiswa->kelompokId = null;
-			//$mahasiswa->update();
 			$mahasiswa->unsetKelompok();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -145,6 +183,8 @@ class KelompokController extends AdminController
 		));
 	}
 
+
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -161,6 +201,8 @@ class KelompokController extends AdminController
 		}
 		return $this->_model;
 	}
+
+
 
 	public function loadMahasiswa()
 	{

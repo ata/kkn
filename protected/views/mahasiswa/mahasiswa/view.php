@@ -15,6 +15,8 @@ $this->menu=array(
         'attributes'=>array(
             'namaLengkap',
             'nim',
+            'tempatLahir',
+            'tanggalLahir',
             'alamatAsal',
             'alamatTinggal',
             'fakultas',

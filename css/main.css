@@ -694,6 +694,7 @@ div#rotator ul li.show{
 }
 
 .form .buttons input,
+.add-mhs,
 #fp-login-form form input.button,
 #register-form form input.button,
 a.update-link,
@@ -715,6 +716,10 @@ a.update-link,
     -moz-box-shadow:none;
     -webkit-box-shadow:none;
     box-shadow:none;
+}
+
+.add-mhs {
+	width: 100px;
 }
 
 .form .buttons input:hover,
@@ -1105,4 +1110,7 @@ a.remove{
 a.remove:hover{
     color:#F20008;
     text-decoration:underline;
+}
+.more-detail{
+	display:none;
 }

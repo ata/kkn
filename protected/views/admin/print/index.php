@@ -120,3 +120,76 @@ $this->breadcrumbs=array(
 	<?php $this->endWidget(); ?>
 </div>
 
+
+<br/>
+<div class="form">
+	<h3><?php echo Yii::t('app','Cetak Pembayar Asuransi')?></h3>
+	<?php $form = $this->beginWidget('CActiveForm', array(
+		'id' => 'asuransi-print-form',
+		'enableAjaxValidation' => true,
+		'action' => array('jurusan'),
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+			'afterValidate'=>'js:function(form,data,hasError){
+				if (!hasError) {
+					window.open("'.$this->createUrl('asuransi').'&jurusanId="
+						+ jQuery("#PrintAsuransiForm_jurusanId").val(),
+						"Cetak","menubar=no,scrollbars=yes, width=950,height=800");
+					//alert()
+				}
+			}'
+		),
+	)); ?>
+
+	<div class="row">
+		<?php echo $form->labelEx($printAsuransiForm,'fakultasId'); ?>
+		<?php echo $form->dropDownList($printAsuransiForm,'fakultasId',Fakultas::model()->listData,array(
+			'empty' => Yii::t('app','Select Fakultas'),
+			'ajax' => array(
+				'url' => array('dependentSelectJurusan2'),
+				'data' => array('fakultasId' => 'js:jQuery(this).val()'),
+				'replace' => '#PrintAsuransiForm_jurusanId'
+			)
+		)); ?>
+		<?php echo $form->error($printAsuransiForm,'fakultasId'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($printAsuransiForm,'jurusanId'); ?>
+		<?php echo $form->dropDownList($printAsuransiForm, 'jurusanId',array(),array('empty'=>Yii::t('ap','Select Jurusan')))?>
+		<?php echo $form->error($printAsuransiForm,'jurusanId'); ?>
+	</div>
+
+
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton(Yii::t('app','Cetak')); ?>
+	</div>
+	<?php $this->endWidget(); ?>
+</div>
+
+
+<br/>
+<div class="form">
+	<h3><?php echo Yii::t('app','Cetak Dosen pembimbing')?></h3>
+	<?php $form = $this->beginWidget('CActiveForm', array(
+		'id' => 'asuransi-print-form',
+		'enableAjaxValidation' => true,
+		'action' => array('dosen'),
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+			'beforeValidate'=>'js:function(form,data,hasError){
+				window.open("'.$this->createUrl('dosen').'",
+					"Cetak","menubar=no,scrollbars=yes, width=950,height=800");
+				//alert()
+                return false;
+			}',
+		),
+	)); ?>
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton(Yii::t('app','Cetak')); ?>
+	</div>
+	<?php $this->endWidget(); ?>
+</div>
+

@@ -4,5 +4,5 @@ rsync -avz . \
 	--exclude=".git/*" \
 	--exclude="./assets/*" \
 	--exclude="./.htaccess" \
-	--exclude="protected/config/database.php" \
+	#--exclude="protected/config/database.php" \
 	--exclude="protected/runtime/*"

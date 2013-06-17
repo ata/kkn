@@ -8,11 +8,14 @@ class PrintController extends AdminController{
 	public function actionIndex()
 	{
 		$this->layout = '//layouts/admin';
-		$printJurusanForm = new PrintJurusanForm;
 		$printKelompokForm = new PrintKelompokForm;
+		$printJurusanForm = new PrintJurusanForm;
+		$printAsuransiForm = new PrintAsuransiForm;
+
 		$this->render('index',array(
+			'printKelompokForm' => $printKelompokForm,
 			'printJurusanForm' => $printJurusanForm,
-			'printKelompokForm' => $printKelompokForm
+			'printAsuransiForm' => $printAsuransiForm,
 		));
 	}
 
@@ -58,11 +61,43 @@ class PrintController extends AdminController{
 		));
 	}
 
+	public function actionAsuransi()
+	{
+		$printAsuransiForm = new PrintAsuransiForm;
+		if (isset($_POST['PrintAsuransiForm'])) {
+			$printAsuransiForm->attributes = $_POST['PrintAsuransiForm'];
+			if (!$printAsuransiForm->validate()) {
+				echo CActiveForm::validate($printAsuransiForm);
+			}
+		}
+		if(isset($_POST['ajax'])) {
+			Yii::app()->end();
+		}
+		$jurusan = Jurusan::model()->findByPk($_GET['jurusanId']);
+		$this->render('asuransi',array(
+			'jurusan' => $jurusan,
+		));
+	}
 
+	public function actionDosen()
+	{
+		$this->render('dosen',array(
+			'dosens' => Dosen::model()->findAll(),
+		));
+	}
 
 	public function actionDependentSelectJurusan()
 	{
 		echo CHtml::activeDropDownList(new PrintJurusanForm, 'jurusanId',
+			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
+			array('empty' => Yii::t('app','Select Jurusan'))
+		);
+		Yii::app()->end();
+	}
+
+	public function actionDependentSelectJurusan2()
+	{
+		echo CHtml::activeDropDownList(new PrintAsuransiForm, 'jurusanId',
 			CHtml::listData(Jurusan::model()->findAllByFakultasId($_GET['fakultasId']),'id','nama'),
 			array('empty' => Yii::t('app','Select Jurusan'))
 		);

@@ -41,6 +41,26 @@ $this->breadcrumbs=array(
 					<?php echo $form->error($mahasiswa,'namaLengkap'); ?>
 				</div>
 
+				<div class="row">
+					<?php echo $form->labelEx($mahasiswa,'tempatLahir'); ?>
+					<?php echo $form->textField($mahasiswa,'tempatLahir',array('size'=>60,'maxlength'=>255)); ?>
+					<?php echo $form->error($mahasiswa,'tempatLahir'); ?>
+				</div>
+
+				<div class="row">
+					<?php echo $form->labelEx($mahasiswa,'tanggalLahir'); ?>
+					<?php //echo $form->textField($mahasiswa,'tanggalLahir',array('size'=>60,'maxlength'=>255)); ?>
+					<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+						'name'=>'Mahasiswa[tanggalLahir]',
+						'value' => $mahasiswa->tanggalLahir,
+						// additional javascript options for the date picker plugin
+						'options'=>array(
+							'changeYear' => true,
+							'dateFormat' => 'yy-mm-dd',
+							'yearRange' => 'c-30:c',
+						)));?>
+					<?php echo $form->error($mahasiswa,'tanggalLahir'); ?>
+				</div>
 
 				<div class="row">
 					<?php echo $form->labelEx($mahasiswa,'alamatAsal'); ?>

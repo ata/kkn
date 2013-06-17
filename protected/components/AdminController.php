@@ -33,7 +33,9 @@ class AdminController extends Controller
 					'dependentSelectJurusan','deletePrioritas','deleteFile','downloadFile',
 					'dependentSelectKecamatan','resetPassword','bayarAsuransi',
 					'print','jurusan','kelompok','dependentSelectKelompok','bayar','findNim',
-					'hapusAnggota', 'preview','cancel','lunasi'
+					'hapusAnggota', 'preview','cancel','lunasi','asuransi',
+					'dependentSelectJurusan2','addAnggota','getMahasiswa',
+					'dosen',
 				),
 				'roles' => array_merge(array(User::ROLE_ADMIN),$this->getMoreAllowRoles()),
 			),

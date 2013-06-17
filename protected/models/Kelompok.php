@@ -215,7 +215,6 @@ class Kelompok extends ActiveRecord
 				$criteria->addCondition('t.id NOT IN (SELECT kelompokId FROM mahasiswa WHERE jurusanId = :jurusanId AND kelompokId IS NOT NULL)');
 				$criteria->params['jurusanId'] =  $currentMahasiswa->jurusanId;
 			}
-			$criteria->addCondition('t.programKknId != 6');
 		}
 
 		$criteria->order = 't.jumlahAnggota DESC';
@@ -267,6 +266,22 @@ class Kelompok extends ActiveRecord
 		return $this->findAllByAttributes(array(
 			'kecamatanId' => $kecamatanId
 		));
+	}
+
+	public function addAnggota($mahasiswa)
+	{
+		$mahasiswa->kelompokId = $this->id;
+		$mahasiswa->isAdmin = true;
+		$mahasiswa->save(false);
+		$this->jumlahAnggota ++;
+		if($mahasiswa->jenisKelamin == Mahasiswa::LAKI_LAKI) {
+			$this->jumlahLakiLaki ++;
+		} else {
+			$this->jumlahPerempuan ++;
+		}
+		$this->save();
+		return true;
+
 	}
 
 	public function pilih(Mahasiswa $currentMahasiswa)

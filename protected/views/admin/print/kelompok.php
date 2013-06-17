@@ -1,4 +1,5 @@
 <h2 class="ac"><?php echo Yii::t('app','Daftar Peserta KKN')?></h2>
+<?php $index = 0;?>
 <?php foreach($kelompoks as $i => $kelompok):?>
 	<div class="page">
 		<table class="head">
@@ -22,6 +23,11 @@
 					<th><?php echo Yii::t('app','Program KKN')?></th>
 					<th>:</th>
 					<th><?php echo $kelompok->namaProgramKkn?></th>
+				</tr>
+				<tr>
+					<th><?php echo Yii::t('app','Pembimbing')?></th>
+					<th>:</th>
+					<th><?php echo $kelompok->namaPembimbing?></th>
 				</tr>
 			</thead>
 		</table>
@@ -48,6 +54,11 @@
 			</tbody>
 		</table>
 	</div>
+	<br/>
+	<br/>
+	<?php $index ++ ?>
+	<?php if($index % 2 == 0 && $index != 0):?>
 	<div style="page-break-before: always;"></div>
 	<!--[if IE 7]><br style="height:0; line-height:0"><![endif]-->
+	<?php endif?>
 <?php endforeach?>

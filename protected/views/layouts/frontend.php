@@ -41,34 +41,36 @@
 	<div class="container">
 		<div id="content">
 			<div class="container">
-			<div class="span-16">
-				<?php echo $content?>
-			</div>
-			<div class="span-8 last" id="fsidebar">
-				<ul>
-					<li id="fp-login-form">
-						<h2>LOGIN</h2>
-						<form action="<?php echo $this->createUrl('/site/login')?>" method="post">
-							<label>NIM / NIP&nbsp;&nbsp;&nbsp;</label>
-							<input name="LoginForm[username]" id="LoginForm_username" type="text" /><br/>
-							<label>Password</label>
-							<input name="LoginForm[password]" id="LoginForm_password" type="password" /><br/>
-							<input type="submit" value="LOGIN" class="button floatRight">
-						</form>
-						<div class="clear"></div>
-						<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
-					</li>
-					<li id="register-form">
-						<h2 class="floatRight">REGISTRASI</h2>
-						<div class="clear"></div>
-						<form action="<?php echo $this->createUrl('/register')?>" method="post">
-							<label>NIM</label><br>
-							<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br/>
-							<input type="submit" value="DAFTAR" class="button">
-						</form>
-					</li>
-				</ul>
-			</div>
+				<div class="span-16">
+					<?php echo $content?>
+				</div>
+				<?php if(Yii::app()->user->isGuest):?>
+				<div class="span-8 last" id="fsidebar">
+					<ul>
+						<li id="fp-login-form">
+							<h2>LOGIN</h2>
+							<form action="<?php echo $this->createUrl('/site/login')?>" method="post">
+								<label>NIM / NIP&nbsp;&nbsp;&nbsp;</label>
+								<input name="LoginForm[username]" id="LoginForm_username" type="text" /><br/>
+								<label>Password</label>
+								<input name="LoginForm[password]" id="LoginForm_password" type="password" /><br/>
+								<input type="submit" value="LOGIN" class="button floatRight">
+							</form>
+							<div class="clear"></div>
+							<p><?php echo Yii::t('app','Belum terdaftar? Silakan registrasi')?></p>
+						</li>
+						<li id="register-form">
+							<h2 class="floatRight">REGISTRASI</h2>
+							<div class="clear"></div>
+							<form action="<?php echo $this->createUrl('/register')?>" method="post">
+								<label>NIM</label><br>
+								<input size="60" maxlength="255" name="Mahasiswa[nim]" id="Mahasiswa_nim" type="text"/><br/>
+								<input type="submit" value="DAFTAR" class="button">
+							</form>
+						</li>
+					</ul>
+				</div>
+				<?php endif?>
 			</div>
 		</div>
 	</div>

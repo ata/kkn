@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 
 <h2><?php echo Yii::t('app','Kelola Setting') ?></h2>
 
-<?php echo CHtml::link(Yii::t('app','Tambah Setting'),array('create'),array('class' => 'add-button'))?>
+<?php //echo CHtml::link(Yii::t('app','Tambah Setting'),array('create'),array('class' => 'add-button'))?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'setting-grid',

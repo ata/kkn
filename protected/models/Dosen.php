@@ -69,7 +69,7 @@ class Dosen extends ActiveRecord
 			'user' => array(self::BELONGS_TO,'User','userId'),
 			'jurusan' => array(self::BELONGS_TO,'Jurusan','jurusanId'),
 			'fakultas' => array(self::BELONGS_TO,'Fakultas','fakultasId'),
-			'kelompok' => array(self::HAS_MANY,'Kelompok','dosenId'),
+			'kelompok' => array(self::HAS_MANY,'Kelompok','pembimbingId'),
 		);
 	}
 

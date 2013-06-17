@@ -20,13 +20,17 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
-	/*
 	public function init()
 	{
-		if($this->id != 'site') {
-			$this->redirect(array('/site/maintance'));
+		try{
+			$maintenance = (bool) Setting::model()->get('MAINTENANCE',1);
+			if($maintenance && $this->id != 'site' && $this->id != 'home') {
+				$this->redirect(array('/site/maintance'));
+			}
+		} catch (Exception $e) {
+
 		}
 	}
-	*/
+
 
 }

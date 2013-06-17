@@ -4,6 +4,44 @@ $this->breadcrumbs=array(
 	Yii::t('app','Kelompok') => array('/admin/kelompok/index'),
 	$kelompok->nama,
 );
+Yii::app()->clientScript->registerScript('add-anggota','
+	jQuery("#add-anggota-link").click(function(){
+		jQuery("#add-anggota").show();
+		return false;
+	});
+	jQuery("#batal").click(function(){
+		jQuery("#add-anggota").hide();
+		jQuery("#input-nim").val("");
+		return false;
+	});
+	jQuery("#add-anggota-form").submit(function(){
+		var nim = jQuery("#input-nim").val();
+		var kelompok_id = '.$kelompok->id.';
+		jQuery.getJSON("'. $this->createUrl('getMahasiswa').'",{nim : nim},function(data){
+			if(data.result == 0) {
+				alert("Mahasiswa dengan NIM " + nim + " tidak ada");
+				jQuery("#input-nim").focus()
+			} else if(data.result == 1) {
+				if(confirm("Mahasiswa dengan nama " + data.namaLengkap + " dan  NIM " + nim + " tidak memiliki kelompok, anda yakin akan menambahkannya?")) {
+					jQuery.get("'. $this->createUrl('addAnggota').'",{nim : nim, id: kelompok_id},function(){
+						jQuery.fn.yiiGridView.update("mahasiswa-grid");
+					});
+					jQuery("#add-anggota").hide();
+					jQuery("#input-nim").val("");
+				}
+			} else if(data.result == 2) {
+				if(confirm("Mahasiswa dengan nama " + data.namaLengkap + " dan NIM " + nim + " sudah terdaftar di kelompok:  " + data.kelompok + ", anda yakin akan memindahkannya ke kelompok ini?")) {
+					jQuery.get("'. $this->createUrl('addAnggota').'",{nim : nim, id: kelompok_id},function(){
+						jQuery.fn.yiiGridView.update("mahasiswa-grid");
+					});
+					jQuery("#add-anggota").hide();
+					jQuery("#input-nim").val("");
+				}
+			}
+		});
+		return false;
+	});
+');
 ?>
 
 <h2><?php echo Yii::t('app','Detail Kelompok/Lokasi') ?></h2>
@@ -62,10 +100,24 @@ $this->breadcrumbs=array(
 </div>
 
 <h2><?php echo Yii::t('app','Daftar Mahasiswa di Kelompok')?></h2>
+<?php echo CHtml::link(Yii::t('app','Tambah Anggota'),array(),array('class' => 'add-button','id' => 'add-anggota-link'))?>
+<div class="form" id="add-anggota" style="display:none">
+	<form method="post" id="add-anggota-form">
+		<div class="row">
+			<label>NIM</label>
+			<input type="text" name="nim" id="input-nim"/>
+		</div>
+
+		<div class="row buttons">
+			<input type="submit" value="Tambah"/> &nbsp;
+			<?php echo CHtml::link(Yii::t('app','batal'),array(),array('id' => 'batal'))?>
+		</div>
+	</form>
+</div>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'mahasiswa-grid',
-	'dataProvider'=>$mahasiswa->search(20),
+	'dataProvider'=>$mahasiswa->search(20, 'modified'),
 	'columns'=>array(
 		array(
 			'class' => 'NumberColumn',

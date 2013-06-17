@@ -61,6 +61,10 @@ class Jurusan extends ActiveRecord
 			'mahasiswa' => 	array(self::HAS_MANY,'Mahasiswa','jurusanId',
 								'order' => 'jenisKelamin'
 							),
+			'mahasiswaLunas' => array(self::HAS_MANY,'Mahasiswa','jurusanId',
+								'condition' => 'lunasAsuransi = 1',
+								'order' => 'jenisKelamin',
+							),
 			'prioritas' => array(self::HAS_MANY,'Prioritas','jurusanId'),
 		);
 	}

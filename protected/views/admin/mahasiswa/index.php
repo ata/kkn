@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 
 <h2><?php echo Yii::t('app','Kelola Mahasiswa') ?></h2>
 <?php echo CHtml::link(Yii::t('app','Tambah Mahasiswa'),array('create'),array('class' => 'add-button'))?>
-<?php echo CHtml::link(Yii::t('app','Bayar Asuransi'),array('bayarAsuransi'))?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'mahasiswa-grid',
 	'dataProvider'=>$mahasiswa->search(),
