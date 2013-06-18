@@ -1,8 +1,8 @@
 <?php
 return array(
-	'connectionString' => 'mysql:host=localhost;dbname=kkn_dev',
+	'connectionString' => 'mysql:host=localhost;dbname=namadatabase',
 	'emulatePrepare' => true,
 	'username' => 'root',
-	'password' => 'root',
+	'password' => '',
 	'charset' => 'utf8',
 );
